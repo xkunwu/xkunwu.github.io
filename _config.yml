@@ -91,7 +91,6 @@ whitelist:
   - jemoji
   - jekyll-include-cache
 
-theme: "minimal-mistakes"
-# theme: "minimal-mistakes-jekyll"
-# remote_theme: "mmistakes/minimal-mistakes@4.14.1"
+# theme: "minimal-mistakes"
+remote_theme: "mmistakes/minimal-mistakes@4.14.1"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
