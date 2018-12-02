@@ -1,1 +1,97 @@
-theme: jekyll-theme-minimal
+# Site Settings
+locale                   : "en-US"
+title                    : "Xiaokun Wu"
+title_separator          : "-"
+name                     : "Xiaokun Wu"
+description              : "Xiaokun Wu's website."
+url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : # the subpath of your site, e.g. "/blog"
+repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+# breadcrumbs            : false # true, false (default)
+words_per_minute         : 200
+
+# Site Author
+author:
+  name: "Xiaokun Wu"
+  avatar: "/assets/images/bio-photo.jpg"
+  # bio: "I am an amazing person."
+  # location: "Somewhere"
+  email: xkun.wu (at) gmail
+  links:
+    # - label: "Email"
+    - label: "Email: xkun.wu (at) gmail"
+      icon: "fas fa-fw fa-envelope-square"
+      # url: "mailto:billyrick@rick.com"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/xkunwu"
+
+defaults:
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+  # _pages
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: projects
+      author_profile: true
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: # true
+      read_time: true
+      comments: # true
+      share: true
+      related: true
+
+# Reading Files
+include:
+    - .htaccess
+    - _pages
+exclude:
+    - .asset-cache
+    - .bundle
+    - .jekyll-assets-cache
+    - .sass-cache
+    - assets/js/plugins
+    - assets/js/_main.js
+    - assets/js/vendor
+    - Gemfile
+    - Makefile
+keep_files:
+    - .git
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Plugins (previously gems:)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
+
+# mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
+
+theme: "minimal-mistakes"
+# theme: "minimal-mistakes-jekyll"
+# remote_theme: "mmistakes/minimal-mistakes@4.14.1"
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
