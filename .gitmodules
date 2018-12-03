@@ -1,0 +1,3 @@
+[submodule "notes-cs"]
+    path = notes/notes-cs
+    url = git@github.com:xkunwu/notes-cs.git
