@@ -28,21 +28,14 @@ author:
       url: "https://github.com/xkunwu"
 
 defaults:
-  # _pages
+  # pages
   - scope:
       path: ""
       type: pages
     values:
       layout: single
       author_profile: true
-  # _pages
-  - scope:
-      path: ""
-      type: projects
-    values:
-      layout: projects
-      author_profile: true
-  # _posts
+  # posts
   - scope:
       path: ""
       type: posts
@@ -53,6 +46,22 @@ defaults:
       comments: # true
       share: true
       related: true
+  # projects
+  - scope:
+      path: "projects"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+  # notes
+  - scope:
+      path: "notes"
+      type: pages
+    values:
+      layout: archive
+      author_profile: true
+      sidebar:
+        nav: "notes"
 
 # Reading Files
 include:
@@ -68,8 +77,8 @@ exclude:
     - assets/js/vendor
     - Gemfile
     - Makefile
-    - *LICENSE*
-    - *README.md*
+    - LICENSE
+    - "README*"
 keep_files:
     - .git
 encoding: "utf-8"
@@ -77,21 +86,28 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 # Plugins (previously gems:)
 plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
+    - jekyll-titles-from-headings
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jekyll-gist
+    - jekyll-feed
+    - jemoji
+    - jekyll-include-cache
 
 # mimic GitHub Pages with --safe
 whitelist:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
+    - jekyll-titles-from-headings
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jekyll-gist
+    - jekyll-feed
+    - jemoji
+    - jekyll-include-cache
+
+titles_from_headings:
+    enabled:     true
+    strip_title: true
+    collections: true
 
 # theme: "minimal-mistakes"
 remote_theme: "mmistakes/minimal-mistakes"
