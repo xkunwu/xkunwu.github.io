@@ -6,3 +6,9 @@ sidebar:
     nav: "notes"
 ---
 > This is a personal notebook, which serves daily reference purpose, but not well formatted into blogs.
+
+## [Daily](notes-cs/daily)
+## [Develop](notes-cs/develop)
+## [Remote](notes-cs/remote)
+## [Scripts](notes-cs/scripts)
+## [Sysinit](notes-cs/sysinit)

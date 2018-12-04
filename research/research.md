@@ -47,7 +47,7 @@ _ECCV 2018_
   </div>
   <div class="pub_txt">
     <title>Structure-aware content creation: detection, retargeting and deformation</title>
-    <author>Xiaokun Wu - Jan 20, 2017</author>
+    <author>Xiaokun Wu - defended on Jan 20, 2017.</author>
     <links>
       [<a href="https://publikationen.sulb.uni-saarland.de/handle/20.500.11880/26753">paper</a>]
     </links>
@@ -93,7 +93,7 @@ _ECCV 2018_
     <award>Best Paper Award Honorable Mention</award>
     <links>
       [webpage]
-      [<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.12491">paper</a>]
+      [<a href="https://graphics.tudelft.nl/~klaus/papers/SymDef.pdf">paper</a>]
     </links>
   </div>
 </div>
@@ -122,6 +122,7 @@ _ECCV 2018_
     <publisher><a href="http://s2011.siggraph.org/">SIGGRAPH 2011</a></publisher>
     <links>
       [<a href="http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/globFit_sigg11.html">webpage</a>]
+      [<a href="http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/paper_docs/globFit_sigg11.pdf">paper</a>]
     </links>
   </div>
 </div>

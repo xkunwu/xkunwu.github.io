@@ -19,11 +19,20 @@ To tell you how diverse my interests is: I received my Bachelor degree in Engine
 
 ## Sports
 Sports and research are equally important to me. I used to play basketball quite a lot but stopped doing it after a severe injury.
-I learned Latin American dance and Yoga for better recovery.
-I also kept the habit of going to the gym daily since 2010.
+I cannot walk as normal for nearly one year, then I learned Latin American dances and Yoga later for better recovery.
+I also kept the habit of going to the gym daily since 2010, mainly focused on weightlifting training.
 
-My training is more like scientific experiments.
-I know how to survey.
+My training is more like scientific experiments: study human body biology, make exercise schedules and test, calculate accurate nutrients balance, etc.
+Well, people who treat sports seriously should have been through very similar practices.
+
+The good news is that I know how to survey and conduct experiments due to years of scientific training - this is one of my favorite example to show that scientific training can help in solving daily life tasks.
+I am also very interested in applying my professional knowledge to perform [technical analysis](/pages/about/clean_openpose.mp4) in my spare time.
+
+## Travel
+I very like reading history and am very lucky to stay in European countries in recent years, so I can easily visit many historical cities and feel the very different culture to my own country.
+
+I also very like keeping close to nature and organized several hiking & camping trips in the past.
+In one of my [craziest journey](https://drive.google.com/open?id=1PY-qpkwEc0V5hBueDGillzdWZcw&usp=sharing), I completed [3 most famous hiking route in Norway](/pages/about/norway_rocks.jpg), took [kayak & glacier trekking](/pages/about/glacier_kayak.jpg) trip, and drove nearly 5000 KM in 9 days.
 
 ## Languages
 I am a native Chinese speaker and the tone of my hometown ([Baoding](https://en.wikipedia.org/wiki/Baoding)) is almost the same as standard Chinese. I am fluency in English and hold a good number of German vocabulary for daily use.
