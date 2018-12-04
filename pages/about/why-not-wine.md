@@ -7,7 +7,7 @@ Oenology is the science and study of wine and winemaking (actually we study how 
 I like practical and experimental studies, so I enjoyed learning many courses through experiments about nature there (e.g. Microbiology, Organic Chemistry, Plant Science, Genetics, Viticulture, etc.)
 I also like the broad scope and many specialized topics that my school can offer, which include interesting studies like Wine-making, Wine-tasting, French language, etc.
 
-Besides, our curriculum follows a serious engineering training principle - just to name a few: Calculus, Physics, Mechanical Fundamentals, Enzyme Engineering - it's really amazing to realize that I actually learned quite a lot in retrospect.
+Besides, our curriculum follows a serious engineering training principle - just to name a few: Calculus, Physics, Mechanical Fundamentals, Enzyme Engineering - it's really surprising to realize that I learned quite a lot in retrospect.
 So there is really nothing to complain about my undergraduate study - at least I spent 4 wonderful and fulfilling years.
 
 But, why didn't I choose wine related career after graduate?
@@ -18,5 +18,7 @@ Well, people with proper professional training about wine-making know the follow
 
 This kind of fact that "some grapes are born to be great" or "some wine is made to be great" sounds very pessimistic to me.
 So I decided to change my career direction, in which the chance of achieving a more meaningful life is better - of course with personal creativeness and efforts.
+
+BTW, I am actually not so radical all the way through: an accident in the last year of my high school almost ruined my family, which brought me many years of difficulties - those years hardened my mind.
 
 > But man is not made for defeat.

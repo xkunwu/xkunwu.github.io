@@ -8,4 +8,27 @@ sidebar:
     image_alt: "Meditation with the sea."
     text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
 ---
-I am Xiaokun Wu, aka Kelvin. My Chinese name is [吴晓堃].
+I am Xiaokun Wu, aka Kelvin, and my Chinese name is [吴晓堃].
+Currently I am a post-doctoral researcher at the [*Centre for the Analysis of Motion, Entertainment Research and Applications (CAMERA)*](https://www.camera.ac.uk/) group of [University of Bath](https://www.bath.ac.uk/).
+
+## Education
+I received my PhD in Computer Science from [Max-Planck-Institute for Informatics](https://www.mpi-inf.mpg.de/departments/computer-graphics/) and [Saarland University](https://www.uni-saarland.de/en/home.html), where I closely collaborated with Prof. [Hans-Peter Seidel](https://people.mpi-inf.mpg.de/~hpseidel/), [Michael Wand](http://www.staff.uni-mainz.de/wandm/) and [Klaus Hildebrandt](https://graphics.tudelft.nl/~klaus/) on Computer Graphics related research projects.
+Before that, I received my Master degree in Mathematics from [Zhejiang University](http://www.zju.edu.cn/english/), under the supervision of Prof. [Ligang Liu](http://staff.ustc.edu.cn/~lgliu/).
+
+To tell you how diverse my interests is: I received my Bachelor degree in Engineering from [College of Oenology at Northwest A&F University](http://wine.nwsuaf.edu.cn/), but in the end I decided to [change my career direction](/pages/about/why-not-wine).
+
+## Sports
+Sports and research are equally important to me. I used to play basketball quite a lot but stopped doing it after a severe injury.
+I learned Latin American dance and Yoga for better recovery.
+I also kept the habit of going to the gym daily since 2010.
+
+My training is more like scientific experiments.
+I know how to survey.
+
+## Languages
+I am a native Chinese speaker and the tone of my hometown ([Baoding](https://en.wikipedia.org/wiki/Baoding)) is almost the same as standard Chinese. I am fluency in English and hold a good number of German vocabulary for daily use.
+I learned Spanish and French grammar in different stages, and I would very like to read in spare time.
+
+## Play Bridge
+I am a member of the [World Bridge Federation](http://www.worldbridge.org/) and used to play regularly.
+As the team leader, I competed for the [11th World Youth Team Championships (Bangkok 2006)](http://www.worldbridge.org/people/person/?x?qryid=24297), representing schools team of China.
