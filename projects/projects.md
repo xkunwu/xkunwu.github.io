@@ -20,7 +20,7 @@ I was trained to always think from an analytical perspective, direct my research
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="">
+    <img src="/projects/cambooth50/images-050.jpg">
   </div>
   <div class="pub_txt">
     <title>DSLR camera array based human body reconstruction</title>

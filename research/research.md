@@ -7,7 +7,7 @@ sidebar:
 ---
 I am especially interested in techniques that can link the 3D world and human perception.
 My current focus is on using Machine Learning techniques to solve problems in two complementary fields: Computer Graphics and Computer Vision.
-My (future) goal is to develop an artificially intelligent agent that can understand our 3D world through proactive interactions.
+My goal (in the future) is to develop an artificially intelligent agent that can understand our 3D world through proactive interactions.
 
 <div class="pub_row">
   <div class="pub_img">
@@ -22,7 +22,7 @@ My (future) goal is to develop an artificially intelligent agent that can unders
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="/research/18eccv-hand-maps/eccv2018pipeline.png">
+    <img src="/research/18eccv-hand-pose/eccv2018pipeline.png">
   </div>
   <div class="pub_txt">
     <title>HandMap: Robust hand pose estimation via intermediate dense guidance map supervision</title>
@@ -35,7 +35,7 @@ My (future) goal is to develop an artificially intelligent agent that can unders
   </div>
 </div>
 
-<!-- <img src="/research/18eccv-hand-maps/eccv2018pipeline.png">
+<!-- <img src="/research/18eccv-hand-pose/eccv2018pipeline.png">
 **HandMap: Robust hand pose estimation via intermediate dense guidance map supervision**  
 Xiaokun Wu, Daniel Finnegan, Eamonn O'Neill, Yong-Liang Yang  
 _ECCV 2018_  
