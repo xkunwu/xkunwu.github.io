@@ -10,7 +10,7 @@ I was trained to always think from an analytical perspective, direct my research
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="">
+    <img src="/projects/depth-hand/grasp.gif">
   </div>
   <div class="pub_txt">
     <title>Single depth camera based hand detection and tracking</title>
