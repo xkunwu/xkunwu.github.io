@@ -1,0 +1,9 @@
+@inproceedings{Wu14Retarget,
+  title={3d model retargeting using offset statistics},
+  author={Wu, Xiaokun and Li, Chuan and Wand, Michael and Hildebrandt, Klaus and Jansen, Silke and Seidel, Hans-Peter},
+  booktitle={3D Vision (3DV), 2014 2nd International Conference on},
+  volume={1},
+  pages={353--360},
+  year={2014},
+  organization={IEEE}
+} 

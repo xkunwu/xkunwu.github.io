@@ -1,0 +1,8 @@
+@inproceedings{Li15CoOccurrence,
+  title={Approximate 3d partial symmetry detection using co-occurrence analysis},
+  author={Li, Chuan and Wand, Michael and Wu, Xiaokun and Seidel, Hans-Peter},
+  booktitle={3D Vision (3DV), 2015 International Conference on},
+  pages={425--433},
+  year={2015},
+  organization={IEEE}
+} 

@@ -1,0 +1,10 @@
+@inproceedings{Kurz14SymmDeform,
+  title={Symmetry-aware template deformation and fitting},
+  author={Kurz, Christian and Wu, Xiaokun and Wand, Michael and Thorm{\"a}hlen, Thorsten and Kohli, Pushmeet and Seidel, H-P},
+  booktitle={Computer Graphics Forum},
+  volume={33},
+  number={6},
+  pages={205--219},
+  year={2014},
+  organization={Wiley Online Library}
+} 

@@ -1,0 +1,10 @@
+@inproceedings{Wu14SymmEdit,
+  title={Real-Time Symmetry-Preserving Deformation},
+  author={Wu, Xiaokun and Wand, Michael and Hildebrandt, Klaus and Kohli, Pushmeet and Seidel, Hans-Peter},
+  booktitle={Computer Graphics Forum},
+  volume={33},
+  number={7},
+  pages={229--238},
+  year={2014},
+  organization={Wiley Online Library}
+} 

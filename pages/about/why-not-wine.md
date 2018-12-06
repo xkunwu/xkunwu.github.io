@@ -34,6 +34,6 @@ P.S. I am actually not so radical all the way through: an accident in the last y
 Whenever something does not work, I do not regret to drop it and do not hesitate to make changes.
 </small>
 
-> 道不行，浮于海。 -- The road is blocked, so go to the sea and learn Peak Performance Buoyancy. :smirk:
+> 道不行，浮于海。 -- The road is blocked, so go to the sea and learn [Peak Performance Buoyancy](https://www.padi.com/courses/peak-performance-buoyancy). :smirk:
 
 <!-- > But man is not made for defeat. -->

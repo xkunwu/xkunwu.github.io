@@ -85,7 +85,7 @@ exclude:
     - Gemfile
     - Makefile
     - LICENSE
-    - "README*"
+    - /README.md
     - notes/notes-cs/.git
 keep_files:
     - .git

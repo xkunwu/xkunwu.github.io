@@ -1,0 +1,10 @@
+@inproceedings{Li11GlobFit,
+  title={Globfit: Consistently fitting primitives by discovering global relations},
+  author={Li, Yangyan and Wu, Xiaokun and Chrysathou, Yiorgos and Sharf, Andrei and Cohen-Or, Daniel and Mitra, Niloy J},
+  booktitle={ACM Transactions on Graphics (TOG)},
+  volume={30},
+  number={4},
+  pages={52},
+  year={2011},
+  organization={ACM}
+} 
