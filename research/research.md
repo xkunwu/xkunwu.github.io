@@ -17,6 +17,11 @@ My (future) goal is to develop an artificially intelligent agent that can unders
     <title>E-StopMotion: digitizing stop motion for enhanced animation and games</title>
     <author>Anamaria Ciucanu, Naval Bhandari, Xiaokun Wu, Shridhar Ravikumar, Yong-Liang Yang, Darren Cosker</author>
     <publisher><a href="http://cyprusconferences.org/mig2018/">Motion in Games 2018</a></publisher>
+    <links>
+      [<a href="/research/18StopMotion/blob_fish.gif">Click this if you are boring right now :smile:</a>]
+      [<a href="https://dl.acm.org/citation.cfm?id=3274505">Paper</a>]
+      [<a href="/research/18StopMotion/18StopMotion.txt">BibTex</a>]
+    </links>
   </div>
 </div>
 

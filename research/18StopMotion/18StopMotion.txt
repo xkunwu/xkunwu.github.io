@@ -1,0 +1,8 @@
+@inproceedings{Ciucanu2018StopMotion,
+  title={E-StopMotion: digitizing stop motion for enhanced animation and games},
+  author={Ciucanu, Anamaria and Bhandari, Naval and Wu, Xiaokun and Ravikumar, Shridhar and Yang, Yong-Liang and Cosker, Darren},
+  booktitle={Proceedings of the 11th Annual International Conference on Motion, Interaction, and Games},
+  pages={9},
+  year={2018},
+  organization={ACM}
+} 
