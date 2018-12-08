@@ -21,11 +21,11 @@ Before that, I received my Master degree in Mathematics from [Zhejiang Universit
 To tell you how diverse my interests is: I received my Bachelor degree in Engineering from [College of Oenology at Northwest A&F University](http://wine.nwsuaf.edu.cn/), but in the end I decided to [change my career direction](/pages/about/why-not-wine).
 
 ## Sports
-Sports and research are equally important to me. I used to play basketball quite a lot but stopped doing it after a severe injury.
+Besides research, sports is the most important focus in my life. I used to play basketball quite a lot but stopped doing it after a severe injury.
 I cannot walk as normal for nearly one year, then I learned Latin American dances and Yoga later for better recovery.
 I also kept the habit of going to the gym daily since 2010, mainly focused on weightlifting training.
 
-My training is more like scientific experiments: study human body biology, make exercise schedules and test, calculate accurate nutrients balance, etc.
+My training is more like scientific experiments: study human body biology, make rigorous training schedules and evaluate performance, calculate accurate nutrients balance, etc.
 Well, people who treat sports seriously should have been through very similar practices.
 
 The good news is that I know how to survey and conduct experiments due to years of scientific training - this is one of my favorite example to show that scientific study can help in solving daily life tasks.
