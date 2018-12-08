@@ -52,6 +52,7 @@ defaults:
       type: pages
     values:
       layout: single
+      classes: wide
       author_profile: true
   # projects
   - scope:
@@ -59,6 +60,7 @@ defaults:
       type: pages
     values:
       layout: single
+      classes: wide
       author_profile: true
   # notes
   - scope:

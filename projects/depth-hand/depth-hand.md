@@ -6,7 +6,7 @@ mathjax: true
 
 > Experimental hand detection and tracking from single depth camera.
 
-> [Code]()
+\[[Code](https://github.com/xkunwu/depth-hand/blob/master/code/camera/README.md)\]
 
 <span style="display:block;text-align:center">![Test sequence.](test_seq.gif)</span>
 

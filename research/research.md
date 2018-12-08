@@ -34,7 +34,7 @@ My (future) goal is to develop an artificially intelligent agent that can unders
     <author>Xiaokun Wu, Daniel Finnegan, Eamonn O'Neill, Yong-Liang Yang</author>
     <publisher><a href="https://eccv2018.org/">ECCV 2018</a></publisher>
     <links>
-      [Webpage]
+      [<a href="/research/18HandPose/18HandPose">Webpage</a>]
       [<a href="https://github.com/xkunwu/depth-hand">Code</a>]
       [<a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Xiaokun_Wu_HandMap_Robust_Hand_ECCV_2018_paper.pdf">Paper</a>]
       [<a href="/research/18HandPose/eccv2018poster1813.pdf">Poster</a>]

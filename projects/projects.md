@@ -27,6 +27,6 @@ I was trained to always think from an analytical perspective, direct my research
   </div>
   <div class="pub_txt">
     <title>DSLR camera array based human body reconstruction</title>
-    [webpage]
+    [Webpage]
   </div>
 </div>
