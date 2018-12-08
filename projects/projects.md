@@ -14,7 +14,10 @@ I was trained to always think from an analytical perspective, direct my research
   </div>
   <div class="pub_txt">
     <title>Single depth camera based hand detection and tracking</title>
-    [webpage]
+    <links>
+      [<a href="depth-hand/depth-hand">Webpage</a>]
+      [<a href="https://github.com/xkunwu/depth-hand">Code</a>]
+    </links>
   </div>
 </div>
 

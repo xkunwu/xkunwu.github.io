@@ -58,7 +58,7 @@ _ECCV 2018_
     <author>Xiaokun Wu - Saarbrücken, 20 January 2017.</author>
     <links>
       [Defended]
-      [<a href="https://publikationen.sulb.uni-saarland.de/handle/20.500.11880/26753">Paper</a>]
+      [<a href="https://publikationen.sulb.uni-saarland.de/handle/20.500.11880/26753">Doctoral Thesis</a>]
     </links>
   </div>
 </div>
