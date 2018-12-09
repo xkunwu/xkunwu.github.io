@@ -38,7 +38,7 @@ The good news is that I know how to survey and conduct experiments due to years 
 I am also very interested in applying my professional knowledge to perform [technical analysis](/pages/about/clean_openpose.mp4) in my spare time.
 
 ## Life and Misc.
-I am a big fan of classical music - tried to learn violin and piano, but failed.
+I am a big fan of classical music - tried to learn violin and piano, but no time to practice.
 When the weather is good, I do outdoor photography and post-processing if it's memorable.
 
 ### Travel
