@@ -5,6 +5,7 @@ sidebar:
   nav: "main"
 ---
 I am a curious and vigorous researcher.
+When I feel too tired to read books or write codes, I do sports.
 
 Currently I am a post-doctoral researcher at the [*Centre for the Analysis of Motion, Entertainment Research and Applications (CAMERA)*](https://www.camera.ac.uk/) group of [University of Bath](https://www.bath.ac.uk/).
 

@@ -6,26 +6,18 @@ mathjax: true
 
 > Experimental hand detection and tracking from single depth camera.
 
-\[[Code](https://github.com/xkunwu/depth-hand/blob/master/code/camera/README.md)\]
-
 <span style="display:block;text-align:center">![Test sequence.](test_seq.gif)</span>
+
+Please check the \[[Code](https://github.com/xkunwu/depth-hand/blob/master/code/camera/README.md)\] for user manual.
 
 Note: this is a two-week quick patch following the [hand pose estimation project](https://github.com/xkunwu/depth-hand) located in the main repo.
 The purpose is to make live capture and hand tracking possible, but currently no plan to make the code waterproof (might be a future research project).
 
-## Hardware prerequisite
-The code was tested using SR300 and D400 series (D415/D435).
-Please follow the [official instructions](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md) to install necessary drivers.
-
-Note: the code was updated to use [Intel® RealSense™ SDK 2.0](https://github.com/IntelRealSense/librealsense), so the minimum supported camera model is SR300.
-
-Also note: SR300 should work nicely after installing the drivers (hit 'realsense_viewer' to test if anything went wrong). But for D400 series, additional firmware update is necessary: go to the [official site](https://downloadcenter.intel.com/download/28377/Latest-Firmware-for-Intel-RealSense-D400-Product-Family?v=t) and following instructions there ('realsense_viewer' will also find any firmware issues and show you the latest update link).
-
 ## Assumptions
--   single hand
--   hand is the closest to the camera
--   no other objects within 'crop_range', default: 100mm-480mm
--   pre-trained model was targeted at left hand
+-   Single hand
+-   Hand is the closest to the camera
+-   No other objects within 'crop_range', default: 100mm-480mm
+-   Pre-trained model was targeted at left hand
 
 ### Design flavors
 Here 'detection' means finding the axis-aligned bounding cube (AABC) that can crop the part of hand data out.
@@ -52,6 +44,11 @@ So I just made the assumption that the narrowest part is located at the wrist, w
 To do that, I segmented the data into short sections according to the depth value, then use PCA to find the extent of each section.
 Proper ordering is necessary for reducing the number of applying PCA (speed issue for real-time application).
 Details could be found in the code.
+
+#### Train a hand detector
+I wrote two (2D/3D) [attention model](https://arxiv.org/abs/1506.01497) like prototype hand detector one year ago (October 2017, even before the pose estimation work started), but the real-time test was not very stable at that time.
+Now I know much better about the technical issues, but heuristic detector works just fine already.
+As I have much higher priority project right now, I would like to leave it as a future work.
 
 ## FAQ
 ##### Q: Detection looks very inaccurate? And sometimes flipped?
