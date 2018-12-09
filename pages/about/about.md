@@ -1,5 +1,6 @@
 ---
 title: About me
+sitemap: false
 author_profile: false
 permalink: /about/
 sidebar:
