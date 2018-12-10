@@ -1,7 +1,10 @@
 ---
 ---
+
+<span style="color:red">Warning: in progress.</span>
+
 # HandMap: Robust hand pose estimation via intermediate dense guidance map supervision
-<span style="display:block;text-align:center;width=80%">![Test sequence.](eccv2018pipeline.png)</span>
+<span style="display:block;text-align:center;width:80%">![ECCV2018 paper pipeline.](eccv2018pipeline.png)</span>
 > In ECCV 2018
 
 <links>
@@ -43,5 +46,15 @@ ambiguity, false positives
 Combine detection and regression
 
 ## Stand on the shoulder of giants
+Our algorithm alone might not fully convince you.
+But please note that the core Dense GMS Module in our algorithm is "hot-pluggable": we can easily plug it into other state-of-the-art (SOTA) methods, and achieve better performance due to added robustness.
+Please check the paper for details about performance enhancements.
+
+In short: the best of our standalone algorithms is roughly comparable to the SOTA, but we achieved much better performance after combined our algorithms with the SOTA.
 
 ## "Forthcoming Research" already came
+In the poster that I prepared for the ECCV2018 conference, you can see that:
+> Future work will explore temporal hand tracking using our framework ...
+
+Well, actually this has already been realized.
+Please visit the [hand tracking project](https://xkunwu.github.io/projects/depth-hand/depth-hand/) if you are interested.

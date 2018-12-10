@@ -51,9 +51,14 @@ Now I know much better about the technical issues, but heuristic detector works 
 As I have much higher priority project right now, I would like to leave it as a future work.
 
 ## FAQ
-##### Q: Detection looks very inaccurate? And sometimes flipped?
+##### Q: Detection looks very inaccurate?
 A: Please take a look at the [Assumptions](#Assumptions). Especially: make clear of the 100mm-480mm operating range in front of the camera, and the hand should be the closest to the camera.
-If the detection looks flipped, then use left hand. This is due to the pre-trained model, and adding code to differentiate left/right hand will make the algorithm somewhat messy.
+
+##### Q: Detection looks very unstable?
+A: Mostly due to noise of depth image, which may relates to (in addition to algorithm complexity): hardware sensibility, lighting condition, reflective objects within range (in one funny test case, our tester's metal watch makes detection very random :joy:), etc.
+
+##### Q: Why the detection looks flipped?
+A: If the detection looks flipped, then use left hand. This is due to the data bias in pre-trained model. Adding code to differentiate left/right hand will make the algorithm somewhat messy.
 
 ##### Q: The detection suddenly lost?
 A: Mainly due to the [Momentum stabilizer](#Momentum-stabilizer). If the hand jumps faster than capturing speed (larger than 120mm between frames). It helps for the most of cases and make the algorithm more robust.
