@@ -9,7 +9,7 @@ sidebar:
 
 Note: may not updated regularly into this git-submodule.
 
-## [Notes-CS](git@github.com:xkunwu/notes-cs.git)
+## [Notes-CS](https://github.com/xkunwu/notes-cs)
 ### [Daily](notes-cs/daily)
 ### [Develop](notes-cs/develop)
 ### [Remote](notes-cs/remote)

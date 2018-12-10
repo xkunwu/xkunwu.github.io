@@ -9,7 +9,7 @@ sidebar:
     image_alt: "Meditation with the sea."
     text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
 ---
-I am Xiaokun Wu, aka Kelvin, and my Chinese name is [吴晓堃].
+I am Xiaokun Wu, aka Kelvin, and my Chinese name is \[吴晓堃\].
 I am curious about anything that is unknown to me, and would always like to try new things.
 I am keen on making things from imagination into reality, and on making prototypes towards perfection.
 
@@ -39,7 +39,7 @@ The good news is that I know how to survey and conduct experiments due to years 
 I am also very interested in applying my professional knowledge to perform [technical analysis](/pages/about/clean_openpose.mp4) in my spare time.
 
 ## Life and Misc.
-I am a big fan of classical music - tried to learn violin and piano, but no time to practice.
+I am a classical music fan - tried to learn violin and piano, but no time to practice.
 When the weather is good, I do outdoor photography and post-processing if it's memorable.
 
 ### Travel
