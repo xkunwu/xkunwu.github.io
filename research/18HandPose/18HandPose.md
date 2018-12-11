@@ -1,10 +1,13 @@
 ---
 ---
 
-<span style="color:red">Warning: in progress.</span>
+<div style="color:red">Warning: in progress.</div>
 
 # HandMap: Robust hand pose estimation via intermediate dense guidance map supervision
-<span style="display:block;text-align:center;width:80%">![ECCV2018 paper pipeline.](eccv2018pipeline.png)</span>
+<figure>
+    <img src="/research/18HandPose/eccv2018pipeline.png">
+</figure>
+
 > In ECCV 2018
 
 <links>
@@ -21,14 +24,25 @@ This work presents a novel hand pose estimation framework via intermediate dense
 The goal is to accurately estimate hand pose, i.e. 3D location for each joint, given single depth image.
 
 ### Why is the topic important?
-Human-Computer Interactions.
-behavior recognition
+<figure>
+    <img src="/research/18HandPose/interactive-vr.png" alt="Interactive VR" />
+    <figcaption><a href="https://www.leapmotion.com/">Image from the web.</a></figcaption>
+</figure>
+
+Robust hand pose estimation is essential for emerging applications in human-computer interaction, such as virtual and mixed reality, computer games, and freehand user interfaces.
+The hand is also the most flexible and expressive part of human body, so the study of hand poses provides a great source of input to human behavior recognition task, which further benefits studies in computer vision in general.
 
 ### Why is the problem difficult?
-weak description of features
-strong ambiguity due to self-similarity
-low signal-noise ratio
-severe occlusion
+The difficulties come from several sources:
+-   Human skin is relatively uniform in color and surface property, which can only provide weak feature descriptors.
+-   Strong ambiguity due to self-similarity between fingers.
+-   The area of hands in a full body scale image is often very small, which means low signal-noise ratio.
+-   Severe self-occlusion, especially in interactive applications.
+
+### Justify the use of depth image
+Traditional computer vision algorithms usually focus on color channels, which can hardly provide robust output given the challenges listed above.
+But nowadays depth cameras are becoming much easier accessible (e.g. my $800 laptop in 2016 has a build-in depth camera), which provides extra geometric information in the depth dimension.
+Many recent works found that this added accuracy can cope with spatial ambiguity problem well.
 
 ## Robustness
 sparse vs dense intermediate supervision

@@ -44,3 +44,17 @@
     display: table;
     clear: both;
 }
+
+figure {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+figure img {
+    vertical-align: top;
+    max-width: 600px;
+}
+figure figcaption {
+    color: grey;
+    font-size: small;
+}
