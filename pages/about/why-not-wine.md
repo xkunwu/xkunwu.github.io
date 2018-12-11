@@ -31,10 +31,10 @@ Well, people with proper professional training about wine-making know the follow
 This kind of fact that "some grapes are born to be great" or "some wine is made to be great" sounds very depressing to me.
 In the end, I decided to change my career direction and focus on the pursuit of knowledge, in the hope of that the chance of achieving a more meaningful life is better - of course, with personal creativeness and efforts.
 
-<small>
+<div class="foot_notes">
 P.S. I am actually not so radical all the way through: an accident in the last year of my high school almost ruined my family, which brought me many years of special experience - those years hardened my mind.
 Whenever something is beyond remedy, I do not regret to drop it and do not hesitate to make another thing work better.
-</small>
+</div>
 
 > 道不行，浮于海。 -- Worried about your goal is out of reach? Go to the sea and learn [Peak Performance Buoyancy](https://www.padi.com/courses/peak-performance-buoyancy). :smirk:
 
