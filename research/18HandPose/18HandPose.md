@@ -2,7 +2,7 @@
 mathjax: true
 ---
 
-<div style="color:red">Warning: in progress.</div>
+<!-- <div style="color:red">Warning: in progress.</div> -->
 
 # HandMap: Robust hand pose estimation via intermediate dense guidance map supervision
 <figure>
@@ -93,9 +93,11 @@ The main idea is to leverage the feature extraction effectiveness of the residua
     <img src="/research/18HandPose/eccv2018pipeline.png" alt="Guidance maps.">
 </figure>
 
-The pipeline of our algorithm starts from a single depth image. Our baseline method (shown in solid line) stacks R repetitions of a residual module on lower dimensional feature space, then directly regresses 3D coordinates of each joint as in a conventional CNN-based framework. In comparison, our proposed method (shown in dashed line) densely samples geometrically meaningful constraints from the input image, which provides coherent guidance to the feature representation of residual module.
+The pipeline of our algorithm starts from a single depth image.
+Our baseline method (shown in solid line) stacks R repetitions of a residual module on lower dimensional feature space, then directly regresses 3D coordinates of each joint as in a conventional CNN-based framework.
+In comparison, our proposed method (shown in dashed line) densely samples geometrically meaningful constraints from the input image, which provides coherent guidance to the feature representation of residual module.
 
-## Stand on the shoulder of giants
+## "Stand on the shoulder of giants"
 Our algorithm alone might not fully convince you.
 But please note that the core Dense GMS Module in our algorithm is "hot-pluggable": we can easily plug it into other state-of-the-art (SOTA) methods, and achieve better performance due to added robustness.
 Please check the paper for details about evaluation metrics and performance enhancements.

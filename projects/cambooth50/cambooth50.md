@@ -1,5 +1,7 @@
 ---
 ---
+<div style="color:red">Warning: in progress.</div>
+
 # Camera Booth
 > DSLR camera array based human body reconstruction.
 

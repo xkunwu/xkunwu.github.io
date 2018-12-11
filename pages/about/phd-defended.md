@@ -9,7 +9,10 @@ sitemap: false
 
 > Saarbrücken, 20 January 2017.
 
-> This is a photo of six people including me. *
+<figure>
+    <img src="/pages/about/me-hat.png">
+    <figcaption>This is a photo of six people including me with hat.* </figcaption>
+</figure>
 
 Acknowledgment: Prof. Dr. Philipp Slusallek (left 1) chaired the committee of my defense talk (Promotionskolloquium).
 Prof. Dr. Hans-Peter Seidel (left 2), Michael Wand (right 3) and Klaus Hildebrandt (right 2) are in the committee.
@@ -33,5 +36,5 @@ Besides, I would argue that I never go up to 250km/h - you know, mainly because 
 Anyway, it's really one of most memorable days in my life.
 
 <div class="foot_notes">
-* There really should be a real photo, but I am not sure if the new <a href="https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en">data protection rules</a> allow me to post other people's face without authorization.
+* There should be a real photo, but I am not sure if the new <a href="https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en">data protection rules</a> allow me to post other people's face without authorization.
 </div>
