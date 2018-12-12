@@ -9,7 +9,7 @@ mathjax: true
     <img src="/research/18HandPose/eccv2018pipeline.png">
 </figure>
 
-> In ECCV 2018. Other authors: [Yongliang (Mac) Yang](http://www.yongliangyang.net/), Daniel Finnegan, Eamonn O'Neill.
+> In ECCV 2018. Other people on the authors list: Yongliang (Mac) Yang, Daniel (Dan) Finnegan, Eamonn O'Neill.
 
 <links>
   [<a href="https://github.com/xkunwu/depth-hand">Code</a>]
@@ -108,5 +108,9 @@ In short: the best of our standalone algorithms is roughly comparable to the SOT
 In the poster that I prepared for the ECCV2018 conference, you can see that:
 > Future work will explore temporal hand tracking using our framework ...
 
-Well, actually this has already been realized.
+Well, actually this has already been realized:
+<figure>
+    <img src="/projects/depth-hand/test_seq.gif">
+</figure>
+
 Please visit the [hand tracking project](https://xkunwu.github.io/projects/depth-hand/depth-hand/) if you are interested.

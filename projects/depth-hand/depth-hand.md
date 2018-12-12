@@ -54,11 +54,16 @@ As I have much higher priority project right now, I would like to leave it as a 
 ##### Q: Detection looks very inaccurate?
 A: Please take a look at the [Assumptions](#Assumptions). Especially: make clear of the 100mm-480mm operating range in front of the camera, and the hand should be the closest to the camera.
 
-##### Q: Detection looks very unstable?
-A: Mostly due to noise of depth image, which may relates to (in addition to algorithm complexity): hardware sensibility, lighting condition, reflective objects within range (in one funny test case, our tester's metal watch makes detection very random :joy:), etc.
-
 ##### Q: Why the detection looks flipped?
 A: If the detection looks flipped, then use left hand. This is due to the data bias in pre-trained model. Adding code to differentiate left/right hand will make the algorithm somewhat messy.
 
+##### Q: The detection looks slower than hand/finger movements?
+A: This is by-design due to the [Momentum stabilizer](#Momentum-stabilizer): if the motion is mildly fast, the algorithm will gradually converge to the target location. It helps for the most of cases and make the algorithm more robust to outliers and noise.
+
+##### Q: I observed flickering detection?
+A: This is also due to the Momentum stabilizer: if the motion is faster than the stabilizer can handle, there is a gap between the data and presumed center, i.e. cropped region is misaligned to the real data, so the algorithm can produce wrong detection.
+
 ##### Q: The detection suddenly lost?
-A: Mainly due to the [Momentum stabilizer](#Momentum-stabilizer). If the hand jumps faster than capturing speed (larger than 120mm between frames). It helps for the most of cases and make the algorithm more robust.
+A: If the hand jumps faster than capturing speed (larger than 120mm between frames), the algorithm will think tracking is lost and restart.
+
+##### Note: other FAQ related to technical issues may be found at the [code README](https://github.com/xkunwu/depth-hand/blob/master/code/camera/README.md).

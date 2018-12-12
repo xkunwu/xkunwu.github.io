@@ -22,6 +22,11 @@ Dr. Qianru Sun (right 1) reported my talk.
 The tradition of MPI is every doctoral student will received a special tailored hat as souvenir after defense talk.
 The hat is usually made by colleagues and friends, and the items on the hat are memorials that record interesting or "stupid" things that student has done.
 
+<figure>
+    <img src="/pages/about/hat_award.png">
+    <figcaption>Acknowledgment: Dr. Weipeng Xu (right 1) hosted the hat presentation and awarding session.</figcaption>
+</figure>
+
 #### "所长"
 This name tag with Chinese Characters literally means "Head of the Institute", but actually means "Guard of the Institute" by my little buddies.
 I got this nickname on the first year at MPI, since I rarely stay at home and sometimes even stay in the office overnight.
