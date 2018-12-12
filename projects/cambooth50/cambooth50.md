@@ -7,7 +7,7 @@
 
 <figure>
     <img src="/projects/cambooth50/concept_plan.jpg">
-    <figcaption>Fig 1: Concept plan of the project.</figcaption>
+    <figcaption>Fig~1: Concept plan of the project.</figcaption>
 </figure>
 
 This is an engineering/experimental/student training project aiming at 3D human body reconstruction through [photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry) approach.
@@ -30,22 +30,22 @@ As even subtle differences can cause misalignment between consecutive shots, whi
 
 <figure>
     <img src="/projects/cambooth50/config_test.jpg">
-    <figcaption>Fig 2: A test configuration.</figcaption>
+    <figcaption>Fig~2: A test configuration.</figcaption>
 </figure>
 
 Of course, there are many research works on non-rigid registration to attack this problem, but we focus on solving this problem in a relatively brute-force yet more reliable way - we use multiple cameras to take shots simultaneously.
-In this project, we have tested many configurations starting from small number of cameras to a moderate large system consisting of 50 cameras.
+In this project, we have tested many configurations starting from small number of cameras to a moderate large system consisting of 48 cameras.
 
 ## System setup
 The studio of [CAMERA group](https://www.camera.ac.uk/) roughly looks like this:
 
 <figure>
     <img src="/projects/cambooth50/camera_studio.jpg">
-    <figcaption>Fig 3: The CAMERA studio.</figcaption>
+    <figcaption>Fig~3: The CAMERA studio.</figcaption>
 </figure>
 
 To cover the target's full body in as many view directions as possible, we spatially partition the poles into 8 uniformly distributed groups (imagine from the top view of Fig~1).
-Each group contains the same number of cameras: we start from a simple 16-camera configuration, then gradually add cameras until the final 50-camera configuration.
+Each group contains the same number of cameras: we start from a simple 16-camera configuration, then gradually add cameras until the final 48-camera configuration.
 All the 8 groups are hardware chained together into a ring structure, and then connected to the server/power supply/shutter trigger.
 
 ### Hardware connections
@@ -53,7 +53,7 @@ All the 8 groups are hardware chained together into a ring structure, and then c
 #### Attach cameras to the pole
 <figure>
     <img src="/projects/cambooth50/attach_camera.jpg">
-    <figcaption>Fig 4: Camera attachment steps.</figcaption>
+    <figcaption>Fig~4: Camera attachment steps.</figcaption>
 </figure>
 
 Standard socket-clamps are used to attach cameras to the poles.
@@ -61,7 +61,7 @@ Standard socket-clamps are used to attach cameras to the poles.
 #### Wiring interface
 <figure>
     <img src="/projects/cambooth50/canon1300D.jpg">
-    <figcaption>Fig 5: The cameras used in our project.</figcaption>
+    <figcaption>Fig~5: The cameras used in our project.</figcaption>
 </figure>
 
 We use the same model of entry-level cameras in our project, which has three types of interfaces that we care:
@@ -75,21 +75,46 @@ After some research, we decided to go for commercial solution:
 
 <figure>
     <img src="/projects/cambooth50/trigger_box.jpg">
-    <figcaption>Fig 5: Trigger boxes for signal amplification.</figcaption>
+    <figcaption>Fig~6: Trigger boxes for signal amplification.</figcaption>
 </figure>
 
 These trigger boxes are basically deconcentrator, which sends the input trigger signal to several outlets.
 It can also act as relay, which amplify the input signal and pass onto the next hub.
-So 
+So we can build a hierarchical connection structure to host all the cameras, when the total number is greater than outlets on a single hub.
 
-hardware
-synchronization
-bandwidth
+#### Data bandwidth
+The data cables should connected to USB hubs in a hierarchical structure, which gather all the links together into the USB ports of the server.
+But there is a bandwidth issue: a single USB port can only handle up to 16 data cables that topologically connected to it.
+As there are usually 2 USB ports on a single PCI-e card, we mounted two extra PCI-e cards onto our server, which can handle a maximum of 48 cameras simultaneously.
 
-camera distribution
+Also, the USB standard only allow a maximum of 3 level hubs daisy chained together, while the maximum USB cable length allowed is 5m, so there is a upper limit of 20m that data cable can reach.
+It's not a problem in our case, as our studio is 6x7m.
+But people who are interested might need to consider that cables are best go along peripheral boundary, if you do not want messy cables go along your room.
+
+#### Camera distribution
+<figure>
+    <img src="/projects/cambooth50/single_group.jpg">
+    <figcaption>Fig~7: Cameras in a single group.</figcaption>
+</figure>
+
+Here comes the first version of our capture system in full size: Fig~7 shows the camera numbering rule within a single group out of 8 groups in total.
+
+A sample shot of our model "Dotty" is shown below:
+
+<figure>
+    <img src="/projects/cambooth50/dotty.jpg">
+    <figcaption>Fig~8: A shot of Dotty.</figcaption>
+</figure>
 
 ## Software pipeline
-Data processing
+Programming is not the major concern in this training project, so we compared reconstruction quality of two well-known software:
+-   [PhotoScan](http://www.agisoft.com/),
+-   [COLMAP](https://colmap.github.io/).
+
+### Data preprocessing
+
+[video](https://youtu.be/Mm1DMJK_04k)
+
 software compare
 parameter settings
 
