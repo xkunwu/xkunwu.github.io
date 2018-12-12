@@ -2,7 +2,7 @@
 mathjax: true
 ---
 
-<!-- <div style="color:red">Warning: in progress.</div> -->
+<div style="color:red">Warning: in progress.</div>
 
 # HandMap: Robust hand pose estimation via intermediate dense guidance map supervision
 <figure>
@@ -13,6 +13,7 @@ mathjax: true
 
 <links>
   [<a href="https://github.com/xkunwu/depth-hand">Code</a>]
+  [<a href="https://github.com/xkunwu/depth-hand/blob/master/code/README.md#resources">Resources</a>]
   [<a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Xiaokun_Wu_HandMap_Robust_Hand_ECCV_2018_paper.pdf">Paper</a>]
   [<a href="/research/18HandPose/eccv2018poster1813.pdf">Poster</a>]
   [<a href="/research/18HandPose/Wu18HandPose.txt">BibTex</a>]
@@ -37,7 +38,7 @@ The hand is also the most flexible and expressive part of human body, so the stu
 The difficulties come from several sources:
 -   Human skin is relatively uniform in color and surface property, which can only provide weak feature descriptors.
 -   Strong ambiguity due to self-similarity between fingers.
--   The area of hands in a full body scale image is often very small, which means low signal-noise ratio.
+-   The area of hands in a full-body size image is often very small, which means low signal-noise ratio.
 -   Severe self-occlusion, especially in interactive applications.
 
 ### Justify the use of depth image

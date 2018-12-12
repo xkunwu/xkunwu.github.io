@@ -14,7 +14,7 @@ I am curious about anything that is unknown to me, and would always like to try 
 I am keen on making things from imagination into reality, and on making prototypes towards perfection.
 
 ## Work Experience
-Currently I am a post-doctoral researcher at the [*Centre for the Analysis of Motion, Entertainment Research and Applications (CAMERA)*](https://www.camera.ac.uk/) group of [University of Bath](https://www.bath.ac.uk/).
+Currently I am a post-doctoral researcher at the [Centre for the Analysis of Motion, Entertainment Research and Applications (CAMERA)](https://www.camera.ac.uk/) group of [University of Bath](https://www.bath.ac.uk/).
 
 ### Programming
 I owned my first personal computer (with [Pentium II](https://en.wikipedia.org/wiki/Pentium_II)) in 1998 and started fighting bugs since then.

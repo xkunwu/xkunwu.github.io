@@ -58,7 +58,9 @@ A: Please take a look at the [Assumptions](#Assumptions). Especially: make clear
 A: If the detection looks flipped, then use left hand. This is due to the data bias in pre-trained model. Adding code to differentiate left/right hand will make the algorithm somewhat messy.
 
 ##### Q: The detection looks slower than hand/finger movements?
-A: This is by-design due to the [Momentum stabilizer](#Momentum-stabilizer): if the motion is mildly fast, the algorithm will gradually converge to the target location. It helps for the most of cases and make the algorithm more robust to outliers and noise.
+A: This is by-design due to the [Momentum stabilizer](#Momentum-stabilizer): if the motion is mildly fast, the algorithm will gradually converge to the target location.
+For example, in the test sequence on the top, it's very evident to see that effect near the end of the sequence, when I was moving my hand quickly from top-right to bottom-left.
+It helps for the most of cases and make the algorithm more robust to outliers and noise.
 
 ##### Q: I observed flickering detection?
 A: This is also due to the Momentum stabilizer: if the motion is faster than the stabilizer can handle, there is a gap between the data and presumed center, i.e. cropped region is misaligned to the real data, so the algorithm can produce wrong detection.

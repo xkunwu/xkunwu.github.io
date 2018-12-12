@@ -36,6 +36,7 @@ My (future) goal is to develop an artificially intelligent agent that can unders
     <links>
       [<a href="/research/18HandPose/18HandPose">Webpage</a>]
       [<a href="https://github.com/xkunwu/depth-hand">Code</a>]
+      [<a href="https://github.com/xkunwu/depth-hand/blob/master/code/README.md#resources">Resources</a>]
       [<a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Xiaokun_Wu_HandMap_Robust_Hand_ECCV_2018_paper.pdf">Paper</a>]
       [<a href="/research/18HandPose/eccv2018poster1813.pdf">Poster</a>]
       [<a href="/research/18HandPose/Wu18HandPose.txt">BibTex</a>]
