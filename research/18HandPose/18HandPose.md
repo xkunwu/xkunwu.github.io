@@ -111,7 +111,7 @@ In the poster that I prepared for the ECCV2018 conference, you can see that:
 
 Well, actually this has already been realized:
 <figure>
-    <img src="/projects/depth-hand/test_seq.gif">
+    <img src="/projects/hand-track/test_seq.gif">
 </figure>
 
-Please visit the [hand tracking project](https://xkunwu.github.io/projects/depth-hand/depth-hand/) if you are interested.
+Please visit the [hand tracking project](/projects/hand-track/hand-track) if you are interested.

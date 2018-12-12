@@ -10,7 +10,7 @@ mathjax: true
 
 Please check the \[[Code](https://github.com/xkunwu/depth-hand/blob/master/code/camera/README.md)\] for user manual.
 
-Note: this is a two-week quick patch following the [hand pose estimation project](https://github.com/xkunwu/depth-hand) located in the main repo.
+Note: this is a two-week quick patch following the [hand pose estimation project](https://xkunwu.github.io/research/18HandPose/18HandPose).
 The purpose is to make live capture and hand tracking possible, but currently no plan to make the code waterproof (might be a future research project).
 
 ## Assumptions

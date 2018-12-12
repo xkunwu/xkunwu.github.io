@@ -10,12 +10,12 @@ I was trained to always think from an analytical perspective, direct my research
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="/projects/depth-hand/grasp.gif">
+    <img src="/projects/hand-track/grasp.gif">
   </div>
   <div class="pub_txt">
     <title>Single depth camera based hand detection and tracking</title>
     <links>
-      [<a href="depth-hand/depth-hand">Webpage</a>]
+      [<a href="hand-track/hand-track">Webpage</a>]
       [<a href="https://github.com/xkunwu/depth-hand">Code</a>]
     </links>
   </div>
@@ -27,6 +27,8 @@ I was trained to always think from an analytical perspective, direct my research
   </div>
   <div class="pub_txt">
     <title>DSLR camera array based human body reconstruction</title>
-    [Webpage]
+    <links>
+      [<a href="cambooth50/cambooth50">Webpage</a>]
+    </links>
   </div>
 </div>
