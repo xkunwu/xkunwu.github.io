@@ -108,15 +108,17 @@ defaults:
     values:
       layout: single
       author_profile: true
+      sidebar:
+        nav: "main"
   # posts
   - scope:
       path: ""
       type: posts
     values:
       layout: single
-      author_profile: # true
+      author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
       related: true
   # research
@@ -124,24 +126,24 @@ defaults:
       path: "research"
       type: pages
     values:
-      layout: single
-      classes: wide
-      author_profile: true
+      read_time: true
+      share: true
+      related: true
   # projects
   - scope:
       path: "projects"
       type: pages
     values:
-      layout: single
-      classes: wide
-      author_profile: true
+      read_time: true
+      share: true
+      related: true
   # notes
   - scope:
       path: "notes"
       type: pages
     values:
       layout: archive
-      author_profile: true
+      related: true
       sidebar:
         nav: "notes"
   # sitemap
@@ -150,7 +152,7 @@ defaults:
       path: "pages/**/*.png"
       path: "pages/**/*.mp4"
     values:
-      sitemap: true
+      sitemap: false
 
 # Reading Files
 include:

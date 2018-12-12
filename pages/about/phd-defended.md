@@ -25,7 +25,7 @@ The hat is usually made by colleagues and friends, and the items on the hat are 
 
 <figure>
     <img src="/pages/about/hat_award.png">
-    <figcaption>**Acknowledgment**: Dr. Weipeng Xu (right 1) hosted the hat presentation and awarding session.</figcaption>
+    <figcaption>Acknowledgment: Dr. Weipeng Xu (right 1) hosted the hat presentation and awarding session.</figcaption>
 </figure>
 
 #### "所长"
@@ -36,7 +36,7 @@ My office used to be at one corner of the building, which looks rather like a li
 #### Ticket on the Tassel
 If I do not introduce, you might think that paper on the tassel is my certificate - actually I also thought like at first.
 Now the truth: it's a speeding ticket - of course, a fake one.
-That's because they all know I drive fast - admitted, I constantly drive over 200km/h - but _who does not drive fast in GERMANY?_ :joy:
+That's because they all know I drive fast - admitted, I constantly drive over 200km/h - but _who does not drive fast in **Germany**?_ :joy:
 Besides, I would argue that I never go up to 250km/h - you know, mainly because never had a chance of driving a super car.
 
 Anyway, it's really one of most memorable days in my life.

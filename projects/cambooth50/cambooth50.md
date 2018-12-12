@@ -12,7 +12,7 @@
 
 This is an engineering/experimental/student training project aiming at 3D human body reconstruction through [photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry) approach.
 
-**Acknowledgment**: Most of the (dirty) works done by Deshan Gong, when he was a master student at Uni Bath.
+**Acknowledgment**: Most of the (dirty) works done by Deshan Gong (that handsome chap shown as our model), when he was a master student at Uni Bath.
 He also provided many beautiful images as raw materials, which are used/modified for figures on this page.
 I co-supervised his master final project with [Mac Yang](http://www.yongliangyang.net/) during the summer of 2018, then helped him to wrap up this project into his final dissertation.
 During the prototyping stage (spring of 2018), Prof. [Jieqing Feng](http://www.cad.zju.edu.cn/home/jqfeng/) and his students also gave us many very valuable suggestions, especially during my visit of his lab in the end of April.

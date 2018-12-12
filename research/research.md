@@ -2,8 +2,7 @@
 title: Research
 permalink: /research/
 classes: wide
-sidebar:
-  nav: "main"
+read_time: false
 ---
 I am especially interested in techniques that can link the 3D world and human perception.
 My current focus is on using Machine Learning techniques to solve problems in two complementary fields: Computer Graphics and Computer Vision.

@@ -46,13 +46,17 @@
 }
 
 figure {
-    display: inline-block;
+    display: block;
     margin: 20px;
     text-align: center;
 }
 figure img {
+    display: inline-block;
     vertical-align: top;
-    max-width: 800px;
+    max-width: 600px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
 }
 figure figcaption {
     color: grey;
