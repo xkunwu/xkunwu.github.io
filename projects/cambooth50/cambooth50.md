@@ -12,7 +12,7 @@
 
 This is an engineering/experimental/student training project aiming at 3D human body reconstruction through [photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry) approach.
 
-Acknowledgment: Most of the (dirty) works done by Deshan Gong, when he was a master student at Uni Bath.
+**Acknowledgment**: Most of the (dirty) works done by Deshan Gong, when he was a master student at Uni Bath.
 He also provided many beautiful images as raw materials, which are used/modified for figures on this page.
 I co-supervised his master final project with [Mac Yang](http://www.yongliangyang.net/) during the summer of 2018, then helped him to wrap up this project into his final dissertation.
 During the prototyping stage (spring of 2018), Prof. [Jieqing Feng](http://www.cad.zju.edu.cn/home/jqfeng/) and his students also gave us many very valuable suggestions, especially during my visit of his lab in the end of April.
@@ -112,14 +112,78 @@ Programming is not the major concern in this training project, so we compared re
 -   [COLMAP](https://colmap.github.io/).
 
 ### Data preprocessing
+Without any data preprocessing, the reconstruction results look not appealing (all the following two-column figures will be the same order if unspecified: PhotoScan on the left, while COLMAP on the right):
 
-[video](https://youtu.be/Mm1DMJK_04k)
+<figure>
+    <img src="/projects/cambooth50/color_bleed.jpg">
+    <figcaption>Fig~9: Mesh w/o data preprocessing: color bleed (in red) and outliers (in yellow).</figcaption>
+</figure>
 
-software compare
-parameter settings
+-   The most catchy problem is that even with the green background, both software are not very good at segmentation: you can see many small patches (outliers) extruding from the mesh.
+-   If you zoom in and inspect carefully, the texture looks green tinted, i.e. color bleeding problem.
+
+It's recommended to preprocess the input images first and eliminate above mentioned two problems.
+This step is rather tedious and error-prone, so Deshan recorded a [video](https://youtu.be/Mm1DMJK_04k) to show the detailed steps.
+
+### Camera reconfiguration: a trial and error approach
+We also found another problem during our test:
+
+<figure>
+    <img src="/projects/cambooth50/missing_top.jpg">
+    <figcaption>Fig~10: Missing top.</figcaption>
+</figure>
+
+The top of the head is missing data, since there are no cameras shooting from above in our first trials.
+So we moved cameras on the top to the ceiling rails (upper part is before, while lower part is after):
+
+<figure>
+    <img src="/projects/cambooth50/ceiling_camera.jpg">
+    <figcaption>Fig~11: Move cameras on the top to the ceiling rails.</figcaption>
+</figure>
+
+We also use [Poisson Surface Reconstruction](http://sites.fas.harvard.edu/~cs277/papers/poissonrecon.pdf) to regenerate geometry, which works acceptable even for uniform color texture:
+
+<figure>
+    <img src="/projects/cambooth50/cap_top.jpg">
+    <figcaption>Fig~12: Cap the top w/ uniform color texture.</figcaption>
+</figure>
+
+Note: covering the hair is generally a good guild-line, since:
+-   Hair reconstruction is itself a very difficult research problem.
+-   Most peoples hair is mildly reflective, and reflective materials are the enemy of photogrammetry.
+
+After several rounds of tweaking, we finally arrived at a configuration roughly looks like this:
+
+<figure>
+    <img src="/projects/cambooth50/camera_config.jpg">
+    <figcaption>Fig~13: The final camera configuration on a single pole.</figcaption>
+</figure>
+
+### Camera parameter settings
+After thorough tests, the best camera parameter settings used in our final configuration:
+-   One-shot AF,
+-   Av w/ f/8.0,
+-   ISO: 100,
+-   White balance: Auto,
+-   Exposure compensation: 0.
 
 ## Results
+<figure>
+    <img src="/projects/cambooth50/result.jpg">
+    <figcaption>Fig~14: The final reconstruction result.</figcaption>
+</figure>
+
+<figure>
+    <img src="/projects/cambooth50/result_top.jpg">
+    <figcaption>Fig~14: The final reconstruction result - top view.</figcaption>
+</figure>
+
+### Comments:
+-   COLMAP produces better quality results in general.
+-   PhotoScan is more robust, especially when the distance between adjacent photos are large (which violates the basic theoretical stereo pair assumption).
+-   PhotoScan produces results with more noise, while COLMAP produces results with more gap.
 
 ## Future works
-image preprocessing automation
-adding cameras specially targeted at face: stereo pair.
+For the future works, the following points are worth considering:
+-   Image preprocessing automation: the current manual approach is a pain.
+-   Adding cameras specially targeted at face, e.g. a stereo pair of high-end cameras: the face is usually the most catchy part of human body reconstruction, so it might worth to invest more in this.

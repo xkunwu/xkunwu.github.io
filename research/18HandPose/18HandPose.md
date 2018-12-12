@@ -9,7 +9,7 @@ mathjax: true
     <img src="/research/18HandPose/eccv2018pipeline.png">
 </figure>
 
-> In ECCV 2018. Other people on the authors list: Yongliang (Mac) Yang, Daniel (Dan) Finnegan, Eamonn O'Neill.
+> In ECCV 2018. Other authors on the paper: Yongliang (Mac) Yang, Daniel (Dan) Finnegan, Eamonn O'Neill.
 
 <links>
   [<a href="https://github.com/xkunwu/depth-hand">Code</a>]

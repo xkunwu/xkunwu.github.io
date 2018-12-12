@@ -14,9 +14,10 @@ sitemap: false
     <figcaption>This is a photo of six people including me with hat.* </figcaption>
 </figure>
 
-Acknowledgment: Prof. Dr. Philipp Slusallek (left 1) chaired the committee of my defense talk (Promotionskolloquium).
+**Acknowledgment**: Prof. Dr. Philipp Slusallek (left 1) chaired the committee of my defense talk (Promotionskolloquium).
 Prof. Dr. Hans-Peter Seidel (left 2), Michael Wand (right 3) and Klaus Hildebrandt (right 2) are in the committee.
 Dr. Qianru Sun (right 1) reported my talk.
+Bertram Somieski was the awesome photographer.
 
 ## My Doctoral Hat
 The tradition of MPI is every doctoral student will received a special tailored hat as souvenir after defense talk.
@@ -24,7 +25,7 @@ The hat is usually made by colleagues and friends, and the items on the hat are 
 
 <figure>
     <img src="/pages/about/hat_award.png">
-    <figcaption>Acknowledgment: Dr. Weipeng Xu (right 1) hosted the hat presentation and awarding session.</figcaption>
+    <figcaption>**Acknowledgment**: Dr. Weipeng Xu (right 1) hosted the hat presentation and awarding session.</figcaption>
 </figure>
 
 #### "所长"
