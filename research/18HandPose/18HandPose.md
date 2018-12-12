@@ -49,7 +49,7 @@ Many recent works found that this added accuracy can cope with spatial ambiguity
 ## Robustness - intermediate supervision
 <figure>
     <img src="/research/18HandPose/guidance-maps.png" alt="Guidance maps.">
-    <figcaption>Fig 1: Different guidance maps (here we only show illustrations for the pinky fingertip). (a) 2D probability map (heatmap). (b) Normalized Euclidean distance. (c-d) 2D/3D Euclidean distance plus unit offset.
+    <figcaption>Fig~1: Different guidance maps (here we only show illustrations for the pinky fingertip). (a) 2D probability map (heatmap). (b) Normalized Euclidean distance. (c-d) 2D/3D Euclidean distance plus unit offset.
     </figcaption>
 </figure>
 
@@ -57,8 +57,8 @@ Some recent works have observed that adding supervision in the intermediate stag
 In our work, We following the intermediate supervision approach: guidance maps are adopted in our pipeline to produce hidden space supervision.
 
 ### Sparse vs dense guidance maps
-Most of the previous works use sparse guidance maps, e.g. heatmaps (Fig 1 a) that showing the probability of each target joint.
-In our approach, we mainly discuss "dense guidance maps" - the confidence score extends to entire input domain (Fig 1 b-d).
+Most of the previous works use sparse guidance maps, e.g. heatmaps (Fig~1 a) that showing the probability of each target joint.
+In our approach, we mainly discuss "dense guidance maps" - the confidence score extends to entire input domain (Fig~1 b-d).
 
 #### The failure of sparse supervision approach
 Think about the characteristics of probability maps before moving on - we can easily find there is a dilemma of choosing the variance:
@@ -69,17 +69,17 @@ So we need a different way of providing hidden space guidance - this is the main
 
 #### Euclidean distance function
 In our study, we are mostly interested in geometrically meaningful dense guidance maps.
-The most straightforward idea is just using Euclidean distance function, and maybe adding more attributes for stronger guidance (Fig 1 b-d).
-The problem is obvious: spatially close points do not imply correspondence, e.g. the tips of pinky and ring finger are wrongly judged as close in Fig 1 b.
+The most straightforward idea is just using Euclidean distance function, and maybe adding more attributes for stronger guidance (Fig~1 b-d).
+The problem is obvious: spatially close points do not imply correspondence, e.g. the tips of pinky and ring finger are wrongly judged as close in Fig~1 b.
 
 #### Geodesics
 <figure>
     <img src="/research/18HandPose/distance-maps.png" alt="Guidance maps.">
-    <figcaption>Fig 2: Geometrically more meaningful guidance maps. (a) EDT map used for propagating distance from a single point. (b-c) Two different implementations of approximate geodesic distance map for the pinky fingertip.
+    <figcaption>Fig~2: Geometrically more meaningful guidance maps. (a) EDT map used for propagating distance from a single point. (b-c) Two different implementations of approximate geodesic distance map for the pinky fingertip.
     </figcaption>
 </figure>
 So we propose to use geodesic distance functions, for better measure on the surface of hand.
-As shown in Fig 2 b-c, our algorithm can correctly tell the distance from the tip of pinky finger to other points on the hand.
+As shown in Fig~2 b-c, our algorithm can correctly tell the distance from the tip of pinky finger to other points on the hand.
 
 #### Approximation
 The problem of using geodesics is that computation cost is high, especially for calculating the distance functions for each joint of a sample hand in a very large training dataset.
