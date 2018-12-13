@@ -120,9 +120,43 @@ Then, the restriction $x_{\large| N}$ of $x$ to $N$ is an embedding of $N$ in $R
 a symmetry $G$ of $(N,x_{\large| N})$ is a partial symmetry of $(M,x)$.
 
 **Note**: It can take a whole year (or a whole life :wink:) for a Math student to study higher algebra, but this short introduction is enough for our discussion.
-If you think this discussion is boring: I am going to show you a beautiful _dihedral group_:
+If you think this discussion is boring: I am going to tease you with a beautiful _dihedral group_ before ending this section:
 
 <figure>
     <img src="/research/14SymmEdit/SnowflakesWilsonBentley.jpg">
     <figcaption>Fig~6: <a href="https://en.wikipedia.org/wiki/Wilson_Bentley">Snowflakes</a> have dihedral group structure.</figcaption>
 </figure>
+
+## Symmetry-Preserving Deformation
+We describe _deformations_ of the surface by variations of $x$.
+For this we use a displacement map $u:M\mapsto R^{3}$. Then, the sum $x+u$ describes the deformed surface.
+
+The resulting set of displacements forms a _vector
+space_.
+For triangle meshes, deformations are described by the displacements of the _vertices_.
+Then, the space of displacements equals $R^{3n}$, where $n$ is the number of vertices.
+
+<figure>
+    <img src="/research/14SymmEdit/commutatingRelation2.png">
+    <figcaption>Fig~7: If the symmetry transformation commutes with the deformation $x+u$ (the automorphism $\varphi$ in the input domain turns into the extrinsic map $g$ here), the deformed shape $[x+u](M)$ will have the same symmetry as $x(M)$.</figcaption>
+</figure>
+
+If we have a group $g$ that describes symmetries of the surface, then a displacement $u$ preserves the symmetry if
+
+$$
+g\circ(x+u)=(x+u)\circ \varphi,
+$$
+
+where $\varphi$ is the automorphism induced by $g$.
+Figure~7 illustrates how this condition induces a symmetry-preserving deformation field.
+
+### The lemma of affine subspace
+The basis of our surface modeling scheme is the observation that **the set of all symmetry-preserving displacements forms a subspace of the vector space of all possible displacements** (and thus the set of all possible deformations themselves form an affine space).
+
+> Given a symmetry group $G$ of a surface. The set of symmetry-preserving displacements forms a subspace of the vector space of all displacements.
+
+Please refer to the paper for a formal proof.
+
+#### The implication of this lemma
+Knowing that the solution space is a subspace of discussion domain opens the door to _subspace methods_: now we are certain that the solutions to the problem live in a (usually) much small subspace, which can be found through a _constructive algorithm_, i.e. construct a set of basis that spans the target subspace.
+This is basically the essence of all classic and modern numerical optimization techniques that try to **reduce the computation cost through factorization**.
