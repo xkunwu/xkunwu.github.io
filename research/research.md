@@ -72,7 +72,7 @@ _ECCV 2018_
     <author>Chuan Li, Michael Wand, Xiaokun Wu, Hans-Peter Seidel</author>
     <publisher><a href="http://3dv2015.inria.fr/index.html">3DV 2015</a></publisher>
     <links>
-      [<a href="https://github.com/xkunwu/GeoXL35">Code</a>]
+      [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
       [<a href="https://ieeexplore.ieee.org/document/7335511">Paper</a>]
       <!-- [<a href="/research/15CoOccurrence/15CoOccurrence.prepress.pdf">Paper</a>] -->
       [<a href="/research/15CoOccurrence/15CoOccurrence.slides.pdf">Slides</a>]
@@ -90,7 +90,7 @@ _ECCV 2018_
     <author>Xiaokun Wu, Chuan Li, Michael Wand, Klaus Hildebrandt, Silke Jansen, Hans-Peter Seidel</author>
     <publisher><a href="http://www.3dimpvt.org/">3DV 2014</a></publisher>
     <links>
-      [<a href="https://github.com/xkunwu/GeoXL35">Code</a>]
+      [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
       [<a href="/research/14Retarget/14Retarget.prepress.pdf">Paper</a>]
       [<a href="/research/14Retarget/14Retarget.24.mp4">Video</a>]
       [<a href="/research/14Retarget/Wu14Retarget.txt">BibTex</a>]
@@ -108,8 +108,8 @@ _ECCV 2018_
     <publisher><a href="http://graphics.ewha.ac.kr/PG14/">PG 2014</a></publisher>
     <award>Best Paper Award Honorable Mention</award>
     <links>
-      [Webpage]
-      [<a href="https://github.com/xkunwu/GeoXL35">Code</a>]
+      [<a href="/research/14SymmEdit/14SymmEdit">Webpage</a>]
+      [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
       [<a href="/research/14SymmEdit/14SymmEdit.prepress.pdf">Paper</a>]
       [<a href="/research/14SymmEdit/14SymmEdit.slides.pdf">Slides</a>]
       [<a href="/research/14SymmEdit/14SymmEdit.24.mp4">Video</a>]
@@ -127,7 +127,7 @@ _ECCV 2018_
     <author>Christian Kurz, Xiaokun Wu, Michael Wand, Thorsten Thormählen, Pushmeet Kohli, Hans Peter Seidel</author>
     <publisher>CGF 2014</publisher>
     <links>
-      [<a href="https://github.com/xkunwu/GeoXL35">Code</a>]
+      [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
       [<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.12344">Paper</a>]
       <!-- [<a href="/research/14SymmDeform/14SymmDeform.prepress.pdf">Paper</a>] -->
       [<a href="/research/14SymmDeform/14SymmDeform.24.mp4">Video</a>]
