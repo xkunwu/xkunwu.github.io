@@ -82,4 +82,47 @@ For example, [Huang et al. 2006](https://dl.acm.org/citation.cfm?id=1142003) bui
 
 Our goal is to combine all these ingredients, and propose a generic editing framework.
 
-## Symmetries: group theory
+## Symmetry group: a primary introduction
+Consider a surface in $R^{3}$ given by a two-manifold $M$ and an embedding $x:M \mapsto R^{3}$, we are interested in _groups_ induced by _Euclidean motions_.
+-   A group is an algebraic structure consisting of a set of elements, which is closed under a binary operation (_group action_).
+-   A Euclidean motion $g$ is an affine map whose linear part is an _orthogonal transformation_. Examples in 3D are translations, reflections, and rotations as well as any composition of these.
+
+The set of Euclidean motions forms the _Euclidean group_ $E(3)$ under composition of maps.
+We consider groups with respect to Euclidean motion, because this leads to useful invariants for man-made shapes.
+
+For our experiments, we use standard triangle meshes as discretization of $S$ in $R^{3}$.
+In this case, $M$ is the surface mesh itself and $x$ is the continuous and piece-wise linear map that maps every vertex to its positions in $R^{3}$.
+
+### Symmetry
+An _automorphism_ of $M$ is a map $\varphi:M \mapsto M$ that is a _homeomorphism_, i.e. is continuous, bijective and
+has a continuous inverse.
+Under the composition of maps, the set of automorphisms of $M$ forms a group that we denote by $\Psi(M)$.
+
+#### Symmetries of $M$ relate to _subgroups_ of $\Psi(M)$.
+Any Euclidean motion $g$ can be composed with the embedding $x$, which results in a new map $g\circ x:M \mapsto R^{3}$.
+We are interested in surfaces and motions that the motion maps the surface onto itself.
+
+Loosely speaking, a _(Euclidean) symmetry_ of the embedded surface $(M,x)$ is subgroup $G$ of $E(3)$ such that every $g\in G$ maps $x(M)$ to itself.
+More formally, we say that a subgroup $G\leq E(3)$ is a _symmetry_ of $(M,x)$ if there is a subgroup $\Phi\leq\Psi(M)$ such that for every $g \in G$ there is a $\varphi\in\Phi$ such that
+
+$$
+g\circ x=x\circ\varphi
+$$
+
+and the map $G\mapsto\Phi$ induced by this relation is a group isomorphism.
+
+#### Partial symmetry
+In addition to symmetries of the whole object, we consider symmetries of parts of the object and call them _partial symmetries_.
+This makes the concept more powerful as objects often exhibit only partial symmetries.
+
+To define partial symmetries, we consider a _submanifold_ $N$ of $M$, which need not be connected.
+Then, the restriction $x_{\large| N}$ of $x$ to $N$ is an embedding of $N$ in $R^{3}$;
+a symmetry $G$ of $(N,x_{\large| N})$ is a partial symmetry of $(M,x)$.
+
+**Note**: It can take a whole year (or a whole life :wink:) for a Math student to study higher algebra, but this short introduction is enough for our discussion.
+If you think this discussion is boring: I am going to show you a beautiful _dihedral group_:
+
+<figure>
+    <img src="/research/14SymmEdit/SnowflakesWilsonBentley.jpg">
+    <figcaption>Fig~6: <a href="https://en.wikipedia.org/wiki/Wilson_Bentley">Snowflakes</a> have dihedral group structure.</figcaption>
+</figure>
