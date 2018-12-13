@@ -7,6 +7,8 @@ read_time: false
 I enjoyed my extensive study in both Mathematics and Computer Science.
 I was trained to always think from an analytical perspective, direct my research in an application-oriented way, and passionately deliver practical algorithms.
 
+## At CAMERA group of Bath
+
 <div class="pub_row">
   <div class="pub_img">
     <img src="/projects/hand-track/grasp.gif">
