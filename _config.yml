@@ -146,6 +146,13 @@ defaults:
       related: true
       sidebar:
         nav: "notes"
+  # about
+  - scope:
+      path: "pages/about"
+      type: pages
+    values:
+      sitemap: false
+      author_profile: false
   # sitemap
   - scope:
       path: "pages/**/*.jpg"
@@ -171,6 +178,8 @@ exclude:
     - LICENSE
     - /README.md
     - notes/notes-cs/.git
+    - .tags
+    - .tags1
 keep_files:
     - .git
 encoding: "utf-8"

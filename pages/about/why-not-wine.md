@@ -1,6 +1,5 @@
 ---
 sitemap: false
-author_profile: false
 sidebar:
   - title: "Meditation with the sea ..."
     image: /assets/images/logo.jpg

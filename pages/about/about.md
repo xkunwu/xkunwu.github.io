@@ -1,8 +1,7 @@
 ---
 title: About me
-sitemap: false
-author_profile: false
 permalink: /about/
+sitemap: false
 sidebar:
   - title: "Meditation with the sea ..."
     image: /assets/images/logo.jpg

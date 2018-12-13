@@ -1,5 +1,10 @@
 ---
 sitemap: false
+sidebar:
+  - title: "Meditation with the sea ..."
+    image: /assets/images/logo.jpg
+    image_alt: "Meditation with the sea."
+    text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
 ---
 # PhD defended
 <figure>
