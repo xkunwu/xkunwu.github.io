@@ -43,7 +43,7 @@ The difficulties come from several sources:
 
 ### Justify the use of depth image
 Traditional computer vision algorithms usually focus on color channels, which can hardly provide robust output given the challenges listed above.
-But nowadays depth cameras are becoming much easier accessible (e.g. my $800 laptop in 2016 has a build-in depth camera), which provides extra geometric information in the depth dimension.
+But nowadays depth cameras are becoming much easier accessible (e.g. my $800 laptop in 2016 has a built-in depth camera), which provides extra geometric information in the depth dimension.
 Many recent works found that this added accuracy can cope with spatial ambiguity problem well.
 
 ## Robustness - intermediate supervision
@@ -53,12 +53,12 @@ Many recent works found that this added accuracy can cope with spatial ambiguity
     </figcaption>
 </figure>
 
-Some recent works have observed that adding supervision in the intermediate stages of pipeline can produce better results - higher accuracy and more stable convergence.
+Some recent works have observed that adding supervision in the intermediate stages of the pipeline can produce better results - higher accuracy and more stable convergence.
 In our work, We following the intermediate supervision approach: guidance maps are adopted in our pipeline to produce hidden space supervision.
 
 ### Sparse vs dense guidance maps
-Most of the previous works use sparse guidance maps, e.g. heatmaps (Fig~1 a) that showing the probability of each target joint.
-In our approach, we mainly discuss "dense guidance maps" - the confidence score extends to entire input domain (Fig~1 b-d).
+Most of the previous works use sparse guidance maps, e.g. heatmaps (Fig~1 a) that show the probability of each target joint.
+In our approach, we mainly discuss "dense guidance maps" - the confidence score extends to the entire input domain (Fig~1 b-d).
 
 #### The failure of sparse supervision approach
 Think about the characteristics of probability maps before moving on - we can easily find there is a dilemma of choosing the variance:
@@ -78,12 +78,12 @@ The problem is obvious: spatially close points do not imply correspondence, e.g.
     <figcaption>Fig~2: Geometrically more meaningful guidance maps. (a) EDT map used for propagating distance from a single point. (b-c) Two different implementations of approximate geodesic distance map for the pinky fingertip.
     </figcaption>
 </figure>
-So we propose to use geodesic distance functions, for better measure on the surface of hand.
-As shown in Fig~2 b-c, our algorithm can correctly tell the distance from the tip of pinky finger to other points on the hand.
+So we propose to use geodesic distance functions, for a better measure on the surface of the hand.
+As shown in Fig~2 b-c, our algorithm can correctly tell the distance from the tip of the pinky finger to other points on the hand.
 
 #### Approximation
 The problem of using geodesics is that computation cost is high, especially for calculating the distance functions for each joint of a sample hand in a very large training dataset.
-Notice the assumption of $R^3$ is problematic - our input depth image is only “2.5D” by definition, as we can only capture partial surface that is visible from one view point.
+Notice the assumption of $R^3$ is problematic - our input depth image is only “2.5D” by definition, as we can only capture partial surface that is visible from one viewpoint.
 So we adopted an approximation strategy: we first calculate the 2D (signed) [Euclidean Distance Transformation (EDT)](https://ieeexplore.ieee.org/document/1177156), then we can propagate distances from each joint location using [Fast Marching Method (FMM)](https://www.pnas.org/content/93/4/1591).
 
 ## Framework
