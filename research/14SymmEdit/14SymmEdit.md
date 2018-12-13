@@ -6,7 +6,7 @@ mathjax: true
 
 # Real-Time Symmetry-Preserving Deformation
 <figure>
-    <img src="/research/14SymmEdit/CenterPiece.gif">
+    <img src="/research/14SymmEdit/center_piece.jpg">
 </figure>
 
 > In PG 2014. Other authors: Xiaokun Wu, Michael Wand, Klaus Hildebrandt, Pushmeet Kohli, Hans-Peter Seidel
@@ -84,8 +84,9 @@ Our goal is to combine all these ingredients, and propose a generic editing fram
 
 ## Symmetry group: a primary introduction
 Consider a surface in $R^{3}$ given by a two-manifold $M$ and an embedding $x:M \mapsto R^{3}$, we are interested in _groups_ induced by _Euclidean motions_.
--   A group is an algebraic structure consisting of a set of elements, which is closed under a binary operation (_group action_).
+-   A group $G$ is an algebraic structure consisting of a set of elements, which is closed under a binary operation (_group action_).
 -   A Euclidean motion $g$ is an affine map whose linear part is an _orthogonal transformation_. Examples in 3D are translations, reflections, and rotations as well as any composition of these.
+-   The orbit of an element $p$ on the surface $S$ is the set of elements in $S$ to which $p$ can be moved by the elements of $G$.
 
 The set of Euclidean motions forms the _Euclidean group_ $E(3)$ under composition of maps.
 We consider groups with respect to Euclidean motion, because this leads to useful invariants for man-made shapes.
@@ -155,8 +156,81 @@ The basis of our surface modeling scheme is the observation that **the set of al
 
 > Given a symmetry group $G$ of a surface. The set of symmetry-preserving displacements forms a subspace of the vector space of all displacements.
 
-Please refer to the paper for a formal proof.
+The formal proof is very easy to follow, so please refer to the paper for the details.
 
 #### The implication of this lemma
 Knowing that the solution space is a subspace of discussion domain opens the door to _subspace methods_: now we are certain that the solutions to the problem live in a (usually) much small subspace, which can be found through a _constructive algorithm_, i.e. construct a set of basis that spans the target subspace.
 This is basically the essence of all classic and modern numerical optimization techniques that try to **reduce the computation cost through factorization**.
+
+## Subspace method based pipeline
+If you follow the discussion to here, then you might already figured out how should our pipeline looks like:
+
+1.  Generate a sparse set of symmetric sampled points on the surface,
+1.  Construct a basis on those samples,
+1.  Formulate a optimization objective given deformation constraints,
+1.  Throw your favorite solver onto that objective,
+1.  Lifting the displacements throughout the entire surface.
+
+<figure>
+    <img src="/research/14SymmEdit/subspace.jpg">
+    <figcaption>Fig~8: Subspace method - computation is limited on a small subset of points, and each of them  is associated with a compact support weighting function.</figcaption>
+</figure>
+
+Anyway, there are some details worth to see in the following discussions.
+
+### Symmetric sampling
+<figure>
+    <img src="/research/14SymmEdit/poisson_dist.jpg">
+    <figcaption>Fig~9: Symmetric Poisson disk sampling.</figcaption>
+</figure>
+
+As optimization is only performed on that sparse set of points, it's obvious that we want maximal sparsity.
+Given a fixed threshold $r$ as input parameter to control density, we use [Poisson disk (blue noise)](https://en.wikipedia.org/wiki/Supersampling#Poisson_disc) sampling as the backbone:
+
+<figure>
+    <img src="/research/14SymmEdit/symmetric_sample.jpg">
+    <figcaption>Fig~10: An illustration of the sampling procedure.</figcaption>
+</figure>
+
+1.  First, a random point $p$ on the mesh $M$ is generated,
+1.  To achieve symmetric editing, we analyses the (partial) symmetry structure $G$ and extract all the points that lie on the same orbit,
+1.  Then we generate another random sample with a distance larger than $r$ to any of the already sampled points,
+1.  Repeat the process until the entire domain is covered.
+
+Here is a sampling example of simple airplane model with two symmetries:
+
+<figure>
+    <img src="/research/14SymmEdit/symmetric_sample_plane.png">
+    <figcaption>Fig~11: Sampling result of the airplane model.</figcaption>
+</figure>
+
+#### Nested and overlapping symmetries
+<figure>
+    <img src="/research/14SymmEdit/transitive.png">
+    <figcaption>Fig~12: Nested and overlapping symmetries are treated by propagating samples along transformations.</figcaption>
+</figure>
+
+The same construction also works for nested and overlapping symmetry groups, where the transitive closure of the orbits is considered.
+The sampling algorithm generates these points by following and concatenating the local transformations during sampling.
+Please take a look at the teaser figure on the top of this page as an example, which has 9 symmetries including nesting and overlapping.
+
+### Basis construction
+<figure>
+    <img src="/research/14SymmEdit/frame_plane.png">
+    <figcaption>Fig~13: Symmetric frame construction for the airplane model.</figcaption>
+</figure>
+
+Let us first assume that the shape has only one reflective symmetry: during sampling, we collect the reflections that map every seed point to its counterpart.
+These seed points can be used to construct the space of symmetry-preserving displacements of the sampling.
+
+<figure>
+    <img src="/research/14SymmEdit/local_frames.png">
+    <figcaption>Fig~14: Local frames. (a) Each sample point is associated with a local frame $O$. (b) If a point lies within a transformation-invariant set, it can have more than one frame $O_1,O_2,...$. (c) The problem can be ignored for points in general position as the contributions of the radially-symmetric basis functions cancel out and the low-pass kernel maintains the band-limitation.</figcaption>
+</figure>
+
+Notice the following fact: whenever a point $p$ is transformed by a Euclidean motion $g(p)=O(p)+t$, a displacement $u$ of the point is transformed only by the orthogonal matrix $O$.
+Hence, we obtain a symmetry-preserving displacement of the sampling by displacing one vertex and propagating the displacement to the orbit of the point using only the orthogonal parts $O$ of the Euclidean motions
+$g$ (Fig~14 (a)).
+
+The orbit of any sample point $p$ has exactly three degrees of freedom that we obtain by applying this procedure to the unit displacements of $p$ into each of the three coordinate directions.
+To generate a basis of the space of symmetry-preserving displacements, we construct the three basis vectors for every seed point we placed during sampling.
