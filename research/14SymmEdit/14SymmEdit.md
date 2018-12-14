@@ -15,19 +15,12 @@ toc_label: "Table of Contents"
 
 <links>
     [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
+    [<a href="">Data</a>]
     [<a href="/research/14SymmEdit/14SymmEdit.prepress.pdf">Paper</a>]
     [<a href="/research/14SymmEdit/14SymmEdit.slides.pdf">Slides</a>]
     [<a href="/research/14SymmEdit/14SymmEdit.24.mp4">Video</a>]
     [<a href="/research/14SymmEdit/Wu14SymmEdit.txt">BibTex</a>]
 </links>
-
-## Abstrct
-In this paper, we address the problem of structure-aware shape deformation: We specifically consider deformations that preserve symmetries of the shape being edited.
-While this is an elegant approach for obtaining plausible shape variations from minimal assumptions, a straightforward optimization is numerically expensive and poorly conditioned.
-Our paper introduces an explicit construction of bases of linear spaces of shape deformations that exactly preserve symmetries for any user-defined level of detail.
-This permits the construction of low-dimensional spaces of low-frequency deformations that preserve the symmetries.
-We obtain substantial speed-ups over alternative approaches for symmetry-preserving shape editing due to (i) the sub-space approach, which permits low-res editing, (ii) the removal of redundant, symmetric information, and (iii) the simplification of the numerical formulation due to hard-coded symmetry preservation.
-We demonstrate the utility in practice by applying our framework to symmetry-preserving co-rotated iterative Laplace surface editing of models with complex symmetry structure, including partial and nested symmetry.
 
 ## Problem statement
 Our work is targeted at the problem of _3D content creation_, which is an important step for providing a wide variety of artistic data.
@@ -64,30 +57,6 @@ In the case of our content creation problem, we need a modeling tool that can un
 
 Modern modeling software has greatly improved productivity. For example, in this [FFD](https://en.wikipedia.org/wiki/Free-form_deformation) application, a selected segment can be easily manipulated by very few control points.
 But for models with complex symmetry structure, how can we formulate symmetric editing?
-
-## Related work
-Before going into the details of our construction, we would like to list some closely related work back in 2014.
-
-<figure>
-    <img src="/research/14SymmEdit/related.png">
-    <figcaption>Fig~5: Related work (among many others not listed).</figcaption>
-</figure>
-
-#### Symmetry detection
-The first element is _symmetry detection_, which provides the input to our pipeline.
-[Wang et al. 2011](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1467-8659.2011.01885.x) organized symmetries in a hierarchical way for better understanding very complex shape composition.
-_Symmetry groups_ are studied in [Tevs et al. 2014](https://dl.acm.org/citation.cfm?id=2601220), which follows a very detailed classification philosophy (our work uses the results provided by this work).
-
-#### Symmetric editing
-The seminal work from [Gal et al. 2009](https://dl.acm.org/citation.cfm?id=1531339) uses a feature-based description of shape structure, and can keep certain Euclidean invariance through optimization.
-Another work by [Kurz et al. 2014](https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.12344) Builds symmetric mapping from a template shape to the target scan data.
-
-#### Interactive editing
-For achieving interactive editing, one line of research resort to _subspace method_.
-The method restricts the deformation on a predetermined subset of variables, then propagates the motion to the entire mesh.
-For example, [Huang et al. 2006](https://dl.acm.org/citation.cfm?id=1142003) builds a coarse control mesh around the original mesh; while [Jacobson et al. 2012](https://dl.acm.org/citation.cfm?id=2185573)'s work, control points can be disconnected.
-
-Our goal is to combine all these ingredients, and propose a generic editing framework.
 
 ## Symmetry group: a primary introduction
 Consider a surface $S$ in $R^{3}$ given by a two-manifold $M$ and an embedding $x:M \mapsto R^{3}$, we are interested in _groups_ induced by _Euclidean motions_:
@@ -458,7 +427,7 @@ _Proof._
     $$
     N_1 =
     \begin{bmatrix}
-    I &  &  &  &  &
+    I & 0 & 0 & 0 & \cdots & 0
     \end{bmatrix}
     $$
 1.  It's obvious that $rank(H_1;N_1) = 3n$, so $rank([H;N])=3n$.
@@ -520,3 +489,35 @@ The basis of the scheme is a construction of spaces consisting of low-frequency 
 Within these low-dimensional spaces, we apply a non-linear deformation-based editing scheme.
 We demonstrate real-time deformations that preserve the symmetries exactly and support large deformations.
 The method is much easier to implement than previous optimization-based methods and significantly faster.
+
+## Appendix: Abstract
+In this paper, we address the problem of structure-aware shape deformation: We specifically consider deformations that preserve symmetries of the shape being edited.
+While this is an elegant approach for obtaining plausible shape variations from minimal assumptions, a straightforward optimization is numerically expensive and poorly conditioned.
+Our paper introduces an explicit construction of bases of linear spaces of shape deformations that exactly preserve symmetries for any user-defined level of detail.
+This permits the construction of low-dimensional spaces of low-frequency deformations that preserve the symmetries.
+We obtain substantial speed-ups over alternative approaches for symmetry-preserving shape editing due to (i) the sub-space approach, which permits low-res editing, (ii) the removal of redundant, symmetric information, and (iii) the simplification of the numerical formulation due to hard-coded symmetry preservation.
+We demonstrate the utility in practice by applying our framework to symmetry-preserving co-rotated iterative Laplace surface editing of models with complex symmetry structure, including partial and nested symmetry.
+
+## Appendix: Related work
+Before going into the details of our construction, we would like to list some closely related work back in 2014.
+
+<figure>
+    <img src="/research/14SymmEdit/related.png">
+    <figcaption>Fig~5: Related work (among many others not listed).</figcaption>
+</figure>
+
+### Symmetry detection
+The first element is _symmetry detection_, which provides the input to our pipeline.
+[Wang et al. 2011](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1467-8659.2011.01885.x) organized symmetries in a hierarchical way for better understanding very complex shape composition.
+_Symmetry groups_ are studied in [Tevs et al. 2014](https://dl.acm.org/citation.cfm?id=2601220), which follows a very detailed classification philosophy (our work uses the results provided by this work).
+
+### Symmetric editing
+The seminal work from [Gal et al. 2009](https://dl.acm.org/citation.cfm?id=1531339) uses a feature-based description of shape structure, and can keep certain Euclidean invariance through optimization.
+Another work by [Kurz et al. 2014](https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.12344) Builds symmetric mapping from a template shape to the target scan data.
+
+### Interactive editing
+For achieving interactive editing, one line of research resort to _subspace method_.
+The method restricts the deformation on a predetermined subset of variables, then propagates the motion to the entire mesh.
+For example, [Huang et al. 2006](https://dl.acm.org/citation.cfm?id=1142003) builds a coarse control mesh around the original mesh; while [Jacobson et al. 2012](https://dl.acm.org/citation.cfm?id=2185573)'s work, control points can be disconnected.
+
+Our goal is to combine all these ingredients, and propose a generic editing framework.

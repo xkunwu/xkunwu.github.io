@@ -9,11 +9,11 @@ sidebar:
     text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
 ---
 I am Xiaokun Wu, aka Kelvin, and my Chinese name is \[吴晓堃\].
-I am curious about anything that is unknown to me, and would always like to try new things.
+I am curious about anything that is unknown to me, and would always like to [try new challenges]().
 I am keen on making things from imagination into reality, and on making prototypes towards perfection.
 
 ## Work Experience
-Currently I am a post-doctoral researcher at the [Centre for the Analysis of Motion, Entertainment Research and Applications (CAMERA)](https://www.camera.ac.uk/) group of [University of Bath](https://www.bath.ac.uk/).
+I was a post-doctoral researcher at the [Centre for the Analysis of Motion, Entertainment Research and Applications (CAMERA)](https://www.camera.ac.uk/) group of [University of Bath](https://www.bath.ac.uk/), from Mar 2017 to Dec 2018.
 
 ### Programming
 I owned my first personal computer (with [Pentium II](https://en.wikipedia.org/wiki/Pentium_II)) in 1998 and started fighting bugs since then.
