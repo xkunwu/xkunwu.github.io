@@ -123,7 +123,7 @@ To define partial symmetries, we consider a _submanifold_ $N$ of $M$, which need
 Then, the restriction $x_{\large| N}$ of $x$ to $N$ is an embedding of $N$ in $R^{3}$;
 a symmetry $G$ of $(N,x_{\large| N})$ is a _partial symmetry of $(M,x)$_.
 
-**Note**: It can take a whole year (or a whole life :wink:) for a Math student to study higher algebra, but this short introduction is enough for understanding the background of our paper.
+**Note**: It can take a whole year (or a whole life, e.g. some of my classmates :wink:) for a Math student to study higher algebra, but this short introduction is enough for understanding the background of our paper.
 If you think this discussion is boring: I am going to tease you with a beautiful _dihedral group_ before ending this section:
 
 <figure>
@@ -227,8 +227,9 @@ Let us first assume that the shape has only one reflective symmetry: during samp
 These seed points can be used to construct the space of symmetry-preserving displacements of the sampling.
 
 #### Symmetry-preserving displacements of samples
+<a name="symmetry-preserving-displacements"></a>
 <figure>
-    <img src="/research/14SymmEdit/local_frame_symmetry.png">
+    <img src="/research/14SymmEdit/local_frame_single.png">
     <figcaption>Fig~14: Each sample point is associated with a local frame $O$.</figcaption>
 </figure>
 
@@ -373,7 +374,7 @@ You can imagine that the computation cost is rather huge for problems with lots 
 
 #### Null-space projection
 The key idea of the null-space method is to project variables onto the [null-space (aka kernel in linear algebra)](https://en.wikipedia.org/wiki/Kernel_(linear_algebra)) of constraint matrix $H$:
-> [Rank–nullity theorem](https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem): Let $N$ be a rectangular matrix and $V$ is the variable domain, $N$ is the null-space induced by $H$, iff. dim(H) + dim(N) = dim(V).
+> [Rank–nullity theorem](https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem): Let $N$ be rectangular and $V$ is the variable domain, $N$ is the null-space induced by $H$, $\iff$ $dim(H) + dim(N) = dim(V)$.
 
 The null-space method states that when $N$ is found, two linear system in Fig~20 have the same solution set.
 Notice that the scale of the linear system on the right is strictly smaller than the one on the left, and usually has a much smaller scale in practice, which implies much lower computation cost.
@@ -394,9 +395,65 @@ In the example above:
 
 #### Construct the null-space
 So far, the method sounds promising, but why is the null-space method less well-known comparing to the standard constraint optimization methods?
-Well, the problem is that there is no canonical way to directly construct a basis for the null-space, and sometimes the null-space is even harder to find than solving the original problem itself.
+Well, the problem is that _there is no canonical way to directly construct a basis for the null-space in general case_, and sometimes the null-space is even harder to find than solving the original problem itself.
 
-whose columns are the basis vectors of the space of symmetry-preserving displacements of the sampling.
+In this project, we studied numerical structure of symmetry constraints, and found a canonical way to construct the null-space in this special case.
+The algebraic proof is not shown in the paper due to page limitation, so I will write it down here for further reference.
+This is one of the main contributions of our work.
+
+<figure>
+    <img src="/research/14SymmEdit/symmetry_preserving_stretch.png">
+    <figcaption>Fig~22: Only one orbit is shown for clarity.
+    </figcaption>
+</figure>
+
+Take a look at this simple symmetry structure $G$, here we only consider one orbit (actions shown in gray) for clarity.
+As discussion in the section of [Symmetry-preserving displacements of samples](#symmetry-preserving-displacements), we optimize for displacements $U = [u_1;u_2; ...;u_n]$ of each sample (originated from violet dots) under the deformation field $f$ (shown in black).
+
+We can easily formulate the symmetry constraint as $HU=0$, where matrix $H$ has the following structure (Hint: $I$ is the identity matrix in $R^3$, so $Iu_1 - O_2u_2 \iff u_1 = O_2u_2$ for the second row):
+
+$$
+H =
+\begin{bmatrix}
+I \\
+I & -O_2 \\
+I & & -O_3 \\
+I & & & -O_4 \\
+\vdots & & & & \ddots \\
+I & & & & & -O_n \\
+\end{bmatrix},
+N =
+\begin{bmatrix}
+I & O_2 & O_3 & O_4 & \cdots & O_n
+\end{bmatrix}
+$$
+
+To proof $N$ is the null-space matrix of $H$, we need to show $V=[H;N]$ is full-rank ($dim(V)=3n$).
+
+_Proof._
+
+1.  Subtract the first row of $H$ from every other rows, we immediately know $rank(H)=3(n-1)$,
+    $$
+    H_1 =
+    \begin{bmatrix}
+    0 \\
+     & -O_2 \\
+     & & -O_3 \\
+     & & & -O_4 \\
+     & & & & \ddots \\
+     & & & & & -O_n \\
+    \end{bmatrix}
+    $$
+1.  It's obvious that $rank(N)=3$. Now add all the rows of $H_1$ to $N$:
+    $$
+    N_1 =
+    \begin{bmatrix}
+    I &  &  &  &  &
+    \end{bmatrix}
+    $$
+1.  It's obvious that $rank(H_1;N_1) = 3n$, so $rank([H;N])=3n$.
+
+_Q.E.D._
 
 #### Summary and other acceleration techniques
 Let $N$ be the rectangular matrix whose columns are the basis vectors of the space of symmetry-preserving displacements of the sampling,
