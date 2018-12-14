@@ -11,7 +11,7 @@ toc_label: "Table of Contents"
     <img src="/research/14SymmEdit/center_piece.jpg">
 </figure>
 
-> In PG 2014. Other authors: Xiaokun Wu, Michael Wand, Klaus Hildebrandt, Pushmeet Kohli, Hans-Peter Seidel
+> In PG 2014. Other authors: Michael Wand, Klaus Hildebrandt, Pushmeet Kohli, Hans-Peter Seidel
 
 <links>
     [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
@@ -22,10 +22,15 @@ toc_label: "Table of Contents"
 </links>
 
 ## Abstrct
-In this paper, we address the problem of structure-aware shape deformation: We specifically consider deformations that preserve symmetries of the shape being edited. While this is an elegant approach for obtaining plausible shape variations from minimal assumptions, a straightforward optimization is numerically expensive and poorly conditioned. Our paper introduces an explicit construction of bases of linear spaces of shape deformations that exactly preserve symmetries for any user-defined level of detail. This permits the construction of low-dimensional spaces of low-frequency deformations that preserve the symmetries. We obtain substantial speed-ups over alternative approaches for symmetry-preserving shape editing due to (i) the sub-space approach, which permits low-res editing, (ii) the removal of redundant, symmetric information, and (iii) the simplification of the numerical formulation due to hard-coded symmetry preservation. We demonstrate the utility in practice by applying our framework to symmetry-preserving co-rotated iterative Laplace surface editing of models with complex symmetry structure, including partial and nested symmetry.
+In this paper, we address the problem of structure-aware shape deformation: We specifically consider deformations that preserve symmetries of the shape being edited.
+While this is an elegant approach for obtaining plausible shape variations from minimal assumptions, a straightforward optimization is numerically expensive and poorly conditioned.
+Our paper introduces an explicit construction of bases of linear spaces of shape deformations that exactly preserve symmetries for any user-defined level of detail.
+This permits the construction of low-dimensional spaces of low-frequency deformations that preserve the symmetries.
+We obtain substantial speed-ups over alternative approaches for symmetry-preserving shape editing due to (i) the sub-space approach, which permits low-res editing, (ii) the removal of redundant, symmetric information, and (iii) the simplification of the numerical formulation due to hard-coded symmetry preservation.
+We demonstrate the utility in practice by applying our framework to symmetry-preserving co-rotated iterative Laplace surface editing of models with complex symmetry structure, including partial and nested symmetry.
 
 ## Problem statement
-Our work is targeted at the problem of _3D content creation_, which is an important step for providing wide variety of artistic data.
+Our work is targeted at the problem of _3D content creation_, which is an important step for providing a wide variety of artistic data.
 
 <figure>
     <img src="/research/14SymmEdit/bottles.png">
@@ -33,8 +38,8 @@ Our work is targeted at the problem of _3D content creation_, which is an import
 .</figcaption>
 </figure>
 
-To create new model, people normally start from a _exist template shape_. Such as these bottles, they look different, but all of the left three are derived from the right most neutral shape.
-That relates to human’s ability of abstracting structures, and infer new variance in the mean while.
+To create a new model, people normally start from a _exist template shape_. Such as these bottles, they look different, but all of the left three are derived from the rightmost neutral shape.
+That relates to human’s ability to abstract structures, and infer new variance in the meanwhile.
 
 <figure>
     <img src="/research/14SymmEdit/eiffel.png">
@@ -50,7 +55,7 @@ One rigorous mathematical study of shape structure is [symmetry group](https://e
 </figure>
 
 We adopt this notion in our work, and use symmetries as our structure representation.
-In the case of our content creation problem, we need a modeling tool that can understand the symmetry structure of target shape.
+In the case of our content creation problem, we need a modeling tool that can understand the symmetry structure of the target shape.
 
 <figure>
     <img src="/research/14SymmEdit/ffd.png">
@@ -74,7 +79,7 @@ The first element is _symmetry detection_, which provides the input to our pipel
 _Symmetry groups_ are studied in [Tevs et al. 2014](https://dl.acm.org/citation.cfm?id=2601220), which follows a very detailed classification philosophy (our work uses the results provided by this work).
 
 #### Symmetric editing
-The seminal work from [Gal et al. 2009](https://dl.acm.org/citation.cfm?id=1531339) uses a feature based description of shape structure, and can keep certain Euclidean invariance through optimization.
+The seminal work from [Gal et al. 2009](https://dl.acm.org/citation.cfm?id=1531339) uses a feature-based description of shape structure, and can keep certain Euclidean invariance through optimization.
 Another work by [Kurz et al. 2014](https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.12344) Builds symmetric mapping from a template shape to the target scan data.
 
 #### Interactive editing
@@ -133,7 +138,7 @@ If you think this discussion is boring: I am going to tease you with a beautiful
 
 ## Symmetry-Preserving Deformation
 We describe _deformations_ of the surface by variations of $x$.
-For this we use a displacement map $u:M\mapsto R^{3}$. Then, the sum $x+u$ describes the deformed surface.
+For this, we use a displacement map $u: M \mapsto R^{3}$. Then, the sum $x+u$ describes the deformed surface.
 
 The resulting set of displacements forms a _vector
 space_.
@@ -166,17 +171,17 @@ Knowing that the solution space is a subspace of discussion domain opens the doo
 This is basically the essence of all classic and modern numerical optimization techniques that try to **reduce the computation cost through factorization**.
 
 ## Subspace method based pipeline
-If you follow the discussion to here, then you might already figured out how should our pipeline looks like:
+If you follow the discussion to here, then you might already figure out how should our pipeline looks like:
 
 1.  Generate a sparse set of symmetric sampled points on the surface,
 1.  Construct a basis on those samples,
-1.  Formulate a optimization objective given deformation constraints,
+1.  Formulate an optimization objective given deformation constraints,
 1.  Throw your favorite solver onto that objective,
 1.  Lifting the displacements throughout the entire surface.
 
 <figure>
     <img src="/research/14SymmEdit/subspace.jpg">
-    <figcaption>Fig~8: Subspace method - computation is limited on a small subset of points, and each of them  is associated with a compact support weighting function.</figcaption>
+    <figcaption>Fig~8: Subspace method - computation is limited to a small subset of points, and each of them  is associated with a compact support weighting function.</figcaption>
 </figure>
 
 Anyway, there are some details worth to see in the following discussions.
@@ -188,7 +193,7 @@ Anyway, there are some details worth to see in the following discussions.
 </figure>
 
 As optimization is only performed on that sparse set of points, it's obvious that we want maximal sparsity.
-Given a fixed threshold $r$ as input parameter to control density, we use [Poisson disk (blue noise)](https://en.wikipedia.org/wiki/Supersampling#Poisson_disc) sampling as the backbone:
+Given a fixed threshold $r$ as an input parameter to control density, we use [Poisson disk (blue noise)](https://en.wikipedia.org/wiki/Supersampling#Poisson_disc) sampling as the backbone:
 
 <figure>
     <img src="/research/14SymmEdit/symmetric_sample.jpg">
@@ -196,11 +201,11 @@ Given a fixed threshold $r$ as input parameter to control density, we use [Poiss
 </figure>
 
 1.  First, a random point $p$ on the mesh $M$ is generated,
-1.  To achieve symmetric editing, we analyses the (partial) symmetry structure $G$ and extract all the points that lie on the same orbit,
+1.  To achieve symmetric editing, we analyze the (partial) symmetry structure $G$ and extract all the points that lie on the same orbit,
 1.  Then we generate another random sample with a distance larger than $r$ to any of the already sampled points,
 1.  Repeat the process until the entire domain is covered.
 
-Here is a sampling example of simple airplane model with two symmetries:
+Here is a sampling example of a simple airplane model with two symmetries:
 
 <figure>
     <img src="/research/14SymmEdit/symmetric_sample_plane.png">
@@ -253,7 +258,7 @@ To generate a basis of the space of symmetry-preserving displacements, we constr
 #### Degenerate samples
 <figure>
     <img src="/research/14SymmEdit/local_frames_degenrate.png">
-    <figcaption>Fig~17: Local frames. Left: If a point lies within a transformation-invariant set, it can have more than one frame $O_1,O_2,...$. Right: The problem can be ignored for points in general position as the contributions of the radially-symmetric basis functions cancel out and the low-pass kernel maintains the band-limitation.</figcaption>
+    <figcaption>Fig~17: Local Frames. Left: If a point lies within a transformation-invariant set, it can have more than one frame $O_1,O_2,...$. Right: The problem can be ignored for points in general position as the contributions of the radially-symmetric basis functions cancel out and the low-pass kernel maintains the band-limitation.</figcaption>
 </figure>
 
 A special case occurs if a sampling point is visited more than once but with different local frames $O_i$.
@@ -263,7 +268,7 @@ The correct solution is obtained by reducing the dimension of the basis to those
 Notice that due to the random sampling, this is rarely encountered in practice.
 In relevant cases, we can perform an SVD reduction of the null space to remove spurious degrees of freedom.
 
-If points do not perfectly overlap but only come close (which is still common close to transformation-invariant sets, see Fig~17 right), we do not need to take special measures --- the contributions of the basis functions cancel out exactly; we only obtain some overhead due to too dense sampling.
+If points do not perfectly overlap but only come close (which is still common close to transformation-invariant sets, see Fig~10 (c)), we do not need to take special measures --- the contributions of the basis functions cancel out exactly; we only obtain some overhead due to too dense sampling.
 The overhead is small as it only occurs at transformation-invariant sets of measure zero (reflection planes, rotation centers, Fig~17 right).
 
 ### Lifting the displacements
@@ -273,28 +278,28 @@ The overhead is small as it only occurs at transformation-invariant sets of meas
     </figcaption>
 </figure>
 
-To propagate a displacement of the sampling to a displacement of the surface, we compute for each basis vector $\bar{b}_{i}$ of the space of symmetry preserving displacements of the sampling a corresponding displacement vector $b_{i}$ of the mesh.
-Then, the displacement $\bar{u}=%
-%TCIMACRO{\tsum _{i}}%
-%BeginExpansion
-{\textstyle\sum_{i}}
-%EndExpansion
-q_{i}\bar{b}_{i}$ of the sampling is lifted to the displacement $u=%
-%TCIMACRO{\tsum _{i}}%
-%BeginExpansion
-{\textstyle\sum_{i}}
-%EndExpansion
-q_{i}b_{i}$ of the mesh.
+To propagate a displacement of the sampling to a displacement of the surface, we compute for each basis vector
+$\bar{b}$
+of the space of symmetry-preserving displacements of the sampling a corresponding displacement vector
+$b$
+of the mesh.
+Then, the displacement
+$\bar{u}= \sum_{i} q * \bar{b}$
+of the sampling is lifted to the displacement
+$u=\sum_{i} q * b$
+of the mesh.
 
-A displacement of a sampling point should only affects the displacement of the mesh vertices in a local neighborhood.
+A displacement of a sampling point should only affect the displacement of the mesh vertices in a local neighborhood.
 We use Gaussian functions with standard deviation equal to the sampling density around every sample point to assign influence weights to the mesh vertices.
 Due to the compact support property weight $w_{kl}$ is sparse.
 
 The basis vectors
 $b_{i}$ are given by a partition-of-unity:
-\[
+
+$$
 b_{i}(v_{k})=\frac{1}{\sum_{l}w_{kl}}\sum_{l}w_{kl}\bar{b}_{i}(\bar{v}_{l}).
-\]
+$$
+
 **Notice**: the basis $b_{i}$ can be precomputed such that the Gaussians need not be evaluated in the interactive editing phase.
 
 ## Real-time Editing
@@ -325,22 +330,27 @@ two quadratic functionals:
 
 We denote by $\bar{x}$ the vector listing the coordinates of the sample points and by $\bar{u}$ the displacement of the sampling points.
 The vector of Laplace coordinates is $\delta=L\bar{x}$ and the first quadratic functional is
-\[
-E_{L}(\bar{u})=\left\Vert L(\bar{x}+\bar{u})-\delta\right\Vert ^{2}.
-\]
 
-In our implementation the user can select handle regions in the sampling and assign desired positions to the selected sample points by rotating and translating the handles in space (see accompanying video).
+$$
+E_{L}(\bar{u})=\left\Vert L(\bar{x}+\bar{u})-\delta\right\Vert ^{2}.
+$$
+
+In our implementation, the user can select handle regions in the sampling and assign desired positions to the selected sample points by rotating and translating the handles in space (see accompanying video).
 The corresponding least-squares functional is
-\[
+
+$$
 E_{C}(\bar{u})=\left\Vert A(\bar{u})-a\right\Vert ^{2},
-\]
+$$
+
 where $a$ lists the desired displacements of all vertices in the handle regions.
 The matrix $A$ is rectangular and has only one non-zero entry per row, which takes the value 1.
 
 The resulting deformation is given by the displacement that minimizes
+
 $$
 E(\bar{u})=E_{L}(\bar{u})+\alpha E_{C}(\bar{u})
 $$
+
 among all symmetry-preserving displacements.
 The parameter $\alpha \in R_{+}$ controls how strongly the surface is pulled towards the user-specified handle positions.
 
@@ -376,12 +386,12 @@ You can imagine that the computation cost is rather huge for problems with lots 
 The key idea of the null-space method is to project variables onto the [null-space (aka kernel in linear algebra)](https://en.wikipedia.org/wiki/Kernel_(linear_algebra)) of constraint matrix $H$:
 > [Rank–nullity theorem](https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem): Let $N$ be rectangular and $V$ is the variable domain, $N$ is the null-space induced by $H$, $\iff$ $dim(H) + dim(N) = dim(V)$.
 
-The null-space method states that when $N$ is found, two linear system in Fig~20 have the same solution set.
+The null-space method states that when $N$ is found, two linear systems in Fig~20 have the same solution set.
 Notice that the scale of the linear system on the right is strictly smaller than the one on the left, and usually has a much smaller scale in practice, which implies much lower computation cost.
 Please refer to [Numerical Optimization, Chapter 16.2](https://www.springer.com/gb/book/9780387303031) for a more canonical discussion.
 
-Note: it's very easy to see that null-space method is especially effective when the rank of $H$ is large, which is exactly our case since the target object is under large number of symmetric constraints.
-This is very contrary to our general intuition: more constraints normally means larger and more expensive linear system to solve in standard methods; while in null-space method, **more constraints will reduce more degrees of freedom, which means less expensive computation**.
+Note: it's very easy to see that null-space method is especially effective when the rank of $H$ is large, which is exactly our case since the target object is under a large number of symmetric constraints.
+This is very contrary to our general intuition: more constraints normally means a larger and more expensive linear system to solve in standard methods; while in the null-space method, **more constraints will reduce more degrees of freedom, which means less expensive computation**.
 
 <figure>
     <img src="/research/14SymmEdit/scale_reduce.png">
@@ -390,14 +400,14 @@ This is very contrary to our general intuition: more constraints normally means 
 </figure>
 
 In the example above:
--   For a simple airplane model, the problem scale reduces to less than one third after applying null-space method,
+-   For a simple airplane model, the problem scale reduces to less than one third after applying the null-space method,
 -   For a more complex model with more symmetry structure, the problem scale is reduced drastically.
 
 #### Construct the null-space
 So far, the method sounds promising, but why is the null-space method less well-known comparing to the standard constraint optimization methods?
 Well, the problem is that _there is no canonical way to directly construct a basis for the null-space in general case_, and sometimes the null-space is even harder to find than solving the original problem itself.
 
-In this project, we studied numerical structure of symmetry constraints, and found a canonical way to construct the null-space in this special case.
+In this project, we studied the numerical structure of symmetry constraints, and found a canonical way to construct the null-space in this special case.
 The algebraic proof is not shown in the paper due to page limitation, so I will write it down here for further reference.
 This is one of the main contributions of our work.
 
@@ -421,7 +431,7 @@ I & & -O_3 \\
 I & & & -O_4 \\
 \vdots & & & & \ddots \\
 I & & & & & -O_n \\
-\end{bmatrix},
+\end{bmatrix}, \\
 N =
 \begin{bmatrix}
 I & O_2 & O_3 & O_4 & \cdots & O_n
@@ -432,7 +442,7 @@ To proof $N$ is the null-space matrix of $H$, we need to show $V=[H;N]$ is full-
 
 _Proof._
 
-1.  Subtract the first row of $H$ from every other rows, we immediately know $rank(H)=3(n-1)$,
+1.  Subtract the first row of $H$ from every other row, we immediately know $rank(H)=3(n-1)$,
     $$
     H_1 =
     \begin{bmatrix}
@@ -470,3 +480,43 @@ Since the symmetric, positive definite matrix $N^{T}(L^{T}L+\alpha A^{T}A)N$ onl
 In addition, using a factorization speeds up the
 iterative co-rotated Laplace editing.
 We also transfer the computation to GPU through [cuBLAS](https://developer.nvidia.com/cublas).
+
+## Experiments
+Since we are talking about real-time editing, here I only show some editing videos.
+
+<video width="280" height="210" autoplay loop>
+  <source src="Bar.24.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<video width="280" height="210" autoplay loop>
+  <source src="YardTool.24.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<video width="280" height="210" autoplay loop>
+  <source src="WindMill2.24.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<video width="280" height="210" autoplay loop>
+  <source src="Military5.24.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<video width="280" height="210" autoplay loop>
+  <source src="CenterPiece.24.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<video width="280" height="210" autoplay loop>
+  <source src="Car4.24.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+## Conclusion
+We present a method for real-time symmetry-preserving shape modeling.
+The basis of the scheme is a construction of spaces consisting of low-frequency deformations that preserve the symmetry.
+Within these low-dimensional spaces, we apply a non-linear deformation-based editing scheme.
+We demonstrate real-time deformations that preserve the symmetries exactly and support large deformations.
+The method is much easier to implement than previous optimization-based methods and significantly faster.
