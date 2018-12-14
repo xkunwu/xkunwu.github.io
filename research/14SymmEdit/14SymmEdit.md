@@ -1,5 +1,7 @@
 ---
 mathjax: true
+toc: true
+toc_label: "Table of Contents"
 ---
 
 <div style="color:red">Warning: in progress.</div>
@@ -254,7 +256,7 @@ To generate a basis of the space of symmetry-preserving displacements, we constr
 </figure>
 
 A special case occurs if a sampling point is visited more than once but with different local frames $O_i$.
-This can happen on transformation-invariant sets, such as the diagonals on the left: Here, we have orbits with four points from eight transformations, and each point has two different frames, differing by a reflection.
+This can happen on transformation-invariant sets, such as the diagonals in Fig~17 left: Here, we have orbits with four points from eight transformations, and each point has two different frames, differing by a reflection.
 
 The correct solution is obtained by reducing the dimension of the basis to those vectors $v$ for which $O_i v = O_j v$ for all $i,j$, which yields is a linear system of equations.
 Notice that due to the random sampling, this is rarely encountered in practice.
@@ -262,3 +264,152 @@ In relevant cases, we can perform an SVD reduction of the null space to remove s
 
 If points do not perfectly overlap but only come close (which is still common close to transformation-invariant sets, see Fig~17 right), we do not need to take special measures --- the contributions of the basis functions cancel out exactly; we only obtain some overhead due to too dense sampling.
 The overhead is small as it only occurs at transformation-invariant sets of measure zero (reflection planes, rotation centers, Fig~17 right).
+
+### Lifting the displacements
+<figure>
+    <img src="/research/14SymmEdit/lifting_displacement.png">
+    <figcaption>Fig~18: Mesh vertices are lifted from their compact supported sample points.
+    </figcaption>
+</figure>
+
+To propagate a displacement of the sampling to a displacement of the surface, we compute for each basis vector $\bar{b}_{i}$ of the space of symmetry preserving displacements of the sampling a corresponding displacement vector $b_{i}$ of the mesh.
+Then, the displacement $\bar{u}=%
+%TCIMACRO{\tsum _{i}}%
+%BeginExpansion
+{\textstyle\sum_{i}}
+%EndExpansion
+q_{i}\bar{b}_{i}$ of the sampling is lifted to the displacement $u=%
+%TCIMACRO{\tsum _{i}}%
+%BeginExpansion
+{\textstyle\sum_{i}}
+%EndExpansion
+q_{i}b_{i}$ of the mesh.
+
+A displacement of a sampling point should only affects the displacement of the mesh vertices in a local neighborhood.
+We use Gaussian functions with standard deviation equal to the sampling density around every sample point to assign influence weights to the mesh vertices.
+Due to the compact support property weight $w_{kl}$ is sparse.
+
+The basis vectors
+$b_{i}$ are given by a partition-of-unity:
+\[
+b_{i}(v_{k})=\frac{1}{\sum_{l}w_{kl}}\sum_{l}w_{kl}\bar{b}_{i}(\bar{v}_{l}).
+\]
+**Notice**: the basis $b_{i}$ can be precomputed such that the Gaussians need not be evaluated in the interactive editing phase.
+
+## Real-time Editing
+Once the subspace of symmetry-preserving displacements has been constructed, any deformation-based editing scheme could be used to produce symmetry-preserving deformations.
+Only the set of feasible displacements needs to be restricted to the subspace.
+
+However, as the meshes can be highly resolved, the computation of a deformation can be expensive.
+To be able to compute deformations of the surface in real-time, we restrict to low-frequency deformations that are liftings of displacements of the sampling.
+
+<figure>
+    <img src="/research/14SymmEdit/dual_laplacian.png">
+    <figcaption>Fig~19: Au et al, 2006.
+    </figcaption>
+</figure>
+
+To compute the displacements of the sampling, we use an
+[iterative co-rotated Laplace editing](https://ieeexplore.ieee.org/document/1608025) approach.
+The reasons for choosing this are approach are:
+-   we obtain a non-linear editing scheme that allows for large deformations,
+-   we only need minimal additional structure to compute the deformations. Namely, we need a [Laplace matrix](https://en.wikipedia.org/wiki/Laplacian_matrix) for the sampling and a list of neighbors for each vertex.
+
+### Laplace editing
+The basis of the non-linear iterative co-rotated Laplace editing is the [linear Laplace editing](https://ieeexplore.ieee.org/document/4359478):
+The deformation is computed by solving a quadratic minimization problem. The objective functional combines
+two quadratic functionals:
+-   One measures the deviation of the so-called _Laplace coordinate_,
+-   The other measures the deviation (in a least-squares sense) from user-specified constraints.
+
+We denote by $\bar{x}$ the vector listing the coordinates of the sample points and by $\bar{u}$ the displacement of the sampling points.
+The vector of Laplace coordinates is $\delta=L\bar{x}$ and the first quadratic functional is
+\[
+E_{L}(\bar{u})=\left\Vert L(\bar{x}+\bar{u})-\delta\right\Vert ^{2}.
+\]
+
+In our implementation the user can select handle regions in the sampling and assign desired positions to the selected sample points by rotating and translating the handles in space (see accompanying video).
+The corresponding least-squares functional is
+\[
+E_{C}(\bar{u})=\left\Vert A(\bar{u})-a\right\Vert ^{2},
+\]
+where $a$ lists the desired displacements of all vertices in the handle regions.
+The matrix $A$ is rectangular and has only one non-zero entry per row, which takes the value 1.
+
+The resulting deformation is given by the displacement that minimizes
+$$
+E(\bar{u})=E_{L}(\bar{u})+\alpha E_{C}(\bar{u})
+$$
+among all symmetry-preserving displacements.
+The parameter $\alpha \in R_{+}$ controls how strongly the surface is pulled towards the user-specified handle positions.
+
+### Iterative co-rotated Laplace editing
+<figure>
+    <img src="/research/14SymmEdit/co_rotated.png">
+    <figcaption>Fig~19: Botsch and Sorkine, 2008.
+    </figcaption>
+</figure>
+
+A limitation of Laplace editing is that deformations that include larger rotational components lead to visually observable artifacts in the deformed surface.
+Therefore, we use a non-linear variant obtained by [iteratively applying Laplace editing](https://ieeexplore.ieee.org/document/1608025).
+
+**Some notes**: The _Laplace coordinate_ can be interpreted as a vector field on the sampling specifying a 3-dimensional vector $\delta_{i}$ for every vertex.
+The Laplace coordinate is related to the _discrete mean curvature normal_ and every $\delta_{i}$ should point into the direction of the surface normal at the corresponding sample point.
+The rotation matrix can be [computed using SVD](http://igl.ethz.ch/projects/ARAP/svd_rot.pdf).
+
+### The null-space method
+To solve the quadratic program, we use the _null-space method_, which is an effective method to reduce computation cost in case of a highly constrained optimization problem.
+
+#### Elementary constraint optimization
+<figure>
+    <img src="/research/14SymmEdit/null_projection.png">
+    <figcaption>Fig~20: Null-space projection.
+    </figcaption>
+</figure>
+
+Let $L$ be the objective matrix, and $H$ be the matrix derived from hard constraints (such as symmetry constraints), applying numerical optimization knowledge we know that the problem is equivalent to solving a linear system looks like Fig~20 left.
+
+You can imagine that the computation cost is rather huge for problems with lots of variables (3 times of the number of samples) and constants (usually we need constraints for keeping the object looks good, such as points stay on the same plane during editing).
+
+#### Null-space projection
+The key idea of the null-space method is to project variables onto the [null-space (aka kernel in linear algebra)](https://en.wikipedia.org/wiki/Kernel_(linear_algebra)) of constraint matrix $H$:
+> [Rank–nullity theorem](https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem): Let $N$ be a rectangular matrix and $V$ is the variable domain, $N$ is the null-space induced by $H$, iff. dim(H) + dim(N) = dim(V).
+
+The null-space method states that when $N$ is found, two linear system in Fig~20 have the same solution set.
+Notice that the scale of the linear system on the right is strictly smaller than the one on the left, and usually has a much smaller scale in practice, which implies much lower computation cost.
+Please refer to [Numerical Optimization, Chapter 16.2](https://www.springer.com/gb/book/9780387303031) for a more canonical discussion.
+
+Note: it's very easy to see that null-space method is especially effective when the rank of $H$ is large, which is exactly our case since the target object is under large number of symmetric constraints.
+This is very contrary to our general intuition: more constraints normally means larger and more expensive linear system to solve in standard methods; while in null-space method, **more constraints will reduce more degrees of freedom, which means less expensive computation**.
+
+<figure>
+    <img src="/research/14SymmEdit/scale_reduce.png">
+    <figcaption>Fig~21: More constraints, less problem scale.
+    </figcaption>
+</figure>
+
+In the example above:
+-   For a simple airplane model, the problem scale reduces to less than one third after applying null-space method,
+-   For a more complex model with more symmetry structure, the problem scale is reduced drastically.
+
+#### Construct the null-space
+So far, the method sounds promising, but why is the null-space method less well-known comparing to the standard constraint optimization methods?
+Well, the problem is that there is no canonical way to directly construct a basis for the null-space, and sometimes the null-space is even harder to find than solving the original problem itself.
+
+whose columns are the basis vectors of the space of symmetry-preserving displacements of the sampling.
+
+#### Summary and other acceleration techniques
+Let $N$ be the rectangular matrix whose columns are the basis vectors of the space of symmetry-preserving displacements of the sampling,
+and let $q$ be the vector of coordinates with respect to the
+basis.
+To compute the minimizer of the energy functional in the space spanned by $N$, we have to solve the linear system
+$$
+N^{T}(L^{T}L+\alpha A^{T}A)Nq=N^{T}(\alpha A^{T}a+L^{T}(\delta-L\bar{x}%
+)).
+$$
+Note: $L^{T}L+\alpha A^{T}A$ is a formulation of soft constraints, where $\alpha$ is the [Lagrange multiplier](https://en.wikipedia.org/wiki/Lagrange_multiplier).
+
+Since the symmetric, positive definite matrix $N^{T}(L^{T}L+\alpha A^{T}A)N$ only changes when new handle regions are selected or the weight $\alpha$ is modified, it is efficient to compute a Cholesky factorization of this matrix and to re-use it for solving the minimization problems.
+In addition, using a factorization speeds up the
+iterative co-rotated Laplace editing.
+We also transfer the computation to GPU through [cuBLAS](https://developer.nvidia.com/cublas).
