@@ -41,10 +41,11 @@ My office used to be at one corner of the building, which looks rather like a li
 #### Ticket on the Tassel
 If I do not introduce, you might think that paper on the tassel is my certificate - actually I also thought like at first.
 Now the truth: it's a speeding ticket - of course, a fake one.
-That's because they all know I drive fast - admitted, I constantly drive over 200km/h - but _who does not drive fast in **Germany**?_ :joy:
+That's because they all know I drive fast - admitted, I constantly drive over 200km/h - but _who does not drive fast in **Germany**?_ :joy: Anyway, thank you guys for your advice.
 <!-- Besides, I would argue that I never go up to 250km/h - you know, mainly because never had a chance of driving a supercar. -->
 
-Anyway, thank you guys for making this day even more special to me - it's really one of most memorable days in my life.
+
+Many thanks to everyone that made this day even more special to me - it's one of the most memorable days of my life.
 
 <div class="foot_notes">
 * There should be a real photo, but I am not sure if the new <a href="https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en">data protection rules</a> allow me to post other people's face without authorization.

@@ -83,44 +83,45 @@ For example, [Huang et al. 2006](https://dl.acm.org/citation.cfm?id=1142003) bui
 Our goal is to combine all these ingredients, and propose a generic editing framework.
 
 ## Symmetry group: a primary introduction
-Consider a surface in $R^{3}$ given by a two-manifold $M$ and an embedding $x:M \mapsto R^{3}$, we are interested in _groups_ induced by _Euclidean motions_.
--   A group $G$ is an algebraic structure consisting of a set of elements, which is closed under a binary operation (_group action_).
--   A Euclidean motion $g$ is an affine map whose linear part is an _orthogonal transformation_. Examples in 3D are translations, reflections, and rotations as well as any composition of these.
--   The orbit of an element $p$ on the surface $S$ is the set of elements in $S$ to which $p$ can be moved by the elements of $G$.
+Consider a surface $S$ in $R^{3}$ given by a two-manifold $M$ and an embedding $x:M \mapsto R^{3}$, we are interested in _groups_ induced by _Euclidean motions_:
+-   A _group_ $G$ is an algebraic structure consisting of a set of elements, which is closed under a binary operation (_group action_). In our discussion, $G$ consists of Euclidean motions.
+-   A _Euclidean motion_ $g$ is an affine map whose linear part is an _orthogonal transformation_. Examples in 3D are translations, reflections, and rotations as well as any composition of these.
+-   The _orbit_ of an element $p$ on the surface $S$ is the set of elements in $S$ to which $p$ can be moved by the elements of $G$.
 
 The set of Euclidean motions forms the _Euclidean group_ $E(3)$ under composition of maps.
 We consider groups with respect to Euclidean motion, because this leads to useful invariants for man-made shapes.
 
 For our experiments, we use standard triangle meshes as discretization of $S$ in $R^{3}$.
-In this case, $M$ is the surface mesh itself and $x$ is the continuous and piece-wise linear map that maps every vertex to its positions in $R^{3}$.
+In this case, $M$ is the surface mesh itself, while $x$ is the continuous and piece-wise linear map that maps every vertex to its positions in $R^{3}$.
 
 ### Symmetry
 An _automorphism_ of $M$ is a map $\varphi:M \mapsto M$ that is a _homeomorphism_, i.e. is continuous, bijective and
 has a continuous inverse.
 Under the composition of maps, the set of automorphisms of $M$ forms a group that we denote by $\Psi(M)$.
+This concept is helpful in the following intrinsic formulation of our discussion.
 
 #### Symmetries of $M$ relate to _subgroups_ of $\Psi(M)$.
 Any Euclidean motion $g$ can be composed with the embedding $x$, which results in a new map $g\circ x:M \mapsto R^{3}$.
 We are interested in surfaces and motions that the motion maps the surface onto itself.
 
-Loosely speaking, a _(Euclidean) symmetry_ of the embedded surface $(M,x)$ is subgroup $G$ of $E(3)$ such that every $g\in G$ maps $x(M)$ to itself.
+Loosely speaking, a _(Euclidean) symmetry_ of the embedded surface $(M,x)$ is a subgroup $G$ of $E(3)$ such that every $g\in G$ maps $x(M)$ to itself.
 More formally, we say that a subgroup $G\leq E(3)$ is a _symmetry_ of $(M,x)$ if there is a subgroup $\Phi\leq\Psi(M)$ such that for every $g \in G$ there is a $\varphi\in\Phi$ such that
 
 $$
 g\circ x=x\circ\varphi
 $$
 
-and the map $G\mapsto\Phi$ induced by this relation is a group isomorphism.
+and the map $G\mapsto\Phi$ induced by this relation is a _group isomorphism_.
 
 #### Partial symmetry
-In addition to symmetries of the whole object, we consider symmetries of parts of the object and call them _partial symmetries_.
-This makes the concept more powerful as objects often exhibit only partial symmetries.
+In addition to symmetries of the whole surface, we consider symmetries of parts of the surface and call them _partial symmetries_.
+This makes the concept more powerful as objects often only exhibit symmetries within local regions.
 
 To define partial symmetries, we consider a _submanifold_ $N$ of $M$, which need not be connected.
 Then, the restriction $x_{\large| N}$ of $x$ to $N$ is an embedding of $N$ in $R^{3}$;
-a symmetry $G$ of $(N,x_{\large| N})$ is a partial symmetry of $(M,x)$.
+a symmetry $G$ of $(N,x_{\large| N})$ is a _partial symmetry of $(M,x)$_.
 
-**Note**: It can take a whole year (or a whole life :wink:) for a Math student to study higher algebra, but this short introduction is enough for our discussion.
+**Note**: It can take a whole year (or a whole life :wink:) for a Math student to study higher algebra, but this short introduction is enough for understanding the background of our paper.
 If you think this discussion is boring: I am going to tease you with a beautiful _dihedral group_ before ending this section:
 
 <figure>
@@ -216,21 +217,48 @@ Please take a look at the teaser figure on the top of this page as an example, w
 
 ### Basis construction
 <figure>
-    <img src="/research/14SymmEdit/frame_plane.png">
-    <figcaption>Fig~13: Symmetric frame construction for the airplane model.</figcaption>
+    <img src="/research/14SymmEdit/frame_2p.png">
+    <figcaption>Fig~13: The airplane model has only one reflective symmetry.</figcaption>
 </figure>
 
 Let us first assume that the shape has only one reflective symmetry: during sampling, we collect the reflections that map every seed point to its counterpart.
 These seed points can be used to construct the space of symmetry-preserving displacements of the sampling.
 
+#### Symmetry-preserving displacements of samples
 <figure>
-    <img src="/research/14SymmEdit/local_frames.png">
-    <figcaption>Fig~14: Local frames. (a) Each sample point is associated with a local frame $O$. (b) If a point lies within a transformation-invariant set, it can have more than one frame $O_1,O_2,...$. (c) The problem can be ignored for points in general position as the contributions of the radially-symmetric basis functions cancel out and the low-pass kernel maintains the band-limitation.</figcaption>
+    <img src="/research/14SymmEdit/local_frame_symmetry.png">
+    <figcaption>Fig~14: Each sample point is associated with a local frame $O$.</figcaption>
 </figure>
 
 Notice the following fact: whenever a point $p$ is transformed by a Euclidean motion $g(p)=O(p)+t$, a displacement $u$ of the point is transformed only by the orthogonal matrix $O$.
 Hence, we obtain a symmetry-preserving displacement of the sampling by displacing one vertex and propagating the displacement to the orbit of the point using only the orthogonal parts $O$ of the Euclidean motions
 $g$ (Fig~14 (a)).
 
+<figure>
+    <img src="/research/14SymmEdit/frame_2f.png">
+    <figcaption>Fig~15: Determine basis vectors placed at symmetric samples.</figcaption>
+</figure>
+
 The orbit of any sample point $p$ has exactly three degrees of freedom that we obtain by applying this procedure to the unit displacements of $p$ into each of the three coordinate directions.
 To generate a basis of the space of symmetry-preserving displacements, we construct the three basis vectors for every seed point we placed during sampling.
+
+<figure>
+    <img src="/research/14SymmEdit/frame_plane.png">
+    <figcaption>Fig~16: Symmetric frame construction for the airplane model.</figcaption>
+</figure>
+
+#### Degenerate samples
+<figure>
+    <img src="/research/14SymmEdit/local_frames_degenrate.png">
+    <figcaption>Fig~17: Local frames. Left: If a point lies within a transformation-invariant set, it can have more than one frame $O_1,O_2,...$. Right: The problem can be ignored for points in general position as the contributions of the radially-symmetric basis functions cancel out and the low-pass kernel maintains the band-limitation.</figcaption>
+</figure>
+
+A special case occurs if a sampling point is visited more than once but with different local frames $O_i$.
+This can happen on transformation-invariant sets, such as the diagonals on the left: Here, we have orbits with four points from eight transformations, and each point has two different frames, differing by a reflection.
+
+The correct solution is obtained by reducing the dimension of the basis to those vectors $v$ for which $O_i v = O_j v$ for all $i,j$, which yields is a linear system of equations.
+Notice that due to the random sampling, this is rarely encountered in practice.
+In relevant cases, we can perform an SVD reduction of the null space to remove spurious degrees of freedom.
+
+If points do not perfectly overlap but only come close (which is still common close to transformation-invariant sets, see Fig~17 right), we do not need to take special measures --- the contributions of the basis functions cancel out exactly; we only obtain some overhead due to too dense sampling.
+The overhead is small as it only occurs at transformation-invariant sets of measure zero (reflection planes, rotation centers, Fig~17 right).

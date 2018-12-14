@@ -24,11 +24,11 @@ But, *why didn't I choose wine related career after graduate?*
 
 Well, people with proper professional training about wine-making know the following facts:
 -   The quality of wine mostly depends on the quality of grapes, which further depends on many parameters that cannot be changed: the breed, geographic location, the climate of that year, etc.
--   The other major factor that can determine wine quality is how those grapes are made into wine: only master winemakers know the secret of preserving the best flavors.
+-   The other major factor that can determine wine quality is how those grapes are made into wine: only master winemakers know the secret of preserving [primary aromas](https://en.wikipedia.org/wiki/Aroma_of_wine), while fake masters use [essential oil](https://en.wikipedia.org/wiki/Essential_oil).
 -   The price of wine is not completely determined by its quality: only the smartest merchants know the secret of marketing.
 
 This kind of fact that "some grapes are born to be great" or "some wine is made to be great" sounds very depressing to me.
-In the end, I decided to change my career direction and focus on the pursuit of knowledge, in the hope of that the chance of achieving a more meaningful life is better - of course, with personal creativeness and efforts.
+In the end, I decided to change my career direction and only focus on the knowledge itself, in the hope of that the chance of achieving a more meaningful life is better - of course, with personal creativeness and efforts.
 
 <div class="foot_notes">
 P.S. I am actually not so radical all the way through: an accident in the last year of my high school almost ruined my family, which brought me many years of special experience - those years hardened my mind.
