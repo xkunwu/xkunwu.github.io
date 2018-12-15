@@ -8,34 +8,36 @@ toc_label: "Table of Contents"
 
 # Real-Time Symmetry-Preserving Deformation
 <figure>
-    <img src="/research/14SymmEdit/center_piece.jpg">
+    <img src="/research/14SymmEdit/media/center_piece.jpg">
 </figure>
 
 > In PG 2014. Other authors: Michael Wand, Klaus Hildebrandt, Pushmeet Kohli, Hans-Peter Seidel
 
+**Best Paper Award Honorable Mention**
+
 <links>
     [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
-    [<a href="">Data</a>]
+    [<a href="https://pan.baidu.com/s/1KTEuM9KofSSXp4-KKXaQzg">Data</a>]
     [<a href="/research/14SymmEdit/14SymmEdit.prepress.pdf">Paper</a>]
     [<a href="/research/14SymmEdit/14SymmEdit.slides.pdf">Slides</a>]
-    [<a href="/research/14SymmEdit/14SymmEdit.24.mp4">Video</a>]
+    [<a href="/research/14SymmEdit/media/14SymmEdit.24.mp4">Video</a>]
     [<a href="/research/14SymmEdit/Wu14SymmEdit.txt">BibTex</a>]
 </links>
 
 ## Problem statement
-Our work is targeted at the problem of _3D content creation_, which is an important step for providing a wide variety of artistic data.
+Our work is targeted at building an intelligent tool for _3D content creation_, which is an important step for generating a wide variety of artistic data.
 
 <figure>
-    <img src="/research/14SymmEdit/bottles.png">
+    <img src="/research/14SymmEdit/media/bottles.png">
     <figcaption>Fig~1: Maximize variance, while keeping shape structure.
 .</figcaption>
 </figure>
 
 To create a new model, people normally start from a _exist template shape_. Such as these bottles, they look different, but all of the left three are derived from the rightmost neutral shape.
-That relates to human’s ability to abstract structures, and infer new variance in the meanwhile.
+That relates to human’s ability to _abstract structures, and infer new variance_ in the meanwhile.
 
 <figure>
-    <img src="/research/14SymmEdit/eiffel.png">
+    <img src="/research/14SymmEdit/media/eiffel.png">
     <figcaption>Fig~2: Symmetry - invariant to spatial transformation.</figcaption>
 </figure>
 
@@ -43,15 +45,15 @@ Structural organization is a very natural way for people to understand the targe
 One rigorous mathematical study of shape structure is [symmetry group](https://en.wikipedia.org/wiki/Symmetry_group), which in 3D space basically means _invariant to 3D transformations_.
 
 <figure>
-    <img src="/research/14SymmEdit/understand_symmetry.png">
+    <img src="/research/14SymmEdit/media/understand_symmetry.png">
     <figcaption>Fig~3: We need a modeling tool that understands the target shape.</figcaption>
 </figure>
 
 We adopt this notion in our work, and use symmetries as our structure representation.
-In the case of our content creation problem, we need a modeling tool that can understand the symmetry structure of the target shape.
+In the case of our content creation problem, we need an intelligent modeling tool that can understand the symmetry structure of the target shape.
 
 <figure>
-    <img src="/research/14SymmEdit/ffd.png">
+    <img src="/research/14SymmEdit/media/ffd.png">
     <figcaption>Fig~4: Minimal interaction – maximal intended effect. Image source: 3ds Max tutorial.</figcaption>
 </figure>
 
@@ -61,7 +63,7 @@ But for models with complex symmetry structure, how can we formulate symmetric e
 ## Symmetry group: a primary introduction
 Consider a surface $S$ in $R^{3}$ given by a two-manifold $M$ and an embedding $x:M \mapsto R^{3}$, we are interested in _groups_ induced by _Euclidean motions_:
 -   A _group_ $G$ is an algebraic structure consisting of a set of elements, which is closed under a binary operation (_group action_). In our discussion, $G$ consists of Euclidean motions.
--   A _Euclidean motion_ $g$ is an affine map whose linear part is an _orthogonal transformation_. Examples in 3D are translations, reflections, and rotations as well as any composition of these.
+-   A _Euclidean motion_ $g$ is an affine map whose linear part is an _orthogonal transformation_. Examples in 3D are translations, reflections, and rotations as well as any composition of these (Group Closure property).
 -   The _orbit_ of an element $p$ on the surface $S$ is the set of elements in $S$ to which $p$ can be moved by the elements of $G$.
 
 The set of Euclidean motions forms the _Euclidean group_ $E(3)$ under composition of maps.
@@ -101,7 +103,7 @@ a symmetry $G$ of $(N,x_{\large| N})$ is a _partial symmetry of $(M,x)$_.
 If you think this discussion is boring: I am going to tease you with a beautiful _dihedral group_ before ending this section:
 
 <figure>
-    <img src="/research/14SymmEdit/SnowflakesWilsonBentley.jpg">
+    <img src="/research/14SymmEdit/media/SnowflakesWilsonBentley.jpg">
     <figcaption>Fig~6: <a href="https://en.wikipedia.org/wiki/Wilson_Bentley">Snowflakes</a> have dihedral group structure.</figcaption>
 </figure>
 
@@ -115,7 +117,7 @@ For triangle meshes, deformations are described by the displacements of the _ver
 Then, the space of displacements equals $R^{3n}$, where $n$ is the number of vertices.
 
 <figure>
-    <img src="/research/14SymmEdit/commutatingRelation2.png">
+    <img src="/research/14SymmEdit/media/commutatingRelation2.png">
     <figcaption>Fig~7: If the symmetry transformation commutes with the deformation $x+u$ (the automorphism $\varphi$ in the input domain turns into the extrinsic map $g$ here), the deformed shape $[x+u](M)$ will have the same symmetry as $x(M)$.</figcaption>
 </figure>
 
@@ -129,7 +131,7 @@ where $\varphi$ is the automorphism induced by $g$.
 Figure~7 illustrates how this condition induces a symmetry-preserving deformation field.
 
 ### The lemma of affine subspace
-The basis of our surface modeling scheme is the observation that **the set of all symmetry-preserving displacements forms a subspace of the vector space of all possible displacements** (and thus the set of all possible deformations themselves form an affine space).
+The basis of our surface modeling scheme is the observation that _the set of all symmetry-preserving displacements forms a subspace of the vector space of all possible displacements_ (and thus the set of all possible deformations themselves form an affine space).
 
 > Given a symmetry group $G$ of a surface. The set of symmetry-preserving displacements forms a subspace of the vector space of all displacements.
 
@@ -137,19 +139,19 @@ The formal proof is very easy to follow, so please refer to the paper for the de
 
 #### The implication of this lemma
 Knowing that the solution space is a subspace of discussion domain opens the door to _subspace methods_: now we are certain that the solutions to the problem live in a (usually) much small subspace, which can be found through a _constructive algorithm_, i.e. construct a set of basis that spans the target subspace.
-This is basically the essence of all classic and modern numerical optimization techniques that try to **reduce the computation cost through factorization**.
+This is basically the essence of all classic and modern numerical optimization techniques that try to _reduce the computation cost through factorization_.
 
 ## Subspace method based pipeline
 If you follow the discussion to here, then you might already figure out how should our pipeline looks like:
 
-1.  Generate a sparse set of symmetric sampled points on the surface,
-1.  Construct a basis on those samples,
+1.  Generate a sparse set of _symmetric samples_ on the surface,
+1.  _Construct a basis_ on those samples,
 1.  Formulate an optimization objective given deformation constraints,
 1.  Throw your favorite solver onto that objective,
-1.  Lifting the displacements throughout the entire surface.
+1.  _Lifting the displacements_ throughout the entire surface.
 
 <figure>
-    <img src="/research/14SymmEdit/subspace.jpg">
+    <img src="/research/14SymmEdit/media/subspace.jpg">
     <figcaption>Fig~8: Subspace method - computation is limited to a small subset of points, and each of them  is associated with a compact support weighting function.</figcaption>
 </figure>
 
@@ -157,7 +159,7 @@ Anyway, there are some details worth to see in the following discussions.
 
 ### Symmetric sampling
 <figure>
-    <img src="/research/14SymmEdit/poisson_dist.jpg">
+    <img src="/research/14SymmEdit/media/poisson_dist.jpg">
     <figcaption>Fig~9: Symmetric Poisson disk sampling.</figcaption>
 </figure>
 
@@ -165,35 +167,35 @@ As optimization is only performed on that sparse set of points, it's obvious tha
 Given a fixed threshold $r$ as an input parameter to control density, we use [Poisson disk (blue noise)](https://en.wikipedia.org/wiki/Supersampling#Poisson_disc) sampling as the backbone:
 
 <figure>
-    <img src="/research/14SymmEdit/symmetric_sample.jpg">
+    <img src="/research/14SymmEdit/media/symmetric_sample.jpg">
     <figcaption>Fig~10: An illustration of the sampling procedure.</figcaption>
 </figure>
 
 1.  First, a random point $p$ on the mesh $M$ is generated,
-1.  To achieve symmetric editing, we analyze the (partial) symmetry structure $G$ and extract all the points that lie on the same orbit,
+1.  To achieve symmetric editing, we analyze the (partial) symmetry structure $G$ and _extract all the points that lie on the same orbit_,
 1.  Then we generate another random sample with a distance larger than $r$ to any of the already sampled points,
 1.  Repeat the process until the entire domain is covered.
 
 Here is a sampling example of a simple airplane model with two symmetries:
 
 <figure>
-    <img src="/research/14SymmEdit/symmetric_sample_plane.png">
+    <img src="/research/14SymmEdit/media/symmetric_sample_plane.png">
     <figcaption>Fig~11: Sampling result of the airplane model.</figcaption>
 </figure>
 
 #### Nested and overlapping symmetries
 <figure>
-    <img src="/research/14SymmEdit/transitive.png">
+    <img src="/research/14SymmEdit/media/transitive.png">
     <figcaption>Fig~12: Nested and overlapping symmetries are treated by propagating samples along transformations.</figcaption>
 </figure>
 
-The same construction also works for nested and overlapping symmetry groups, where the transitive closure of the orbits is considered.
+The same construction also works for nested and overlapping symmetry groups, where the _transitive closure_ of the orbits is considered.
 The sampling algorithm generates these points by following and concatenating the local transformations during sampling.
 Please take a look at the teaser figure on the top of this page as an example, which has 9 symmetries including nesting and overlapping.
 
 ### Basis construction
 <figure>
-    <img src="/research/14SymmEdit/frame_2p.png">
+    <img src="/research/14SymmEdit/media/frame_2p.png">
     <figcaption>Fig~13: The airplane model has only one reflective symmetry.</figcaption>
 </figure>
 
@@ -203,46 +205,47 @@ These seed points can be used to construct the space of symmetry-preserving disp
 #### Symmetry-preserving displacements of samples
 <a name="symmetry-preserving-displacements"></a>
 <figure>
-    <img src="/research/14SymmEdit/local_frame_single.png">
+    <img src="/research/14SymmEdit/media/local_frame_single.png">
     <figcaption>Fig~14: Each sample point is associated with a local frame $O$.</figcaption>
 </figure>
 
-Notice the following fact: whenever a point $p$ is transformed by a Euclidean motion $g(p)=O(p)+t$, a displacement $u$ of the point is transformed only by the orthogonal matrix $O$.
+Notice the following fact: whenever a point $p$ is transformed by a Euclidean motion $g(p)=O(p)+t$, a displacement $u$ of the point is transformed only by the _orthogonal matrix_ $O$.
 Hence, we obtain a symmetry-preserving displacement of the sampling by displacing one vertex and propagating the displacement to the orbit of the point using only the orthogonal parts $O$ of the Euclidean motions
-$g$ (Fig~14 (a)).
+$g$ (Fig~14).
 
 <figure>
-    <img src="/research/14SymmEdit/frame_2f.png">
+    <img src="/research/14SymmEdit/media/frame_2f.png">
     <figcaption>Fig~15: Determine basis vectors placed at symmetric samples.</figcaption>
 </figure>
 
-The orbit of any sample point $p$ has exactly three degrees of freedom that we obtain by applying this procedure to the unit displacements of $p$ into each of the three coordinate directions.
+The orbit of any sample point $p$ has exactly three degrees of freedom in 3D (or two DoF for the airplane example in 2D).
+We apply the same procedure to select _orthogonal unit displacements_ of $p$ into each of the three coordinate directions.
 To generate a basis of the space of symmetry-preserving displacements, we construct the three basis vectors for every seed point we placed during sampling.
 
 <figure>
-    <img src="/research/14SymmEdit/frame_plane.png">
+    <img src="/research/14SymmEdit/media/frame_plane.png">
     <figcaption>Fig~16: Symmetric frame construction for the airplane model.</figcaption>
 </figure>
 
-#### Degenerate samples
+#### Degenerate case
 <figure>
-    <img src="/research/14SymmEdit/local_frames_degenrate.png">
+    <img src="/research/14SymmEdit/media/local_frames_degenrate.png">
     <figcaption>Fig~17: Local Frames. Left: If a point lies within a transformation-invariant set, it can have more than one frame $O_1,O_2,...$. Right: The problem can be ignored for points in general position as the contributions of the radially-symmetric basis functions cancel out and the low-pass kernel maintains the band-limitation.</figcaption>
 </figure>
 
-A special case occurs if a sampling point is visited more than once but with different local frames $O_i$.
-This can happen on transformation-invariant sets, such as the diagonals in Fig~17 left: Here, we have orbits with four points from eight transformations, and each point has two different frames, differing by a reflection.
+**Case 1**: A special case occurs if a sampling point is visited more than once but with different local frames $O_i$.
+This can happen on _transformation-invariant sets_, such as the diagonals in Fig~17 left: Here, we have orbits with four points from eight transformations, and each point has two different frames, differing by a reflection.
 
-The correct solution is obtained by reducing the dimension of the basis to those vectors $v$ for which $O_i v = O_j v$ for all $i,j$, which yields is a linear system of equations.
+The correct solution is obtained by reducing the dimension of the basis to those vectors $v$ for which $O_i v = O_j v$ for all $i,j$, which yields a linear system of equations.
 Notice that due to the random sampling, this is rarely encountered in practice.
 In relevant cases, we can perform an SVD reduction of the null space to remove spurious degrees of freedom.
 
-If points do not perfectly overlap but only come close (which is still common close to transformation-invariant sets, see Fig~10 (c)), we do not need to take special measures --- the contributions of the basis functions cancel out exactly; we only obtain some overhead due to too dense sampling.
+**Case 2**: If points do not perfectly overlap but only come close (which is still usually close to transformation-invariant sets, see Fig~10 (c)), we do not need to take special measures --- the contributions of the basis functions cancel out exactly; we only obtain some overhead due to too dense sampling.
 The overhead is small as it only occurs at transformation-invariant sets of measure zero (reflection planes, rotation centers, Fig~17 right).
 
 ### Lifting the displacements
 <figure>
-    <img src="/research/14SymmEdit/lifting_displacement.png">
+    <img src="/research/14SymmEdit/media/lifting_displacement.png">
     <figcaption>Fig~18: Mesh vertices are lifted from their compact supported sample points.
     </figcaption>
 </figure>
@@ -254,32 +257,32 @@ $b$
 of the mesh.
 Then, the displacement
 $\bar{u}= \sum_{i} q * \bar{b}$
-of the sampling is lifted to the displacement
+of the sampling (orange points) is lifted to the displacement
 $u=\sum_{i} q * b$
-of the mesh.
+of the mesh (solid line/curve).
 
 A displacement of a sampling point should only affect the displacement of the mesh vertices in a local neighborhood.
 We use Gaussian functions with standard deviation equal to the sampling density around every sample point to assign influence weights to the mesh vertices.
-Due to the compact support property weight $w_{kl}$ is sparse.
+Due to the _compact support property_ weight $w_{kl}$ is sparse.
 
 The basis vectors
-$b_{i}$ are given by a partition-of-unity:
+$b_{i}$ are given by a _partition-of-unity_:
 
 $$
 b_{i}(v_{k})=\frac{1}{\sum_{l}w_{kl}}\sum_{l}w_{kl}\bar{b}_{i}(\bar{v}_{l}).
 $$
 
-**Notice**: the basis $b_{i}$ can be precomputed such that the Gaussians need not be evaluated in the interactive editing phase.
+**Notice**: the basis $b_{i}$ can be _precomputed_ such that the Gaussians need not be evaluated in the interactive editing phase, which leads to much faster real-time solver.
 
 ## Real-time Editing
 Once the subspace of symmetry-preserving displacements has been constructed, any deformation-based editing scheme could be used to produce symmetry-preserving deformations.
-Only the set of feasible displacements needs to be restricted to the subspace.
+Only the set of _feasible displacements_ needs to be restricted to the subspace.
 
 However, as the meshes can be highly resolved, the computation of a deformation can be expensive.
-To be able to compute deformations of the surface in real-time, we restrict to low-frequency deformations that are liftings of displacements of the sampling.
+To be able to compute deformations of the surface in real-time, we restrict to _low-frequency deformations_ that are liftings of displacements of the sampling.
 
 <figure>
-    <img src="/research/14SymmEdit/dual_laplacian.png">
+    <img src="/research/14SymmEdit/media/dual_laplacian.png">
     <figcaption>Fig~19: Au et al, 2006.
     </figcaption>
 </figure>
@@ -287,18 +290,18 @@ To be able to compute deformations of the surface in real-time, we restrict to l
 To compute the displacements of the sampling, we use an
 [iterative co-rotated Laplace editing](https://ieeexplore.ieee.org/document/1608025) approach.
 The reasons for choosing this are approach are:
--   we obtain a non-linear editing scheme that allows for large deformations,
--   we only need minimal additional structure to compute the deformations. Namely, we need a [Laplace matrix](https://en.wikipedia.org/wiki/Laplacian_matrix) for the sampling and a list of neighbors for each vertex.
+-   We obtain a _non-linear editing scheme_ that allows for large deformations,
+-   We only need minimal additional structure to compute the deformations. Namely, we need a [Laplace matrix](https://en.wikipedia.org/wiki/Laplacian_matrix) for the sampling and a list of neighbors for each vertex.
 
 ### Laplace editing
 The basis of the non-linear iterative co-rotated Laplace editing is the [linear Laplace editing](https://ieeexplore.ieee.org/document/4359478):
 The deformation is computed by solving a quadratic minimization problem. The objective functional combines
 two quadratic functionals:
 -   One measures the deviation of the so-called _Laplace coordinate_,
--   The other measures the deviation (in a least-squares sense) from user-specified constraints.
+-   The other measures the deviation (in a least-squares sense) from _user-specified constraints_, such as target handle location, colinear/coplanar, etc.
 
 We denote by $\bar{x}$ the vector listing the coordinates of the sample points and by $\bar{u}$ the displacement of the sampling points.
-The vector of Laplace coordinates is $\delta=L\bar{x}$ and the first quadratic functional is
+The vector of _Laplace coordinates_ is $\delta=L\bar{x}$ and the first quadratic functional is
 
 $$
 E_{L}(\bar{u})=\left\Vert L(\bar{x}+\bar{u})-\delta\right\Vert ^{2}.
@@ -321,11 +324,11 @@ E(\bar{u})=E_{L}(\bar{u})+\alpha E_{C}(\bar{u})
 $$
 
 among all symmetry-preserving displacements.
-The parameter $\alpha \in R_{+}$ controls how strongly the surface is pulled towards the user-specified handle positions.
+The hyper-parameter $\alpha \in R_{+}$ controls how strongly the surface is pulled towards the user-specified handle positions.
 
 ### Iterative co-rotated Laplace editing
 <figure>
-    <img src="/research/14SymmEdit/co_rotated.png">
+    <img src="/research/14SymmEdit/media/co_rotated.png">
     <figcaption>Fig~19: Botsch and Sorkine, 2008.
     </figcaption>
 </figure>
@@ -342,12 +345,12 @@ To solve the quadratic program, we use the _null-space method_, which is an effe
 
 #### Elementary constraint optimization
 <figure>
-    <img src="/research/14SymmEdit/null_projection.png">
+    <img src="/research/14SymmEdit/media/null_projection.png">
     <figcaption>Fig~20: Null-space projection.
     </figcaption>
 </figure>
 
-Let $L$ be the objective matrix, and $H$ be the matrix derived from hard constraints (such as symmetry constraints), applying numerical optimization knowledge we know that the problem is equivalent to solving a linear system looks like Fig~20 left.
+Let $L$ be the objective matrix, and $H$ be the matrix derived from hard constraints (such as symmetry constraints), from numerical optimization we know that the problem is equivalent to solving a linear system looks like Fig~20 left.
 
 You can imagine that the computation cost is rather huge for problems with lots of variables (3 times of the number of samples) and constants (usually we need constraints for keeping the object looks good, such as points stay on the same plane during editing).
 
@@ -356,40 +359,41 @@ The key idea of the null-space method is to project variables onto the [null-spa
 > [Rank–nullity theorem](https://en.wikipedia.org/wiki/Rank%E2%80%93nullity_theorem): Let $N$ be rectangular and $V$ is the variable domain, $N$ is the null-space induced by $H$, $\iff$ $dim(H) + dim(N) = dim(V)$.
 
 The null-space method states that when $N$ is found, two linear systems in Fig~20 have the same solution set.
-Notice that the scale of the linear system on the right is strictly smaller than the one on the left, and usually has a much smaller scale in practice, which implies much lower computation cost.
+Notice that the scale of the linear system on the right is _strictly smaller_ than the one on the left, and usually has a much smaller scale in practice, which implies much lower computation cost.
 Please refer to [Numerical Optimization, Chapter 16.2](https://www.springer.com/gb/book/9780387303031) for a more canonical discussion.
 
 Note: it's very easy to see that null-space method is especially effective when the rank of $H$ is large, which is exactly our case since the target object is under a large number of symmetric constraints.
-This is very contrary to our general intuition: more constraints normally means a larger and more expensive linear system to solve in standard methods; while in the null-space method, **more constraints will reduce more degrees of freedom, which means less expensive computation**.
+This is very contrary to our general intuition: more constraints normally means a larger and more expensive linear system to solve in standard methods; while in the null-space method, _more constraints will reduce more degrees of freedom, which means less expensive computation_.
 
 <figure>
-    <img src="/research/14SymmEdit/scale_reduce.png">
+    <img src="/research/14SymmEdit/media/scale_reduce.png">
     <figcaption>Fig~21: More constraints, less problem scale.
     </figcaption>
 </figure>
 
 In the example above:
--   For a simple airplane model, the problem scale reduces to less than one third after applying the null-space method,
--   For a more complex model with more symmetry structure, the problem scale is reduced drastically.
+-   For a simple airplane model, the problem scale reduces to _less than one third_ after applying the null-space method,
+-   For a more complex model with more symmetry structure, the problem scale is reduced _drastically_.
 
 #### Construct the null-space
 So far, the method sounds promising, but why is the null-space method less well-known comparing to the standard constraint optimization methods?
 Well, the problem is that _there is no canonical way to directly construct a basis for the null-space in general case_, and sometimes the null-space is even harder to find than solving the original problem itself.
 
-In this project, we studied the numerical structure of symmetry constraints, and found a canonical way to construct the null-space in this special case.
+In this project, we studied the numerical structure of symmetry constraints, and _found a canonical way to construct the null-space in this special case_.
 The algebraic proof is not shown in the paper due to page limitation, so I will write it down here for further reference.
 This is one of the main contributions of our work.
 
 <figure>
-    <img src="/research/14SymmEdit/symmetry_preserving_stretch.png">
-    <figcaption>Fig~22: Only one orbit is shown for clarity.
+    <img src="/research/14SymmEdit/media/symmetry_preserving_stretch.png">
+    <figcaption>Fig~22: Stretch the square - only one orbit is shown for clarity.
     </figcaption>
 </figure>
 
-Take a look at this simple symmetry structure $G$, here we only consider one orbit (actions shown in gray) for clarity.
+Take a look at this simple case where the dark square is stretched to a shape in light gray.
+Here we only consider one orbit in its symmetry structure $G$ (group actions shown in gray) for clarity.
 As discussion in the section of [Symmetry-preserving displacements of samples](#symmetry-preserving-displacements), we optimize for displacements $U = [u_1;u_2; ...;u_n]$ of each sample (originated from violet dots) under the deformation field $f$ (shown in black).
 
-We can easily formulate the symmetry constraint as $HU=0$, where matrix $H$ has the following structure (Hint: $I$ is the identity matrix in $R^3$, so $Iu_1 - O_2u_2 \iff u_1 = O_2u_2$ for the second row):
+We can easily formulate the symmetry constraint as $HU=0$, where matrix $H$ has the following structure (Hint: $I$ is the identity matrix in $R^3$ and $O_{1..n}$ are orthogonal transformations (full-rank matrices), so $Iu_1 - O_2u_2 \iff u_1 = O_2u_2$ for the second row):
 
 $$
 H =
@@ -411,7 +415,8 @@ To proof $N$ is the null-space matrix of $H$, we need to show $V=[H;N]$ is full-
 
 _Proof._
 
-1.  Subtract the first row of $H$ from every other row, we immediately know $rank(H)=3(n-1)$,
+1.  Subtract the first row of $H$ from every other row, we immediately know: $rank(H)=3(n-1)$,
+
     $$
     H_1 =
     \begin{bmatrix}
@@ -423,13 +428,16 @@ _Proof._
      & & & & & -O_n \\
     \end{bmatrix}
     $$
+
 1.  It's obvious that $rank(N)=3$. Now add all the rows of $H_1$ to $N$:
+
     $$
     N_1 =
     \begin{bmatrix}
     I & 0 & 0 & 0 & \cdots & 0
     \end{bmatrix}
     $$
+
 1.  It's obvious that $rank(H_1;N_1) = 3n$, so $rank([H;N])=3n$.
 
 _Q.E.D._
@@ -439,47 +447,49 @@ Let $N$ be the rectangular matrix whose columns are the basis vectors of the spa
 and let $q$ be the vector of coordinates with respect to the
 basis.
 To compute the minimizer of the energy functional in the space spanned by $N$, we have to solve the linear system
+
 $$
 N^{T}(L^{T}L+\alpha A^{T}A)Nq=N^{T}(\alpha A^{T}a+L^{T}(\delta-L\bar{x}%
 )).
 $$
+
 Note: $L^{T}L+\alpha A^{T}A$ is a formulation of soft constraints, where $\alpha$ is the [Lagrange multiplier](https://en.wikipedia.org/wiki/Lagrange_multiplier).
 
-Since the symmetric, positive definite matrix $N^{T}(L^{T}L+\alpha A^{T}A)N$ only changes when new handle regions are selected or the weight $\alpha$ is modified, it is efficient to compute a Cholesky factorization of this matrix and to re-use it for solving the minimization problems.
-In addition, using a factorization speeds up the
+-   Since the symmetric, positive definite matrix $N^{T}(L^{T}L+\alpha A^{T}A)N$ only changes when new handle regions are selected or the weight $\alpha$ is modified, it is efficient to compute a [Cholesky factorization](https://en.wikipedia.org/wiki/Cholesky_decomposition) of this matrix and to re-use it for solving the minimization problems.
+-   In addition, using a factorization speeds up the
 iterative co-rotated Laplace editing.
-We also transfer the computation to GPU through [cuBLAS](https://developer.nvidia.com/cublas).
+-   We also transfer the computation to GPU through [cuBLAS](https://developer.nvidia.com/cublas).
 
 ## Experiments
 Since we are talking about real-time editing, here I only show some editing videos.
 
 <video width="280" height="210" autoplay loop>
-  <source src="Bar.24.mp4" type="video/mp4">
+  <source src="media/Bar.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
 <video width="280" height="210" autoplay loop>
-  <source src="YardTool.24.mp4" type="video/mp4">
+  <source src="media/YardTool.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
 <video width="280" height="210" autoplay loop>
-  <source src="WindMill2.24.mp4" type="video/mp4">
+  <source src="media/WindMill2.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
 <video width="280" height="210" autoplay loop>
-  <source src="Military5.24.mp4" type="video/mp4">
+  <source src="media/Military5.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
 <video width="280" height="210" autoplay loop>
-  <source src="CenterPiece.24.mp4" type="video/mp4">
+  <source src="media/CenterPiece.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
 <video width="280" height="210" autoplay loop>
-  <source src="Car4.24.mp4" type="video/mp4">
+  <source src="media/Car4.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
@@ -487,6 +497,7 @@ Your browser does not support the video tag.
 We present a method for real-time symmetry-preserving shape modeling.
 The basis of the scheme is a construction of spaces consisting of low-frequency deformations that preserve the symmetry.
 Within these low-dimensional spaces, we apply a non-linear deformation-based editing scheme.
+
 We demonstrate real-time deformations that preserve the symmetries exactly and support large deformations.
 The method is much easier to implement than previous optimization-based methods and significantly faster.
 
@@ -502,7 +513,7 @@ We demonstrate the utility in practice by applying our framework to symmetry-pre
 Before going into the details of our construction, we would like to list some closely related work back in 2014.
 
 <figure>
-    <img src="/research/14SymmEdit/related.png">
+    <img src="/research/14SymmEdit/media/related.png">
     <figcaption>Fig~5: Related work (among many others not listed).</figcaption>
 </figure>
 

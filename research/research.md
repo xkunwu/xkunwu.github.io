@@ -5,7 +5,7 @@ classes: wide
 read_time: false
 ---
 I am especially interested in techniques that can link the 3D world and human perception.
-My current focus is on using Machine Learning techniques to solve problems in two complementary fields: Computer Graphics and Computer Vision.
+I am currently focusing on using Machine Learning techniques to solve problems in two complementary fields: Computer Graphics and Computer Vision.
 My (future) goal is to develop an artificially intelligent agent that can understand our 3D world through proactive interactions.
 
 <div class="pub_row">
@@ -101,7 +101,7 @@ _ECCV 2018_
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="/research/14SymmEdit/CenterPiece.gif">
+    <img src="/research/14SymmEdit/media/CenterPiece.gif">
   </div>
   <div class="pub_txt">
     <title>Real-Time Symmetry-Preserving Deformation</title>
@@ -111,9 +111,10 @@ _ECCV 2018_
     <links>
       [<a href="/research/14SymmEdit/14SymmEdit">Webpage</a>]
       [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]
+      [<a href="https://pan.baidu.com/s/1KTEuM9KofSSXp4-KKXaQzg">Data</a>]
       [<a href="/research/14SymmEdit/14SymmEdit.prepress.pdf">Paper</a>]
       [<a href="/research/14SymmEdit/14SymmEdit.slides.pdf">Slides</a>]
-      [<a href="/research/14SymmEdit/14SymmEdit.24.mp4">Video</a>]
+      [<a href="/research/14SymmEdit/media/14SymmEdit.24.mp4">Video</a>]
       [<a href="/research/14SymmEdit/Wu14SymmEdit.txt">BibTex</a>]
     </links>
   </div>
