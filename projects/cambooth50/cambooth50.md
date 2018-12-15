@@ -6,7 +6,7 @@
 > DSLR camera array based human body reconstruction.
 
 <figure>
-    <img src="/projects/cambooth50/concept_plan.jpg">
+    <img src="/projects/cambooth50/media/concept_plan.jpg">
     <figcaption>Fig~1: Concept plan of the project.</figcaption>
 </figure>
 
@@ -32,7 +32,7 @@ The main difficulties come from the potential movements of the target: if we use
 As even subtle differences can cause misalignment between consecutive shots, which leads to an accumulated error in a long sequence and fail the algorithm.
 
 <figure>
-    <img src="/projects/cambooth50/config_test.jpg">
+    <img src="/projects/cambooth50/media/config_test.jpg">
     <figcaption>Fig~2: A test configuration.</figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ In this project, we have tested many configurations starting from a small number
 The studio of [CAMERA group](https://www.camera.ac.uk/) roughly looks like this:
 
 <figure>
-    <img src="/projects/cambooth50/camera_studio.jpg">
+    <img src="/projects/cambooth50/media/camera_studio.jpg">
     <figcaption>Fig~3: The CAMERA studio.</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ All the 8 groups are hardware chained together into a ring structure, and then c
 
 #### Attach cameras to the pole
 <figure>
-    <img src="/projects/cambooth50/attach_camera.jpg">
+    <img src="/projects/cambooth50/media/attach_camera.jpg">
     <figcaption>Fig~4: Camera attachment steps.</figcaption>
 </figure>
 
@@ -63,7 +63,7 @@ Standard socket-clamps are used to attach cameras to the poles.
 
 #### Wiring interface
 <figure>
-    <img src="/projects/cambooth50/canon1300D.jpg">
+    <img src="/projects/cambooth50/media/canon1300D.jpg">
     <figcaption>Fig~5: The cameras used in our project.</figcaption>
 </figure>
 
@@ -77,7 +77,7 @@ This is the biggest headache: we need to make sure the shutter of all the camera
 After some research, we decided to go for a commercial solution:
 
 <figure>
-    <img src="/projects/cambooth50/trigger_box.jpg">
+    <img src="/projects/cambooth50/media/trigger_box.jpg">
     <figcaption>Fig~6: Trigger boxes for signal amplification.</figcaption>
 </figure>
 
@@ -96,7 +96,7 @@ But people who are interested might need to consider that cables are best to go 
 
 #### Camera distribution
 <figure>
-    <img src="/projects/cambooth50/single_group.jpg">
+    <img src="/projects/cambooth50/media/single_group.jpg">
     <figcaption>Fig~7: Cameras in a single group.</figcaption>
 </figure>
 
@@ -105,7 +105,7 @@ Here comes the first version of our capture system in full size: Fig~7 shows the
 A sample shot of our model "Dotty" is shown below:
 
 <figure>
-    <img src="/projects/cambooth50/dotty.jpg">
+    <img src="/projects/cambooth50/media/dotty.jpg">
     <figcaption>Fig~8: A shot of Dotty.</figcaption>
 </figure>
 
@@ -118,7 +118,7 @@ Programming is not the major concern in this experimental project, so we compare
 Without any data preprocessing, the reconstruction results look not appealing (all the following two-column figures will be the same order if unspecified: PhotoScan on the left, while COLMAP on the right):
 
 <figure>
-    <img src="/projects/cambooth50/color_bleed.jpg">
+    <img src="/projects/cambooth50/media/color_bleed.jpg">
     <figcaption>Fig~9: Mesh w/o data preprocessing: color bleed (in red) and outliers (in yellow).</figcaption>
 </figure>
 
@@ -132,7 +132,7 @@ This step is rather tedious and error-prone, so Deshan recorded a [video](https:
 We also found another problem during our test:
 
 <figure>
-    <img src="/projects/cambooth50/missing_top.jpg">
+    <img src="/projects/cambooth50/media/missing_top.jpg">
     <figcaption>Fig~10: Missing top.</figcaption>
 </figure>
 
@@ -143,14 +143,14 @@ The top of the head is missing data, so we make two hypotheses:
 So we first moved cameras on the top to the ceiling rails (upper part is before, while the lower part is after):
 
 <figure>
-    <img src="/projects/cambooth50/ceiling_camera.jpg">
+    <img src="/projects/cambooth50/media/ceiling_camera.jpg">
     <figcaption>Fig~11: Move cameras on the top to the ceiling rails.</figcaption>
 </figure>
 
 We also asked our model to sit, but the reconstruction result is still missing data on top:
 
 <figure>
-    <img src="/projects/cambooth50/missing_top_sit.jpg">
+    <img src="/projects/cambooth50/media/missing_top_sit.jpg">
     <figcaption>Fig~12: Still missing top.</figcaption>
 </figure>
 
@@ -158,7 +158,7 @@ To test if the second hypothesis holds, we asked our model to cover his head wit
 We also use [Poisson Surface Reconstruction](http://sites.fas.harvard.edu/~cs277/papers/poissonrecon.pdf) to regenerate geometry, then the result looks much better now:
 
 <figure>
-    <img src="/projects/cambooth50/cap_top.jpg">
+    <img src="/projects/cambooth50/media/cap_top.jpg">
     <figcaption>Fig~13: Cap the top w/ uniform color texture.</figcaption>
 </figure>
 
@@ -186,12 +186,12 @@ After thorough tests, the best camera parameter settings used in our final confi
 
 ## Results
 <figure>
-    <img src="/projects/cambooth50/result.jpg">
+    <img src="/projects/cambooth50/media/result.jpg">
     <figcaption>Fig~15: The final reconstruction result.</figcaption>
 </figure>
 
 <figure>
-    <img src="/projects/cambooth50/result_top.jpg">
+    <img src="/projects/cambooth50/media/result_top.jpg">
     <figcaption>Fig~16: The final reconstruction result - top view.</figcaption>
 </figure>
 

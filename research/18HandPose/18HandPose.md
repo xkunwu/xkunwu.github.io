@@ -19,15 +19,12 @@ mathjax: true
   [<a href="/research/18HandPose/Wu18HandPose.txt">BibTex</a>]
 </links>
 
-## Abstrct
-This work presents a novel hand pose estimation framework via intermediate dense guidance map supervision. By leveraging the advantage of predicting heat maps of hand joints in detection-based methods, we propose to use dense feature maps through intermediate supervision in a regression-based framework that is not limited to the resolution of the heat map. Our dense feature maps are delicately designed to encode the hand geometry and the spatial relation between local joint and global hand. The proposed framework significantly improves the state-of-the-art in both 2D and 3D on the recent benchmark datasets.
-
 ## Problem statement and motivation
 The goal is to accurately estimate hand pose, i.e. 3D location for each joint, given single depth image.
 
 ### Why is the topic important?
 <figure>
-    <img src="/research/18HandPose/interactive-vr.png" alt="Interactive VR">
+    <img src="/research/18HandPose/media/interactive-vr.png" alt="Interactive VR">
     <figcaption><a href="https://www.leapmotion.com/">Image from the web.</a></figcaption>
 </figure>
 
@@ -48,7 +45,7 @@ Many recent works found that this added accuracy can cope with spatial ambiguity
 
 ## Robustness - intermediate supervision
 <figure>
-    <img src="/research/18HandPose/guidance-maps.png" alt="Guidance maps.">
+    <img src="/research/18HandPose/media/guidance-maps.png" alt="Guidance maps.">
     <figcaption>Fig~1: Different guidance maps (here we only show illustrations for the pinky fingertip). (a) 2D probability map (heatmap). (b) Normalized Euclidean distance. (c-d) 2D/3D Euclidean distance plus unit offset.
     </figcaption>
 </figure>
@@ -74,7 +71,7 @@ The problem is obvious: spatially close points do not imply correspondence, e.g.
 
 #### Geodesics
 <figure>
-    <img src="/research/18HandPose/distance-maps.png" alt="Guidance maps.">
+    <img src="/research/18HandPose/media/distance-maps.png" alt="Guidance maps.">
     <figcaption>Fig~2: Geometrically more meaningful guidance maps. (a) EDT map used for propagating distance from a single point. (b-c) Two different implementations of approximate geodesic distance map for the pinky fingertip.
     </figcaption>
 </figure>
@@ -115,3 +112,6 @@ Well, actually this has already been realized:
 </figure>
 
 Please visit the [hand tracking project](/projects/hand-track/hand-track) if you are interested.
+
+## Appendix: Abstract
+This work presents a novel hand pose estimation framework via intermediate dense guidance map supervision. By leveraging the advantage of predicting heat maps of hand joints in detection-based methods, we propose to use dense feature maps through intermediate supervision in a regression-based framework that is not limited to the resolution of the heat map. Our dense feature maps are delicately designed to encode the hand geometry and the spatial relation between local joint and global hand. The proposed framework significantly improves the state-of-the-art in both 2D and 3D on the recent benchmark datasets.

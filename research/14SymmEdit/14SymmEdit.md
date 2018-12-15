@@ -13,7 +13,7 @@ toc_label: "Table of Contents"
 
 > In PG 2014. Other authors: Michael Wand, Klaus Hildebrandt, Pushmeet Kohli, Hans-Peter Seidel
 
-**Best Paper Award Honorable Mention**
+_**Best Paper Award Honorable Mention**_
 
 <links>
     [<a href="https://github.com/xkunwu/zum-GeoXL35">Code</a>]

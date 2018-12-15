@@ -101,7 +101,7 @@ _ECCV 2018_
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="/research/14SymmEdit/media/CenterPiece.gif">
+    <img src="/research/14SymmEdit/CenterPiece.gif">
   </div>
   <div class="pub_txt">
     <title>Real-Time Symmetry-Preserving Deformation</title>
