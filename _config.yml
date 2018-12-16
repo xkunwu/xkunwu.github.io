@@ -126,6 +126,7 @@ defaults:
       path: "research"
       type: pages
     values:
+      layout: projects
       read_time: true
       share: true
       related: true
@@ -134,6 +135,7 @@ defaults:
       path: "projects"
       type: pages
     values:
+      layout: projects
       read_time: true
       share: true
       related: true

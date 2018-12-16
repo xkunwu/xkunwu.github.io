@@ -1,26 +1,26 @@
 ---
-layout: projects
 last_modified_at: 2018-12-13
 ---
-<!-- Warning: in progress ...
-{: .notice--danger} -->
-Warning: proofreading ...
-{: .notice--warning}
-
 # Camera Booth
-> DSLR camera array based human body reconstruction.
+
+<!-- Progress: writing ...
+{: .notice--danger} -->
+Progress: proofreading ...
+{: .notice--warning}
 
 <figure>
     <img src="/projects/cambooth50/media/concept_plan.jpg">
     <figcaption>Fig~1: Concept plan of the project.</figcaption>
 </figure>
 
+> DSLR camera array based human body reconstruction.
+
 This is an engineering/experimental/student training project aiming at 3D human body reconstruction through [photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry) approach.
 
 **Acknowledgment**: Most of the hands-on (dirty) works are done by Deshan Gong (that handsome chap shown as our model) when he was a master student at Uni Bath.
 He also provided many beautiful images as raw materials, which are used/modified for figures on this page.
 [Xiaokun Wu](https://xkunwu.github.io/) co-supervised his master final project with his official supervisor [Yongliang Yang](http://www.yongliangyang.net/) during the summer of 2018, then helped him to wrap up this project into his final dissertation.
-During the prototyping stage (spring of 2018), Prof. [Jieqing Feng](http://www.cad.zju.edu.cn/home/jqfeng/) and his students also gave us many very valuable suggestions, especially during my visit of his [lab at Zhejiang University](http://www.cad.zju.edu.cn/english.html) at the end of April.
+During the prototyping stage (spring of 2018), Prof. [Jieqing Feng](http://www.cad.zju.edu.cn/home/jqfeng/) and his students also gave us many valuable suggestions, especially during my visit of his [lab at Zhejiang University](http://www.cad.zju.edu.cn/english.html) at the end of April.
 The [CAMERA group](https://www.camera.ac.uk/) and the [Alumni Fund](http://www.bath.ac.uk/alumni/support/alumni-fund) supported this project.
 
 Text and Typesetting: Xiaokun; Proofreader: Deshan.

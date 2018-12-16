@@ -3,6 +3,9 @@
 # Fear nothing
 > Work hard, live hard, and do something more challenging than imaginable.
 
+Excerpted from a long letter.
+{: .notice--info}
+
 Life's a journey, and I'd like to explore new trails.
 
 I have no blood of adventure by nature: I saw too much weakness inside, stayed in my little comfort zone, and doubted about everything risky.
@@ -67,7 +70,7 @@ I felt a bit lost: I kept my head down, watch out for pitfalls, and follow the t
 
 ## Overcome [Thalassophobia](https://en.wikipedia.org/wiki/Thalassophobia)
 
-I went to the red sea again, but on the other side.
+I went to the red sea again, but on the other side this time.
 
 ### Look up from -30m
 I held my breath and turned my body upwards, so I can see the bright surface.
@@ -81,6 +84,8 @@ Most of the "sea-foods" live in completely dark, quietly, and probably won't dra
 ## Know when to take the brake
 All my friends know I drive fast, but they are still willing to travel with me.
 
-## Look, boy, fear nothing and keep moving.
+<!-- ## Look, boy, fear nothing and keep moving. -->
+End of excerpt.
+{: .notice--info}
 
 Wrote on . Ready to leave the UK and return to my home.

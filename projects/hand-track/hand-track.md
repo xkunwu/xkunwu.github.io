@@ -1,12 +1,13 @@
 ---
+last_modified_at: 2018-12-11
 mathjax: true
 ---
 
 # Hand detection and tracking
 
-> Experimental hand detection and tracking from single depth camera.
-
 <span style="display:block;text-align:center">![Test sequence.](test_seq.gif)</span>
+
+> Experimental hand detection and tracking from single depth camera.
 
 Please check the \[[Code](https://github.com/xkunwu/depth-hand/blob/master/code/camera/README.md)\] for user manual.
 

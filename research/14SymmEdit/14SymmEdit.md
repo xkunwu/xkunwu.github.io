@@ -4,13 +4,13 @@ mathjax: true
 toc: true
 toc_label: "Table of Contents"
 ---
+# Real-Time Symmetry-Preserving Deformation
 
-<!-- Warning: in progress ...
+<!-- Progress: writing ...
 {: .notice--danger} -->
-Warning: proofreading ...
+Progress: proofreading ...
 {: .notice--warning}
 
-# Real-Time Symmetry-Preserving Deformation
 <figure>
     <img src="/research/14SymmEdit/media/center_piece.jpg">
 </figure>
