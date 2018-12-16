@@ -2,7 +2,10 @@
 mathjax: true
 ---
 
-<div style="color:red">Warning: in progress.</div>
+<!-- Warning: in progress ...
+{: .notice--danger} -->
+Warning: proofreading ...
+{: .notice--warning}
 
 # HandMap: Robust hand pose estimation via intermediate dense guidance map supervision
 <figure>

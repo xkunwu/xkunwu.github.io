@@ -1,6 +1,11 @@
 ---
+layout: projects
+last_modified_at: 2018-12-13
 ---
-<div style="color:red">Warning: in progress.</div>
+<!-- Warning: in progress ...
+{: .notice--danger} -->
+Warning: proofreading ...
+{: .notice--warning}
 
 # Camera Booth
 > DSLR camera array based human body reconstruction.

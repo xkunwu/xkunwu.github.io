@@ -224,6 +224,7 @@ plugins:
     - jemoji
     - jekyll-include-cache
     - jekyll-seo-tag
+    - jekyll-last-modified-at
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -235,6 +236,7 @@ whitelist:
     - jemoji
     - jekyll-include-cache
     - jekyll-seo-tag
+    - jekyll-last-modified-at
 
 # Archives
 #  Type

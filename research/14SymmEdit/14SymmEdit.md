@@ -1,10 +1,14 @@
 ---
+last_modified_at: 2018-12-15
 mathjax: true
 toc: true
 toc_label: "Table of Contents"
 ---
 
-<div style="color:red">Warning: in progress.</div>
+<!-- Warning: in progress ...
+{: .notice--danger} -->
+Warning: proofreading ...
+{: .notice--warning}
 
 # Real-Time Symmetry-Preserving Deformation
 <figure>
@@ -463,35 +467,40 @@ iterative co-rotated Laplace editing.
 ## Experiments
 Since we are talking about real-time editing, here I only show some editing videos.
 
-<video width="280" height="210" autoplay loop>
+<video width="280" height="210" autoplay loop controls>
   <source src="media/Bar.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
-<video width="280" height="210" autoplay loop>
+<video width="280" height="210" autoplay loop controls>
   <source src="media/YardTool.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
-<video width="280" height="210" autoplay loop>
+<video width="280" height="210" autoplay loop controls>
   <source src="media/WindMill2.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
-<video width="280" height="210" autoplay loop>
+<video width="280" height="210" autoplay loop controls>
   <source src="media/Military5.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
-<video width="280" height="210" autoplay loop>
+<video width="280" height="210" autoplay loop controls>
   <source src="media/CenterPiece.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
-<video width="280" height="210" autoplay loop>
+<video width="280" height="210" autoplay loop controls>
   <source src="media/Car4.24.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+
+<!-- <figure class="half">
+    <a href="media/Bar.24.mp4"><img src="media/Bar.24.mp4"></a>
+    <a href="media/YardTool.24.mp4"><img src="media/YardTool.24.mp4"></a>
+</figure> -->
 
 ## Conclusion
 We present a method for real-time symmetry-preserving shape modeling.

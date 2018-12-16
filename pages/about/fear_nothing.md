@@ -42,6 +42,7 @@ After some boring sightseeing, he decided to try a simple roller-coaster for the
 The cabin can hold two people in a row: he let me _sit on the front seat_ and thus he can keep me in sight.
 I have no idea what was going to happen, but I still remember that sight around a U-turn _now_.
 
+My mind was brought back by the safety staff.
 thrilling
 
 ## Overcome [Acrophobia](https://en.wikipedia.org/wiki/Acrophobia)
@@ -80,6 +81,6 @@ Most of the "sea-foods" live in completely dark, quietly, and probably won't dra
 ## Know when to take the brake
 All my friends know I drive fast, but they are still willing to travel with me.
 
-## Look, fear nothing, boy.
+## Look, boy, fear nothing and keep moving.
 
-Wrote on . Ready to leave the UK and return to my family.
+Wrote on . Ready to leave the UK and return to my home.
