@@ -121,4 +121,4 @@ Please visit the [hand tracking project](/projects/hand-track/hand-track) if you
 This work presents a novel hand pose estimation framework via intermediate dense guidance map supervision. By leveraging the advantage of predicting heat maps of hand joints in detection-based methods, we propose to use dense feature maps through intermediate supervision in a regression-based framework that is not limited to the resolution of the heat map. Our dense feature maps are delicately designed to encode the hand geometry and the spatial relation between local joint and global hand. The proposed framework significantly improves the state-of-the-art in both 2D and 3D on the recent benchmark datasets.
 
 ## Appendix: Related work
-Please take a look at [xinghaochen/awesome-hand-pose-estimation](https://github.com/xinghaochen/awesome-hand-pose-estimation): it's simply the best repo on the topic of Hand Pose Estimation.
+Please take a look at [xinghaochen/awesome-hand-pose-estimation](https://github.com/xinghaochen/awesome-hand-pose-estimation): it's simply the best survey repo on the topic of Hand Pose Estimation.
