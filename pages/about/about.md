@@ -10,7 +10,7 @@ sidebar:
 ---
 I am Xiaokun Wu, aka Kelvin, and my Chinese name is \[吴晓堃\].
 
-I am curious about anything that is unknown to me, and would always like to [try new challenges]().
+I am curious about anything that is unknown to me, and would always like to [try new challenges](/pages/about/fear_nothing).
 I am keen on making things from imagination into reality, and on making prototypes towards perfection.
 
 ## Work Experience
