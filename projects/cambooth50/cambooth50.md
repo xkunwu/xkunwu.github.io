@@ -131,7 +131,9 @@ Without any data preprocessing, the reconstruction results look not appealing (a
 -   If you zoom in and inspect carefully, the texture looks green tinted, i.e. color bleeding problem.
 
 It's recommended to preprocess the input images first and eliminate above mentioned two problems.
-This step is rather tedious and error-prone, so Deshan recorded a [video](https://youtu.be/Mm1DMJK_04k) to show the detailed steps.
+This step is rather tedious and error-prone, so Deshan recorded a [video](https://youtu.be/Mm1DMJK_04k) to show the detailed steps:
+
+{% include video id="Mm1DMJK_04k" provider="youtube" %}
 
 ### Camera reconfiguration: a trial and error approach
 We also found another problem during our test:

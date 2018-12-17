@@ -70,9 +70,9 @@ Since then, I am fond of going to high places.
 ### Sit down and behold the abyss
 4 PM: I arrived at the car park of Kjeragbolten.
 It's overcast and windy.
-I am worried about weather change - there's snow everywhere on the road, and it's getting dark - so I urged my buddies to hurry up.
+I am getting worried about weather change - there's snow everywhere on the road, and it's getting dark - so I keep encouraging my buddies to hurry up.
 
-The muddy trail towards the rock is on the snow, but luckily, no ice on the rock, and no other people on site.
+The muddy trail towards the rock stretched out on the snow, but luckily, no ice on the rock, and no other people on site.
 My buddies are looking at each other, so I ask them to take photos.
 The rock is much larger than I thought.
 I jump onto it, make sure my buddies are taking shots, and start to pose.
@@ -84,14 +84,31 @@ What am I looking?
 I am looking at myself; I am looking at my mind - farther than the ground, not a slight amount of fear is in sight.
 
 ### The Trial of the Troll
-Trolltunga literally means "Troll tongue", and the route to reach that tongue is not for the weak.
+Trolltunga means "Troll's tongue" - the route to that tongue is not for the weak.
 
-A heavy fog rose.
-I felt a bit lost: I kept my head down, watch out for pitfalls, and follow the trail of precursors.
+The camping site came alive early in the morning.
+I joined the Nordic walk and began 3 hours rushing.
+The first rise was slippery stone steps: steep uphill, nearly deserted and full of mud.
+Then the second rise was covered with moss and snow, among patches of icy ponds.
+The trip was enjoyable at this stage: waterfalls running down snow-bergs in the background, then dropping into the calm lakes.
+
+It's getting hard on the third rise: the main trail was filled with thick mud, which can easily swallow people's shoes, while side tracks were covered by icy moss and snow.
+The last 3km was a nightmare: roads are not very distinguishable on the marsh, while many slopes are completely under ice.
+
+The weather was turning bad: icy rain kept dropping on my head.
+Then suddenly, a thick fog arose.
+I felt a bit lost: only 10m's visibility around me.
+However, I expelled thoughts away from my mind, kept my head down to watch out for pitfalls, and followed the trail of precursors.
+
+When I finally arrived at the viewing platform, the fog suddenly vanished.
+I sat down on the tip of the tongue, enjoying the pleasant sunshine after the rain.
 
 ## Dive into the sea - overcome [Thalassophobia](https://en.wikipedia.org/wiki/Thalassophobia)
 
-I went to the red sea again, but on the other side this time.
+After 6 years, I went to the red sea again, but on the other side this time.
+
+When my diving couch asked if I have the problem of Thalassophobia,
+But I smiled and told him firmly: no.
 
 ### Look up from -30m
 I held my breath and turned my body upwards, so I can see the bright surface.
@@ -99,7 +116,7 @@ That sight was miracle looking.
 The surface is so much brighter, just like the heaven above our head.
 The surface looks so much closer: I stretched out my arm, and it seems the surface is just at the tip of my finger.
 
-### Be in the dark
+### Be into the dark
 Most of the "sea-foods" live in completely dark, quietly, and probably won't draw anyone's attention forever.
 
 ## Know when to take the brake
@@ -111,3 +128,4 @@ Excerpted from a long letter.
 {: .notice--info}
 
 Wrote on . Ready to leave Britain and return to my home.
+{: .notice--primary}
