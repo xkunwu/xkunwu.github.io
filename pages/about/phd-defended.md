@@ -40,8 +40,6 @@ My office used to be at one corner of the building, which looks rather like a li
 If I do not introduce, you might think that paper on the tassel is my certificate - actually I also thought like at first.
 Now the truth: it's a speeding ticket - of course, a fake one.
 That's because they all know I drive fast - admitted, I constantly drive over 200km/h - but _who does not drive fast in **Germany**?_ :joy: Anyway, thank you guys for your advice.
-<!-- Besides, I would argue that I never go up to 250km/h - you know, mainly because never had a chance of driving a supercar. -->
-
 
 Many thanks to everyone that made this day even more special to me - it's one of the most memorable days of my life.
 
