@@ -1,5 +1,7 @@
 ---
 last_modified_at: 2018-12-13
+toc: true
+toc_label: "Table of Contents"
 ---
 # Camera Booth
 

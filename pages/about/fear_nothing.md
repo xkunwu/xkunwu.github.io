@@ -7,8 +7,8 @@ sidebar:
     image_alt: "Meditation with the sea."
     text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
 ---
-# Fear nothing, and move on
-> Work hard, live hard, and do something more challenging than imaginable.
+# Fear nothing, and keep moving
+> Work hard, live harder, and do something more challenging than imaginable.
 
 Life's a journey, and I'd like to explore new trails.
 
@@ -20,7 +20,7 @@ I was pushed onto the track without any preparation: _there is no other choice b
 
 <figure>
     <img src="/pages/about/media/nemo.jpg">
-    <figcaption>Nemo, are you ready for your journey?
+    <figcaption>Little Nemo, are you ready for your journey?
     </figcaption>
 </figure>
 
@@ -181,7 +181,7 @@ _Speed is never the center of my concern: I know the focus should always place o
 Using the brake certainly reduces my speed; but without taking any break, I might never arrive at my target.
 Besides, I do not want to miss too much of the scenery during my journey.
 
-<!-- ## Look, boy, fear nothing and keep moving. -->
+<!-- ## Look, boy, fear nothing, and keep moving. -->
 
 Excerpted from a long letter.
 {: .notice--info}

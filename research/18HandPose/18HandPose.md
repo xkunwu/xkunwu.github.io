@@ -1,13 +1,15 @@
 ---
 last_modified_at: 2018-12-16
 mathjax: true
+toc: true
+toc_label: "Table of Contents"
 ---
 # HandMap: Robust hand pose estimation via intermediate dense guidance map supervision
 
 <!-- Progress: writing ...
 {: .notice--danger} -->
-Progress: proofreading ...
-{: .notice--warning}
+<!-- Progress: proofreading ...
+{: .notice--warning} -->
 
 <figure>
     <img src="/research/18HandPose/eccv2018pipeline.png">

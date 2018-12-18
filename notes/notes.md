@@ -7,7 +7,8 @@ sidebar:
 ---
 > This is a personal notebook, which serves daily reference purpose, but not well formatted into blogs.
 
-Note: may not updated regularly into this git-submodule.
+Note: maintained in corresponding repos, may not update regularly into this git-submodule.
+{: .notice--info}
 
 ## [Notes-CS](https://github.com/xkunwu/notes-cs)
 ### [Daily](notes-cs/daily)

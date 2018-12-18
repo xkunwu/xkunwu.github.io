@@ -1,6 +1,8 @@
 ---
 last_modified_at: 2018-12-11
 mathjax: true
+toc: true
+toc_label: "Table of Contents"
 ---
 
 # Hand detection and tracking
@@ -12,7 +14,8 @@ mathjax: true
 Please check the \[[Code](https://github.com/xkunwu/depth-hand/blob/master/code/camera/README.md)\] for user manual.
 
 Note: this is a two-week quick patch following the [hand pose estimation project](https://xkunwu.github.io/research/18HandPose/18HandPose).
-The purpose is to make live capture and hand tracking possible, but currently no plan to make the code waterproof (might be a future research project).
+The purpose is to make live capture and hand tracking _possible_, but currently no plan to make the code _waterproof_ (might be a future research project).
+{: .notice--info}
 
 ## Assumptions
 -   Single hand
