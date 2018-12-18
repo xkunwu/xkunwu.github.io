@@ -1,4 +1,5 @@
 ---
+last_modified_at: 2018-12-18
 sitemap: false
 sidebar:
   - title: "Meditation with the sea ..."
@@ -12,7 +13,7 @@ sidebar:
 [College of Oenology at Northwest A&F University](http://wine.nwsuaf.edu.cn/) is no doubt the best choice of this study in China - this was where I spent four memorable years.
 
 ## My college rocks
-I like practical and experimental studies, so I enjoyed learning courses through experiments about nature there (e.g., Microbiology, Organic Chemistry, Plant Science, Genetics, Viticulture, etc.).
+I like practical and experimental studies, so I enjoyed learning courses through experiments about nature there (e.g., Microbiology, Plant Science, Entomology, etc.).
 I also like the broad scope and specialized topics that my school can offer, which include fancy subjects like Wine-making, Wine-tasting, French language, etc.
 Besides, our curriculum follows a rigorous engineering training principle.
 <!-- just to name a few: Calculus, Physics, Mechanical Fundamentals, Enzyme Engineering - it's really surprising to realize that I learned quite a lot in retrospect. -->
