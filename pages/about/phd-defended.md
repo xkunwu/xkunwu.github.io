@@ -24,22 +24,23 @@ Bertram Somieski was the awesome photographer.
 
 ## My Doctoral Hat
 The tradition of MPI is every doctoral student will receive a specially tailored hat as a souvenir after defense talk.
-The hat is usually made by colleagues and friends, and the items on the hat are memorials that record interesting or "stupid" things that student has done.
+The hat is usually made by colleagues and friends: items on this hat are memorials that mark interesting or "stupid" things that student has done.
 
 <figure>
     <img src="/pages/about/hat_award.png">
     <figcaption>Acknowledgment: Dr. Weipeng Xu (right 1) hosted the hat presentation and awarding session.</figcaption>
 </figure>
 
-#### "所长"
-This name tag with Chinese Characters literally means "Head of the Institute", but actually means "Guard of the Institute" by my little buddies.
+#### _所长_
+This name tag in Chinese means _Head of the Institute_, but it really means _Guard of the Institute_ by my little buddies.
 I got this nickname in the first year at MPI, since I rarely stay at home and sometimes even stay in the office overnight.
 My office used to be at one corner of the building, which looks rather like a lighthouse in the night :grin:.
 
 #### Ticket on the Tassel
-If I do not introduce, you might think that paper on the tassel is my certificate - actually I also thought like at first.
+If I do not tell, you might think that paper on the tassel is my certificate - I also thought the same at first.
 Now the truth: it's a speeding ticket - of course, a fake one.
-That's because they all know I drive fast - admitted, I constantly drive over 200km/h - but _who does not drive fast in **Germany**?_ :joy: Anyway, thank you guys for your advice.
+That's because they all know I drive fast - admitted, I usually drive over 200km/h - but _who does not drive fast in **Germany**?_ :joy:
+Anyway, thank you guys for your advice.
 
 Many thanks to everyone that made this day even more special to me - it's one of the most memorable days of my life.
 

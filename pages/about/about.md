@@ -21,15 +21,15 @@ I owned my first personal computer (with [Pentium II](https://en.wikipedia.org/w
 Now many technologies seem not hot anymore, but I learn new skills faster than time changes.
 
 ## Education
-I [received my PhD](/pages/about/phd-defended) in Computer Science from [Max-Planck-Institute for Informatics](https://www.mpi-inf.mpg.de/departments/computer-graphics/) and [Saarland University](https://www.uni-saarland.de/en/home.html), where I closely collaborated with Prof. [Hans-Peter Seidel](https://people.mpi-inf.mpg.de/~hpseidel/), [Michael Wand](http://www.staff.uni-mainz.de/wandm/) and [Klaus Hildebrandt](https://graphics.tudelft.nl/~klaus/) on Computer Graphics related research projects.
-Before that, I received my Master degree in Mathematics from [Zhejiang University](http://www.zju.edu.cn/english/), under the supervision of Prof. [Ligang Liu](http://staff.ustc.edu.cn/~lgliu/).
+I [received my PhD](/pages/about/phd-defended) in *Computer Science* from [Max-Planck-Institute for Informatics](https://www.mpi-inf.mpg.de/departments/computer-graphics/) and [Saarland University](https://www.uni-saarland.de/en/home.html), where I closely collaborated with Prof. [Hans-Peter Seidel](https://people.mpi-inf.mpg.de/~hpseidel/), [Michael Wand](http://www.staff.uni-mainz.de/wandm/) and [Klaus Hildebrandt](https://graphics.tudelft.nl/~klaus/) on Computer Graphics related research projects.
+Before that, I received my Master degree in *Mathematics* from [Zhejiang University](http://www.zju.edu.cn/english/), under the supervision of Prof. [Ligang Liu](http://staff.ustc.edu.cn/~lgliu/).
 
-To tell you how diverse my interests is: I received my Bachelor degree in Engineering from [College of Oenology at Northwest A&F University](http://wine.nwsuaf.edu.cn/), but in the end I decided to [change my career direction](/pages/about/why-not-wine).
+To tell you how diverse my interests is: I received my Bachelor degree in *Engineering* from [College of Oenology at Northwest A&F University](http://wine.nwsuaf.edu.cn/), but in the end I decided to [change my career direction](/pages/about/why-not-wine).
 
 ## Sports
 Besides research, sports is the most important focus in my life. I used to play basketball quite a lot, but stopped doing it after a severe injury.
 I cannot walk as normal for nearly one year, then I learned Latin American dances and Yoga later for better recovery.
-I also kept the habit of going to the gym daily since 2010, mainly focused on weightlifting techniques.
+I also kept the habit of *going to the gym daily* since 2010, mainly focused on weightlifting techniques.
 
 ### Workout
 My training is more like scientific experiments: study human body biology, make rigorous training schedules and evaluate performance, calculate accurate nutrients balance, etc.
