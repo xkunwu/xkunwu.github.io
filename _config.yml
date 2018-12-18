@@ -155,6 +155,7 @@ defaults:
     values:
       sitemap: false
       author_profile: false
+      read_time: true
   # sitemap
   - scope:
       path: "pages/**/*.jpg"
@@ -177,7 +178,6 @@ exclude:
     - assets/js/vendor
     - Gemfile
     - Makefile
-    - LICENSE
     - /README.md
     - notes/notes-cs/.git
     - .tags
