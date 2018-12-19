@@ -1,5 +1,5 @@
 ---
-last_modified_at: 2018-12-18
+last_modified_at: 2018-12-19
 title: About me
 permalink: /about/
 sitemap: false
@@ -8,6 +8,8 @@ sidebar:
     image: /assets/images/logo.jpg
     image_alt: "Meditation with the sea."
     text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
+toc: true
+toc_label: "Table of Contents"
 ---
 I am Xiaokun Wu, aka Kelvin, and my Chinese name is 吴晓堃.
 

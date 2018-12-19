@@ -5,8 +5,9 @@ classes: wide
 read_time: false
 ---
 I am especially interested in techniques that can link the 3D world and human perception.
-I am currently focusing on using Machine Learning techniques to solve problems in two complementary fields: Computer Graphics and Computer Vision.
-My (future) goal is to develop an artificially intelligent agent that can understand our 3D world through proactive interactions.
+
+I am currently focusing on using _learning techniques_ to solve problems in two complementary fields: geometric modeling and 3D vision.
+My (future) goal is to develop an _artificially intelligent agent_ that can understand our 3D world through proactive interactions.
 
 <div class="pub_row">
   <div class="pub_img">
