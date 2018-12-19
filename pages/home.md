@@ -1,5 +1,5 @@
 ---
-title: Xiaokun Wu
+title: Welcome to Xiaokun Wu's homepage!
 permalink: /
 sidebar:
   nav: "main"
