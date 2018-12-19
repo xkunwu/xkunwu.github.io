@@ -1,5 +1,5 @@
 ---
-last_modified_at: 2018-12-18
+last_modified_at: 2018-12-19
 sitemap: false
 sidebar:
   - title: "Meditation with the sea ..."
@@ -156,7 +156,7 @@ He waved me to turn off my torch - he did that too - then we suddenly fell into 
 Baffled and tried to detect anything unusual, _I suddenly saw streamlines shining with blue sparkles is approaching me!_
 When I also felt a rush of torrent towards my face, I quickly dodged aside and waved my arms like crazy.
 
-At that very moment, I saw a miracle again:
+At that very moment, I saw _a miracle_ again:
 Blue sparkles start to appear wherever my arms strike - just like that magic ["lit up sea"](https://www.youtube.com/watch?v=zrL1kfxawuI) in _Life of Pi_:
 
 {% include video id="zrL1kfxawuI" provider="youtube" %}
@@ -176,12 +176,9 @@ I never stare at the speed meter while driving: I look at the road into the dist
 _Speed is never the center of my concern: I know the focus should always place on my destination._
 Using the brake certainly reduces my speed; but without taking any break, I might never arrive at my target.
 
-Besides, I do not want to miss too much of the scenery during my journey.
+Besides, _I do not want to miss too much of the scenery_ during my journey.
 
 <!-- ## Look, boy, fear nothing, and keep moving. -->
 
 Excerpted from a long letter.
 {: .notice--info}
-
-Wrote on 2018-12-17. Ready to leave Britain and return home.
-{: .notice--primary}

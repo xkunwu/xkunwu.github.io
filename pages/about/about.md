@@ -9,7 +9,7 @@ sidebar:
     image_alt: "Meditation with the sea."
     text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
 ---
-I am Xiaokun Wu, aka Kelvin, and my Chinese name is \[吴晓堃\].
+I am Xiaokun Wu, aka Kelvin, and my Chinese name is 吴晓堃.
 
 I am curious about anything that is unknown to me, and would always like to [try new challenges](/pages/about/fear_nothing).
 I am keen on making things from imagination into reality, and on making prototypes towards perfection.

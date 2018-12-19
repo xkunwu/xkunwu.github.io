@@ -1,5 +1,5 @@
 ---
-title: Xiaokun Wu [吴晓堃]
+title: Xiaokun Wu
 permalink: /
 sidebar:
   nav: "main"
