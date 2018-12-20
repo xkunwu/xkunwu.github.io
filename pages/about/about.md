@@ -52,8 +52,7 @@ I like reading history and visiting historical sites to explore cultural differe
 I do _outdoor photography_ and post-processing if it's memorable.
 
 I like keeping close to nature and organized several _hiking & camping_ trips.
-In one of my [crazy but well-planned journeys](https://drive.google.com/open?id=1PY-qpkwEc0V5hBueDGillzdWZcw&usp=sharing), I finished [3 most famous hiking routes in Norway](/pages/about/norway_rocks.jpg), took a [kayak & glacier trekking](/pages/about/glacier_kayak.jpg) trip, and drove nearly 5000 KM in 9 days (among other activities).
-<!-- - You see? I am a good planner and energetic :smile:. -->
+In one of my [crazy but well-planned journeys](https://drive.google.com/open?id=1PY-qpkwEc0V5hBueDGillzdWZcw&usp=sharing): I drove nearly 5000 KM in 9 days, finished [three most famous hiking routes in Norway](/pages/about/norway_rocks.jpg), took a [kayak & glacier trekking trip](/pages/about/glacier_kayak.jpg), and did many other activities.
 
 ### Languages and Reading
 I am a native Chinese :cn: speaker.
