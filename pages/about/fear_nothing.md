@@ -8,6 +8,10 @@ sidebar:
     text: "... while taking Peak Performance Buoyancy course for my Advanced Open Water Diver certification."
 ---
 # Fear nothing, and keep moving
+
+Excerpted from a long letter.
+{: .notice--info}
+
 > Work hard, live harder, and do something more challenging than imaginable.
 
 Life's a journey: I'd like to explore new trails.
@@ -181,6 +185,3 @@ Using the brake certainly reduces my speed; but without taking any break, I migh
 Besides, _I do not want to miss too much of the scenery_ during my journey.
 
 <!-- ## Look, boy, fear nothing. -->
-
-Excerpted from a long letter.
-{: .notice--info}
