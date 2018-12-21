@@ -1,5 +1,5 @@
 ---
-last_modified_at: 2018-12-19
+last_modified_at: 2018-12-21
 sitemap: false
 sidebar:
   - title: "Meditation with the sea ..."
@@ -9,7 +9,7 @@ sidebar:
 ---
 # Fear nothing, and keep moving
 
-Excerpted from a long letter.
+Excerpted from a letter.
 {: .notice--info}
 
 > Work hard, live harder, and do something more challenging than imaginable.
@@ -22,17 +22,17 @@ But the fate threw me out violently -- not knowing the answers to life, and nobo
 
 I was pushed onto the track without any preparation: _there is no other choice but go ahead and overcome anyway._
 
-## Go to the sea: overcome [Aquaphobia](https://en.wikipedia.org/wiki/Aquaphobia)
+{% include figure image_path="/pages/about/media/nemo.jpg" alt="Little Nemo in the Red Sea" caption="Little Nemo, are you ready for your journey?" %}
 
-{% include figure image_path="/pages/about/media/nemo.jpg" alt="Little Nemo in the rea sea" caption="Little Nemo, are you ready for your journey?" %}
+## Go to the sea: overcome [Aquaphobia](https://en.wikipedia.org/wiki/Aquaphobia)
 
 When I was about 5, my parents brought me to visit the sea for the first time.
 _My parents and their friends were young and impulsive at that age_, so they attempted to swim towards blue water, and they carried me in a life jacket.
 
 As I saw the moored buoy was drawing near me -- which was much larger than my head -- I collapsed.
-I could not even contain panics in the swimming pool after that experience, especially when I could not feel the ground.
+I could not contain panics even in the swimming pool after that experience, especially when I could not feel the ground.
 
-Then it was 2010, I joined the department retreat of snorkeling in the red sea.
+Then it was 2010, I joined the department retreat of snorkeling in the Red Sea.
 <!-- , when I was visiting [KAUST](https://vcc.kaust.edu.sa/Pages/Home.aspx). -->
 Without a doubt, I could not swim.
 I held the stern-rail quietly, looking at the corals tinted with emerald green -- hesitating.
@@ -40,7 +40,7 @@ _But I was young and impulsive at that age, so I just jumped into the sea._
 <!-- -- not even checked my goggles. -->
 
 After a short moment of struggling, I was surprised to find that
-I could somehow float near the surface (probably due to the red sea is too salty).
+I could somehow float near the surface (probably due to the Red Sea is too salty).
 It was amazing to be in the sea and enjoyed it for the first time -- _I found a whole new world_.
 
 After that, I fear of water no more.
@@ -119,7 +119,7 @@ I sat down on the tip of that tongue, enjoying the pleasant sunshine after the r
 
 ## Dive into the sea: overcome [Thalassophobia](https://en.wikipedia.org/wiki/Thalassophobia)
 
-I revisited the red sea 6-years later, but this time on the other side.
+I revisited the Red Sea 6-years later, but this time on the other side.
 
 When my diving coach asked if I have the problem of Thalassophobia, this photo immediately popped into my mind:
 
