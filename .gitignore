@@ -1,5 +1,6 @@
-_site/
+/_site/
 *-cache
 Gemfile.lock
 .jekyll-metadata
 .tags*
+_config.yml
