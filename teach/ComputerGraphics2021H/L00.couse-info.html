@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="WU Xiaokun [吴晓堃]" />
+  <title>Lecture 0: Course Information</title>
+
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="data:text/css,%0A%3Aroot%20%7B%0A%2D%2Dr%2Dbackground%2Dcolor%3A%20%23fff%3B%0A%2D%2Dr%2Dmain%2Dfont%3A%20%22Noto%20Serif%22%2C%20%22Times%20New%20Roman%22%2C%20serif%3B%0A%2D%2Dr%2Dmain%2Dfont%2Dsize%3A%2016px%3B%0A%2D%2Dr%2Dmain%2Dcolor%3A%20%23222%3B%0A%2D%2Dr%2Dpage%2Dmax%2Dwidth%3A%20800px%3B%0A%2D%2Dr%2Dblock%2Dmargin%3A%2020px%3B%0A%2D%2Dr%2Dblock%2Dpadding%3A%2010px%3B%0A%2D%2Dr%2Dsider%2Dmargin%3A%20100px%3B%0A%2D%2Dr%2Dheading%2Dfont%3A%20%22Noto%20Serif%22%2C%20%22Times%20New%20Roman%22%2C%20serif%3B%0A%2D%2Dr%2Dheading%2Dcolor%3A%20%23222%3B%0A%2D%2Dr%2Dheading%2Dline%2Dheight%3A%201%2E2%3B%0A%2D%2Dr%2Dheading%2Dletter%2Dspacing%3A%20normal%3B%0A%2D%2Dr%2Dheading%2Dtext%2Dshadow%3A%20none%3B%0A%2D%2Dr%2Dheading%2Dfont%2Dweight%3A%20600%3B%0A%2D%2Dr%2Dheading1%2Dtext%2Dshadow%3A%20none%3B%0A%2D%2Dr%2Dheading1%2Dsize%3A%202%2E5rem%3B%0A%2D%2Dr%2Dheading2%2Dsize%3A%202rem%3B%0A%2D%2Dr%2Dheading3%2Dsize%3A%201%2E6rem%3B%0A%2D%2Dr%2Dheading4%2Dsize%3A%201%2E3rem%3B%0A%2D%2Dr%2Dheading5%2Dsize%3A%201rem%3B%0A%2D%2Dr%2Dcode%2Dfont%3A%20monospace%3B%0A%2D%2Dr%2Dlink%2Dcolor%3A%20%232a76dd%3B%0A%2D%2Dr%2Dlink%2Dcolor%2Ddark%3A%20%231a53a1%3B%0A%2D%2Dr%2Dlink%2Dcolor%2Dhover%3A%20%236ca0e8%3B%0A%2D%2Dr%2Dselection%2Dbackground%2Dcolor%3A%20%2398bdef%3B%0A%2D%2Dr%2Dselection%2Dcolor%3A%20%23fff%3B%0A%7D%0A%0Abody%20%7B%20font%2Dfamily%3A%20var%28%2D%2Dr%2Dmain%2Dfont%29%3B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dmain%2Dfont%2Dsize%29%3B%0Afont%2Dweight%3A%20normal%3B%0Acolor%3A%20var%28%2D%2Dr%2Dmain%2Dcolor%29%3B%0Abackground%3A%20%23fff%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dr%2Dbackground%2Dcolor%29%3B%0A%0Adisplay%3A%20grid%3B%0Agrid%2Dtemplate%2Dcolumns%3A%20auto%20800px%20auto%3B%0Agrid%2Dtemplate%2Dareas%3A%20%22%2E%20header%20%2E%22%0A%22%2E%20lenotes%20meta%2Dright%22%0A%22%2E%20footnotes%20%2E%22%0A%3B%0A%7D%0Abody%20%2Elenotes%20%7B%0Agrid%2Darea%3A%20lenotes%3B%0A%7D%0Abody%20%2Emeta%2Dright%20%7B%0Agrid%2Darea%3A%20meta%2Dright%3B%0A%7D%0Abody%20%2Efootnotes%20%7B%0Agrid%2Darea%3A%20footnotes%3B%0A%7D%0A%0Abody%20header%20%7B%0A%0A%0Agrid%2Darea%3A%20header%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dheading%2Dfont%29%3B%0Acolor%3A%20var%28%2D%2Dr%2Dheading%2Dcolor%29%3B%0Afont%2Dweight%3A%20var%28%2D%2Dr%2Dheading%2Dfont%2Dweight%29%3B%0Aline%2Dheight%3A%20var%28%2D%2Dr%2Dheading%2Dline%2Dheight%29%3B%0Aletter%2Dspacing%3A%20var%28%2D%2Dr%2Dheading%2Dletter%2Dspacing%29%3B%0Atext%2Dtransform%3A%20var%28%2D%2Dr%2Dheading%2Dtext%2Dtransform%29%3B%0Atext%2Dshadow%3A%20var%28%2D%2Dr%2Dheading%2Dtext%2Dshadow%29%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading1%2Dsize%29%3B%0A%7D%0Ah2%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading2%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading3%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading4%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading5%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah1%20%7B%0Atext%2Dshadow%3A%20var%28%2D%2Dr%2Dheading1%2Dtext%2Dshadow%29%3B%0A%7D%0A%0A%2Ebanner%2Dheader%20%7B%0Adisplay%3A%20flex%3B%0Aalign%2Ditems%3A%20baseline%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Ecourse%20%7B%0Afont%2Dsize%3A%202%2E5em%3B%0Afont%2Dweight%3A%20bold%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eterm%20%7B%0Afont%2Dsize%3A%201%2E6em%3B%0Amargin%2Dleft%3A%20auto%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eauthor%20%7B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eemail%20%7B%0Afont%2Dsize%3A%200%2E8em%3B%0Amargin%2Dleft%3A%202em%3B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%0A%0A%0Aimg%2C%0Avideo%2C%0Aiframe%20%7B%0Amax%2Dwidth%3A%2095%25%3B%0Amax%2Dheight%3A%2095%25%3B%0A%7D%0Astrong%2C%0Ab%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aem%20%7B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Aol%20%7B%0Alist%2Dstyle%2Dtype%3A%20decimal%3B%0A%7D%0Aul%20%7B%0Alist%2Dstyle%2Dtype%3A%20disc%3B%0A%7D%0Aul%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20square%3B%0A%7D%0Aul%20ul%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20circle%3B%0A%7D%0Aul%20ul%2C%0Aul%20ol%2C%0Aol%20ol%2C%0Aol%20ul%20%7B%0Adisplay%3A%20block%3B%0Amargin%2Dleft%3A%201em%3B%0A%7D%0Adt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Add%20%7B%0Amargin%2Dleft%3A%201em%3B%0A%7D%0A%0Ablockquote%20%7B%0Adisplay%3A%20block%3B%0Aposition%3A%20relative%3B%0Awidth%3A%2070%25%3B%0A%0Apadding%3A%20var%28%2D%2Dr%2Dblock%2Dpadding%29%3B%0Afont%2Dstyle%3A%20italic%3B%0Abox%2Dshadow%3A%200px%200px%202px%20rgba%280%2C%200%2C%200%2C%200%2E2%29%3B%0A%7D%0Ablockquote%20p%3Afirst%2Dchild%2C%0Ablockquote%20p%3Alast%2Dchild%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0Aq%20%7B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Adiv%2EsourceCode%20%7B%0Amargin%3A%200%201em%3B%0A%0A%2Dmoz%2Dbox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%2Dwebkit%2Dbox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0Abox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%7D%0Apre%20%7B%0Adisplay%3A%20block%3B%0Aposition%3A%20relative%3B%0A%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%201em%3B%0Apadding%3A%20var%28%2D%2Dr%2Dblock%2Dpadding%29%3B%0Atext%2Dalign%3A%20left%3B%0Afont%2Dsize%3A%200%2E8em%3B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dcode%2Dfont%29%3B%0Aline%2Dheight%3A%201%2E2em%3B%0Aoverflow%3A%20auto%3B%0Amax%2Dwidth%3A%20800px%3B%0Amax%2Dheight%3A%20400px%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0Abox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%7D%0Apre%20code%20%7B%0Adisplay%3A%20block%3B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0A%0Acode%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dcode%2Dfont%29%3B%0Atext%2Dtransform%3A%20none%3B%0Atab%2Dsize%3A%202%3B%0A%7D%0A%2Ecode%2Dwrapper%20%7B%0Awhite%2Dspace%3A%20normal%3B%0A%7D%0A%2Ecode%2Dwrapper%20code%20%7B%0Awhite%2Dspace%3A%20pre%3B%0A%7D%0A%0Atable%20%7B%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%20auto%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0Aborder%2Dspacing%3A%200%3B%0A%7D%0Atable%20th%20%7B%0Afont%2Dweight%3A%20bold%3B%0Atext%2Dalign%3A%20center%3B%0Apadding%3A%200%2E2em%201em%3B%0Aborder%2Dbottom%3A%202px%20solid%20%23222%3B%0A%7D%0Atable%20td%20%7B%0Atext%2Dalign%3A%20left%3B%0Apadding%3A%200%2E2em%200%2E5em%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23222%3B%0A%7D%0Atable%20th%5Balign%3Dcenter%5D%2C%0Atable%20td%5Balign%3Dcenter%5D%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Atable%20th%5Balign%3Dright%5D%2C%0Atable%20td%5Balign%3Dright%5D%20%7B%0Atext%2Dalign%3A%20right%3B%0A%7D%0Atable%20tbody%20tr%3Alast%2Dchild%20th%2C%0Atable%20tbody%20tr%3Alast%2Dchild%20td%20%7B%0A%0Aborder%2Dbottom%3A%203px%20solid%20%23222%3B%0A%7D%0Atable%20thead%20tr%3Afirst%2Dchild%20th%2C%0Atable%20thead%20tr%3Afirst%2Dchild%20td%20%7B%0Aborder%2Dtop%3A%203px%20solid%20%23222%3B%0A%7D%0Asup%20%7B%0Avertical%2Dalign%3A%20super%3B%0Afont%2Dsize%3A%20smaller%3B%0A%7D%0Asub%20%7B%0Avertical%2Dalign%3A%20sub%3B%0Afont%2Dsize%3A%20smaller%3B%0A%7D%0Asmall%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Afont%2Dsize%3A%200%2E6em%3B%0Aline%2Dheight%3A%201%2E2em%3B%0Avertical%2Dalign%3A%20top%3B%0A%7D%0Asmall%20%2A%20%7B%0Avertical%2Dalign%3A%20top%3B%0A%7D%0Aimg%20%7B%0Adisplay%3A%20block%3B%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%20auto%3B%0A%7D%0A%0Aa%20%7B%0Acolor%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%29%3B%0Atext%2Ddecoration%3A%20none%3B%0Atransition%3A%20color%200%2E15s%20ease%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%2Dhover%29%3B%0Atext%2Dshadow%3A%20none%3B%0Aborder%3A%20none%3B%0A%7D%0A%2Eroll%20span%3Aafter%20%7B%0Acolor%3A%20%23fff%3B%0Abackground%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%2Ddark%29%3B%0A%7D%0A" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+
+<header id="banner-header">
+  <hr style="height:9px;border:none;color:#222;background-color:#222;" />
+<div class="banner-header">
+<p class="course">Computer Graphics I</p>
+<p class="term">2021H</p>
+</div>
+<div class="banner-header">
+<p class="author">WU Xiaokun [吴晓堃]</p>
+<p class="email">xkun.wu [at] gmail</p>
+</div>
+  <hr style="height:3px;border:none;color:#222;background-color:#222;" />
+</header>
+
+
+<div class="meta-right">
+<table>
+<thead>
+<tr>
+<th colspan="2">
+Computer Science - UG4
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Course
+</td>
+<td>
+Computer Graphics I
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Term
+</td>
+<td>
+2021H
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Final
+</td>
+<td>
+Project
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Credits
+</td>
+<td>
+3
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Staff
+</td>
+<td>
+WU Xiaokun [吴晓堃]
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Lecture
+</td>
+<td>
+32 hours (16 weeks)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<section id="lecture-0-course-information" class="lenotes">
+<h1>Lecture 0: Course Information</h1>
+<h4 id="short-intro">Short Intro</h4>
+<p>The objective of this course is to provide a complete introduction to computer graphics.</p>
+<h4 id="description">Description</h4>
+<p>The course aims at providing foundamental knowledge and existing techniques of computer graphics related topics.</p>
+<p>The course will touch on the following topics:</p>
+<p><strong>Keywords</strong>: computer graphics</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<p><strong>Required</strong>：</p>
+<ul>
+<li>Linear algebra (vector, matrix computation, Euclidean spaces).</li>
+<li>Differential calculus (Jacobian, Hessian, chain rule).</li>
+</ul>
+<p><strong>Recommended</strong>：</p>
+<ul>
+<li>Numerical optimization (notion of minima, gradient descent).</li>
+<li>Algorithm analysis (computational costs).</li>
+<li>Visual computing (image processing).</li>
+</ul>
+<h4 id="textbook">Textbook</h4>
+<p>Not mandatory but recommended:</p>
+<ul>
+<li>Fundamentals of Computer Graphics</li>
+</ul>
+<h4 id="schedule">Schedule</h4>
+<p>Friday S8-9, YG03-208.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Lecture</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2021/09/03</td>
+<td>Introduction</td>
+<td><a href="S01.introduction.html">slides</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="teaching-methods">Teaching methods</h4>
+<p>Problem-solving oriented, equal emphasis on lecture and practice. 以解决实际问题为导向，教学与实践并重。</p>
+<h4 id="evaluation">Evaluation</h4>
+<p>Final project: 60%, assignments: 30%, attendance &amp; participation: 10%.</p>
+<h4 id="resources">Resources</h4>
+</section>
+
+
+</body>
+
+</html>

@@ -8,8 +8,8 @@ toc_label: "Table of Contents"
 
 <!-- Progress: writing ...
 {: .notice--danger} -->
-Progress: proofreading ...
-{: .notice--warning}
+<!-- Progress: proofreading ...
+{: .notice--warning} -->
 
 <figure>
     <img src="/research/14SymmEdit/media/center_piece.jpg">
