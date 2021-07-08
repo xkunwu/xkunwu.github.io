@@ -14,10 +14,10 @@ sidebar:
 I am WU Xiaokun, aka Kelvin, and my Chinese name is 吴晓堃.
 
 I received my PhD in *Computer Science* and my Master degree in *Mathematics*.
-I also know a little more than necessary about wine.
+I also know a little about wine.
 
 When I feel too tired to read books or write codes, I do sports.
-I study workouts, so I can travel around and search for natural beauty.
+I study workouts, so I can travel around and search for natural beauties.
 If you happen to meet me, I would like to learn your language and stories.
 
 <!-- I am curious about anything that is unknown to me, and would always like to [try new challenges](/pages/about/fear_nothing).
