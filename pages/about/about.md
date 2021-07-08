@@ -17,8 +17,8 @@ I received my PhD in *Computer Science* and my Master degree in *Mathematics*.
 I also know a little more than necessary about wine.
 
 When I feel too tired to read books or write codes, I do sports.
-I do carefully studied workouts so I can travel around and search for natural beauty.
-If you happen to meet me somewhere, I would like to learn your language and story.
+I study workouts, so I can travel around and search for natural beauty.
+If you happen to meet me, I would like to learn your language and stories.
 
 <!-- I am curious about anything that is unknown to me, and would always like to [try new challenges](/pages/about/fear_nothing).
 I am keen on making things from imagination into reality, and on making prototypes towards perfection. -->

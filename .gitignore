@@ -3,3 +3,4 @@
 Gemfile.lock
 .jekyll-metadata
 .tags*
+.DS_Store
