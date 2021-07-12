@@ -223,10 +223,10 @@ plugins:
     - jekyll-sitemap
     - jekyll-gist
     - jekyll-feed
-    # - jemoji
     - jekyll-include-cache
     - jekyll-seo-tag
     - jekyll-last-modified-at
+    # - jemoji
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -235,10 +235,10 @@ whitelist:
     - jekyll-sitemap
     - jekyll-gist
     - jekyll-feed
-    # - jemoji
     - jekyll-include-cache
     - jekyll-seo-tag
     - jekyll-last-modified-at
+    # - jemoji
 
 # Archives
 #  Type

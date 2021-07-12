@@ -13,7 +13,7 @@ source 'https://rubygems.org'
 
 # To upgrade, run `bundle update`.
 
-
+# gem 'jemoji'
 
 ### Gem-based method
 # gem "jekyll"
