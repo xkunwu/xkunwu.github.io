@@ -117,7 +117,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      # read_time: true
+      read_time: false
       comments: true
       share: true
       related: true
@@ -127,7 +127,7 @@ defaults:
       type: pages
     values:
       layout: projects
-      # read_time: true
+      read_time: false
       share: true
       related: true
   # projects
@@ -136,7 +136,7 @@ defaults:
       type: pages
     values:
       layout: projects
-      # read_time: true
+      read_time: false
       share: true
       related: true
   # notes
@@ -155,7 +155,7 @@ defaults:
     values:
       sitemap: false
       author_profile: false
-      # read_time: true
+      read_time: false
   # sitemap
   - scope:
       path: "pages/**/*.jpg"
@@ -281,6 +281,6 @@ titles_from_headings:
     strip_title: true
     collections: true
 
-theme: "minimal-mistakes-jekyll"
-# remote_theme: "mmistakes/minimal-mistakes"
+# theme: "minimal-mistakes-jekyll"
+remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
