@@ -1,4 +1,4 @@
-[submodule "notes/notes-cs"]
-	path = notes/notes-cs
-	url = https://github.com/xkunwu/notes-cs.git
-	branch = master
+# [submodule "notes/notes-cs"]
+# 	path = notes/notes-cs
+# 	url = https://github.com/xkunwu/notes-cs.git
+# 	branch = master

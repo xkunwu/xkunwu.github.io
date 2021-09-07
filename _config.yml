@@ -1,9 +1,9 @@
 # Site Settings
 locale                   : "en-US"
-title                    : "Xiaokun Wu"
+title                    : "WU Xiaokun"
 title_separator          : "-"
-name                     : "Xiaokun Wu"
-description              : "Xiaokun Wu's website."
+name                     : "WU Xiaokun"
+description              : "WU Xiaokun's website."
 url                      : "https://xkunwu.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "xkunwu/xkunwu.github.io"
@@ -86,7 +86,7 @@ analytics:
 
 # Site Author
 author:
-  name: "Xiaokun Wu"
+  name: "WU Xiaokun"
   avatar: "/assets/images/bio-photo.jpg"
   # bio: "I am an amazing person."
   # location: "Somewhere"
@@ -117,7 +117,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
+      read_time: false
       comments: true
       share: true
       related: true
@@ -127,7 +127,7 @@ defaults:
       type: pages
     values:
       layout: projects
-      read_time: true
+      read_time: false
       share: true
       related: true
   # projects
@@ -136,7 +136,7 @@ defaults:
       type: pages
     values:
       layout: projects
-      read_time: true
+      read_time: false
       share: true
       related: true
   # notes
@@ -155,7 +155,7 @@ defaults:
     values:
       sitemap: false
       author_profile: false
-      read_time: true
+      read_time: false
   # sitemap
   - scope:
       path: "pages/**/*.jpg"
@@ -223,10 +223,10 @@ plugins:
     - jekyll-sitemap
     - jekyll-gist
     - jekyll-feed
-    - jemoji
     - jekyll-include-cache
     - jekyll-seo-tag
     - jekyll-last-modified-at
+    # - jemoji
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -235,10 +235,10 @@ whitelist:
     - jekyll-sitemap
     - jekyll-gist
     - jekyll-feed
-    - jemoji
     - jekyll-include-cache
     - jekyll-seo-tag
     - jekyll-last-modified-at
+    # - jemoji
 
 # Archives
 #  Type
@@ -281,6 +281,6 @@ titles_from_headings:
     strip_title: true
     collections: true
 
-theme: "minimal-mistakes"
-# remote_theme: "mmistakes/minimal-mistakes"
+# theme: "minimal-mistakes-jekyll"
+remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
