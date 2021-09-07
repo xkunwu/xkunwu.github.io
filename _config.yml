@@ -281,6 +281,6 @@ titles_from_headings:
     strip_title: true
     collections: true
 
-# theme: "minimal-mistakes"
-remote_theme: "mmistakes/minimal-mistakes"
+theme: "minimal-mistakes"
+# remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
