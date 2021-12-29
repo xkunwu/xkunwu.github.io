@@ -13,7 +13,6 @@ read_time: false
     <title>Algorithm - 2021H</title>
     <links>
       [<a href="Algorithm/2021H.html">Webpage</a>]
-      [Code]
     </links>
   </div>
 </div>
