@@ -7,6 +7,30 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="DeepLearning2022F/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>Introduction to Deep Learning - 2022F</title>
+    <links>
+      [<a href="DeepLearning2022F/2022F.html">Webpage</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="LanguageProcessing2022F/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>Natural Language Processing - 2022F</title>
+    <links>
+      [<a href="LanguageProcessing2022F/2022F.html">Webpage</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="Algorithm/teaser.png">
   </div>
   <div class="pub_txt">
