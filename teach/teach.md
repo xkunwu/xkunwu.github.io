@@ -5,14 +5,22 @@ classes: wide
 read_time: false
 ---
 
+**Naming Convention**: {[Edition]} {Title} {Level} {- Sub-level/topic}
+
+- Level I: for undergraduates.
+- Level II: for graduates, may branched into specific topics.
+
+<hr>
+<br>
+
 <div class="pub_row">
   <div class="pub_img">
     <img src="DeepLearning2022F/teaser.png">
   </div>
   <div class="pub_txt">
-    <title>Introduction to Deep Learning - 2022F</title>
+    <title>[2022] Deep Learning I</title>
     <links>
-      [<a href="DeepLearning2022F/2022F.html">Webpage</a>]
+      [<a href="DeepLearning2022F/2022F.html">2022F</a>]
     </links>
   </div>
 </div>
@@ -22,9 +30,9 @@ read_time: false
     <img src="LanguageProcessing2022F/teaser.png">
   </div>
   <div class="pub_txt">
-    <title>Natural Language Processing - 2022F</title>
+    <title>[2022] Natural Language Processing I</title>
     <links>
-      [<a href="LanguageProcessing2022F/2022F.html">Webpage</a>]
+      [<a href="LanguageProcessing2022F/2022F.html">2022F</a>]
     </links>
   </div>
 </div>
@@ -34,9 +42,9 @@ read_time: false
     <img src="Algorithm/teaser.png">
   </div>
   <div class="pub_txt">
-    <title>Algorithm - 2021H</title>
+    <title>[2021] Algorithm II</title>
     <links>
-      [<a href="Algorithm/2021H.html">Webpage</a>]
+      [<a href="Algorithm/2021H.html">2021H</a>]
     </links>
   </div>
 </div>
@@ -46,10 +54,9 @@ read_time: false
     <img src="ComputerGraphics/teaser.png">
   </div>
   <div class="pub_txt">
-    <title>Computer Graphics I - 2021H</title>
+    <title>[2021] Computer Graphics I</title>
     <links>
-      [<a href="ComputerGraphics/2021H.html">Webpage</a>]
-      [Code]
+      [<a href="ComputerGraphics/2021H.html">2021H</a>]
     </links>
   </div>
 </div>
@@ -59,10 +66,9 @@ read_time: false
     <img src="DeepLearning2021F/teaser.png">
   </div>
   <div class="pub_txt">
-    <title>Introduction to Deep Learning - 2021F</title>
+    <title>[2021] Deep Learning I</title>
     <links>
-      [<a href="DeepLearning2021F/2021F.html">Webpage</a>]
-      [Code]
+      [<a href="DeepLearning2021F/2021F.html">2021F</a>]
     </links>
   </div>
 </div>

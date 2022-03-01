@@ -5,8 +5,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="WU Xiaokun [吴晓堃]" />
-  <title>Lecture 0: Course Information</title>
+  <meta name="author" content="WU Xiaokun 吴晓堃" />
+  <title>Course Information</title>
 
   <style>
     code{white-space: pre-wrap;}
@@ -16,7 +16,302 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="data:text/css,%0A%3Aroot%20%7B%0A%2D%2Dr%2Dbackground%2Dcolor%3A%20%23fff%3B%0A%2D%2Dr%2Dmain%2Dfont%3A%20%22Noto%20Serif%20SC%22%2C%20%22Noto%20Serif%22%2C%20%22Times%20New%20Roman%22%2C%20serif%3B%0A%2D%2Dr%2Dmain%2Dfont%2Dsize%3A%2016px%3B%0A%2D%2Dr%2Dmain%2Dcolor%3A%20%23222%3B%0A%2D%2Dr%2Dpage%2Dmax%2Dwidth%3A%20800px%3B%0A%2D%2Dr%2Dblock%2Dmargin%3A%2020px%3B%0A%2D%2Dr%2Dblock%2Dpadding%3A%2010px%3B%0A%2D%2Dr%2Dsider%2Dmargin%3A%20100px%3B%0A%2D%2Dr%2Dheading%2Dfont%3A%20%22Noto%20Serif%20SC%22%2C%20%22Noto%20Serif%22%2C%20%22Times%20New%20Roman%22%2C%20serif%3B%0A%2D%2Dr%2Dheading%2Dcolor%3A%20%23222%3B%0A%2D%2Dr%2Dheading%2Dline%2Dheight%3A%201%2E2%3B%0A%2D%2Dr%2Dheading%2Dletter%2Dspacing%3A%20normal%3B%0A%2D%2Dr%2Dheading%2Dtext%2Dshadow%3A%20none%3B%0A%2D%2Dr%2Dheading%2Dfont%2Dweight%3A%20600%3B%0A%2D%2Dr%2Dheading1%2Dtext%2Dshadow%3A%20none%3B%0A%2D%2Dr%2Dheading1%2Dsize%3A%202%2E5rem%3B%0A%2D%2Dr%2Dheading2%2Dsize%3A%202rem%3B%0A%2D%2Dr%2Dheading3%2Dsize%3A%201%2E6rem%3B%0A%2D%2Dr%2Dheading4%2Dsize%3A%201%2E3rem%3B%0A%2D%2Dr%2Dheading5%2Dsize%3A%201rem%3B%0A%2D%2Dr%2Dcode%2Dfont%3A%20%22Noto%20Sans%20Mono%22%2C%20%22Noto%20Mono%22%2C%20monospace%3B%0A%2D%2Dr%2Dlink%2Dcolor%3A%20%232a76dd%3B%0A%2D%2Dr%2Dlink%2Dcolor%2Ddark%3A%20%231a53a1%3B%0A%2D%2Dr%2Dlink%2Dcolor%2Dhover%3A%20%236ca0e8%3B%0A%2D%2Dr%2Dselection%2Dbackground%2Dcolor%3A%20%2398bdef%3B%0A%2D%2Dr%2Dselection%2Dcolor%3A%20%23fff%3B%0A%7D%0A%0Abody%20%7B%20font%2Dfamily%3A%20var%28%2D%2Dr%2Dmain%2Dfont%29%3B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dmain%2Dfont%2Dsize%29%3B%0Afont%2Dweight%3A%20normal%3B%0Acolor%3A%20var%28%2D%2Dr%2Dmain%2Dcolor%29%3B%0Abackground%3A%20%23fff%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dr%2Dbackground%2Dcolor%29%3B%0A%0Adisplay%3A%20grid%3B%0Agrid%2Dtemplate%2Dcolumns%3A%20auto%20800px%20auto%3B%0Agrid%2Dtemplate%2Dareas%3A%20%22%2E%20header%20%2E%22%0A%22%2E%20lenotes%20meta%2Dright%22%0A%22%2E%20footnotes%20%2E%22%0A%3B%0A%7D%0Abody%20%2Elenotes%20%7B%0Agrid%2Darea%3A%20lenotes%3B%0A%7D%0Abody%20%2Emeta%2Dright%20%7B%0Agrid%2Darea%3A%20meta%2Dright%3B%0A%7D%0Abody%20%2Efootnotes%20%7B%0Agrid%2Darea%3A%20footnotes%3B%0A%7D%0A%0Abody%20header%20%7B%0A%0A%0Agrid%2Darea%3A%20header%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dheading%2Dfont%29%3B%0Acolor%3A%20var%28%2D%2Dr%2Dheading%2Dcolor%29%3B%0Afont%2Dweight%3A%20var%28%2D%2Dr%2Dheading%2Dfont%2Dweight%29%3B%0Aline%2Dheight%3A%20var%28%2D%2Dr%2Dheading%2Dline%2Dheight%29%3B%0Aletter%2Dspacing%3A%20var%28%2D%2Dr%2Dheading%2Dletter%2Dspacing%29%3B%0Atext%2Dtransform%3A%20var%28%2D%2Dr%2Dheading%2Dtext%2Dtransform%29%3B%0Atext%2Dshadow%3A%20var%28%2D%2Dr%2Dheading%2Dtext%2Dshadow%29%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading1%2Dsize%29%3B%0A%7D%0Ah2%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading2%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading3%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading4%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading5%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah1%20%7B%0Atext%2Dshadow%3A%20var%28%2D%2Dr%2Dheading1%2Dtext%2Dshadow%29%3B%0A%7D%0A%0A%2Ebanner%2Dheader%20%7B%0Adisplay%3A%20flex%3B%0Aalign%2Ditems%3A%20baseline%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Ecourse%20%7B%0Afont%2Dsize%3A%202%2E5em%3B%0Afont%2Dweight%3A%20bold%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eterm%20%7B%0Afont%2Dsize%3A%201%2E6em%3B%0Amargin%2Dleft%3A%20auto%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eauthor%20%7B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eemail%20%7B%0Afont%2Dsize%3A%200%2E8em%3B%0Amargin%2Dleft%3A%202em%3B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%0A%0A%0Aimg%2C%0Avideo%2C%0Aiframe%20%7B%0Amax%2Dwidth%3A%2095%25%3B%0Amax%2Dheight%3A%2095%25%3B%0A%7D%0Astrong%2C%0Ab%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aem%20%7B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Aol%20%7B%0Alist%2Dstyle%2Dtype%3A%20decimal%3B%0A%7D%0Aul%20%7B%0Alist%2Dstyle%2Dtype%3A%20disc%3B%0A%7D%0Aul%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20square%3B%0A%7D%0Aul%20ul%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20circle%3B%0A%7D%0Aul%20ul%2C%0Aul%20ol%2C%0Aol%20ol%2C%0Aol%20ul%20%7B%0Adisplay%3A%20block%3B%0Amargin%2Dleft%3A%201em%3B%0A%7D%0Adt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Add%20%7B%0Amargin%2Dleft%3A%201em%3B%0A%7D%0A%0Ablockquote%20%7B%0Adisplay%3A%20block%3B%0Aposition%3A%20relative%3B%0Awidth%3A%2070%25%3B%0A%0Apadding%3A%20var%28%2D%2Dr%2Dblock%2Dpadding%29%3B%0Afont%2Dstyle%3A%20italic%3B%0Abox%2Dshadow%3A%200px%200px%202px%20rgba%280%2C%200%2C%200%2C%200%2E2%29%3B%0A%7D%0Ablockquote%20p%3Afirst%2Dchild%2C%0Ablockquote%20p%3Alast%2Dchild%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0Aq%20%7B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Adiv%2EsourceCode%20%7B%0Amargin%3A%200%201em%3B%0A%0A%2Dmoz%2Dbox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%2Dwebkit%2Dbox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0Abox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%7D%0Apre%20%7B%0Adisplay%3A%20block%3B%0Aposition%3A%20relative%3B%0A%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%201em%3B%0Apadding%3A%20var%28%2D%2Dr%2Dblock%2Dpadding%29%3B%0Atext%2Dalign%3A%20left%3B%0Afont%2Dsize%3A%200%2E8em%3B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dcode%2Dfont%29%3B%0Aline%2Dheight%3A%201%2E2em%3B%0Aoverflow%3A%20auto%3B%0Amax%2Dwidth%3A%20800px%3B%0Amax%2Dheight%3A%20400px%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0Abox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%7D%0Apre%20code%20%7B%0Adisplay%3A%20block%3B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0A%0Acode%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dcode%2Dfont%29%3B%0Atext%2Dtransform%3A%20none%3B%0Atab%2Dsize%3A%202%3B%0A%7D%0A%2Ecode%2Dwrapper%20%7B%0Awhite%2Dspace%3A%20normal%3B%0A%7D%0A%2Ecode%2Dwrapper%20code%20%7B%0Awhite%2Dspace%3A%20pre%3B%0A%7D%0A%0Atable%20%7B%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%20auto%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0Aborder%2Dspacing%3A%200%3B%0A%7D%0Atable%20th%20%7B%0Afont%2Dweight%3A%20bold%3B%0Atext%2Dalign%3A%20center%3B%0Apadding%3A%200%2E2em%201em%3B%0Aborder%2Dbottom%3A%202px%20solid%20%23222%3B%0A%7D%0Atable%20td%20%7B%0Atext%2Dalign%3A%20left%3B%0Apadding%3A%200%2E2em%200%2E5em%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23222%3B%0A%7D%0Atable%20th%5Balign%3Dcenter%5D%2C%0Atable%20td%5Balign%3Dcenter%5D%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Atable%20th%5Balign%3Dright%5D%2C%0Atable%20td%5Balign%3Dright%5D%20%7B%0Atext%2Dalign%3A%20right%3B%0A%7D%0Atable%20tbody%20tr%3Alast%2Dchild%20th%2C%0Atable%20tbody%20tr%3Alast%2Dchild%20td%20%7B%0A%0Aborder%2Dbottom%3A%203px%20solid%20%23222%3B%0A%7D%0Atable%20thead%20tr%3Afirst%2Dchild%20th%2C%0Atable%20thead%20tr%3Afirst%2Dchild%20td%20%7B%0Aborder%2Dtop%3A%203px%20solid%20%23222%3B%0A%7D%0Asup%20%7B%0Avertical%2Dalign%3A%20super%3B%0Afont%2Dsize%3A%20smaller%3B%0A%7D%0Asub%20%7B%0Avertical%2Dalign%3A%20sub%3B%0Afont%2Dsize%3A%20smaller%3B%0A%7D%0Asmall%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Afont%2Dsize%3A%200%2E6em%3B%0Aline%2Dheight%3A%201%2E2em%3B%0Avertical%2Dalign%3A%20top%3B%0A%7D%0Asmall%20%2A%20%7B%0Avertical%2Dalign%3A%20top%3B%0A%7D%0Aimg%20%7B%0Adisplay%3A%20block%3B%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%20auto%3B%0A%7D%0A%0Aa%20%7B%0Acolor%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%29%3B%0Atext%2Ddecoration%3A%20none%3B%0Atransition%3A%20color%200%2E15s%20ease%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%2Dhover%29%3B%0Atext%2Dshadow%3A%20none%3B%0Aborder%3A%20none%3B%0A%7D%0A%2Eroll%20span%3Aafter%20%7B%0Acolor%3A%20%23fff%3B%0Abackground%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%2Ddark%29%3B%0A%7D%0A" />
+  <style type="text/css">
+:root {
+--r-background-color: #fff;
+--r-main-font: "Noto Serif", "Times New Roman", serif;
+--r-main-font-size: 16px;
+--r-main-color: #222;
+--r-page-max-width: 800px;
+--r-block-margin: 20px;
+--r-block-padding: 10px;
+--r-sider-margin: 100px;
+--r-heading-font: "Noto Serif", "Times New Roman", serif;
+--r-heading-color: #222;
+--r-heading-line-height: 1.2;
+--r-heading-letter-spacing: normal;
+--r-heading-text-shadow: none;
+--r-heading-font-weight: 600;
+--r-heading1-text-shadow: none;
+--r-heading1-size: 2.2rem;
+--r-heading2-size: 1.8rem;
+--r-heading3-size: 1.6rem;
+--r-heading4-size: 1.3rem;
+--r-heading5-size: 1rem;
+--r-code-font: "Noto Sans Mono", "Noto Mono", monospace;
+--r-link-color: #2a76dd;
+--r-link-color-dark: #1a53a1;
+--r-link-color-hover: #6ca0e8;
+--r-selection-background-color: #98bdef;
+--r-selection-color: #fff;
+}
+
+body { font-family: var(--r-main-font);
+font-size: var(--r-main-font-size);
+font-weight: normal;
+color: var(--r-main-color);
+background: #fff;
+background-color: var(--r-background-color);
+
+display: grid;
+grid-template-columns: auto 800px auto;
+grid-template-areas: ". header ."
+". lenotes meta-right"
+". footnotes ."
+;
+}
+body .lenotes {
+grid-area: lenotes;
+}
+body .meta-right {
+grid-area: meta-right;
+}
+body .footnotes {
+grid-area: footnotes;
+}
+
+body header {
+
+
+grid-area: header;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: var(--r-heading-font);
+color: var(--r-heading-color);
+font-weight: var(--r-heading-font-weight);
+line-height: var(--r-heading-line-height);
+letter-spacing: var(--r-heading-letter-spacing);
+text-transform: var(--r-heading-text-transform);
+text-shadow: var(--r-heading-text-shadow);
+word-wrap: break-word;
+}
+h1 {
+font-size: var(--r-heading1-size);
+}
+h2 {
+font-size: var(--r-heading2-size);
+text-align: left;
+
+}
+h3 {
+font-size: var(--r-heading3-size);
+text-align: left;
+}
+h4 {
+font-size: var(--r-heading4-size);
+text-align: left;
+}
+h5 {
+font-size: var(--r-heading5-size);
+text-align: left;
+}
+h1 {
+text-shadow: var(--r-heading1-text-shadow);
+}
+
+.banner-header {
+display: flex;
+align-items: baseline;
+}
+.banner-header > .course {
+font-size: 2.5em;
+font-weight: bold;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .term {
+font-size: 1.6em;
+margin-left: auto;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .author {
+margin-top: 1em;
+margin-bottom: 0;
+}
+.banner-header > .email {
+font-size: 0.8em;
+margin-left: 2em;
+margin-top: 1em;
+margin-bottom: 0;
+}
+
+
+
+img,
+video,
+iframe {
+max-width: 95%;
+max-height: 95%;
+}
+strong,
+b {
+font-weight: bold;
+}
+em {
+font-style: italic;
+}
+
+ol {
+list-style-type: decimal;
+}
+ul {
+list-style-type: disc;
+}
+ul ul {
+list-style-type: square;
+}
+ul ul ul {
+list-style-type: circle;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+display: block;
+margin-left: 1em;
+}
+dt {
+font-weight: bold;
+}
+dd {
+margin-left: 1em;
+}
+
+blockquote {
+display: block;
+position: relative;
+width: 70%;
+
+padding: var(--r-block-padding);
+font-style: italic;
+box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+text-align: left;
+}
+blockquote p:first-child,
+blockquote p:last-child {
+display: inline-block;
+}
+q {
+font-style: italic;
+}
+
+div.sourceCode {
+margin: 0 1em;
+
+-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre {
+display: block;
+position: relative;
+
+margin: var(--r-block-margin) 1em;
+padding: var(--r-block-padding);
+text-align: left;
+font-size: 0.9em;
+font-family: var(--r-code-font);
+line-height: 1.2em;
+overflow: auto;
+max-width: 800px;
+max-height: 400px;
+word-wrap: break-word;
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre code {
+display: block;
+word-wrap: normal;
+}
+
+code {
+display: inline-block;
+font-family: var(--r-code-font);
+text-transform: none;
+tab-size: 2;
+}
+.code-wrapper {
+white-space: normal;
+}
+.code-wrapper code {
+white-space: pre;
+}
+
+table {
+margin: var(--r-block-margin) auto;
+border-collapse: collapse;
+border-spacing: 0;
+}
+table th {
+font-weight: bold;
+text-align: center;
+padding: 0.1em 0.5em;
+border-bottom: 2px solid #222;
+}
+table td {
+text-align: left;
+padding: 0.1em 0.5em;
+border-bottom: 1px solid #222;
+}
+table th[align=center],
+table td[align=center] {
+text-align: center;
+}
+table th[align=right],
+table td[align=right] {
+text-align: right;
+}
+table thead tr:first-child th {
+border-top: 3px solid #222;
+}
+table tbody tr:first-child td {
+border-top: 3px solid #222;
+}
+table tbody tr:last-child td {
+border-bottom: 3px solid #222;
+}
+sup {
+vertical-align: super;
+font-size: smaller;
+}
+sub {
+vertical-align: sub;
+font-size: smaller;
+}
+small {
+display: inline-block;
+font-size: 0.6em;
+line-height: 1.2em;
+vertical-align: top;
+}
+small * {
+vertical-align: top;
+}
+img {
+display: block;
+margin: var(--r-block-margin) auto;
+}
+
+a {
+color: var(--r-link-color);
+text-decoration: none;
+transition: color 0.15s ease;
+}
+a:hover {
+color: var(--r-link-color-hover);
+text-shadow: none;
+border: none;
+}
+.roll span:after {
+color: #fff;
+background: var(--r-link-color-dark);
+}
+</style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -28,11 +323,11 @@
 <header id="banner-header">
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
 <div class="banner-header">
-<p class="course">Deep Learning</p>
-<p class="term">2021春</p>
+<p class="course">Deep Learning I</p>
+<p class="term">2021F</p>
 </div>
 <div class="banner-header">
-<p class="author">WU Xiaokun [吴晓堃]</p>
+<p class="author">WU Xiaokun 吴晓堃</p>
 <p class="email">xkun.wu [at] gmail</p>
 </div>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -55,7 +350,7 @@
 课程名称
 </td>
 <td>
-深度学习基础
+深度学习I
 </td>
 </tr>
 <tr class="even">
@@ -104,20 +399,23 @@
 </div>
 <section id="lecture-0-course-information" class="lenotes">
 <h1>Lecture 0: Course Information</h1>
+<div class="latex">
+
+</div>
 <h4 id="课程简介">课程简介</h4>
 <p>The objective of this course is to provide a complete introduction to deep machine learning. General artificial intelligence and machine learning techniques will be quickly reviewed in a historical connections fashion, but the focus of this course is  machine learning. So the main theme here is to understand modern techniques that specifically handle deep neural network: how to design it, how to train it and how to evaluate it on real problems.</p>
 <h4 id="课程内容">课程内容</h4>
-<p>The course aims at providing an overview of existing processings and methods, at teaching how to design and train a deep neural network for a given task, and (depending on the audience,) at providing the theoretical basis to go beyond the topics directly seen in the course.</p>
+<p>The course aims at providing an overview of existing approaches and methods, at teaching how to design and train a deep neural network for a given task, and (depending on the audience,) at providing the theoretical basis to go beyond the topics directly seen in the course.</p>
 <p>The course will touch on the following topics:</p>
 <ul>
 <li>What is deep learning, and how is it derived from general artificial intelligence and machine learning.</li>
-<li>Tensors, multi-layer perceptrons, gradient descent, back-propagation.</li>
+<li>Tensors, multi-layer Perceptrons, gradient descent, back-propagation.</li>
 <li>Generalized networks, automatic differentiation, batch processing, convolutional networks.</li>
 <li>Initialization, optimization, and regularization.</li>
-<li>Drop-out, batchnorm, resnets.</li>
+<li>Drop-out, BatchNorm, ResNets.</li>
 <li>Deep models for computer vision.</li>
 <li>Deep models for sequence processing.</li>
-<li>Analysis and visualization of deep models, geometric explaination of deep learning.</li>
+<li>Analysis and visualization of deep models, geometric explanation of deep learning.</li>
 <li>Auto-encoders, embeddings, and generative models.</li>
 </ul>
 <p>Concepts will be illustrated with examples in the TensorFlow and Keras framework.</p>
@@ -159,10 +457,10 @@
 <div class="html">
 <table>
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 68%" />
-<col style="width: 10%" />
+<col style="width: 5%" />
+<col style="width: 11%" />
+<col style="width: 72%" />
+<col style="width: 11%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -267,10 +565,10 @@
 <h4 id="资源">资源</h4>
 <ul>
 <li>DeepLearning Tutorial @ GitHub<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li>Keras examples<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>Keras examples<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> </li>
 </ul>
 </section>
-<section class="footnotes" role="doc-endnotes">
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1" role="doc-endnote"><p><a href="https://github.com/Mikoto10032/DeepLearning">https://github.com/Mikoto10032/DeepLearning</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
