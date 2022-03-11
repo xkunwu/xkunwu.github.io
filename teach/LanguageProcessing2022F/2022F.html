@@ -215,7 +215,7 @@ position: relative;
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
 text-align: left;
-font-size: 0.8em;
+font-size: 0.9em;
 font-family: var(--r-code-font);
 line-height: 1.2em;
 overflow: auto;
@@ -250,12 +250,12 @@ border-spacing: 0;
 table th {
 font-weight: bold;
 text-align: center;
-padding: 0.2em 1em;
+padding: 0.1em 0.5em;
 border-bottom: 2px solid #222;
 }
 table td {
 text-align: left;
-padding: 0.2em 0.5em;
+padding: 0.1em 0.5em;
 border-bottom: 1px solid #222;
 }
 table th[align=center],
@@ -266,14 +266,14 @@ table th[align=right],
 table td[align=right] {
 text-align: right;
 }
-table tbody tr:last-child th,
-table tbody tr:last-child td {
-
-border-bottom: 3px solid #222;
-}
-table thead tr:first-child th,
-table thead tr:first-child td {
+table thead tr:first-child th {
 border-top: 3px solid #222;
+}
+table tbody tr:first-child td {
+border-top: 3px solid #222;
+}
+table tbody tr:last-child td {
+border-bottom: 3px solid #222;
 }
 sup {
 vertical-align: super;
@@ -323,7 +323,7 @@ background: var(--r-link-color-dark);
 <header id="banner-header">
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
 <div class="banner-header">
-<p class="course">Natural Language Processing</p>
+<p class="course">Natural Language Processing I</p>
 <p class="term">2022F</p>
 </div>
 <div class="banner-header">
@@ -350,7 +350,7 @@ Computer Science - UG3/G
 Course
 </td>
 <td>
-Natural Language Processing
+Natural Language Processing I
 </td>
 </tr>
 <tr class="even">
@@ -409,7 +409,7 @@ Lecture
 课程名称
 </td>
 <td>
-自然语言处理
+自然语言处理I
 </td>
 </tr>
 <tr class="even">
@@ -496,13 +496,18 @@ Lecture
 <ol type="1">
 <li>Introduction 导言, Basic Text Processing 文本处理基础</li>
 <li>Syntactic Analysis 句法分析, N-gram Language Models N元语法模型</li>
-<li>Lexicon Parsing 词典分词, Chinese Word Segmentation 中文分词</li>
+<li>Naive Bayes 朴素贝叶斯, Logistic Regression 逻辑回归</li>
+<li>Vector Semantics 向量语义, Word Embeddings 词嵌入</li>
 <li>Sequence Labeling 序列标注, Parts of Speech 词类, Named Entities 命名实体</li>
-<li>Vector Semantics 矢量语义, Word Embeddings 词嵌入</li>
 <li>Recurrent Neural Networks 循环神经网络, Sentiment Analysis 情感分析</li>
 <li>Vanishing Gradients 梯度消失, Modern RNNs 现代循环神经网络</li>
 <li>Machine Translation 机器翻译, Encoder-Decoder 编码器-解码器</li>
+</ol>
+<p>Several special topics:</p>
+<ol type="1">
+<li>Lexicon Parsing 词典分词, Chinese Word Segmentation 中文分词</li>
 <li>Constituency Parsing 构成解析, Dependency Parsing 依存解析</li>
+<li>Information Retrieval 信息检索</li>
 </ol>
 <h4 id="schedule">Schedule</h4>
 <p>Friday; Multiple locations.</p>
@@ -519,8 +524,8 @@ Lecture
 <tr class="odd">
 <td>1</td>
 <td>2022/03/11</td>
-<td>Introduction</td>
-<td><a href="S01.introduction.html">intro</a></td>
+<td><a href="S01.introduction.html">Introduction</a> <a href="S02.basic_text.html">Basic Text Processing</a></td>
+<td><a href="S02.edit_distance.html">MED</a></td>
 </tr>
 </tbody>
 </table>
