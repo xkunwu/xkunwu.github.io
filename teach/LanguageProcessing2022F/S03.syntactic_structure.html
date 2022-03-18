@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="WU Xiaokun 吴晓堃" />
-  <title>2. 最小编辑距离</title>
+  <title>3. 句法结构</title>
   <style>
     html {
       line-height: 1.5;
@@ -168,1204 +168,605 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">2. 最小编辑距离</h1>
+<h1 class="title">3. 句法结构</h1>
 <p class="author">WU Xiaokun 吴晓堃</p>
-<p class="date">2022/03/11</p>
+<p class="date">2022/03/18</p>
 </header>
-<h1 class="center" id="定义">定义</h1>
-<h2 id="用例拼写">用例：拼写</h2>
-<p>拼写校正</p>
+<h1 class="center" id="谁吃谁">谁吃谁？</h1>
+<h2 id="下面哪种写法正确">下面哪种写法正确？</h2>
+<blockquote>
+<p>Ich esse Fisch<br />
+Fisch esse Ich<br />
+</p>
+<p>Fisch isst mich<br />
+mich isst Fisch<br />
+</p>
+<p>– <em>德语练习</em></p>
+</blockquote>
+<div class="incremental">
 <ul>
-<li>用户写“graffe”，下面那个正确？
+<li>只有谓语的位置固定（在主句中只有一个动词放第二位，两个以上动词、在从句中所有动词放句尾）</li>
+</ul>
+</div>
+<div class="incremental">
 <ul>
-<li>graf, graft, grail, giraffe</li>
+<li>拉丁语、俄语：语序完全自由（6种组合），把强调的成分放在句首
+<ul>
+<li>拉丁语：最常用主宾谓结构 SOV</li>
 </ul></li>
 </ul>
-<p> </p>
-<div class="incremental">
-<p>中文：拼音输入法</p>
-<pre class="text"><code>严谨作弊？
-严禁作弊！</code></pre>
-<p> </p>
 </div>
-<div class="incremental">
-<p>模糊搜索：返回相近的搜索</p>
-</div>
-<h2 id="用例计算生物学">用例：计算生物学</h2>
+<h2 id="语言分类">语言分类</h2>
+<p>想要研究NLP，先要了解自然语言</p>
 <ul>
-<li>RNA 序列匹配：</li>
-</ul>
-<pre class="text"><code>AGGCTATCACCTGACCTCCAGGCCGATGCCC
-TAGCTATCACGACCGCGGTCGATTTGCCCGAC</code></pre>
-<pre class="text"><code>-AGGCTATCACCTGACCTCCAGGCCGA--TGCCC---
-TAG-CTATCAC--GACCGC--GGTCGATTTGCCCGAC</code></pre>
-<h2 id="用例共指">用例：共指</h2>
-<p><strong>共指 coreference</strong>：表述之间是否指向同一个实体</p>
-<pre class="text"><code>中国
-中华人民共和国
-大中华地区
-中國 (佛教) ：釋迦牟尼出生地
-震旦：漢傳佛教經典中，對古代中國的稱呼
-阮朝：越南阮朝朝廷在國內有時也自稱為「中國」
-China, la Chine, ...</code></pre>
-<p> </p>
-<div class="incremental">
-<p>其他应用：机器翻译，信息提取，语言识别</p>
-</div>
-<h2 id="度量相似度">度量相似度</h2>
-<p>从计算的角度讲，很多NLP任务的核心是度量字符串的<strong>相似度</strong></p>
+<li><strong>分析语 Analytic language</strong>：語序、虚词
 <ul>
-<li>如何度量相似度？观察打字与修改
+<li>汉藏语系</li>
+</ul></li>
+<li><strong>综合语 Synthetic language</strong>：词形变化
 <ul>
-<li>字符串是由编辑操作构造的</li>
-<li>每一步只涉及一个字符</li>
+<li>屈折语：拉丁语，印欧语系</li>
+<li>黏着语：日本－琉球语系，突厥语</li>
 </ul></li>
 </ul>
-<p> </p>
-<p>例如最简单的拉丁字母序列</p>
-<pre class="text"><code>intention
-execution</code></pre>
-<div class="note">
-
-</div>
-<h2 id="编辑距离">编辑距离</h2>
-<p>从计算的角度讲，很多NLP任务的核心是度量字符串的<strong>相似度</strong></p>
-<ul>
-<li>如何度量相似度？观察打字与修改</li>
-<li>例如最简单的拉丁字母序列</li>
-</ul>
-<pre class="text"><code>intention
-execution</code></pre>
-<p> </p>
-<p><strong>编辑距离 edit distance</strong>：编辑操作的数量</p>
-<ul>
-<li>插入字符</li>
-<li>删除字符</li>
-<li>替换字符</li>
-</ul>
-<div class="note">
-
-</div>
-<h2 id="对齐可视化">对齐可视化</h2>
-<p><strong>对齐 alignment</strong>：将尽可能多的相同字符对应起来</p>
-<ul>
-<li>插入、删除字符时插入空字符<code>*</code></li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th>d</th>
-<th>s</th>
-<th>s</th>
-<th></th>
-<th>i</th>
-<th>s</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>I</td>
-<td>N</td>
-<td>T</td>
-<td>E</td>
-<td>*</td>
-<td>N</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>*</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>编辑距离：简单数一下编辑操作</li>
-</ul>
-<p> </p>
 <div class="incremental">
-<p><strong>最小编辑距离</strong>：对齐最多的字母；最少的编辑操作</p>
+<p><strong>词形变化 inflections</strong></p>
+<ul>
+<li>我吃鱼</li>
+<li>I eat fish(-, es)</li>
+<li>Je mange [manger] du poisson(s)</li>
+</ul>
 <div class="note">
 
 </div>
 </div>
-<h2 id="编辑成本">编辑成本</h2>
-<p><strong>Levenshtein 距离</strong>：字符串之间的加权编辑距离</p>
+<h2 id="屈折语">屈折语</h2>
+<p>语序：Ich esse [essen] Fisch(e)</p>
+<pre class="text"><code>Ich esse Fisch
+Fisch esse Ich
+
+Fisch isst mich
+mich isst Fisch</code></pre>
+<div class="incremental">
+<p>省略：(Yo) como [comer] pescado(s)</p>
 <ul>
-<li>每种操作的“成本”可以不一样</li>
+<li>西班牙语比较接近拉丁语</li>
 </ul>
-<table>
-<thead>
-<tr class="header">
-<th>d</th>
-<th>s</th>
-<th>s</th>
-<th></th>
-<th>i</th>
-<th>s</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>I</td>
-<td>N</td>
-<td>T</td>
-<td>E</td>
-<td>*</td>
-<td>N</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>*</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
+</div>
+<div class="incremental">
+<p>注意：汉语也有特殊情况</p>
+<pre class="text"><code>何辞为？--《史记·项羽本纪·鸿门宴》
+给钱我。--方言</code></pre>
+<div class="note">
+
+</div>
+</div>
+<h2 id="语法">语法</h2>
+<p>要理解语言，就绕不开<strong>语法 grammar</strong>。</p>
 <ul>
-<li>等权重：<span class="math inline">5</span></li>
-<li>替换成本翻倍：<span class="math inline">8</span>
+<li>问题：语法学习很枯燥、语法书很厚
 <ul>
-<li>替换可以看成：删除+插入</li>
+<li>被语法学习支配的痛苦</li>
 </ul></li>
+<li>正确思路：语法<strong>是工具而不是目的</strong></li>
+</ul>
+<p> </p>
+<div class="incremental">
+<p>NLP 的最终目标：<strong>提取语义、理解语音</strong>。</p>
+<ul>
+<li>简单、相对完备，但好用</li>
+<li>容易实现</li>
 </ul>
 <div class="note">
 
 </div>
-<h2 id="med-应用">MED 应用</h2>
-<p>评测机器翻译、语音识别</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>d</th>
-<th>d</th>
-<th></th>
-<th></th>
-<th></th>
-<th>i</th>
-<th>i</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>He</td>
-<td>to</td>
-<td>reporters</td>
-<td>introduced</td>
-<td>main</td>
-<td>content</td>
-<td>*</td>
-<td>*</td>
-</tr>
-<tr class="even">
-<td>He</td>
-<td>*</td>
-<td>*</td>
-<td>introduced</td>
-<td>main</td>
-<td>content</td>
-<td>to</td>
-<td>reporters</td>
-</tr>
-<tr class="odd">
-<td>他</td>
-<td>向</td>
-<td>记者</td>
-<td>介绍了</td>
-<td>主要</td>
-<td>内容</td>
-<td>*</td>
-<td>*</td>
-</tr>
-</tbody>
-</table>
-<p> </p>
-<div class="incremental">
-<p>命名实体识别、共指消解</p>
-<pre class="text"><code>中华人民共和国 简称 中国</code></pre>
 </div>
-<h2 id="如何计算med">如何计算MED？</h2>
-<p>简单搜索：搜索空间随字符长度指数级增长</p>
+<h2 id="句法">句法</h2>
+<blockquote>
+<p><strong>句法 Syntax</strong>指一门语言里支配句子结构，决定词、短语、从句等句子成分如何组成其上级成分，直到组成句子的<strong>规则或过程</strong>。</p>
+<p>– <em>Wikipedia</em></p>
+</blockquote>
+<div class="incremental">
 <ul>
-<li><code>D</code>：<span class="math inline">1</span></li>
-<li><code>I</code>：<span class="math inline">26</span></li>
-<li><code>S</code>：<span class="math inline">26</span>，或禁止替换操作</li>
+<li><strong>syntax</strong> 来自于希腊语 <em>sýntaxis</em>：安排到一起</li>
+<li>汉语句法研究主要关注语序。</li>
 </ul>
-<div class="incremental">
-<p>大量路径通往相同字符串</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<table>
-<thead>
-<tr class="header">
-<th>d</th>
-<th>s</th>
-<th>s</th>
-<th></th>
-<th>i</th>
-<th>s</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>I</td>
-<td>N</td>
-<td>T</td>
-<td>E</td>
-<td>*</td>
-<td>N</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>*</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column" style="width:50%;">
-<table>
-<thead>
-<tr class="header">
-<th>s</th>
-<th>d</th>
-<th>s</th>
-<th></th>
-<th>s</th>
-<th>i</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>I</td>
-<td>N</td>
-<td>T</td>
-<td>E</td>
-<td>N</td>
-<td>*</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>E</td>
-<td>*</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
+<div class="note">
+
 </div>
 </div>
+<h2 id="语料库-corpus">语料库 corpus</h2>
+<p>部分示例取自 ATIS (Air Traffic Information System) ([Hemphill 1990]) 数据集。</p>
 <ul>
-<li>不需要记住所有路径</li>
-<li>只需要其中一条最短路径</li>
+<li>例如：I’d like to fly to Atlanta.</li>
 </ul>
+<div class="note">
+
 </div>
-<div class="incremental">
-<p>听起来像是动态规划的思想？</p>
-</div>
-<h1 class="center" id="计算med">计算MED</h1>
-<h2 id="问题定义">问题定义</h2>
-<p>字符串：</p>
+<h1 class="center" id="构成法">构成法</h1>
+<h2 id="构成句法">构成句法</h2>
+<p><strong>构成句法 Syntactic Constituency</strong>：不断将句子成分组合成更高一级单元的过程</p>
 <ul>
-<li><span class="math inline">x = x_1x_2..x_n</span></li>
-<li><span class="math inline">y = y_1y_2..y_m</span></li>
+<li>字 -&gt; 词 -&gt; 短语 -&gt; 句子。</li>
 </ul>
 <p> </p>
 <div class="incremental">
-<p>子串：</p>
-<ul>
-<li><span class="math inline">x[1..i] = x_1x_2..x_i</span></li>
-<li><span class="math inline">y[1..j] = y_1y_2..y_j</span></li>
-</ul>
-<p> </p>
+<div class="example">
+<div class="hdrbox">
+<h3 id="名词短语-noun-phrase">名词短语 noun phrase</h3>
+<p>中国人民银行</p>
+<p>Harry the Horse</p>
 </div>
-<div class="incremental">
-<p>距离函数：</p>
-<ul>
-<li>字串距离：<span class="math inline">D(i,j) = MED(x[1..i], y[1..j])</span></li>
-<li>编辑距离：<span class="math inline">D(n,m)</span></li>
-</ul>
 </div>
-<h2 id="动态规划">动态规划</h2>
-<p><strong>动态规划 dynamic programming</strong>：基于表格查找</p>
+<div class="note">
+
+</div>
+</div>
+<h2 id="如何分组">如何分组？</h2>
+<p>合理假设：同时出现在类似的句法环境中。</p>
 <ul>
-<li>将问题拆解成一系列子问题</li>
-<li>自底向上合并子问题的解</li>
+<li>例如：在动词之前</li>
 </ul>
 <p> </p>
 <div class="incremental">
-<p><strong>Bellman 方程</strong>：递推关系 recurrence relation</p>
+<div class="example">
+<div class="hdrbox">
+<h3 id="名词短语在动词前">名词短语在动词前</h3>
+<p>中国人民银行简称人民银行、人行或央行。</p>
+<p>Harry the Horse is the first to pass the line.</p>
+</div>
+</div>
+<p> </p>
+</div>
+<div class="incremental">
+<p>注意：非充要条件。</p>
+<div class="note">
+
+</div>
+</div>
+<h2 id="分组方法词类">分组方法：词类</h2>
+<div class="example">
+<div class="hdrbox">
+<h3 id="形容词指代">形容词：指代</h3>
+<p>安达尔人、洛伊拿人和先民的女王 Queen of the Andals, the Rhoynars and the First Men、七国女王/统治者 Queen/Lord of the Seven Kingdoms、全境守护 Protector of the Realm、大草海的卡丽熙 Khaleesi of the Great Grass Sea、镣铐/锁链破除者 Breaker of Shackles/Chains、弥林女王 Queen of Meereen、龙石岛公主 Princess of Dragonstone、不焚者 Unburnt、龙之母 Mother of Dragons、弥莎 Mhysa、母亲 Mother、银发女王 Silver Queen、银发女士 Silver Lady、龙女王 Dragon Queen 丹妮莉丝·坦格利安 Daenerys Targaryen。–《冰与火之歌》</p>
+</div>
+</div>
+<div class="incremental">
+<div class="example">
+<div class="hdrbox">
+<h3 id="形容词头衔">形容词：头衔</h3>
+<p>翰林学士朝散大夫右谏议大夫知制诰兼侍讲同提举万寿观公事兼判集贤院上护军河内郡开国侯食邑一千三百户赐紫金鱼袋臣 司马光 奉敕编集 –《资治通鉴》</p>
+</div>
+</div>
+<div class="note">
+
+</div>
+</div>
+<h2 id="分组方法语序">分组方法：语序</h2>
+<p>合理假设：语序变化不影响语义。</p>
+<div class="example">
+<div class="hdrbox">
+<h3 id="前置-preposed后置-postposed">前置 preposed、后置 postposed</h3>
+<p><em>On September seventeenth</em>, I’d like to fly from Atlanta to Denver</p>
+<p>I’d like to fly <em>on September seventeenth</em> from Atlanta to Denver</p>
+<p>I’d like to fly from Atlanta to Denver <em>on September seventeenth</em></p>
+</div>
+</div>
+<p> </p>
+<div class="incremental">
+<p>注意：语序对中文非常重要。</p>
+</div>
+<h1 class="center" id="语境无关语法">语境无关语法</h1>
+<h2 id="语境无关语法-cfg">语境无关语法 CFG</h2>
+<p>语境无关语法 <strong>Context-Free Grammars (CFG)</strong></p>
+<ul>
+<li><strong>规则 rules</strong> 或 <strong>生成符号 productions</strong></li>
+<li><strong>词典 lexicon</strong></li>
+</ul>
+<div class="example">
+<div class="hdrbox">
+<h3 id="名词短语-noun-phrase-np">名词短语 Noun Phrase (NP)</h3>
 <p><span class="math display">
-D(i, j) = \left\{ \begin{array}{ll}
-j \delta &amp; \text{if}\ i = 0 \\
-i \delta &amp; \text{if}\ j = 0 \\
-\min \{
-\alpha_{x_i,y_j} + D(i-1,j-1),
-\delta + D(i-1,j),
-\delta + D(i,j-1)
-\} &amp; \text{otherwise} \\
-\end{array}\right.
+\begin{aligned}
+NP &amp;\rightarrow 限定词\ Det + 名词性成分\ Nominal \\
+NP &amp;\rightarrow 专有名词\ ProperNoun \\
+Nominal &amp;\rightarrow Noun | Nominal + Noun \\
+\end{aligned}
 </span></p>
+</div>
+</div>
+<div class="incremental">
+<p>又称<strong>短语结构文法 Phrase-Structure Grammars</strong></p>
 <ul>
-<li>插入、删除花费：<span class="math inline">\delta = 1</span>；替换花费：<span class="math inline">\alpha_{pq} = \{0, 2\}</span></li>
+<li>构成方法与<strong>Backus-Naur Form (BNF)</strong>等价。</li>
+<li>本质上是形式化语法</li>
 </ul>
 <div class="note">
 
 </div>
 </div>
-<h2 id="med表初始化">MED表：初始化</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td>N</td>
-<td>9</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>O</td>
-<td>8</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>I</td>
-<td>7</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>T</td>
-<td>6</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>N</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>E</td>
-<td>4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>T</td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>N</td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>I</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>#</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>#</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-<h2 id="med表填表-i">MED表：填表 I</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td>I</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>#</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>#</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-<p> </p>
-<table>
-<thead>
-<tr class="header">
-<th>i</th>
-<th>i</th>
-<th>i</th>
-<th>i</th>
-<th>i</th>
-<th>i</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>*</td>
-<td>*</td>
-<td>*</td>
-<td>*</td>
-<td>*</td>
-<td>*</td>
-<td>I</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="med表填表-e">MED表：填表 E</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td>E</td>
-<td>4</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>9</td>
-</tr>
-<tr class="even">
-<td>T</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>N</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td>I</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>#</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>#</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-<p> </p>
-<table>
-<thead>
-<tr class="header">
-<th>d</th>
-<th>d</th>
-<th>d</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>I</td>
-<td>N</td>
-<td>T</td>
-<td>E</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>*</td>
-<td>*</td>
-<td>*</td>
-<td>E</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="med表完整版">MED表：完整版</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td>N</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>12</td>
-<td>11</td>
-<td>10</td>
-<td>9</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>O</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>10</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td>I</td>
-<td>7</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>T</td>
-<td>6</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>N</td>
-<td>5</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>E</td>
-<td>4</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td>T</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>N</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-</tr>
-<tr class="odd">
-<td>I</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>#</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>#</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-<h1 class="center" id="回溯">回溯</h1>
-<h2 id="对齐方案">对齐方案</h2>
-<p>注意：任务通常并不仅是计算编辑距离</p>
+<h2 id="层次化规则">层次化规则</h2>
+<p>CFG中的规则可以不断“生长”：</p>
 <ul>
-<li>大多数情况需要字符对齐的<strong>具体方案</strong></li>
+<li>右侧：可以是生成符号、字的有序列表</li>
+<li>左侧：一定是生成符号</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:60%;">
-<table>
-<tbody>
-<tr class="odd">
-<td>N</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>12</td>
-<td>11</td>
-<td>10</td>
-<td>9</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>O</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>10</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td>I</td>
-<td>7</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>T</td>
-<td>6</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>N</td>
-<td>5</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>E</td>
-<td>4</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td>T</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>N</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-</tr>
-<tr class="odd">
-<td>I</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>#</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>#</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column" style="width:40%;">
-<table>
-<thead>
-<tr class="header">
-<th>s</th>
-<th>d</th>
-<th>s</th>
-<th></th>
-<th>s</th>
-<th>i</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>I</td>
-<td>N</td>
-<td>T</td>
-<td>E</td>
-<td>N</td>
-<td>*</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>E</td>
-<td>*</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
-<td>I</td>
-<td>O</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
+<div class="example">
+<div class="hdrbox">
+<h3 id="规则细化">规则细化</h3>
+<p><span class="math display">
+\begin{aligned}
+Det &amp;\rightarrow a | the \\
+Noun &amp;\rightarrow flight \\
+\end{aligned}
+</span></p>
 </div>
 </div>
-<h2 id="回溯法">回溯法</h2>
-<p><strong>回溯法 backtrace</strong>：在计算每个表格时，记录路径来源</p>
+<div class="incremental">
+<p>规则导出的<strong>层次化拓扑关系</strong>对应于句法。</p>
 <ul>
-<li>算法结束后，从终点回溯到起点</li>
-<li>注意：路径不唯一，取决于代码执行顺序
+<li>类比于语法树的拓展</li>
+</ul>
+<p><img src="data:image/png;base64,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" height="250" /></p>
+</div>
+<h2 id="终端">终端</h2>
+<p>CFG中的符号可分为两类：</p>
 <ul>
-<li>但关键节点一定会通过</li>
+<li><strong>终端 terminal</strong>：对应语言（词典）中的字</li>
+<li><strong>（非终端）节点</strong>：抽象生成出的符号</li>
+</ul>
+<p><img src="data:image/png;base64,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" height="250" /></p>
+<div class="incremental">
+<p>CFG中的规则可以不断拓展：</p>
+<ul>
+<li>右侧：可以是单个或多个生成符号、字的有序列表</li>
+<li>左侧：一定是单个生成符号，表示<strong>聚类或归纳</strong>
+<ul>
+<li>指向字的节点表示其<strong>类别或句子成分</strong></li>
 </ul></li>
 </ul>
+<div class="note">
+
+</div>
+</div>
+<h2 id="生成判别">生成、判别</h2>
+<p>CFG的两种理解：</p>
+<ul>
+<li><strong>生成 generative</strong>：给定规则，生成句子</li>
+<li><strong>判别 discriminative</strong>：给定句子，判别结构</li>
+</ul>
+<div class="incremental">
+<div class="example">
+<div class="hdrbox">
+<h3 id="将左边的符号重写成新的符号串">“将左边的符号重写成新的符号串”</h3>
+<p><span class="math display">
+\begin{aligned}
+NP &amp;: \text{a flight} \\
+Det &amp;~ Nominal \\
+Det &amp;~ Noun \\
+a &amp;~ flight \\
+\end{aligned}
+</span></p>
+</div>
+</div>
+<p><img src="data:image/png;base64,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" height="250" /></p>
+<div class="note">
+
+</div>
+</div>
+<h2 id="解析树">解析树</h2>
+<p><strong>解析树 parse tree</strong>的构建</p>
+<ul>
+<li><strong>派生 derivation</strong>：通过规则扩展符号序列的过程。</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>名词短语</p>
+<pre class="text"><code>NP: a flight
+Det Nominal
+Det Noun
+a flight</code></pre>
+</div><div class="column" style="width:60%;">
+<p>解析树图示</p>
+<p><img src="data:image/png;base64,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" height="200" /></p>
+</div>
+</div>
+<div class="incremental">
+<p>解析树中节点的派生关系：</p>
+<ul>
+<li>有向链接可以称为<strong>支配 dominate</strong></li>
+<li>树结构有唯一<strong>起始符 start symbol</strong>
+<ul>
+<li>常用“S”指代，又可解释为句子本身</li>
+</ul></li>
+</ul>
+<div class="note">
+
+</div>
+</div>
+<h2 id="动词短语介词短语">动词短语、介词短语</h2>
+<div class="example">
+<div class="hdrbox">
+<h3 id="动词短语-verb-phrase">动词短语 verb phrase</h3>
+<p><span class="math display">
+\begin{aligned}
+S &amp;\rightarrow NP ~ VP &amp;~ \text{I prefer a morning flight} \\
+\end{aligned}
+</span></p>
+</div>
+</div>
+<div class="incremental">
+<p><span class="math display">
+\begin{aligned}
+VP &amp;\rightarrow Verb ~ NP &amp;~ \text{prefer a morning flight} \\
+VP &amp;\rightarrow Verb ~ NP ~ PP &amp;~ \text{leave Boston in the morning} \\
+VP &amp;\rightarrow Verb ~ PP &amp;~ \text{leaving on Thursday} \\
+\end{aligned}
+</span></p>
+</div>
+<div class="incremental">
+<div class="example">
+<div class="hdrbox">
+<h3 id="介词短语-prepositional-phrase">介词短语 prepositional phrase</h3>
+<p><span class="math display">
+\begin{aligned}
+PP &amp;\rightarrow Preposition ~ NP &amp;~ \text{from Los Angeles} \\
+\end{aligned}
+</span></p>
+</div>
+</div>
+<div class="note">
+
+</div>
+</div>
+<h2 id="atis-造句词典">ATIS 造句：词典</h2>
+<p><span class="math display">
+\begin{aligned}
+\text{Noun} &amp;\rightarrow flights | flight | breeze | trip | morning \\
+\text{Verb} &amp;\rightarrow is | prefer | like | need | want | fly | do \\
+\text{Adjective} &amp;\rightarrow cheapest | non-stop | first | latest | other | direct \\
+\text{Pronoun} &amp;\rightarrow me | I | you | it \\
+\text{Proper-Noun} &amp;\rightarrow Alaska | Baltimore | Los Angeles | Chicago | United | American \\
+\text{Determiner} &amp;\rightarrow the | a | an | this | these | that \\
+\text{Preposition} &amp;\rightarrow from | to | on | near | in \\
+\text{Conjunction} &amp;\rightarrow and | or | but \\
+\end{aligned}
+</span></p>
+<h2 id="atis-造句例子">ATIS 造句：例子</h2>
 <table>
+<thead>
+<tr class="header">
+<th>语法规则</th>
+<th></th>
+<th></th>
+<th>例子</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td>E</td>
-<td>4</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>9</td>
-</tr>
-<tr class="even">
-<td>T</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>N</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-<td>8</td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td>I</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>#</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
+<td>S</td>
+<td><span class="math inline">\rightarrow</span></td>
+<td>NP VP</td>
+<td>I + want a morning flight</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>#</td>
-<td>E</td>
-<td>X</td>
-<td>E</td>
-<td>C</td>
-<td>U</td>
-<td>T</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>NP</td>
+<td><span class="math inline">\rightarrow</span></td>
+<td>Pronoun</td>
 <td>I</td>
-<td>O</td>
-<td>N</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\vert</span></td>
+<td>Proper-Noun</td>
+<td>Los Angeles</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\vert</span></td>
+<td>Det Nominal</td>
+<td>a + flight</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Nominal</td>
+<td><span class="math inline">\rightarrow</span></td>
+<td>Nominal Noun</td>
+<td>morning + flight</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\vert</span></td>
+<td>Noun</td>
+<td>flights</td>
 </tr>
 </tbody>
 </table>
-<h2 id="med回溯表">MED回溯表</h2>
-<div class="nopub">
+<h2 id="quizatis-解析树">Quiz：ATIS 解析树</h2>
+<p>如何对“I prefer a morning flight”绘制解析树？</p>
+<h2 id="括号表示">括号表示</h2>
+<p><strong>括号表示 Bracketed notation</strong>：另外一种相对紧凑的表示</p>
+<p><span class="math inline">[_S [_{NP} [_{Pro}</span> I <span class="math inline">]] [_{VP} [_V</span> prefer <span class="math inline">] [_{NP} [_{Det}</span> a <span class="math inline">] [_{Nom} [_N</span> morning <span class="math inline">] [_{Nom} [_N</span> flight <span class="math inline">]]]]]]</span></p>
+<p> </p>
+<div class="incremental">
+<pre class="text"><code>[
+    [
+        [ I ]
+    ]
+    [
+        [ prefer ]
+        [
+            [ a ]
+            [
+                [ morning ]
+                [
+                    [ flight ]
+                ]
+            ]
+        ]
+    ]
+]</code></pre>
+</div>
+<h2 id="实验成分句法分析">实验：成分句法分析</h2>
+<p>HanLP: <a href="https://hanlp.hankcs.com/">https://hanlp.hankcs.com/</a></p>
+<h2 id="形式语言">形式语言</h2>
+<p><strong>形式语言 formal language</strong>：取决于人工定义</p>
+<ul>
+<li><strong>语法正确的 grammatical</strong>：可以通过形式语言生成的句子</li>
+<li>问题：忽略了上下文</li>
+</ul>
+<p> </p>
+<div class="incremental">
+<p><strong>生成语法 generative grammar</strong>：句子集合完全由形式语言生成</p>
+<ul>
+<li>例如：CFG</li>
+</ul>
+<div class="note">
 
 </div>
+</div>
+<h2 id="cfg-的严格定义-i">CFG 的严格定义 I</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 85%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">N</span></td>
+<td>a set of <strong>non-terminal symbols</strong> (or <strong>variables</strong>)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\Sigma</span></td>
+<td>a set of <strong>terminal symbols</strong> (disjoint from <span class="math inline">N</span>)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">R</span></td>
+<td>a set of <strong>rules</strong> or productions, each of the form <span class="math inline">A \rightarrow \beta</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\beta</span> is a string of symbols from the infinite set of strings <span class="math inline">(\Sigma ∪ N)∗</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">S</span></td>
+<td>a designated <strong>start symbol</strong> and a member of <span class="math inline">N</span></td>
+</tr>
+</tbody>
+</table>
+<div class="incremental">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Capital letters like <span class="math inline">A</span>, <span class="math inline">B</span>, and <span class="math inline">S</span></td>
+<td>Non-terminals</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">S</span></td>
+<td>The start symbol</td>
+</tr>
+<tr class="odd">
+<td>Lower-case Greek letters like α, β, and γ</td>
+<td>Strings drawn from <span class="math inline">(\Sigma ∪ N)∗</span></td>
+</tr>
+<tr class="even">
+<td>Lower-case Roman letters like u, v, and w</td>
+<td>Strings of terminals</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+
+</div>
+</div>
+<h2 id="cfg-的严格定义-ii">CFG 的严格定义 II</h2>
+<div class="block">
+<div class="hdrbox">
+<h3 id="直接导出-directly-derives">直接导出 directly derives</h3>
+<p>[Hopcroft and Ullman 1979] if A → β is a production of R and α and γ are any strings in the set (Σ∪N)∗, then we say that αAγ <strong>directly derives</strong> αβγ, or αAγ ⇒ αβγ.</p>
+</div>
+</div>
+<div class="block">
+<div class="hdrbox">
+<h3 id="导出-derives">导出 derives</h3>
+<p>Let α1, α2, …, αm be strings in (Σ∪N)∗,m ≥ 1, such that α1 ⇒ α2,α2 ⇒ α3,…,αm 1 ⇒ αm. We say that α1 <strong>derives</strong> αm, or α1 ∗⇒ αm.</p>
+</div>
+</div>
+<div class="incremental">
+<div class="block">
+<div class="hdrbox">
+<h3 id="语法g生成的语言">语法G生成的语言</h3>
+<p><span class="math display">
+\mathcal{L}_G = \{w|w \in \Sigma∗, S ∗\Rightarrow w\}
+</span></p>
+</div>
+</div>
+<div class="note">
+
+</div>
+</div>
+<h1 class="center" id="树库">树库</h1>
+<h2 id="树库-1">树库</h2>
+<p><strong>树库 Treebanks</strong>：标注好句法的语料库</p>
+<ul>
+<li>正确性、鲁棒性</li>
+<li>通用标准：专家校正</li>
+</ul>
+<p> </p>
+<div class="incremental">
+<p>常用数库：</p>
+<ul>
+<li><strong>Penn Treebank</strong></li>
+<li><strong>Universal Dependencies</strong></li>
+<li><strong>Chinese Treebank</strong>
+<ul>
+<li>Chinese Treebank 9.0: <a href="https://catalog.ldc.upenn.edu/LDC2016T13">https://catalog.ldc.upenn.edu/LDC2016T13</a></li>
+</ul></li>
+</ul>
+<div class="note">
+
+</div>
+</div>
+<h2 id="chinese-treebank-9.0">Chinese Treebank 9.0</h2>
+<p>Chinese Treebank 9.0 consists of approximately <strong>two million words</strong> of annotated and parsed text from Chinese newswire, government documents, magazine articles, various broadcast news and broadcast conversation programs, web newsgroups, weblogs, discussion forums, chat messages and transcribed conversational telephone speech.</p>
+<ul>
+<li>There are <strong>3,726 text files</strong> in this release, containing 132,076 sentences, 2,084,387 words, 3,247,331 characters (hanzi or foreign).</li>
+<li>The data is provided in the UTF-8 encoding, and the annotation has Penn Treebank-style <strong>labeled brackets</strong>.</li>
+<li>The data is provided in <strong>four different formats</strong>: raw text, word segmented, POS-tagged, and syntactically bracketed formats.</li>
+<li>All files were automatically verified and <strong>manually checked</strong>.</li>
+</ul>
+<h2 id="chinese-treebank-9.0-样例">Chinese Treebank 9.0 样例</h2>
+<p>文本：青岛优化资本结构促进企业规模扩大</p>
+<p><strong>Bracketed</strong></p>
+<pre class="text"><code>&lt;S ID=9901&gt;
+( (IP-HLN (NP-PN-SBJ (NR 青岛))
+      (VP (VP (VV 优化)
+          (NP-OBJ (NN 资本)
+              (NN 结构)))
+          (VP (VV 促进)
+          (NP-OBJ (NP (NN 企业)
+                  (NN 规模))
+              (NP (NN 扩大)))))))
+&lt;/S&gt;</code></pre>
+<p><strong>POSTagged</strong></p>
+<pre class="text"><code>&lt;S ID=9901&gt;
+青岛_NR 优化_VV 资本_NN 结构_NN 促进_VV 企业_NN 规模_NN 扩大_NN
+&lt;/S&gt;</code></pre>
+<h1 class="center" id="review">Review</h1>
 </body>
 </html>
