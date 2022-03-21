@@ -183,8 +183,8 @@
 <div class="incremental">
 <p>难点：</p>
 <ul>
-<li>理解维度、形状与索引</li>
-<li>理解张量的构造
+<li>理解<strong>维度、形状与索引</strong></li>
+<li>理解<strong>张量的构造</strong>
 <ul>
 <li>增减维度</li>
 <li>拼接</li>
@@ -269,7 +269,7 @@
 <h2 id="pandas软件包">pandas软件包</h2>
 <p>Pandas (Python Data Analysis Library)</p>
 <ul>
-<li>Python 的核心数据分析支持库，提供了快速、灵活、明确的数据结构，旨在简单、直观地处理关系型、标记型数据。</li>
+<li>Python 的<strong>核心数据分析支持库</strong>，提供了快速、灵活、明确的数据结构，旨在简单、直观地处理关系型、标记型数据。</li>
 </ul>
 <div class="note">
 
@@ -281,7 +281,7 @@
 <ul>
 <li>位置：坐标系上，与原点的相对距离
 <ul>
-<li>标准正交基的线性组合</li>
+<li>标准正交基的<strong>线性组合</strong></li>
 </ul></li>
 <li>方向和长度</li>
 </ul>
@@ -291,7 +291,7 @@
 <p> </p>
 </div>
 <div class="incremental">
-<p>向量内积：度量相似度</p>
+<p>向量内积：度量<strong>相似度</strong></p>
 <ul>
 <li>投影后相乘：<span class="math inline">a \cdot b = |a|(|b|\cos \theta)</span></li>
 </ul>
@@ -300,13 +300,13 @@
 <p>行列维数需要一致</p>
 <p> </p>
 <div class="incremental">
-<p>注意：Python中<code>*</code>默认是按元素乘法</p>
+<p>注意：Python中<code>*</code>默认是<strong>按元素乘法</strong></p>
 <ul>
 <li>数学上的Hadamard积：<span class="math inline">\odot</span></li>
 </ul>
 </div>
 <h2 id="几何意义矩阵">几何意义：矩阵</h2>
-<p>矩阵乘法：空间线性变形</p>
+<p>矩阵乘法：<strong>空间线性变形</strong></p>
 <ul>
 <li>矩阵乘以矩阵可以看成矩阵乘以多个列向量
 <ul>
@@ -326,7 +326,7 @@
 </span></p>
 </div>
 <h2 id="矩阵的特征向量">矩阵的特征向量</h2>
-<p>不被矩阵改变方向</p>
+<p>不被此矩阵改变方向</p>
 <p><span class="math display">
 Ax = \lambda x
 </span></p>
@@ -334,7 +334,7 @@ Ax = \lambda x
 <h1 class="center" id="halftime">Halftime</h1>
 <h1 class="center" id="多元微分">多元微分</h1>
 <h2 id="标量导数">标量导数</h2>
-<p>一元微分（标量对标量）</p>
+<p>一元微分（<strong>标量对标量</strong>）</p>
 <ul>
 <li>基本函数：</li>
 </ul>
@@ -388,7 +388,7 @@ Ax = \lambda x
 </tbody>
 </table>
 <h2 id="梯度">梯度</h2>
-<p>多元微分（标量对向量）</p>
+<p>多元微分（<strong>标量对向量</strong>）</p>
 <p><span class="math display">
 df = \sum_i \frac{\partial f}{\partial x_i} dx_i = \frac{\partial f}{\partial x} d\mathbf{x}
 </span></p>
@@ -406,7 +406,7 @@ df = \sum_i \frac{\partial f}{\partial x_i} dx_i = \frac{\partial f}{\partial x}
 </ul>
 </div>
 <h2 id="雅可比矩阵-jacobian-matrix">雅可比矩阵 Jacobian matrix</h2>
-<p>多元微分（向量对向量）</p>
+<p>多元微分（<strong>向量对向量</strong>）</p>
 <p><span class="math display">
 \mathbf{x} =
 \begin{bmatrix}
@@ -441,7 +441,7 @@ y_m\\
 \end{bmatrix}
 </span></p>
 <h2 id="特例">特例</h2>
-<p>多元微分（向量对标量）</p>
+<p>多元微分（<strong>向量对标量</strong>）</p>
 <p><span class="math display">
 \mathbf{y} =
 \begin{bmatrix}
@@ -502,7 +502,7 @@ y_m\\
 <li>微分学被系统地搭建起来</li>
 <li>高度抽象的概念需要大量的<strong>标记符</strong>来概括描述
 <ul>
-<li>于是本来没有的问题被创造出来</li>
+<li>于是本来没有的<strong>问题被创造出来</strong></li>
 </ul></li>
 <li>更聪明的物理学家想出了简化标记</li>
 </ul>
@@ -584,7 +584,7 @@ z &amp;= b^2\\
 </div>
 <div class="incremental">
 <ul>
-<li>繁琐、易错；现在一般使用自动微分软件包</li>
+<li>繁琐、易错；现在一般使用<strong>自动微分</strong>软件包</li>
 </ul>
 </div>
 <h2 id="自动求导">自动求导</h2>
@@ -623,7 +623,7 @@ z &amp;= b^2\\
 \frac{\partial y}{\partial x} = \left(\left(\left(\frac{\partial y}{\partial u_n} \frac{\partial u_n}{\partial u_{n-1}}\right) \cdots\right) \frac{\partial u_2}{\partial u_1}\right) \frac{\partial u_1}{\partial x}
 </span></p>
 <h2 id="前向积累">前向积累</h2>
-<p>前向：执行计算图，并存储中间结果</p>
+<p>前向：执行计算图，并<strong>存储中间结果</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -638,7 +638,7 @@ z &amp;= b^2\\
 </div>
 </div>
 <h2 id="反向传递-i">反向传递 I</h2>
-<p>反向：计算梯度值，剪除不需要的枝，避免重复计算。</p>
+<p>反向：<strong>计算梯度值</strong>，剪除不需要的枝，避免重复计算。</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -655,7 +655,7 @@ z &amp;= b^2\\
 </div>
 </div>
 <h2 id="反向传递-ii">反向传递 II</h2>
-<p>反向：计算梯度值，剪除不需要的枝，避免重复计算。</p>
+<p>反向：<strong>计算梯度值</strong>，剪除不需要的枝，避免重复计算。</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -672,7 +672,7 @@ b &amp;= a - y\\
 </div>
 </div>
 <h2 id="反向传递-iii">反向传递 III</h2>
-<p>反向：计算梯度值，剪除不需要的枝，避免重复计算。</p>
+<p>反向：<strong>计算梯度值</strong>，剪除不需要的枝，避免重复计算。</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -689,10 +689,10 @@ a &amp;= \langle \mathbf{x}, \mathbf{w} \rangle\\
 </div>
 </div>
 <ul>
-<li>类比：剪除<span class="math inline">y</span>对应的分支</li>
+<li>类比剪枝：剪除<span class="math inline">y</span>对应的分支</li>
 </ul>
 <h2 id="为什么可以避免重复计算">为什么可以避免重复计算？</h2>
-<p>反向：计算梯度值，剪除不需要的枝，避免重复计算。</p>
+<p>反向：<strong>计算梯度值</strong>，剪除不需要的枝，避免重复计算。</p>
 <ul>
 <li>计算<span class="math inline">\frac{\partial z}{\partial b}</span>需要<span class="math inline">b</span>，进而需要<span class="math inline">a</span></li>
 </ul>
@@ -704,7 +704,7 @@ a &amp;= \langle \mathbf{x}, \mathbf{w} \rangle\\
 </div>
 </div>
 <ul>
-<li>类比：动态规划中的查表</li>
+<li>类比：动态规划中的<strong>查表</strong></li>
 </ul>
 <h2 id="实例mlp-计算图">实例：MLP 计算图</h2>
 <div class="nopub">
@@ -738,7 +738,7 @@ s &amp;= \frac{\lambda}{2} \left( \lVert \textbf{W}_h \rVert_F^2 + \lVert \textb
 
 </div>
 <h2 id="局部最小全局最小">局部最小、全局最小</h2>
-<p>深度学习模型的目标函数通常有许多局部最优解。</p>
+<p>深度学习模型的目标函数通常有许多<strong>局部最优解</strong>。</p>
 <p><span class="math display">
 f(x) = x \cdot \cos(\pi x), - 1.0 \le x \le 2.0
 </span></p>
@@ -746,16 +746,16 @@ f(x) = x \cdot \cos(\pi x), - 1.0 \le x \le 2.0
 
 </div>
 <h2 id="梯度下降">梯度下降</h2>
-<p>Taylor展开：函数的一阶近似</p>
+<p>Taylor展开：函数的<strong>一阶近似</strong></p>
 <p><span class="math display">
 f(x + \epsilon) = f(x) + \epsilon f&#39;(x) + O(\epsilon^2)
 </span></p>
 <div class="incremental">
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>梯度：函数值增长最快的方向</p>
+<p>梯度：函数值<strong>增长最快</strong>的方向</p>
 <ul>
-<li>向梯度的反方向走一小步</li>
+<li>向梯度的<strong>反方向</strong>走一小步</li>
 </ul>
 <p> </p>
 <ul>
@@ -770,7 +770,7 @@ f(x + \epsilon) = f(x) + \epsilon f&#39;(x) + O(\epsilon^2)
 </div>
 </div>
 <div class="incremental">
-<p>牛顿法：二阶展开，需要能够计算二阶导数</p>
+<p>牛顿法：<strong>二阶展开</strong>，需要能够计算二阶导数（Hessian）</p>
 </div>
 <h2 id="学习率">学习率</h2>
 <p><strong>学习率 learning rate</strong>：<span class="math inline">\eta</span></p>
@@ -790,12 +790,12 @@ f(x + \epsilon) = f(x) + \epsilon f&#39;(x) + O(\epsilon^2)
 <h2 id="带动量的梯度下降">带动量的梯度下降</h2>
 <div class="columns">
 <div class="column">
-<p>摆脱鞍点：</p>
+<p>摆脱<strong>鞍点</strong>：</p>
 <div class="nopub">
 
 </div>
 </div><div class="column">
-<p>摆脱多个极小值：</p>
+<p>摆脱<strong>多个极小值</strong>：</p>
 <div class="nopub">
 
 </div>
@@ -821,23 +821,23 @@ f(x + \epsilon) = f(x) + \epsilon f&#39;(x) + O(\epsilon^2)
 <p>(*) 简述深度学习的几何解释。</p>
 <p>(*) 用ReLU合成法拟合分段线性函数<span class="math inline">(-10,-10),(0,0),(5,-5),(10,20)</span>。</p>
 <p>(*) 假设<span class="math inline">\mathbf{Y}</span>是<span class="math inline">(a,b,c,d)</span>维张量，<span class="math inline">\mathbf{X}</span>是<span class="math inline">(h,i,j,k,l)</span>维张量，那么<span class="math inline">\frac{\partial \mathbf{Y}}{\partial \mathbf{X}}</span>的维度是多少？</p>
-<p>(*) 画出<span class="math inline">z = (\langle \mathbf{x}, \mathbf{w} \rangle - y)^2</span>的计算图，并使用前向积累和反向传递计算<span class="math inline">\frac{\partial z}{\partial \mathbf{w}}</span>。</p>
-<p>(*) 简述梯度下降法的算法流程。</p>
+<p>画出<span class="math inline">z = (\langle \mathbf{x}, \mathbf{w} \rangle - y)^2</span>的计算图，并使用前向积累和反向传递计算<span class="math inline">\frac{\partial z}{\partial \mathbf{w}}</span>。</p>
+<p>简述梯度下降法的算法流程。</p>
 <h2 id="概念">概念</h2>
 <div class="block">
 <div class="hdrbox">
 <h3 id="张量">张量</h3>
-<p>数据的容器。0D、1D、2D张量又分别成为标量、向量、矩阵。</p>
+<p>数据的<strong>容器</strong>。0D、1D、2D张量又分别成为标量、向量、矩阵。</p>
 </div>
 </div>
 <div class="block">
 <div class="hdrbox">
 <h3 id="张量运算">张量运算</h3>
-<p>数据不同表示之间的变换函数。</p>
+<p>数据不同表示之间的<strong>变换函数</strong>。</p>
 </div>
 </div>
 <h2 id="多元微分-1">多元微分</h2>
-<p>雅可比矩阵 Jacobian matrix（向量对向量）</p>
+<p><strong>雅可比矩阵 Jacobian matrix</strong>（向量对向量）</p>
 <p><span class="math display">
 \frac{\partial \mathbf{y}}{\partial \mathbf{x}}
 =
@@ -896,7 +896,7 @@ f(x + \epsilon) = f(x) + \epsilon f&#39;(x) + O(\epsilon^2)
 <div class="block">
 <div class="hdrbox">
 <h3 id="链式求导">链式求导</h3>
-<p>将链式法则应用于神经网络梯度值的计算，得到的算法叫作反向传播算法。</p>
+<p>将链式法则应用于神经网络梯度值的计算，得到的算法叫作<strong>反向传播算法</strong>。</p>
 <ul>
 <li>计算梯度值，剪除不需要的枝，避免重复计算。</li>
 </ul>
@@ -988,7 +988,7 @@ e_y &amp; 1 &amp; 0 \\
 <div class="block">
 <div class="hdrbox">
 <h3 id="如何想象高维空间">如何想象高维空间？</h3>
-<p>首先研究低维空间，归纳出规律，然后将规律泛化到高维。</p>
+<p>首先研究低维空间，归纳出规律，然后<strong>将规律泛化到高维</strong>。</p>
 </div>
 </div>
 <h2 id="深度学习的几何解释">深度学习的几何解释</h2>
@@ -996,8 +996,8 @@ e_y &amp; 1 &amp; 0 \\
 <div class="hdrbox">
 <h3 id="深度学习可以解释为高维空间中非常复杂的几何变换">深度学习可以解释为高维空间中非常复杂的几何变换</h3>
 <ul>
-<li>一切数据都是张量，即几何空间中的点。</li>
-<li>模型的每一层对数据点做一个几何变换；而模型本身是这些变换的合成。</li>
+<li>一切数据都是张量，即<strong>几何空间中的点</strong>。</li>
+<li>模型的每一层对数据点做一个<strong>几何变换</strong>；而模型本身是这些变换的合成。</li>
 <li>注意：几何变换必须可微。</li>
 </ul>
 <div class="nopub">
