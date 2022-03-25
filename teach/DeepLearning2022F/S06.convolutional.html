@@ -413,6 +413,7 @@ o_i &amp;= w^k x_k\\
 <li>可以看成观察窗口中的<strong>信息提取</strong>和<strong>信息融合</strong></li>
 <li>最高层：<strong>融合整张图片的信息</strong></li>
 </ul>
+<p>想象：用显微镜观察目标</p>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
 
@@ -675,7 +676,7 @@ o_i &amp;= w^k x_k\\
 
 </div>
 <ul>
-<li>相当于<strong>全连接</strong>
+<li>相当于<strong>全连接</strong>：每个像素的通道维度上可以看成感知机
 <ul>
 <li>输入：<span class="math inline">n_hn_w \times c_i</span>；权重（卷积核）：<span class="math inline">c_o \times c_i</span></li>
 </ul></li>
@@ -691,7 +692,10 @@ o_i &amp;= w^k x_k\\
 <div class="incremental">
 <p><strong>计算</strong>复杂度：<span class="math inline">O(c_ic_ok_hk_wm_hm_w)</span></p>
 <ul>
-<li>注意：与输入大小无关；输入主要影响<strong>存储</strong>及<strong>传输</strong></li>
+<li>对输出<span class="math inline">\mathbf{Y}</span>的每个位置计算一次卷积
+<ul>
+<li>注意：与输入<span class="math inline">\mathbf{X}</span>的大小无关；输入主要影响<strong>存储</strong>及<strong>传输</strong></li>
+</ul></li>
 <li>例如<span class="math inline">c_i=c_o=100, k_h=k_w=5, m_h=m_w=64 \Rightarrow</span> 1GFLOPS</li>
 </ul>
 </div>

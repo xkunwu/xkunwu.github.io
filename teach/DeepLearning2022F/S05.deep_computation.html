@@ -209,7 +209,7 @@ y &amp;= l \circ f_L \circ \dots \circ f_1(\textbf{x})\\
 </div><div class="column" style="width:40%;">
 <p>梯度消失</p>
 <ul>
-<li><span class="math inline">0.8^{100} \approx 2 × 10^{10}</span></li>
+<li><span class="math inline">0.8^{100} \approx 2 × 10^{-10}</span></li>
 </ul>
 </div>
 </div>
@@ -287,7 +287,7 @@ f_t(\textbf{h}^{t-1}) &amp;= \sigma(\textbf{W}^t\textbf{h}^{t-1})\\
 \prod_{i=t+1}^L \text{diag}\left( \sigma&#39;(\textbf{W}^i\textbf{h}^{i-1}) \right)(\textbf{W}^i)^T\\
 \end{aligned}
 </span></p>
-<h2 id="梯度爆炸本质是下溢">梯度爆炸本质是下溢</h2>
+<h2 id="梯度消失本质是下溢">梯度消失本质是下溢</h2>
 <p>下溢：梯度值变成0</p>
 <ul>
 <li>对16位浮点数尤为严重</li>
@@ -597,6 +597,77 @@ Var \left[ \frac{\partial l}{\partial h_t^{t-1}} \right] &amp;= n_t \gamma_t Var
 <div class="incremental">
 <p>云计算服务：通常有自动化解决方案、客服</p>
 </div>
+<h2 id="计算芯片">计算芯片</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Intel i7-6700K：0.15 TFLOPS</p>
+<div class="nopub">
+
+</div>
+<ul>
+<li>K：未锁频；无F：封装显卡</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>Nvidia GP104 (Pascal)：12 TFLOPS</p>
+<div class="nopub">
+
+</div>
+<ul>
+<li>CUDA：只能用N卡</li>
+<li>OpenCL：取决于硬件厂商</li>
+</ul>
+</div>
+</div>
+<h2 id="计算性能对比">计算性能对比</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>CPU + 内存</th>
+<th>GPU</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>#核</strong></td>
+<td>4 - 64</td>
+<td>2k - 4k</td>
+</tr>
+<tr class="even">
+<td><strong>TFLOPS</strong></td>
+<td>0.2 - 1</td>
+<td>10 - 100</td>
+</tr>
+<tr class="odd">
+<td><strong>内存</strong></td>
+<td>32GB - 1TB</td>
+<td>16GB - 32GB</td>
+</tr>
+<tr class="even">
+<td><strong>内存带宽</strong></td>
+<td>30GB/s - 100 GB/s</td>
+<td>400GB/s - 1TB/s</td>
+</tr>
+<tr class="odd">
+<td><strong>控制流</strong></td>
+<td>强</td>
+<td>弱</td>
+</tr>
+</tbody>
+</table>
+<div class="incremental">
+<ul>
+<li>内存层级：主存 -&gt; L3-L1 -&gt; 寄存器
+<ul>
+<li>本地性：按块读取（例如64B），预读</li>
+</ul></li>
+</ul>
+</div>
+<div class="incremental">
+<ul>
+<li>超线程不一定提升性能：共享寄存器</li>
+</ul>
+</div>
 <h2 id="计算设备">计算设备</h2>
 <p>默认情况下，张量是<strong>在内存中</strong>创建，然后使用CPU计算</p>
 <ul>
@@ -618,19 +689,85 @@ Var \left[ \frac{\partial l}{\partial h_t^{t-1}} \right] &amp;= n_t \gamma_t Var
 
 </div>
 <h2 id="gpu计算原则">GPU计算原则</h2>
+<p>少用控制语句</p>
+<ul>
+<li>支持有限，分支全部执行</li>
+<li>同步开销大</li>
+</ul>
+<div class="incremental">
 <p>尽量不要在设备（CPU、GPU和其他机器）之间传输数据</p>
 <ul>
-<li>传输带宽</li>
+<li>传输带宽差异导致瓶颈</li>
 <li>等待数据同步</li>
 <li>读取主存却没有副本时会复制</li>
 </ul>
-<p> </p>
+</div>
 <div class="incremental">
 <p>如果必要，将操作合并</p>
 <ul>
+<li>利用并行性：上千个线程</li>
 <li>连续、区块访问优于多次、小批量访问</li>
 </ul>
 </div>
+<h2 id="tpu">TPU</h2>
+<p>专用集成电路 Application-Specific Integrated Circuit (ASIC)</p>
+<ul>
+<li>深度学习：反向促进硬件研发</li>
+<li>Google TPU：可媲美Nvidia GPU性能
+<ul>
+<li>Google内部大量部署</li>
+<li>核心是Systolic Array</li>
+</ul></li>
+</ul>
+<div class="nopub">
+
+</div>
+<h2 id="systolic-array">Systolic Array</h2>
+<p>中间结果向右传；输出向下传</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+<h2 id="systolic-array-i">Systolic Array I</h2>
+<p>中间结果向右传；输出向下传</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+<ul>
+<li><span class="math inline">y_{11} = a_{11} w_{11} + a_{21} w_{12} + a_{31} w_{13}</span></li>
+</ul>
+<h2 id="systolic-array-ii">Systolic Array II</h2>
+<p>中间结果向右传；输出向下传</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+<ul>
+<li><span class="math inline">y_{11} = a_{11} w_{11} + a_{21} w_{12} + a_{31} w_{13}</span></li>
+<li>同样方式继续计算B、C</li>
+</ul>
 <h2 id="实验gpu">实验：GPU</h2>
 <h1 class="center" id="随机梯度下降">随机梯度下降</h1>
 <h1 class="center" id="小批量随机梯度下降">小批量随机梯度下降</h1>

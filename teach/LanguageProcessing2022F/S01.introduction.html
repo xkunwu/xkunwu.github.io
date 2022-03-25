@@ -467,27 +467,29 @@ How he got into my pajamas I don’t know.</p>
 
 </div>
 </div>
-<h2 id="示例内涵解析应用-i">示例：内涵解析应用 I</h2>
+<h2 id="示例内涵解析应用">示例：内涵解析应用</h2>
 <p>艺术源于生活。</p>
-<pre class="text"><code>老板：小伙子，好好干！只要这个月部门的业绩能达标，到时候嘛，你懂的~（说罢，还看了总监位置一眼。）</code></pre>
-<p> </p>
+<blockquote>
+<p>老板：小伙子，好好干！只要这个月部门的业绩能达标，到时候嘛，你懂的~（说罢，还看了总监位置一眼。）<br />
+–《万万没想到》</p>
+</blockquote>
 <div class="incremental">
-<p>《万万没想到》实际剧本：</p>
-<div class="nopub">
-
+<blockquote>
+<p>张麻子：翻译出来给我听，什么XXX叫惊喜！什么XXX叫XXX惊喜！<br />
+–《让子弹飞》</p>
+</blockquote>
 </div>
-</div>
-<h2 id="示例内涵解析应用-ii">示例：内涵解析应用 II</h2>
-<p>《让子弹飞》剧本：</p>
-<div class="nopub">
-
-</div>
-<p> </p>
 <div class="incremental">
 <blockquote>
 <p>……文艺作品中反映出来的生活却可以而且应该比普通的实际生活更高，更强烈，更有集中性，更典型，更理想，因此就更带<strong>普遍性</strong>。<br />
 –毛泽东《在延安文艺座谈会上的讲话》，1942年</p>
 </blockquote>
+<div class="note">
+
+</div>
+<div class="note">
+
+</div>
 <div class="note">
 
 </div>
@@ -530,13 +532,13 @@ A：记得要食物——别只知道卖萌。</code></pre>
 </div>
 <h2 id="结构化">结构化</h2>
 <p>编程语言是结构化的</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MLP(nn.Module):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, dim):</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dim <span class="op">=</span> dim</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>mlp <span class="op">=</span> MLP(name<span class="op">=</span><span class="st">&quot;单层感知机&quot;</span>, dim<span class="op">=</span>[<span class="dv">20</span>, <span class="dv">256</span>, <span class="dv">10</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MLP(nn.Module):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, dim):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dim <span class="op">=</span> dim</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>mlp <span class="op">=</span> MLP(name<span class="op">=</span><span class="st">&quot;单层感知机&quot;</span>, dim<span class="op">=</span>[<span class="dv">20</span>, <span class="dv">256</span>, <span class="dv">10</span>])</span></code></pre></div>
 <p> </p>
 <div class="incremental">
 <p>自然语言处理任务：“模型选用单层感知机，其中隐藏层的维度是256”</p>
@@ -615,7 +617,7 @@ A：记得要食物——别只知道卖萌。</code></pre>
 </ul></li>
 </ul>
 <h2 id="实验hanlp演示">实验：HanLP演示</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">HanLP/plugins/hanlp_demo/hanlp_demo/zh</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">HanLP/plugins/hanlp_demo/hanlp_demo/zh</span></span></code></pre></div>
 <ul>
 <li>源码：<a href="https://github.com/hankcs/HanLP">https://github.com/hankcs/HanLP</a>
 <ul>
@@ -1038,7 +1040,8 @@ A：记得要食物——别只知道卖萌。</code></pre>
 <h2 id="问题">问题</h2>
 <p>列举NLP任务的几个层次，及其主要课题。</p>
 <p>举出至少三个NLP任务出错的例子，解释其原因，并尝试提出解决方案。</p>
-<p>结合NLP任务列举文本正则化的必要步骤。</p>
+<p>结合NLP任务列举文本正则化的重要步骤。</p>
+<p>(*) 列举字符编辑的操作和成本，并计算最小编辑距离：“leda”、“deal”。</p>
 <h2 id="课程项目">课程项目</h2>
 <p>情感分析：毕设评语分类系统</p>
 <ul>

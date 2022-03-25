@@ -276,16 +276,16 @@
 </div>
 </div>
 <h2 id="优化问题定义">优化问题定义</h2>
-<p>定义损失函数</p>
+<p>定义损失函数，如<strong>平方损失</strong>：<span class="math inline">l(y,\hat{y}) = \frac{1}{2} (y-\hat{y})^2</span></p>
 <ul>
-<li><strong>平方损失</strong>：<span class="math inline">l(y,\hat{y}) = \frac{1}{2} (y-\hat{y})^2</span></li>
+<li>但不可能每个点都最优：“按下葫芦浮起瓢”</li>
 </ul>
-<p><strong>优化目标</strong>：<span class="math inline">\mathcal{L}(\mathbf{w},b;\mathbf{X},\mathbf{y}) = \frac{1}{2N} \lVert \mathbf{y} - \mathbf{X} \mathbf{w} - b \rVert^2</span></p>
+<p><strong>优化目标</strong>：<span class="math inline">\mathcal{L}(\mathbf{X},\mathbf{y};\mathbf{w},b) = \frac{1}{2N} \lVert \mathbf{y} - \mathbf{X} \mathbf{w} - b \rVert^2</span></p>
 <div class="nopub">
 
 </div>
 <div class="incremental">
-<p><strong>优化问题</strong>：<span class="math inline">\mathbf{w}^*,b^* = \argmin_{\mathbf{w},b} \mathcal{L}(\mathbf{w},b;\mathbf{X},\mathbf{y})</span></p>
+<p><strong>优化问题</strong>：<span class="math inline">\mathbf{w}^*,b^* = \argmin_{\mathbf{w},b} \mathcal{L}(\mathbf{X},\mathbf{y};\mathbf{w},b)</span></p>
 </div>
 <h2 id="梯度下降法求解">梯度下降法求解</h2>
 <ol type="1">
@@ -309,7 +309,7 @@
 <div class="incremental">
 <p><strong>随机梯度下降（SGD）</strong>：每次迭代对训练数据随机均匀采样</p>
 <ul>
-<li>近似计算梯度：<span class="math inline">\nabla f = \frac{1}{B} \sum_{i=1}^B \nabla f_i</span></li>
+<li>近似计算梯度：<span class="math inline">\widehat{\nabla f} = \frac{1}{B} \sum_{i=1}^B \nabla f_i</span></li>
 <li><span class="math inline">B</span>称为批量大小</li>
 </ul>
 <p> </p>
@@ -324,16 +324,19 @@
 <p>不能太大</p>
 <ul>
 <li>内存消耗增加</li>
-<li>容易陷入<strong>极小值</strong>：批量之间的差异不足</li>
+<li>容易陷入<strong>极小值</strong>：批量之间的差异不足
+<ul>
+<li>极小值附近地形比较平坦</li>
+</ul></li>
 <li>最大可以和数据集大小相同</li>
 </ul>
-<p> </p>
+<div class="incremental">
 <p>不能太小</p>
 <ul>
 <li>不利于<strong>并行计算</strong></li>
 <li>但在线应用时可能为1</li>
 </ul>
-<p> </p>
+</div>
 <div class="incremental">
 <p>确定批量大小：主要靠<strong>经验估计</strong></p>
 <ul>
@@ -343,10 +346,10 @@
 </div>
 <h2 id="线性回归可以看成单层神经网络">线性回归可以看成单层神经网络</h2>
 <p><span class="math display">y = w_1x_1 + w_2x_2 + .. + w_dx_d + b</span></p>
-<p> </p>
 <div class="nopub">
 
 </div>
+<p>注意：不存在多层神经网络！</p>
 <h1 class="center" id="实验线性回归的从零开始实现">实验：线性回归的从零开始实现</h1>
 <h2 id="人造数据集">人造数据集</h2>
 <p>带噪音的人造数据</p>
@@ -448,15 +451,14 @@
 <li><span class="math inline">y = [y_1, y_2, .., y_C]</span></li>
 <li><span class="math inline">C</span>个类；<span class="math inline">y_c = 1</span>表示正确类别是<span class="math inline">c</span></li>
 </ul>
-<p> </p>
+<div class="nopub">
+
+</div>
 <p>例如数字<span class="math inline">3</span>的编码：</p>
 <ul>
 <li><span class="math inline">[0, 0, 0, 1, 0, 0, 0, 0, 0, 0]</span></li>
 <li><span class="math inline">C = 10, c = 3</span></li>
 </ul>
-<div class="nopub">
-
-</div>
 <h2 id="softmax运算">softmax运算</h2>
 <p>输出向量：<span class="math inline">\mathbf{o} = [o_1, o_2, .., o_C]^T</span></p>
 <ul>
@@ -465,14 +467,16 @@
 <p><span class="math display">
 \hat{\mathbf{y}} = \text{softmax}(\mathbf{o}), \hat{y}_j = \frac{\exp(o_j)}{\sum_k \exp(o_k)}
 </span></p>
+<div class="nopub">
+
+</div>
+<div class="incremental">
 <ul>
 <li>softmax本质上是<strong>归一化</strong>
 <ul>
 <li><span class="math inline">0 \le \hat{y}_j \le 1</span>，并且 <span class="math inline">\sum_j \hat{y}_j = 1</span></li>
 </ul></li>
 </ul>
-<div class="nopub">
-
 </div>
 <h2 id="小批量样本">小批量样本</h2>
 <p>假设批量大小为<span class="math inline">B</span>，特征维度为<span class="math inline">d</span></p>
@@ -486,7 +490,6 @@
 <div class="nopub">
 
 </div>
-<p> </p>
 <div class="incremental">
 <p>问题：如何计算误差（损失值）？</p>
 </div>

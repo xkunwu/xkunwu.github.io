@@ -193,17 +193,18 @@ mich isst Fisch<br />
 <li>拉丁语、俄语：语序完全自由（6种组合），把强调的成分放在句首
 <ul>
 <li>拉丁语：最常用主宾谓结构 SOV</li>
+<li>汉语：“把”、“被”</li>
 </ul></li>
 </ul>
 </div>
 <h2 id="语言分类">语言分类</h2>
 <p>想要研究NLP，先要了解自然语言</p>
 <ul>
-<li><strong>分析语 Analytic language</strong>：語序、虚词
+<li><strong>分析语 Analytic language</strong>：語序（决定语义）、虚词（表述其他组合）
 <ul>
 <li>汉藏语系</li>
 </ul></li>
-<li><strong>综合语 Synthetic language</strong>：词形变化
+<li><strong>综合语 Synthetic language</strong>：词形变化、合成
 <ul>
 <li>屈折语：拉丁语，印欧语系</li>
 <li>黏着语：日本－琉球语系，突厥语</li>
@@ -252,7 +253,7 @@ mich isst Fisch</code></pre>
 </ul>
 <p> </p>
 <div class="incremental">
-<p>NLP 的最终目标：<strong>提取语义、理解语音</strong>。</p>
+<p>NLP 的最终目标：<strong>提取语义、理解语言</strong>。</p>
 <ul>
 <li>简单、相对完备，但好用</li>
 <li>容易实现</li>
@@ -438,13 +439,13 @@ Noun &amp;\rightarrow flight \\
 <div class="incremental">
 <div class="example">
 <div class="hdrbox">
-<h3 id="将左边的符号重写成新的符号串">“将左边的符号重写成新的符号串”</h3>
+<h3 id="生成将左边的符号重写成新的符号串">生成：“将左边的符号重写成新的符号串”</h3>
 <p><span class="math display">
 \begin{aligned}
 NP &amp;: \text{a flight} \\
 Det &amp;~ Nominal \\
-Det &amp;~ Noun \\
-a &amp;~ flight \\
+a &amp;~ Noun \\
+ &amp;~ flight \\
 \end{aligned}
 </span></p>
 </div>
@@ -455,9 +456,9 @@ a &amp;~ flight \\
 </div>
 </div>
 <h2 id="解析树">解析树</h2>
-<p><strong>解析树 parse tree</strong>的构建</p>
+<p>判别句子结构：<strong>解析树 parse tree</strong>的构建</p>
 <ul>
-<li><strong>派生 derivation</strong>：通过规则扩展符号序列的过程。</li>
+<li>句子（的结构解析）与解析树等价</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:40%;">
@@ -472,7 +473,7 @@ a flight</code></pre>
 </div>
 </div>
 <div class="incremental">
-<p>解析树中节点的派生关系：</p>
+<p><strong>派生 derivation</strong>：通过规则扩展符号序列的过程。</p>
 <ul>
 <li>有向链接可以称为<strong>支配 dominate</strong></li>
 <li>树结构有唯一<strong>起始符 start symbol</strong>
@@ -485,16 +486,12 @@ a flight</code></pre>
 </div>
 </div>
 <h2 id="动词短语介词短语">动词短语、介词短语</h2>
-<div class="example">
-<div class="hdrbox">
 <h3 id="动词短语-verb-phrase">动词短语 verb phrase</h3>
 <p><span class="math display">
 \begin{aligned}
 S &amp;\rightarrow NP ~ VP &amp;~ \text{I prefer a morning flight} \\
 \end{aligned}
 </span></p>
-</div>
-</div>
 <div class="incremental">
 <p><span class="math display">
 \begin{aligned}
@@ -504,20 +501,14 @@ VP &amp;\rightarrow Verb ~ PP &amp;~ \text{leaving on Thursday} \\
 \end{aligned}
 </span></p>
 </div>
-<div class="incremental">
-<div class="example">
-<div class="hdrbox">
 <h3 id="介词短语-prepositional-phrase">介词短语 prepositional phrase</h3>
 <p><span class="math display">
 \begin{aligned}
 PP &amp;\rightarrow Preposition ~ NP &amp;~ \text{from Los Angeles} \\
 \end{aligned}
 </span></p>
-</div>
-</div>
 <div class="note">
 
-</div>
 </div>
 <h2 id="atis-造句词典">ATIS 造句：词典</h2>
 <p><span class="math display">
@@ -597,6 +588,7 @@ PP &amp;\rightarrow Preposition ~ NP &amp;~ \text{from Los Angeles} \\
 <p>如何对“I prefer a morning flight”绘制解析树？</p>
 <h2 id="括号表示">括号表示</h2>
 <p><strong>括号表示 Bracketed notation</strong>：另外一种相对紧凑的表示</p>
+<pre class="text"><code>I prefer a morning flight</code></pre>
 <p><span class="math inline">[_S [_{NP} [_{Pro}</span> I <span class="math inline">]] [_{VP} [_V</span> prefer <span class="math inline">] [_{NP} [_{Det}</span> a <span class="math inline">] [_{Nom} [_N</span> morning <span class="math inline">] [_{Nom} [_N</span> flight <span class="math inline">]]]]]]</span></p>
 <p> </p>
 <div class="incremental">
@@ -624,13 +616,15 @@ PP &amp;\rightarrow Preposition ~ NP &amp;~ \text{from Los Angeles} \\
 <p><strong>形式语言 formal language</strong>：取决于人工定义</p>
 <ul>
 <li><strong>语法正确的 grammatical</strong>：可以通过形式语言生成的句子</li>
-<li>问题：忽略了上下文</li>
 </ul>
-<p> </p>
 <div class="incremental">
 <p><strong>生成语法 generative grammar</strong>：句子集合完全由形式语言生成</p>
 <ul>
-<li>例如：CFG</li>
+<li>例如：CFG
+<ul>
+<li>简化问题的讨论</li>
+<li>问题：忽略了上下文</li>
+</ul></li>
 </ul>
 <div class="note">
 
@@ -724,10 +718,9 @@ PP &amp;\rightarrow Preposition ~ NP &amp;~ \text{from Los Angeles} \\
 <h2 id="树库-1">树库</h2>
 <p><strong>树库 Treebanks</strong>：标注好句法的语料库</p>
 <ul>
-<li>正确性、鲁棒性</li>
-<li>通用标准：专家校正</li>
+<li>名称来源：句子与解析树等价</li>
+<li>通用标准：正确性、鲁棒性，专家校正</li>
 </ul>
-<p> </p>
 <div class="incremental">
 <p>常用数库：</p>
 <ul>
@@ -768,5 +761,36 @@ PP &amp;\rightarrow Preposition ~ NP &amp;~ \text{from Los Angeles} \\
 青岛_NR 优化_VV 资本_NN 结构_NN 促进_VV 企业_NN 规模_NN 扩大_NN
 &lt;/S&gt;</code></pre>
 <h1 class="center" id="review">Review</h1>
+<h2 id="本章内容">本章内容</h2>
+<p>构成句法、语境无关语法。解析树、括号表示。完全切分与词典分词。字典树。评测指标：准确度、精确度、召回率、F度量。</p>
+<p> </p>
+<p><strong>重点</strong>：语境无关语法；解析树；词典分词的三种策略；评测指标的计算。</p>
+<p><strong>难点</strong>：语境无关语法的严格定义；评测指标的原理。</p>
+<h2 id="学习目标">学习目标</h2>
+<ul>
+<li>理解构成句法、语境无关语法的原理。</li>
+<li>掌握使用CFG对句子构建解析树的方法。</li>
+<li>掌握解析树对应的括号表示格式。</li>
+<li>理解完全切分算法与词典分词的三种策略：前向、后向、双向最长匹配。</li>
+<li>理解字典树的数据结构及应用。</li>
+<li>理解评测指标的计算方法和原理：准确度、精确度、召回率、F度量。</li>
+<li>掌握评测词典分词的方法。</li>
+</ul>
+<h2 id="问题">问题</h2>
+<p>如何对“欢迎新老师生前来就餐”绘制解析树？如何转换成对应的括号表示格式？</p>
+<p>简述完全切分算法与词典分词的三种策略。</p>
+<p>简述字典树的数据结构及应用。</p>
+<p>简述评测指标的计算方法和原理：准确度、精确度、召回率、F度量。</p>
+<p>简述评测词典分词的方法。</p>
+<div class="note">
+
+</div>
+<h2 id="课程项目">课程项目</h2>
+<p>(*) 运用生成语法创作短文。</p>
+<ul>
+<li>中文或英文</li>
+<li>要求：内容积极、健康，<strong>严禁反动言论</strong></li>
+<li>提示：目前可以使用CFG导出句子，之后课程会介绍其他方法</li>
+</ul>
 </body>
 </html>
