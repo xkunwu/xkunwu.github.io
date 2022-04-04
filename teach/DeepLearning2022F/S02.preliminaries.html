@@ -759,8 +759,8 @@ f(x + \epsilon) = f(x) + \epsilon f&#39;(x) + O(\epsilon^2)
 </ul>
 <p> </p>
 <ul>
-<li><span class="math inline">f(x - \eta f&#39;(x)) \lessapprox f(x)</span></li>
-<li><span class="math inline">x \leftarrow x - \eta f&#39;(x)</span></li>
+<li><span class="math inline">f(x - f&#39;(x) \eta) \lessapprox f(x)</span></li>
+<li><span class="math inline">x \leftarrow x - f&#39;(x) \eta</span></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
@@ -784,20 +784,24 @@ f(x + \epsilon) = f(x) + \epsilon f&#39;(x) + O(\epsilon^2)
 <div class="incremental">
 <p>注意：地形平坦的区域步长自然变小</p>
 <ul>
-<li><span class="math inline">x \leftarrow x - \eta f&#39;(x)</span></li>
+<li><span class="math inline">x \leftarrow x - f&#39;(x) \eta</span></li>
 </ul>
 </div>
 <h2 id="带动量的梯度下降">带动量的梯度下降</h2>
 <div class="columns">
 <div class="column">
 <p>摆脱<strong>鞍点</strong>：</p>
+<div class="html">
 <div class="nopub">
 
 </div>
+</div>
 </div><div class="column">
 <p>摆脱<strong>多个极小值</strong>：</p>
+<div class="html">
 <div class="nopub">
 
+</div>
 </div>
 </div>
 </div>

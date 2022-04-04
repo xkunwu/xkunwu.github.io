@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="WU Xiaokun 吴晓堃" />
-  <title>6. Naive Bayes 朴素贝叶斯</title>
+  <title>6. 朴素贝叶斯</title>
   <style>
     html {
       line-height: 1.5;
@@ -168,7 +168,7 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">6. Naive Bayes 朴素贝叶斯</h1>
+<h1 class="title">6. 朴素贝叶斯</h1>
 <p class="author">WU Xiaokun 吴晓堃</p>
 <p class="date">2022/02/28</p>
 </header>
@@ -178,7 +178,7 @@
 <pre class="text"><code>你想不过你的日收入入过万呢!那请马上加入我们的游戏吧！www.zxxzg.com 公平公证！新手进来可领取首次登陆礼金。9lx怯</code></pre>
 <h2 id="文本风格">文本风格</h2>
 <p>谁写了下面这段文字？</p>
-<div class="note">
+<div class="nopub">
 
 </div>
 <div class="incremental">
@@ -221,8 +221,7 @@
 <h2 id="文本分类定义">文本分类定义</h2>
 <p>输入</p>
 <ul>
-<li>文档：<span class="math inline">d</span></li>
-<li>固定的类别集合：<span class="math inline">C = \{c_1, c_2, .., c_m\}</span></li>
+<li>文档：<span class="math inline">d</span>；固定的类别集合：<span class="math inline">C = \{c_1, c_2, .., c_m\}</span></li>
 </ul>
 <p> </p>
 <p>输出</p>
@@ -230,9 +229,10 @@
 <li>预测类别：<span class="math inline">c \in C</span></li>
 </ul>
 <h2 id="方法预定义规则">方法：预定义规则</h2>
-<p>领域专家根据特征集合给出的规则</p>
+<p>领域专家根据<strong>特征</strong>集合给出的<strong>规则</strong></p>
 <ul>
-<li>垃圾邮件：黑名单 <code>OR</code> (“大礼包” <code>AND</code> “注册”)</li>
+<li>垃圾邮件特征：黑名单 <code>OR</code> (“大礼包” <code>AND</code> “注册”)</li>
+<li>例如：数模型，分支判定</li>
 </ul>
 <p> </p>
 <div class="incremental">
@@ -245,21 +245,21 @@
 <h2 id="方法监督学习">方法：监督学习</h2>
 <p>输入</p>
 <ul>
-<li>文档：<span class="math inline">d</span></li>
-<li>固定的类别集合：<span class="math inline">C = \{c_1, c_2, .., c_m\}</span></li>
-<li>标注好的训练集：<span class="math inline">(d_1,c_1),..,(d_n,c_n)</span></li>
+<li>文档：<span class="math inline">d</span>；固定的类别集合：<span class="math inline">C = \{c_1, c_2, .., c_m\}</span></li>
+<li><strong>标注好的训练集</strong>：<span class="math inline">(d_1,c_1),..,(d_n,c_n)</span></li>
 </ul>
 <p> </p>
 <p>输出</p>
 <ul>
-<li>分类器：<span class="math inline">\gamma:d \rightarrow c</span></li>
+<li><strong>分类器</strong>：<span class="math inline">\gamma:d \rightarrow c</span></li>
 </ul>
 <p> </p>
-<p>回顾：机器学习范式</p>
+<p>回顾：<strong>机器学习范式</strong></p>
 <ul>
-<li>自动化（经验）规则提取</li>
+<li>自动化（经验）规则提取：替代特征工程</li>
+<li>能够预测新文档</li>
 </ul>
-<h1 class="center" id="朴素贝叶斯分类器">朴素贝叶斯分类器</h1>
+<h1 class="center" id="朴素-bayes-分类器">朴素 Bayes 分类器</h1>
 <h2 id="朴素贝叶斯">朴素贝叶斯</h2>
 <p><strong>朴素贝叶斯 naïve （天真幼稚的） Bayes</strong></p>
 <ul>
@@ -281,28 +281,39 @@
 
 </div>
 <h2 id="bayes-规则">Bayes 规则</h2>
-<p><strong>Bayes 推断 inference</strong> [1763]</p>
+<p>[Bayes 1763] <strong>Bayes 推断 inference</strong></p>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li>条件概率公式</li>
+<li>全概率公式</li>
 </ul>
 <p><span class="math display">
 \begin{aligned}
 P(AB) = P(A|B)P(B) &amp;= P(B|A)P(A)\\
 \end{aligned}
 </span></p>
+</div><div class="column" style="width:40%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
 <ul>
-<li>BaBes 规则</li>
+<li>Bayes 规则：即条件概率公式</li>
 </ul>
 <p><span class="math display">
 \begin{aligned}
 P(A|B) &amp;= \frac{P(B|A)P(A)}{P(B)}\\
 \end{aligned}
 </span></p>
+<ul>
+<li>[Mosteller 1964] 应用于文本分类问题</li>
+</ul>
 <div class="note">
 
 </div>
 <h2 id="文档分类估计">文档分类估计</h2>
-<p>给定文档<span class="math inline">d</span>，估计其类别<span class="math inline">c</span></p>
+<p>给定文档<span class="math inline">d</span>，估计其类别<span class="math inline">c</span>作为输出；但优化目标是概率</p>
 <p><span class="math display">
 \begin{aligned}
 \hat{c} &amp;= \argmax_{c \in C} P(c|d)\\
@@ -310,7 +321,7 @@ P(A|B) &amp;= \frac{P(B|A)P(A)}{P(B)}\\
 \end{aligned}
 </span></p>
 <div class="incremental">
-<p>注意：<span class="math inline">P(d)</span>不随文档类别变化</p>
+<p>注意：<span class="math inline">P(d)</span>不随文档类别<span class="math inline">c</span>变化，即没有参数依赖关系</p>
 <ul>
 <li><span class="math inline">P(d)</span>仅取决于文档的分布；计算不同<span class="math inline">c</span>时<span class="math inline">d</span>不变</li>
 </ul>
@@ -333,14 +344,19 @@ P(A|B) &amp;= \frac{P(B|A)P(A)}{P(B)}\\
 \hat{c}_{MAP} &amp;= \argmax_{c \in C} \overbrace{P(d|c)}^{\text{likelihood}} \overbrace{P(c)}^{\text{prior}}
 \end{aligned}
 </span></p>
+<div class="incremental">
 <ul>
-<li><strong>先验 prior 概率</strong>：对被估计量的经验假设
+<li><strong>先验 prior 概率</strong>：对被估计量的经验假设，与输出一致
 <ul>
 <li>通常是因为还没有观测到（足够多的）数据</li>
 </ul></li>
+</ul>
+</div>
+<div class="incremental">
+<ul>
 <li><strong>似然 likelihood</strong>：“可能性”的一种较文艺的说法
 <ul>
-<li>容易与“概率”混淆：这里讨论的是参数的可能性<span class="math inline">P(c|d)</span></li>
+<li>并非“概率”：给定样本<span class="math inline">d</span>，参数（实数）<span class="math inline">c</span>（相对其他参数选择）的可能性</li>
 </ul></li>
 </ul>
 <div class="note">
@@ -349,8 +365,9 @@ P(A|B) &amp;= \frac{P(B|A)P(A)}{P(B)}\\
 <div class="note">
 
 </div>
+</div>
 <h2 id="解决似然的理论问题">解决似然的理论问题</h2>
-<p>似然是一种经验规律的总结，对偶发事件难以建模</p>
+<p>似然是一种<strong>经验（而非客观）规律</strong>的描述，无法识别“偶发事件”</p>
 <p><span class="math display">
 \begin{aligned}
 P(w_n|w_{n-1}) = \frac{\Gamma(w_{n-1}w_n)}{\sum_w \Gamma(w_{n-1}w)} &amp;= \frac{\Gamma(w_{n-1}w_n)}{\Gamma(w_{n-1})}\\
@@ -358,12 +375,11 @@ P(下雨|吴老师来上课) &amp;= \frac{\Gamma(下雨, 吴老师来上课)}{\G
  &amp;= \frac{9}{12} = .75
 \end{aligned}
 </span></p>
-<p> </p>
 <div class="incremental">
-<p>先验概率的重要性</p>
+<p>先验概率的重要性：先验是对客观规律的经验总结</p>
 <p><span class="math display">
 \begin{aligned}
-\hat{下雨}_{MAP} &amp;= \argmax_{c \in C} \overbrace{P(吴老师来上课|下雨)}^{\text{likelihood}} \overbrace{P(下雨)}^{\text{prior}}
+\hat{P}(下雨) &amp;\propto \overbrace{P(吴老师来上课|下雨)}^{\text{likelihood}} \overbrace{P(下雨)}^{\text{prior}}
 \end{aligned}
 </span></p>
 </div>
@@ -376,12 +392,12 @@ P(下雨|吴老师来上课) &amp;= \frac{\Gamma(下雨, 吴老师来上课)}{\G
 </span></p>
 <ul>
 <li>没拿到检测报告前，只能凭经验给出一个相对普遍的关联性</li>
-<li>检测报告会对先验模型做出修正，最终导致后验概率的改变</li>
+<li>检测报告会<strong>对先验概率做出修正</strong>，最终导致后验概率的改变</li>
 </ul>
 <h2 id="生成模型">生成模型</h2>
-<p>朴素贝叶斯通常被认为是一种<strong>生成模型 generative model</strong></p>
+<p>朴素 Bayes 通常被认为是一种<strong>生成模型 generative model</strong></p>
 <ul>
-<li>模型在公式上隐含着生成数据的逻辑假设</li>
+<li>模型在公式（右侧）上隐含着生成数据的逻辑假设</li>
 </ul>
 <p><span class="math display">
 \begin{aligned}
@@ -392,8 +408,15 @@ P(下雨|吴老师来上课) &amp;= \frac{\Gamma(下雨, 吴老师来上课)}{\G
 <li>首先从<span class="math inline">P(c)</span>中采样出类别</li>
 <li>然后从<span class="math inline">P(d|c)</span>中采样出文本</li>
 </ol>
+<div class="incremental">
+<p> </p>
+<p>但直接生成文档过于复杂：文档空间几乎是无限维</p>
+<ul>
+<li>转而生成文档的<strong>有限特征描述</strong></li>
+</ul>
 <div class="note">
 
+</div>
 </div>
 <h2 id="文档特征">文档特征</h2>
 <p>文档可以看成由一系列<strong>特征 feature</strong> 构成</p>
@@ -403,9 +426,9 @@ P(下雨|吴老师来上课) &amp;= \frac{\Gamma(下雨, 吴老师来上课)}{\G
 \end{aligned}
 </span></p>
 <ul>
-<li>特征可以理解为数据中有效信息的压缩形式，及其（几何意义上的）变换
+<li>特征可以理解为数据中<strong>有效信息的压缩形式</strong>，及其（几何意义上的）变换
 <ul>
-<li>最简单的特征就是字、词</li>
+<li>最简单的特征就是（字/词：频率）的向量表示</li>
 </ul></li>
 </ul>
 <p> </p>
@@ -419,9 +442,9 @@ P(下雨|吴老师来上课) &amp;= \frac{\Gamma(下雨, 吴老师来上课)}{\G
 </div>
 </div>
 <h2 id="两个简化假设">两个简化假设</h2>
-<p>词袋表示假设：特征（比如词）只考虑类别，不考虑序列位置关系</p>
+<p><strong>词袋表示</strong>假设：特征（比如词）只考虑类别，不考虑序列位置关系</p>
 <div class="incremental">
-<p>朴素贝叶斯假设：特征之间条件独立</p>
+<p><strong>朴素 Bayes</strong>假设：特征之间条件独立，不考虑条件（参数）的相关性</p>
 <p><span class="math display">
 P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 </span></p>
@@ -429,7 +452,7 @@ P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 </p>
 </div>
 <div class="incremental">
-<p>朴素贝叶斯分类器</p>
+<p>朴素 Bayes <strong>分类器</strong></p>
 <p><span class="math display">
 \begin{aligned}
 \hat{c}_{NB} &amp;= P(f_1, f_2, .., f_n|c) P(c)\\
@@ -475,7 +498,7 @@ P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 <div class="note">
 
 </div>
-<h1 class="center" id="训练朴素贝叶斯分类器">训练朴素贝叶斯分类器</h1>
+<h1 class="center" id="训练朴素-bayes-分类器">训练朴素 Bayes 分类器</h1>
 <h2 id="计算还缺什么">计算还缺什么？</h2>
 <p><span class="math display">
 \begin{aligned}
@@ -499,12 +522,15 @@ P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 <ul>
 <li>经典统计学中的<strong>频率学派 frequentist</strong></li>
 </ul>
+<p><br />
+</p>
 <p><span class="math display">
 \hat{P}(c) = \frac{N_c}{N_{doc}}
 </span></p>
 <ul>
 <li><span class="math inline">N_c</span>：训练集中标注为<span class="math inline">c</span>的文档数量；<span class="math inline">N_{doc}</span>：文档总数</li>
 </ul>
+<div class="incremental">
 <p><span class="math display">
 \hat{P}(w_i|c) = \frac{\Gamma(w_i,c)}{\sum_{w \in V} \Gamma(w,c)}
 </span></p>
@@ -514,15 +540,17 @@ P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 <div class="note">
 
 </div>
+</div>
 <h2 id="最大似然的问题之一">最大似然的问题（之一）</h2>
-<p>如果训练集中某个类别缺少一个词</p>
+<p>（数据不足问题）如果训练集中某个类别缺少一个词</p>
 <ul>
 <li>例如：正负面两类评价中，正面的评价里没有“还行”，但负面的评价出现了</li>
 </ul>
 <p><span class="math display">
 \hat{P}(“还行”|+) = \frac{\Gamma(“还行”,+)}{\sum_{w \in V} \Gamma(w,+)} = 0
 </span></p>
-<p>那么MAP概率必定为<span class="math inline">0</span>，相当于一票否决</p>
+<div class="incremental">
+<p>那么MAP概率必定为<span class="math inline">0</span>，相当于<strong>一票否决</strong></p>
 <p><span class="math display">
 \hat{c}_{MAP} = \argmax_{c \in C} \hat{P}(c) \prod_{i} \hat{P}(w_i|c)\\
 </span></p>
@@ -532,6 +560,7 @@ P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 <div class="note">
 
 </div>
+</div>
 <h2 id="加一平滑">加一平滑</h2>
 <p><span class="math display">
 \begin{aligned}
@@ -540,7 +569,10 @@ P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 \end{aligned}
 </span></p>
 <ul>
-<li>尽管其他语言模型大多选用更复杂的平滑算法，朴素贝叶斯文本分类任务通常使用加一平滑</li>
+<li>朴素 Bayes 文本分类任务通常使用加一平滑
+<ul>
+<li>尽管其他语言模型大多选用更复杂的平滑算法，如KN</li>
+</ul></li>
 </ul>
 <p><br />
 </p>
@@ -555,15 +587,16 @@ P(f_1, f_2, .., f_n|c) = P(f_1|c) \cdot P(f_2|c) \cdot .. \cdot P(f_n|c)
 <ul>
 <li>出现在测试集，但训练集和词汇表里没有</li>
 </ul>
-<p>对未知词汇的分布建模？</p>
+<p>需要对未知词汇的分布建模吗？</p>
 <p> </p>
 <div class="incremental">
-<p>直接忽略掉</p>
+<p>实际应用：直接忽略掉</p>
 <ul>
 <li>从测试文本中删除，也就不做概率估计</li>
 </ul>
 <p>为什么不对未知词汇建模？没意义</p>
 <ul>
+<li>通常来说，决定文档类别的是<strong>关键字</strong></li>
 <li>知道哪个类未知词汇多通常不解决问题</li>
 </ul>
 </div>
@@ -1335,5 +1368,20 @@ F_1 &amp;= \frac{2 PR}{P + R}\\
 </tbody>
 </table>
 <h1 class="center" id="review">Review</h1>
+<h2 id="本章内容">本章内容</h2>
+<p>文本分类任务。朴素 Bayes 分类器。</p>
+<p> </p>
+<p><strong>重点</strong>： Bayes 规则、最大后验估计、朴素 Bayes 分类器；</p>
+<p><strong>难点</strong>：最大似然、最大后验估计的理论对比。</p>
+<h2 id="学习目标">学习目标</h2>
+<ul>
+<li>理解文本分类任务的建模方法。</li>
+<li>理解 Bayes 规则、最大后验估计、朴素 Bayes 分类器的假设与构造。</li>
+<li>理解朴素 Bayes 分类器的计算方法。</li>
+</ul>
+<h2 id="问题">问题</h2>
+<p>简述文本分类任务的建模方法。</p>
+<p>简述应用 Bayes 规则对文档分类问题的最大后验估计。</p>
+<p>简述朴素 Bayes 分类器的假设、构造与计算方法。</p>
 </body>
 </html>

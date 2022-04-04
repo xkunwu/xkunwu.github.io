@@ -727,18 +727,50 @@
 </ul>
 </div>
 <h2 id="分隔转换">分隔转换</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>T</strong></td>
+<td><strong>F</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>P</strong></td>
+<td>TP</td>
+<td>FP</td>
+<td><span class="math inline">P = \frac{TP}{TP+FP}</span></td>
+</tr>
+<tr class="odd">
+<td><strong>N</strong></td>
+<td>FN</td>
+<td>TN</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">R = \frac{TP}{TP+FN}</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:55%;">
 <p>例如：“结婚的和尚未结婚的”</p>
 <ul>
 <li>标注：[‘结婚’, ‘的’, ‘和’, ‘尚未’, ‘结婚’, ‘的’]</li>
 <li>预测：[‘结婚’, ‘的’, ‘和尚’, ‘未结婚’, ‘的’]</li>
 </ul>
-<p> </p>
+</div>
+</div>
 <p>需要将分隔<strong>转换成分类</strong></p>
 <ul>
 <li>将每个词的起止位置记作区间<span class="math inline">[w_i,w_j]</span>
 <ul>
-<li>标注中所有区间的集合记作<span class="math inline">A</span>：<span class="math inline">A = TP \cup FN</span></li>
-<li>预测中所有区间的集合记作<span class="math inline">B</span>：<span class="math inline">B = TP \cup FP</span></li>
+<li><strong>标注真值</strong>对应的区间集合记作<span class="math inline">A</span>：<span class="math inline">A = TP \cup FN</span></li>
+<li><strong>预测阳性</strong>对应的区间集合记作<span class="math inline">B</span>：<span class="math inline">B = TP \cup FP</span></li>
 </ul></li>
 </ul>
 <div class="incremental">
@@ -791,7 +823,7 @@
 <ul>
 <li>粒度较粗：收录的词较长，如“圆满完成”
 <ul>
-<li>算法与评测应该使用相同词典</li>
+<li>算法与评测应该使用<strong>相同词典</strong></li>
 </ul></li>
 </ul>
 <p> </p>
@@ -814,7 +846,6 @@
 </ul></li>
 </ul>
 <p> </p>
-<div class="incremental">
 <table>
 <thead>
 <tr class="header">
@@ -837,7 +868,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <h2 id="实验评测实现">实验：评测实现</h2>
 <h1 class="center" id="字典树的应用">字典树的应用</h1>
 <h2 id="停用词过滤">停用词过滤</h2>
@@ -847,7 +877,11 @@
 <li>非法：敏感词，限制级</li>
 </ul>
 <div class="incremental">
-<p>停用词过滤是一个预处理过程</p>
+<p>停用词过滤是一个<strong>预处理</strong>过程</p>
+<ol type="1">
+<li>构建停用词字典</li>
+<li>替换字典中的词</li>
+</ol>
 </div>
 <h2 id="实验停用词过滤">实验：停用词过滤</h2>
 <h2 id="繁简转换">繁简转换</h2>
