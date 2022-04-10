@@ -28,7 +28,7 @@
 --r-sider-margin: 100px;
 --r-heading-font: "Noto Serif", "Times New Roman", serif;
 --r-heading-color: #222;
---r-heading-line-height: 1.2;
+--r-heading-line-height: 1.2rem;
 --r-heading-letter-spacing: normal;
 --r-heading-text-shadow: none;
 --r-heading-font-weight: 600;
@@ -157,6 +157,15 @@ em {
 font-style: italic;
 }
 
+ol,
+dl,
+ul {
+display: block;
+text-align: left;
+margin: 0 1em;
+padding: 0 1em;
+
+}
 ol {
 list-style-type: decimal;
 }
@@ -174,13 +183,14 @@ ul ol,
 ol ol,
 ol ul {
 display: block;
-margin-left: 1em;
+margin: 0;
+padding: 0 1em;
 }
 dt {
 font-weight: bold;
 }
 dd {
-margin-left: 1em;
+padding: 0 1em;
 }
 
 blockquote {
@@ -498,8 +508,8 @@ Lecture
 <li>Syntactic Analysis 句法分析, N-gram Language Models N元语法模型</li>
 <li>Naive Bayes 朴素贝叶斯, Logistic Regression 逻辑回归</li>
 <li>Sequence Labeling 序列标注, Parts of Speech 词类, Named Entities 命名实体</li>
-<li>Recurrent Neural Networks 循环神经网络, Sentiment Analysis 情感分析</li>
 <li>Vector Semantics 向量语义, Word Embeddings 词嵌入</li>
+<li>Recurrent Neural Networks 循环神经网络, Sentiment Analysis 情感分析</li>
 <li>Modern RNNs 现代循环神经网络, Machine Translation 机器翻译</li>
 </ol>
 <p>Several special topics:</p>
@@ -538,7 +548,7 @@ Lecture
 <td>3</td>
 <td>2022/03/25</td>
 <td>[<a href="S05.language_model.html">N元语法</a>]</td>
-<td>[<a href="S04.byte_pair.html">BPE</a>]</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>4</td>
@@ -549,17 +559,40 @@ Lecture
 <tr class="odd">
 <td>5</td>
 <td>2022/04/08</td>
-<td>[<a href="S07.sequence_labeling.html">序列标注</a>]</td>
+<td>[<a href="S06.naive_bayes.html">朴素贝叶斯</a>], [<a href="S07.sequence_labeling.html">序列标注</a>]</td>
 <td>[<a href="S06.logistic_regression.html">逻辑回归</a>]</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>2022/04/15</td>
+<td>[<a href="S09.vector_semantics.html">向量语义</a>]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>2022/04/22</td>
+<td>[<a href="S10.embeddings">词嵌入</a></td>
+<td>[<a href="S10.byte_pair.html">BPE</a>]</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>2022/04/29</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h4 id="evaluation">Evaluation</h4>
 <ul>
 <li>Attendance &amp; participation: 20%</li>
-<li>Understanding of the course: 40%</li>
-<li>Final project: 40%</li>
+<li>Understanding of the course: 20%</li>
+<li>Final project: 50%</li>
 <li>Honorable bonus: 10%</li>
+</ul>
+<p><a href="F00.project.html">课程考核说明</a></p>
+<ul>
+<li>release data: 2022/04/15</li>
+<li>due: 2022/06/10 (2 weeks after courses).</li>
 </ul>
 <h4 id="textbook">Textbook</h4>
 <p>Not mandatory but recommended:</p>

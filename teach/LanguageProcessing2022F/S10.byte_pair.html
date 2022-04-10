@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="WU Xiaokun 吴晓堃">
-  <title>8. 计算机视觉I</title>
+  <title>10. 子词嵌入</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=1600, height=1000, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -574,9 +574,9 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Deep Learning I</p>
+  <p class="institute">Natural Language Processing I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
-  <p class="title">8. 计算机视觉I</p>
+  <p class="title">10. 子词嵌入</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
 </div>
 <div class="author">
@@ -584,1161 +584,241 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/04/11</p>
+  <p class="date">2022/03/18</p>
 </div>
 </div>
 </section>
 
 
 <section>
-<section id="图像增广" class="title-slide slide level1 center">
-<h1 class="center">图像增广</h1>
+<section id="子词" class="title-slide slide level1 center">
+<h1 class="center">子词</h1>
 
 </section>
-<section id="什么是图像增广" class="slide level2">
-<h2>什么是图像增广？</h2>
-<p>对已有数据集扩充，使其更<strong>多样</strong></p>
+<section id="分词策略" class="slide level2">
+<h2>分词策略</h2>
+<p>手工指定规则：</p>
 <ul>
-<li>语音：加入背景噪音</li>
-<li>图像：颜色、形状、噪音</li>
-</ul>
-<div class="nopub">
-
-</div>
-</section>
-<section id="为什么需要图像增广" class="slide level2">
-<h2>为什么需要图像增广？</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<div class="nopub">
-
-</div>
-</div><div class="column" style="width:30%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>问题：每次展会都提前去训练模型？</p>
-</div>
-</section>
-<section id="图像增广几何变形" class="slide level2">
-<h2>图像增广：几何变形</h2>
-<p>图像内容、位置的微小变形、偏移</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>不同姿态</li>
-</ul>
-</div><div class="column" style="width:50%;">
-
-</div>
-</div>
-</section>
-<section id="图像增广几何变形剪裁" class="slide level2">
-<h2>图像增广：几何变形、剪裁</h2>
-<p>图像内容、位置的微小变形、偏移</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>不同姿态</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>调整FOV：等价于剪裁</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="图像增广摄影参数" class="slide level2">
-<h2>图像增广：摄影参数</h2>
-<p>色温：暖（黄）、冷（蓝）色调</p>
-<div class="nopub">
-
-</div>
-<div class="fragment">
-<p>曝光：整体明度</p>
-<div class="nopub">
-
-</div>
-</div>
-</section>
-<section id="图像增广硬件" class="slide level2">
-<h2>图像增广：硬件</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>噪音：传感器质量、ISO</li>
-</ul>
-</div><div class="column" style="width:50%;">
-
-</div>
-</div>
-</section>
-<section id="图像增广硬件后期" class="slide level2">
-<h2>图像增广：硬件、后期</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>噪音：传感器质量、ISO</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>饱和度：颜色的纯正程度或鲜明程度</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="图像增广意义" class="slide level2">
-<h2>图像增广：意义</h2>
-<p>回顾：数据集大小<strong>间接决定模型效能</strong></p>
-<ul>
-<li>数据比模型更复杂：不容易过拟合</li>
-<li>AlexNet 的成功因素之一</li>
+<li>空格、标点分隔；汉字字符</li>
 </ul>
 <div class="fragment">
-<p>图像增广可以降低模型对数据的<strong>敏感性</strong></p>
+<p>从文本数据本身分析</p>
 <ul>
-<li>图像内容、位置的微小变形、偏移
+<li>使用训练文本提取规则
 <ul>
-<li>卷积网络：池化有类似作用</li>
+<li>把经常出现的子字符串看成<strong>固定组合</strong></li>
+<li>将所有固定组合写入词汇表</li>
 </ul></li>
+<li>适用于文本含有<strong>未知单词</strong>的情况</li>
 </ul>
 </div>
 <div class="fragment">
-<ul>
-<li>亮度：曝光程度；颜色：色温、色差</li>
-</ul>
-</div>
-<div class="fragment">
-<p>减小模型对特定属性的依赖：提高模型的<strong>泛化能力</strong></p>
-</div>
-</section>
-<section id="图像增广物理定律" class="slide level2">
-<h2>图像增广：物理定律</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<p>“倒立的凳子”也是凳子</p>
-</div><div class="column" style="width:50%;">
-
-</div>
-</div>
-</section>
-<section id="图像增广物理定律常识" class="slide level2">
-<h2>图像增广：物理定律、常识</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<p>“倒立的凳子”也是凳子</p>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<p>这是只名贵的猫，因为<del>它会倒立</del></p>
-<ul>
-<li>它会让你把图片倒过来看</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="图像增广生物事实" class="slide level2">
-<h2>图像增广：生物事实</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>理论上猫只有黑/白/橙、纯色/斑纹的组合</li>
-</ul>
-</div><div class="column" style="width:50%;">
-
-</div>
-</div>
-</section>
-<section id="图像增广生物事实装饰" class="slide level2">
-<h2>图像增广：生物事实、装饰</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>理论上猫只有黑/白/橙、纯色/斑纹的组合</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-<ul>
-<li>印度洒红节</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="imgaug" class="slide level2">
-<h2>imgaug</h2>
-<p><a href="https://github.com/aleju/imgaug">imgaug: https://github.com/aleju/imgaug</a></p>
-<div class="nopub">
-
-</div>
-</section>
-<section id="实验图像增广" class="slide level2">
-<h2>实验：图像增广</h2>
-</section>
-<section id="小结图像增广" class="slide level2">
-<h2>小结：图像增广</h2>
-<p>图像增广：变换、变形以获得更多样的数据</p>
-<ul>
-<li>提高模型的泛化性能</li>
-</ul>
-<p>常见操作：仿射变换、翻转、切割；色调、饱和度、明度</p>
-</section></section>
-<section>
-<section id="微调" class="title-slide slide level1 center">
-<h1 class="center">微调</h1>
-
-</section>
-<section id="模型数据的两难" class="slide level2">
-<h2>模型、数据的两难</h2>
-<p>现实任务可以认为有<strong>无限可能情况</strong></p>
-<ul>
-<li>例如猫的图片：稍微调整角度后拍摄</li>
-</ul>
-<div class="fragment">
-<ul>
-<li>推论：模型容量需要非常大
-<ul>
-<li><strong>训练成本</strong>高；不同任务不能通用</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>推论：数据规模需要非常大
-<ul>
-<li><strong>标注成本</strong>高；可用于相关任务；公司核心资产</li>
-</ul></li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>ImageNet</th>
-<th>通常</th>
-<th>MNIST</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>样本数</strong></td>
-<td>1.2 M</td>
-<td>50K</td>
-<td>60 K</td>
-</tr>
-<tr class="even">
-<td><strong>类别数</strong></td>
-<td>1,000</td>
-<td>100</td>
-<td>10</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="fragment">
-<p>问题：难道模型只能是一次性产品？标注数据不够导致过拟合怎么办？</p>
-</div>
-</section>
-<section id="网络架构解析" class="slide level2">
-<h2>网络架构解析</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>神经网络可以划分成两个组件</p>
-<ol type="1">
-<li><strong>特征提取</strong>：看成自动化特征工程</li>
-<li><strong>输出适配</strong>：例如分类器输出概率</li>
-</ol>
-<div class="nopub">
-
-</div>
-<p>也可以认为是两个<strong>处理阶段</strong></p>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="微调特征提取" class="slide level2">
-<h2>微调：特征提取</h2>
-<p>微调的本质：将训练好的模型当作<strong>特征提取器</strong></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>特征提取：任务之间<strong>共享特征</strong>
-<ul>
-<li>图像的特征描述大同小异</li>
-<li>不同深度的<strong>特征含义不同</strong></li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="微调输出适配" class="slide level2">
-<h2>微调：输出适配</h2>
-<p>微调的本质：将训练好的模型当作<strong>特征提取器</strong></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>特征提取：任务之间<strong>共享特征</strong>
-<ul>
-<li>图像的特征描述大同小异</li>
-<li>不同深度的<strong>特征含义不同</strong></li>
-</ul></li>
-</ul>
-<p> </p>
-<ul>
-<li>输出适配：<strong>重新构造</strong>、替换
-<ul>
-<li>任务变化：不再是分类问题</li>
-<li>类别数、标签含义都可能变</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="微调权重初始化" class="slide level2">
-<h2>微调：权重初始化</h2>
-<p>首先看目标模型重用<strong>全部</strong>特征提取器</p>
-<div class="nopub">
-
-</div>
-</section>
-<section id="微调训练" class="slide level2">
-<h2>微调：训练</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>在目标数据集上正常训练</p>
-<div class="nopub">
-
-</div>
-<p>但需要<strong>更强的正则化</strong>：避免参数剧烈变动</p>
-<ul>
-<li><strong>小学习率</strong>：已经在最优点附近</li>
-<li>通常只需更少的数据迭代</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>源数据集、模型远比目标复杂时，效果更好</p>
-<ul>
-<li>比直接训练：速度更快、精度更高</li>
-</ul>
-</div>
-<div class="fragment">
-<p><strong>迁移学习 transfer learning</strong>：将从源数据集学到的知识迁移到目标数据集</p>
-</div>
-</section>
-<section id="微调部分重用-i" class="slide level2">
-<h2>微调：部分重用 I</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>根据任务的<strong>差异幅度</strong>选择提取层级</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>后面层：<strong>概括、特性</strong>特征</p>
-<ul>
-<li>观察范围更大</li>
-<li>与数据更相关，必须替换</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="微调部分重用-ii" class="slide level2">
-<h2>微调：部分重用 II</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>根据任务的<strong>差异幅度</strong>选择提取层级</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>后面层：<strong>概括、特性</strong>特征</p>
-<ul>
-<li>观察范围更大</li>
-<li>与数据更相关，必须替换</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>前面层：<strong>低级、共性</strong>特征</p>
-<ul>
-<li>只能观察局部</li>
-<li>颜色、边缘、形状等</li>
-</ul>
-<p>可以固定参数：不参与训练</p>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="微调重用分类器" class="slide level2">
-<h2>微调：重用分类器</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>特殊情况：源数据集含目标数据集的部分标签</p>
-<div class="nopub">
-
-</div>
-<ul>
-<li>含“赛车”类</li>
-</ul>
-<div class="nopub">
-
-</div>
-<ul>
-<li>可以使用对应标签提取的向量</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="实验微调" class="slide level2">
-<h2>实验：微调</h2>
-</section>
-<section id="小结微调" class="slide level2">
-<h2>小结：微调</h2>
-<ul>
-<li>微调：使用预训练的模型当作特征提取器
-<ul>
-<li>替代目标模型的部分模块</li>
-<li>层的选取取决于数据差异程度</li>
-</ul></li>
-<li>预训练模型的质量很关键</li>
-<li>通常速度更快、精度更高</li>
-</ul>
-</section></section>
-<section>
-<section id="实战-kaggle-比赛图像分类" class="title-slide slide level1 center">
-<h1 class="center">实战 Kaggle 比赛：图像分类</h1>
-
-</section>
-<section id="图像分类cifar-10" class="slide level2">
-<h2>图像分类（CIFAR-10）</h2>
-</section>
-<section id="狗的品种识别imagenet-dogs" class="slide level2">
-<h2>狗的品种识别（ImageNet Dogs）</h2>
-</section></section>
-<section>
-<section id="目标检测和边界框" class="title-slide slide level1 center">
-<h1 class="center">目标检测和边界框</h1>
-
-</section>
-<section id="图片分类目标检测" class="slide level2">
-<h2>图片分类、目标检测</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>图片分类：输出类别标签</p>
-<ul>
-<li>图像中只有一个目标对象</li>
-</ul>
-<p> </p>
-<p>目标检测：输出类别标签、<strong>位置</strong></p>
-<ul>
-<li>图像中有多个目标对象</li>
-<li>如何确定目标的位置？</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-<p>“不来梅城市音乐家”</p>
-</div>
-</div>
+<p>例如：</p>
+<pre class="text"><code>训练文本：low, new, newer
+测试文本：lower</code></pre>
 <div class="note">
 
 </div>
+</div>
 </section>
-<section id="目标检测位置的不同粒度" class="slide level2">
-<h2>目标检测：位置的不同粒度</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>目标检测：输出类别标签、<strong>位置</strong></p>
+<section id="子词分解" class="slide level2">
+<h2>子词分解</h2>
+<p>现代分词器把单词分解成更小的<strong>子词 subwords</strong></p>
 <ul>
-<li>位置的描述有不同层次
+<li>子词可以是任意子字符串，或是有意义的词素</li>
+<li><strong>词素 morpheme</strong>：最小意义单元
 <ul>
-<li>单点？歧义过大，无法评测</li>
-<li>边缘？成本过大，计算复杂</li>
-<li>边界框：折衷方案，业界常用</li>
+<li>例如：unlikeliest -&gt; un-, likely, -est</li>
 </ul></li>
 </ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-<p>“不来梅城市音乐家”</p>
-</div>
-</div>
-</section>
-<section id="目标检测手势实例" class="slide level2">
-<h2>目标检测：手势实例</h2>
-<div class="html">
-<div class="nopub">
-
-</div>
-</div>
-</section>
-<section id="目标检测街头实例" class="slide level2">
-<h2>目标检测：街头实例</h2>
-<div class="html">
-<div class="nopub">
-
-</div>
-</div>
-</section>
-<section id="目标检测边界框" class="slide level2">
-<h2>目标检测：边界框</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>定义：只需4个数字</p>
-<ul>
-<li>左上<span class="math inline">(x,y)</span>，右下<span class="math inline">(x,y)</span></li>
-<li>左上<span class="math inline">(x,y)</span>，宽、高<span class="math inline">(w,h)</span></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="实验边界框" class="slide level2">
-<h2>实验：边界框</h2>
-</section>
-<section id="目标检测数据集" class="slide level2">
-<h2>目标检测：数据集</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>每行一个物体</p>
-<ul>
-<li>文件名、类别、边界框</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<p><a href="https://cocodataset.org/">COCO (cocodataset.org)</a></p>
-<ul>
-<li>80物体类别，330K图片；1.5M物体</li>
-</ul>
-<div class="nopub">
-
-</div>
-</section>
-<section id="实验目标检测数据集" class="slide level2">
-<h2>实验：目标检测数据集</h2>
-</section>
-<section id="小结目标检测和边界框" class="slide level2">
-<h2>小结：目标检测和边界框</h2>
-<ul>
-<li>目标检测：识别图片中多个物体的类别、位置</li>
-<li>位置表示：常用边界框、边缘轮廓</li>
-</ul>
-</section></section>
-<section>
-<section id="锚框" class="title-slide slide level1 center">
-<h1 class="center">锚框</h1>
-
-</section>
-<section id="目标检测两个阶段" class="slide level2">
-<h2>目标检测：两个阶段</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>目标检测可以看成两个阶段</p>
-<ol type="1">
-<li>输出可能含物体的边界框</li>
-<li>判定边界框的类别</li>
-</ol>
-<p>因此边界框也称<strong>预备区域 Region of Interest (ROI)</strong></p>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
+<p> </p>
 <div class="fragment">
-<p><strong>ROI 调整算法</strong>：</p>
+<p>现代分词机制包含两个部分：</p>
+<ul>
+<li><strong>学习器 learner</strong>：从训练文本中提取词汇表</li>
+<li><strong>分词器 segmenter</strong>：根据词汇表完成分词</li>
+</ul>
+<div class="note">
+
+</div>
+</div>
+</section>
+<section id="byte-pair-编码器" class="slide level2">
+<h2>Byte-Pair 编码器</h2>
+<p>[Sennrich 2016] <strong>Byte-Pair 编码器</strong>：相对简单的贪心算法</p>
 <ol type="1">
-<li>采样大量边界框，并判定是否包含目标物体</li>
-<li>调整边界：输出目标物体的真实边界框</li>
-</ol>
-</div>
-</section>
-<section id="锚框完全覆盖法" class="slide level2">
-<h2>锚框：完全覆盖法</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>以<strong>每个像素</strong>为中心生成不同形状的边界框</p>
-<ul>
-<li>图宽<span class="math inline">w</span>、高<span class="math inline">h</span>，缩放比<span class="math inline">s \in (0,1]</span>，宽高比<span class="math inline">r &gt; 0</span>
-<ul>
-<li>锚框：宽<span class="math inline">ws\sqrt{r}</span>、高<span class="math inline">hs/\sqrt{r}</span></li>
-</ul></li>
-<li>实际计算中缩放比、宽高比取有限的一系列值
-<ul>
-<li><span class="math inline">s \in \{s_1,..,s_n\}, r \in \{r_1,..,r_m\}</span></li>
-</ul></li>
-</ul>
-<p>中心点称为“<strong>锚点 anchor</strong>”</p>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>问题：计算复杂度太高，不可能计算</p>
-<ul>
-<li>锚框总数：<span class="math inline">whnm</span></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>实践中只考虑包含<span class="math inline">s_1</span>或<span class="math inline">r_1</span>的组合：<span class="math inline">(s_1,r_1),..,(s_1,r_m),(s_2,r_1),..,(s_n,r_1)</span>
-<ul>
-<li>每个锚点对应<span class="math inline">n+m-1</span>个锚框</li>
-<li>总共<span class="math inline">wh(n+m-1)</span>个锚框：<strong>计算复杂度还是太高</strong></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="交并比iou" class="slide level2">
-<h2>交并比（IoU）</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>右图：以<span class="math inline">s=0.75,r=1</span>为参数似乎不错</p>
-<ul>
-<li>那么如何量化误差呢？</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>IoU：计算框之间的相似度</p>
-<p><span class="math display">
-J(A,B) = \frac{|A \cap B|}{|A \cup B|}
-</span></p>
-<ul>
-<li>相似度取值范围：<span class="math inline">[0,1]</span></li>
-<li>也称<strong>Jaccard相似度</strong></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="锚框标注训练数据" class="slide level2">
-<h2>锚框：标注训练数据</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>训练：<strong>每个锚框</strong>都看成训练样本</p>
-<ul>
-<li>标签：锚框中对象的类别，或背景
-<ul>
-<li>背景：可能会生成大量负例</li>
-</ul></li>
-<li>偏移量：真实边界框的<strong>相对位移</strong></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>预测：生成多个锚框，逐个预测类别、偏移量</p>
+<li>词汇表初始化为所有出现过的单独字母；</li>
+<li>重复 <span class="math inline">k</span> 次：
 <ol type="1">
-<li>计算、合并预测边界框</li>
-<li>根据<strong>置信度</strong>决定是否输出</li>
-</ol>
-</div>
-<div class="fragment">
-<p>首先考虑训练样本的标注：分配<strong>最接近</strong>的真实边界框</p>
-</div>
-</section>
-<section id="锚框分配算法-i" class="slide level2">
-<h2>锚框分配算法 I</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
-<ul>
-<li>锚框：<span class="math inline">A_1,..,A_s</span>，真实：<span class="math inline">B_1,..,B_t</span>
-<ul>
-<li><span class="math inline">x_{ij}</span>：<span class="math inline">A_i</span>、<span class="math inline">B_j</span>的IoU</li>
-</ul></li>
-</ul>
-<ol type="1">
-<li>找出<strong>最大元素</strong><span class="math inline">x_{i_1j_1}</span>：将<span class="math inline">A_{i_1}</span>分配给<span class="math inline">B_{j_1}</span></li>
-</ol>
-<ul>
-<li>丢弃<span class="math inline">i_1</span>行、<span class="math inline">j_1</span>列的剩余元素</li>
-</ul>
-</div><div class="column" style="width:30%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="锚框分配算法-ii" class="slide level2">
-<h2>锚框分配算法 II</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
-<ul>
-<li>锚框：<span class="math inline">A_1,..,A_s</span>，真实：<span class="math inline">B_1,..,B_t</span>
-<ul>
-<li><span class="math inline">x_{ij}</span>：<span class="math inline">A_i</span>、<span class="math inline">B_j</span>的IoU</li>
-</ul></li>
-</ul>
-<ol type="1">
-<li>找出<strong>最大元素</strong><span class="math inline">x_{i_1j_1}</span>：将<span class="math inline">A_{i_1}</span>分配给<span class="math inline">B_{j_1}</span></li>
-<li>继续找出<strong>最大元素</strong><span class="math inline">x_{i_2j_2}</span>：将<span class="math inline">A_{i_2}</span>分配给<span class="math inline">B_{j_2}</span></li>
-</ol>
-<ul>
-<li>丢弃<span class="math inline">i_2</span>行、<span class="math inline">j_2</span>列的剩余元素</li>
-</ul>
-</div><div class="column" style="width:30%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="锚框分配算法-iii" class="slide level2">
-<h2>锚框分配算法 III</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
-<ul>
-<li>锚框：<span class="math inline">A_1,..,A_s</span>，真实：<span class="math inline">B_1,..,B_t</span>
-<ul>
-<li><span class="math inline">x_{ij}</span>：<span class="math inline">A_i</span>、<span class="math inline">B_j</span>的IoU</li>
-</ul></li>
-</ul>
-<ol type="1">
-<li>找出<strong>最大元素</strong><span class="math inline">x_{i_1j_1}</span>：将<span class="math inline">A_{i_1}</span>分配给<span class="math inline">B_{j_1}</span></li>
-<li>继续找出<strong>最大元素</strong><span class="math inline">x_{i_2j_2}</span>：将<span class="math inline">A_{i_2}</span>分配给<span class="math inline">B_{j_2}</span></li>
-<li>继续以上步骤，直到所有<span class="math inline">t</span>个<strong>真实边界框</strong>都已被分配</li>
-</ol>
-<ul>
-<li>此例：只有4个锚框被分配</li>
-</ul>
-</div><div class="column" style="width:30%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="锚框分配算法-iv" class="slide level2">
-<h2>锚框分配算法 IV</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
-<ul>
-<li>锚框：<span class="math inline">A_1,..,A_s</span>，真实：<span class="math inline">B_1,..,B_t</span>
-<ul>
-<li><span class="math inline">x_{ij}</span>：<span class="math inline">A_i</span>、<span class="math inline">B_j</span>的IoU</li>
-</ul></li>
-</ul>
-<ol type="1">
-<li>找出<strong>最大元素</strong><span class="math inline">x_{i_1j_1}</span>：将<span class="math inline">A_{i_1}</span>分配给<span class="math inline">B_{j_1}</span></li>
-<li>继续找出<strong>最大元素</strong><span class="math inline">x_{i_2j_2}</span>：将<span class="math inline">A_{i_2}</span>分配给<span class="math inline">B_{j_2}</span></li>
-<li>继续以上步骤，直到所有<span class="math inline">t</span>个<strong>真实边界框</strong>都已被分配</li>
-<li>遍历剩下的<span class="math inline">s-t</span>个锚框：只有当IoU<strong>大于阈值</strong>时分配</li>
-</ol>
-<p>输出：每个真实边界框对应多个锚框</p>
-<ul>
-<li>按照IoU的<strong>降序排列</strong></li>
-</ul>
-</div><div class="column" style="width:30%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="锚框标记类别" class="slide level2">
-<h2>锚框：标记类别</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>类别：按照分配情况标记</p>
-<ul>
-<li>没有分配：标记为<strong>“背景”，即负例</strong></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="锚框标记类别偏移量" class="slide level2">
-<h2>锚框：标记类别、偏移量</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>类别：按照分配情况标记</p>
-<ul>
-<li>没有分配：标记为<strong>“背景”，即负例</strong></li>
-</ul>
-<p>偏移量：中心点、相对大小</p>
-<ul>
-<li>数据复杂：导致差异过大、难以拟合
-<ul>
-<li>位置、大小变换：使其<strong>分布更均匀</strong></li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>真实边界框<span class="math inline">B</span>偏移后得到锚框<span class="math inline">A</span></p>
-<p><span class="math display">
-\left( \frac{ \frac{x_b - x_a}{w_a} - \mu_x }{\sigma_x},
-\frac{ \frac{y_b - y_a}{h_a} - \mu_y }{\sigma_y},
-\frac{ \log \frac{w_b}{w_a} - \mu_w }{\sigma_w},
-\frac{ \log \frac{h_b}{h_a} - \mu_h }{\sigma_h}\right)
-</span></p>
-</div>
-</section>
-<section id="锚框预测边界框" class="slide level2">
-<h2>锚框：预测边界框</h2>
-<p>预测：生成多个锚框，逐个预测类别、偏移量</p>
-<ol type="1">
-<li>计算、合并预测边界框</li>
-<li>根据<strong>置信度</strong>决定是否输出</li>
-</ol>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>计算边界框：根据偏移量反向调整</p>
-<ul>
-<li>锚框<span class="math inline">A</span><strong>逆向偏移</strong>后得到预测边界框<span class="math inline">B</span></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="预测类别置信度" class="slide level2">
-<h2>预测：类别置信度</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>计算每个类别的概率：取最大的作为预测类别</p>
-<ul>
-<li>称为预测边界框的<strong>置信度（confidence）</strong></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="预测非极大值抑制" class="slide level2">
-<h2>预测：非极大值抑制</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>计算每个类别的概率：取最大的作为预测类别</p>
-<ul>
-<li>称为预测边界框的<strong>置信度（confidence）</strong></li>
-</ul>
-<p>锚框过于稠密：预测框相似，增加不必要的计算量</p>
-<ul>
-<li>合并边界框：相同目标、相似边界框
-<ul>
-<li><strong>非极大值抑制（non-maximum suppression，NMS）</strong></li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>NMS：预测框按<strong>置信度降序</strong>排列，可截断</p>
-<ol type="1">
-<li>取置信度最高的边界框<span class="math inline">B</span>
-<ol type="1">
-<li>将<span class="math inline">B</span>加入<strong>保留列表</strong></li>
-<li>移除所有与<span class="math inline">B</span>的<strong>IoU超过阈值</strong>的预测框</li>
+<li>找出频率最高的相邻单元 <span class="math inline">\pi</span>；</li>
+<li>将 <span class="math inline">\pi</span> 加入到词汇表中；</li>
+<li>将训练文本中所有出现的 <span class="math inline">\pi</span> 替换掉；</li>
 </ol></li>
-<li>重复，直至所有预测框都在保留列表：输出</li>
 </ol>
-<p>输出中任意一对预测框<strong>都不相似</strong>：因IoU小于阈值</p>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</div>
+<p><code>BYTE-PAIR</code>(C, <span class="math inline">k</span>)</p>
+<ol type="1">
+<li><span class="math inline">V = \{A, B, .., Z, a, b, .., z\} \cap C</span>;</li>
+<li>FOR <span class="math inline">i=1..k</span>:
+<ol type="1">
+<li><span class="math inline">\pi = CAT(\argmax_{\alpha \beta \in C} FREQ(\alpha \beta, C))</span>;</li>
+<li><span class="math inline">V.JOIN(\pi)</span>;</li>
+<li><span class="math inline">C.SUBS(\alpha \beta, \pi)</span>;</li>
+</ol></li>
+</ol>
 </section>
-<section id="实验锚框" class="slide level2">
-<h2>实验：锚框</h2>
-</section>
-<section id="小结锚框" class="slide level2">
-<h2>小结：锚框</h2>
+<section id="词结束符" class="slide level2">
+<h2>词结束符</h2>
+<p>通常子词分解算法用于<strong>空格分隔</strong>的语言</p>
 <ul>
-<li>目标检测：锚点附近的边界框 + 类别标签</li>
-<li>每个锚框看作一个样本
-<ul>
-<li>锚框标注：类别标签、偏移量</li>
-</ul></li>
-<li>预测：根据预测偏移量还原
-<ul>
-<li>置信度：确定类别，去除负类</li>
-<li>NMS：去除冗余预测</li>
-</ul></li>
-</ul>
-</section></section>
-<section>
-<section id="多尺度目标检测" class="title-slide slide level1 center">
-<h1 class="center">多尺度目标检测</h1>
-
-</section>
-<section id="锚框计算复杂度" class="slide level2">
-<h2>锚框：计算复杂度</h2>
-<p>以<strong>每个像素</strong>为中心生成不同形状的边界框</p>
-<ul>
-<li>图宽<span class="math inline">w</span>、高<span class="math inline">h</span>，缩放比<span class="math inline">s</span>，宽高比<span class="math inline">r</span></li>
+<li>首先将语料库分隔成单词</li>
+<li>在每个单词之后添加词<strong>结束符 <code>_</code></strong></li>
 </ul>
 <div class="fragment">
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>问题：计算复杂度太高，不可能计算</p>
-<ul>
-<li>锚框总数：<span class="math inline">whnm</span></li>
-</ul>
-<p>例如：561x728的图像，3种缩放比、宽高比</p>
-<ul>
-<li><span class="math inline">561 \times 728 \times 9 &gt; 367</span> 万</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
+<p>例如语料库：</p>
+<pre class="text"><code>low low low low low lowest lowest
+newer newer newer newer newer newer
+wider wider wider new new</code></pre>
 </div>
 <div class="fragment">
-<p>密集采样完全没必要：生成大量冗余锚框</p>
-<ul>
-<li><strong>均匀间隔采样</strong>作为锚点</li>
-</ul>
+<p>统计词汇并构建词汇表：</p>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>5   l o w _
+2   l o w e s t _
+6   n e w e r _
+3   w i d e r _
+2   n e w _</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>_, d, e, i, l, n, o, r, s, t, w</code></pre>
 </div>
-</section>
-<section id="均匀间隔采样" class="slide level2">
-<h2>均匀间隔采样</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>每个像素点都是锚点</p>
-<div class="nopub">
-
-</div>
-</div><div class="column" style="width:50%;">
-<p>固定间隔、相同宽高比</p>
-<div class="nopub">
-
-</div>
-<ul>
-<li>行、列都只有4个采样点</li>
-</ul>
 </div>
 </div>
 </section>
-<section id="目标锚框尺寸" class="slide level2">
-<h2>目标、锚框尺寸</h2>
-<p>目标尺寸不同：锚框大小可以、且应该<strong>区别对待</strong></p>
-<div class="nopub">
-
+<section id="bpe-学习器-i" class="slide level2">
+<h2>BPE 学习器 I</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>5   l o w _
+2   l o w e s t _
+6   n e w e r _
+3   w i d e r _
+2   n e w _</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>_, d, e, i, l, n, o, r, s, t, w</code></pre>
+</div>
 </div>
 <ul>
-<li>目标较小：使用小锚框也有足够的可选尺寸
+<li>将 <code>e r</code> 合并为 <code>er</code></li>
+</ul>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>5   l o w _
+2   l o w e s t _
+6   n e w er _
+3   w i d er _
+2   n e w _</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>..., er</code></pre>
+</div>
+</div>
+</section>
+<section id="bpe-学习器-ii" class="slide level2">
+<h2>BPE 学习器 II</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>5   l o w _
+2   l o w e s t _
+6   n e w er _
+3   w i d er _
+2   n e w _</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>..., er</code></pre>
+</div>
+</div>
 <ul>
-<li>例如：2x2图像可以填充4种1x1、2种1x2、1种2x2</li>
-<li>使用大锚框反倒会圈入<strong>干扰信息</strong></li>
-</ul></li>
+<li>将 <code>er _</code> 合并为 <code>er_</code></li>
+</ul>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>5   l o w _
+2   l o w e s t _
+6   n e w er_
+3   w i d er_
+2   n e w _</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>..., er, er_</code></pre>
+</div>
+</div>
+</section>
+<section id="bpe-学习器-iii" class="slide level2">
+<h2>BPE 学习器 III</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>5   l o w _
+2   l o w e s t _
+6   n e w er_
+3   w i d er_
+2   n e w _</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>..., er, er_</code></pre>
+</div>
+</div>
+<ul>
+<li>将 <code>n e</code> 合并为 <code>ne</code></li>
+</ul>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>5   l o w _
+2   l o w e s t _
+6   ne w er_
+3   w i d er_
+2   ne w _</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>..., er, er_, ne</code></pre>
+</div>
+</div>
+</section>
+<section id="bpe-学习器-iv" class="slide level2">
+<h2>BPE 学习器 IV</h2>
+<p>以此类推</p>
+<div class="columns" data-align="center">
+<div class="column" style="width:40%;">
+<pre class="text"><code>(ne, w)
+(l, o)
+(lo, w)
+(new, er_)
+(low, _)</code></pre>
+</div><div class="column" data-align="bottom" style="width:60%;">
+<pre class="text"><code>..., er, er_, ne, new
+..., er, er_, ne, new, lo
+..., er, er_, ne, new, lo, low
+..., er, er_, ne, new, lo, low, newer_
+..., er, er_, ne, new, lo, low, newer_, low_</code></pre>
+</div>
+</div>
+</section>
+<section id="bpe-分词器" class="slide level2">
+<h2>BPE 分词器</h2>
+<p>首先将测试文本分句，然后：</p>
+<ol type="1">
+<li>每个句子<strong>拆分为单独的字符</strong></li>
+<li>按照词汇表的顺序<strong>合并字符串</strong></li>
+</ol>
+<p> </p>
+<p>例如</p>
+<ul>
+<li><code>n e w e r _</code> -&gt; <code>newer_</code></li>
+<li><code>l o w e r _</code> -&gt; <code>low</code> <code>er_</code></li>
 </ul>
 <div class="fragment">
-<ul>
-<li>目标较大：必须使用<strong>相匹配</strong>的锚框尺寸
-<ul>
-<li>采样数可以相应减少</li>
-</ul></li>
-</ul>
+<p>因此，测试文本中的<strong>词频不重要</strong></p>
 <div class="note">
 
 </div>
 </div>
 </section>
-<section id="多尺度锚框" class="slide level2">
-<h2>多尺度锚框</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>行、列都只有2个采样点</p>
-<div class="nopub">
-
-</div>
-<ul>
-<li>锚框尺寸必须相应增加
-<ul>
-<li>更大的观察窗口：检测更大目标</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p>行、列都只有1个采样点</p>
-<div class="nopub">
-
-</div>
-<ul>
-<li>极端情况：锚点即图像中心点</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="多尺度检测" class="slide level2">
-<h2>多尺度检测</h2>
-<p>锚框大小：等价于<strong>感受野尺寸</strong></p>
-<div class="nopub">
-
-</div>
-<ul>
-<li>回顾：神经网络可以看成特征提取器
-<ul>
-<li>深度不同的层：提取不同<strong>抽象级别</strong>的特征</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<p>锚框本质上是利用<strong>感受野接受到的信息</strong>进行预测</p>
-<ul>
-<li>较深的层：感受较大规模的目标
-<ul>
-<li>必然需要较大的感受野、锚框</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="实验多尺度目标锚框" class="slide level2">
-<h2>实验：多尺度目标锚框</h2>
-</section>
-<section id="小结多尺度目标检测" class="slide level2">
-<h2>小结：多尺度目标检测</h2>
-<ul>
-<li>目标尺寸不同：需要相应尺寸的锚框</li>
-<li>减少冗余计算：均匀间隔采样</li>
-<li>多尺度检测：</li>
-</ul>
+<section id="实验bpe-分词器" class="slide level2">
+<h2>实验：BPE 分词器</h2>
 </section></section>
     </div>
   </div>

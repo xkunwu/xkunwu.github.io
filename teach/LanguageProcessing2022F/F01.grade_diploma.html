@@ -354,33 +354,98 @@ background: var(--r-link-color-dark);
 <section id="课程考核说明" class="lenotes">
 <h1>课程考核说明</h1>
 <h4 id="考核标准">考核标准</h4>
-<p>平时课堂参与：20%，课程理解：40%，最终实践报告：40%，荣誉（加分）：10%。</p>
-<h2 id="实践报告">实践报告</h2>
-<h4 id="截止日期">截止日期</h4>
-<p>结课后四周（第18教学周），即。</p>
-<h4 id="实验报告要求">实验报告要求</h4>
+<p>平时课堂参与：20%，课程理解：20%，课程项目：50%，荣誉（加分）：10%。</p>
+<h4 id="实践报告要求">实践报告要求</h4>
 <ul>
 <li>完整个人信息：学号、姓名、专业。</li>
-<li>完整团队信息：组长、组员</li>
-<li>标题：写明选题。</li>
+<li>课程项目：写明选题，及原因。</li>
 <li>正文：详细阐述解决思路。</li>
-<li>代码：需要保留原始输出，其中包括评测指标（如分类正确率）。</li>
+<li>代码：<strong>必须使用Jupyter笔记，并保留原始输出</strong>，其中包括评测指标，否则课程<strong>原则上最高80分</strong>。</li>
 <li>总结：对照评分规则给出自我评价分数，并说明依据。</li>
 </ul>
+<h4 id="截止日期">截止日期</h4>
+<p>结课后三周，即6月17日（第17教学周）。</p>
+<h2 id="课程理解问题">课程理解问题</h2>
+<ol type="1">
+<li>简述N元语法的假设、两种公式与含义、计算方法、稀疏性问题及解决方案。</li>
+<li>简述朴素 Bayes 分类器的原理、两个假设、构造与计算方法。</li>
+<li>简述序列标注任务、两大基本问题，并列举三种算法的原理、架构图。</li>
+<li>简述循环神经网络的原理、架构图，并阐述LSTM、GRU架构的改进思路、优点与不足。</li>
+</ol>
+<h2 id="课程项目">课程项目</h2>
+<p>本课程（自然语言处理）不限方法，但要求必须解决<strong>自然语言处理问题</strong>，否则课程<strong>原则上最高60分</strong></p>
+<h4 id="项目等级">项目等级</h4>
+<ul>
+<li>I类：教材例子改版，<strong>原则上最高80分，90分封顶</strong></li>
+<li>II类：可自选<strong>进行中的</strong>Kaggle竞赛问题
+<ul>
+<li>注意：需要通过题目审核，否则视为I类</li>
+</ul></li>
+<li>III类（荣誉加分）：实际工业问题获奖，Kaggle或其他竞赛获奖</li>
+</ul>
 <h4 id="基本评分规则">基本评分规则</h4>
-<p>注意：严禁代码造假！</p>
+<p>评分细则参见附录</p>
+<ul>
+<li>实验报告完成度、规范程度：15%。</li>
+<li>代码完成度：数据预处理，模型设计、训练、预测，评测模型：25%。</li>
+<li>设计新的模型架构，预测新的数据：10%。</li>
+</ul>
+<p>注意：严禁代码造假！否则课程<strong>原则上最高80分</strong>。</p>
+<h3 id="imdb影评正负面分类问题">IMDB影评正负面分类问题</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/sentiment-analysis-rnn.html?highlight=imdb">15.2. 情感分析：使用递归神经网络</a>、<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/sentiment-analysis-cnn.html?highlight=imdb">15.3. 情感分析：使用卷积神经网络</a>。 教材上基准实现的测试精度：89%。</p>
+<h4 id="准备新测试数据">准备新测试数据</h4>
+<p>参考附录，或在IMDB网站复制10条评论：</p>
+<ul>
+<li>其中应该包括一半正面评价、一半负面评价。</li>
+<li>在实验报告的代码部分：能够打印出这10条评论的内容。</li>
+<li>计算正确率的方法：每识别正确一个计1%，总计10%。</li>
+</ul>
+<h3 id="自然语言推断">自然语言推断</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/natural-language-inference-attention.html">15.5. 自然语言推断：使用注意力</a>、<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/natural-language-inference-bert.html">15.7. 自然语言推断：微调BERT</a></p>
+<h3 id="毕设评语分类问题">毕设评语分类问题</h3>
+<p>本题视为II类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/sentiment-analysis-rnn.html?highlight=imdb">15.2. 情感分析：使用递归神经网络</a>、<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/sentiment-analysis-cnn.html?highlight=imdb">15.3. 情感分析：使用卷积神经网络</a>。 教材上基准实现的测试精度：89%。</p>
+<h4 id="准备新测试数据-1">准备新测试数据</h4>
+<p>参考附录：</p>
+<ul>
+<li>在实验报告的代码部分：能够打印出这10条评论的内容。</li>
+<li>计算正确率的方法：每识别正确一个计1%，总计10%。</li>
+</ul>
+<h3 id="机器翻译德汉互译">机器翻译：德汉互译</h3>
+<p>本题视为II类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_recurrent-modern/seq2seq.html">9.7. 序列到序列学习（seq2seq）</a>、<a href="https://zh-v2.d2l.ai/chapter_attention-mechanisms/bahdanau-attention.html?highlight=predict_seq2seq">10.4. Bahdanau 注意力</a>、<a href="https://zh-v2.d2l.ai/chapter_attention-mechanisms/transformer.html?highlight=predict_seq2seq">10.7. Transformer</a></p>
+<h4 id="准备新测试数据-2">准备新测试数据</h4>
+<p>参考附录：共两部分，《查拉图斯特如是说》要求计算BLEU分数评测，《德汉互译 试题》只要求翻译</p>
+<ul>
+<li>在实验报告的代码部分：能够打印出这10条语句的内容。</li>
+<li>计算正确率的方法：计算BLEU分数，超过0.6的算正确。</li>
+</ul>
+<h3 id="毕设评语生成问题">毕设评语生成问题</h3>
+<p>本题视为II类项目。</p>
+<p>自选设计一个文本生成算法，并能够按照《评分标准》输出毕设评语。可以参考CFG句法结构、语言模型可视化、朴素贝叶斯、隐式马尔科夫模型、风格迁移学习、GAN等。</p>
+<ul>
+<li>要求：内容积极、健康，<strong>严禁反动言论！</strong></li>
+</ul>
+<h3 id="机器作文">机器作文</h3>
+<p>本题视为II类项目。</p>
+<p>自选设计一个文本生成算法，并能够以“我永远不能忘记……”开头完成一篇作文，字数控制在800字左右。可以参考CFG句法结构、语言模型可视化、朴素贝叶斯、隐式马尔科夫模型、风格迁移学习、GAN等。</p>
+<ul>
+<li>要求：内容积极、健康，<strong>严禁反动言论！</strong></li>
+</ul>
 <h2 id="faq">FAQ</h2>
 <h4 id="q-是否可以按小组提交">Q: 是否可以按小组提交？</h4>
-<p><strong>A</strong>: 可以，但每组最多不超过5人，并在封面上标明小组负责人和其他组员。此外：</p>
+<p><strong>A</strong>: 可以，但每组最多不超过5人，并在封面上标明小组负责人1人、其他组员（不标注组长视为全是组员）。此外：</p>
 <ul>
 <li>为了肯定组长的工作，每位组员的分数扣除1%，并将这些分数加在组长的成绩中。</li>
-<li>为了鼓励独立解决问题，每位同学的最终成绩扣除[高重复度报告的份数]%。</li>
+<li>为了鼓励独立解决问题，每位同学的最终成绩扣除[高重复度报告的总人数]%。</li>
 </ul>
 <p>举例：</p>
 <ul>
 <li>独立完成：无分数修正。</li>
-<li>三人组：组长<span class="math inline">(2-3=)-1\%</span>，组员<span class="math inline">(-1-3=)-4\%</span>。</li>
-<li>三人组，另有5份高重复度报告：组长<span class="math inline">(2-3-5=)-6\%</span>，组员<span class="math inline">(-1-3-5=)-9\%</span>。</li>
+<li>三人组：组长<span class="math inline">(2-3=)-1</span>，组员<span class="math inline">(-1-3=)-4</span>。</li>
+<li>三人组，另有1份四人组报告的重复度高：组长<span class="math inline">(2-3-7=)-8</span>，组员<span class="math inline">(-1-3-7=)-11</span>。</li>
 </ul>
 <h4 id="q-如何保存代码">Q: 如何保存代码？</h4>
 <p><strong>A</strong>: 使用 Jupyter Notebook 导出成HTML格式，然后再转成PDF格式或直接打印。注意：Jupyter 对中文的支持不好，直接转成PDF格式可能中文是空白或乱码。也可以只用 Jupyter 完成代码部分并导出打印，而正文部分在另外一个文档中撰写。</p>
@@ -408,28 +473,82 @@ background: var(--r-link-color-dark);
 <h4 id="star-the-ending-made-all-22-movies-worth-it">[10 Star] The ending made all 22 movies worth it</h4>
 <p>If you’re going to watch this movie, avoid any spoilers, even spoiler free reviews. Which is why I’m not going to say anything about the movie. Not even my opinion. All I’m going to say is:</p>
 <p>The crowd applauded 3 times during the movie, and stood up to clap their hands after. This I have never witnessed in a Dutch cinema. Dutch crowds aren’t usually passionate about this. I checked the row where I was sitting, and people were crying. After the movie, I was seeing people with smudged mascara. That’s all I have to say about the movie.</p>
+<h2 id="附录毕设评语示例">附录：毕设评语示例</h2>
+<h4 id="优">优</h4>
+<p>该生使用深度学习的方法，实现了一个文本情感分类系统。很好的完成了任务书规定的工作量，除按时完成外文翻译外，并能阅读一些自选资料，设计合理，有较强的实践动手能力，成果具有实际应用意义，论文结构合理，论述层次清晰，论文符合规范化要求。在答辩过程中能够对系统进行分析并得出合理正确的结论。</p>
+<p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，能够对系统进行分析并得出合理正确的结论。能够在系统实现过程中充分考虑对社会的影响，能够准确表达自己的观点，正确回答老师的提问；能够正确分析所系统中所涉及的前沿技术，正确分析其国际发展趋势、研究热点。能够在系统实现过程中充分考虑经济、工程管理问题。毕业结构合理，写作规范，语句通顺，图标清晰。评定小组同意该同学通过答辩，成绩为优秀。</p>
+<h4 id="良">良</h4>
+<p>较好地完成了任务书规定的工作量，能阅读指导教师指定的参考资料、文献、设计合理，理论分析与计算正确，较好地掌握了Unity3D的使用方法，论文结构合理，符合逻辑，语言准确。在答辩过程中能正确表达自己的观点，正确回答老师的提问。</p>
+<p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，能够对系统进行分析并得出合理的结论。能够在系统实现过程中考虑系统对社会的影响，能正确表达自己的观点，正确回答老师的提问；能够正确分析所系统中所涉及的前沿技术，正确分析其国际发展趋势、研究热点。能够在系统实现过程中考了经济、工程管理问题。毕业结构合理，写作较规范，语句较通顺，图标清晰。评定小组同意该同学通过答辩，成绩为良好。</p>
+<h4 id="中">中</h4>
+<p>基本完成了任务书规定的工作量，能阅读指导教师指定的参考文献，按要求完成外文翻译，设计基本合理，理论分析与计算无差错，论文结构基本合理，层次较为清楚，文字尚通顺，基本达到规范化要求。在答辩过程中表达的观点基本正确，正确回答老师的大部分提问。</p>
+<p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，有对系统进行分析，也能够给出较合理的结论。在系统实现过程中考虑了系统对社会的影响，表达的观点基本正确，正确回答老师的大部分提问；能够正确分析所系统中所涉及的前沿技术，正确分析其国际发展趋势、研究热点。能够在系统实现过程中考虑经济、工程管理问题。毕业论文较合理，写作较规范，语句较通顺，图标清晰。评定小组同意该同学通过答辩，成绩为中等。</p>
+<h4 id="及格">及格</h4>
+<p>基本完成了任务书规定的工作量，能阅读指导教师指定的参考文献，按要求完成外文翻译，但设计不太合理，实验数据不可靠，实践动手较差，论文结构基本合理，勉强达到规范化要求。对答辩小组突出的主要问题的回答基本正确。</p>
+<p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，有对系统进行分析，给出的结论基本正确。在系统实现过程中初步考虑了系统对社会的影响，表达的观点基本正确，对答辩小组突出的主要问题的回答基本正确，论文中说明了系统中所涉及的前沿技术，有分析所在领域的国际发展趋势、研究热点。能够在系统实现过程中考了经济、工程管理问题。毕业结构较合理，写作较规范，语句较通顺，图标清晰。评定小组同意该同学通过答辩，成绩为及格。</p>
+<h4 id="不及格">不及格</h4>
+<p>该生使用Unity3D框架完成了一个小游戏。在答辩过程中对问题不能正确回答。</p>
+<p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，未对系统进行分析，未给出正确的结论。在系统实现过程中未考虑系统对社会的影响，未表达自己的观点，对答辩小组突出的主要问题不能正确回答，论文未对系统中所涉及的前沿技术进行说明，也未分析所在领域的国际发展趋势、研究热点。未在系统实现过程中考了经济、工程管理问题。毕业结构较合理，写作较不规范，语句基本通顺，图标清晰。评定小组认为该同学未能通过答辩，成绩不及格。</p>
+<h2 id="附录德汉互译示例">附录：德汉互译示例</h2>
+<p>节选自《查拉图斯特如是说》，„Also sprach Zarathustra. Ein Buch für Alle und Keinen”</p>
+<pre class="text"><code>Du großes Gestirn! Was wäre dein Glück, wenn du nicht Die hättest, welchen du leuchtest!
+你，伟大的星球！假若你没有被你照耀的人们，你的幸福何在呢！</code></pre>
+<pre class="text"><code>Siehe! Ich bin meiner Weisheit überdrüssig, wie die Biene, die des Honigs zu viel gesammelt hat, ich bedarf der Hände, die sich ausstrecken.
+看啊！我像积蜜太多的蜂儿一样，对于我的智慧已经厌倦了；我需要有人伸手来领受这智慧。</code></pre>
+<pre class="text"><code>Und also sprach der Greis zu Zarathustra: &quot;Verwandelt ist Zarathustra, zum Kind ward Zarathustra, ein Erwachter ist Zarathustra: was willst du nun bei den Schlafenden?
+老者对查拉图斯特拉如是说道：&quot;查拉图斯特拉变了，查拉图斯特拉变成了孩子，查拉图斯特拉是个觉醒者：现在你要到沉睡者那里去干什么呢？</code></pre>
+<pre class="text"><code>Als Zarathustra aber allein war, sprach er also zu seinem Herzen: &quot;Sollte es denn möglich sein! Dieser alte Heilige hat in seinem Walde noch Nichts davon gehört, dass Gott tot ist!&quot;
+可是当查拉图斯特拉独自一人时，他对他的心如是说道：&quot;难道有这种可能！这位老圣人在森林中竟毫无所闻，不知道上帝已经死了！&quot;</code></pre>
+<pre class="text"><code>Ich lehre euch den Übermenschen. Der Mensch ist Etwas, das überwunden werden soll. Was habt ihr getan, ihn zu überwinden?
+我教你们何谓超人。人是应被超越的某种东西。你们为了超越自己，做过些什么呢？</code></pre>
+<pre class="text"><code>Wahrlich, ein schmutziger Strom ist der Mensch. Man muss schon ein Meer sein, um einen schmutzigen Strom aufnehmen zu können, ohne unrein zu werden.
+确实，人是一条不洁的河。要能容纳不洁的河流而不致污浊，人必须是大海。</code></pre>
+<pre class="text"><code>Was gross ist am Menschen, das ist, dass er eine Brücke und kein Zweck ist: was geliebt werden kann am Menschen, das ist, dass er ein Übergang und ein Untergang ist.
+人类之伟大处，正在它是一座桥而不是一个目的。人类之可爱处，正在它是一个过程与一个没落。</code></pre>
+<pre class="text"><code>Seht, ich bin ein Verkündiger des Blitzes und ein schwerer Tropfen aus der Wolke: Dieser Blitz aber heißt Übermensch.
+看，我是闪电的宣告者，从云中落下的一滴沉重的雨点：而这个闪电就叫做超人。</code></pre>
+<pre class="text"><code>Man muss noch Chaos in sich haben, um einen tanzenden Stern gebären zu können.
+存在于混沌之中，才能生出舞动的星。</code></pre>
+<pre class="text"><code>Zu meinem Ziele will ich, ich gehe meinen Gang; über die Zögernden und Saumseligen werde ich hinwegspringen. Also sei mein Gang ihr Untergang!
+我要朝着我的目标行进，我要超越那些迟疑者和拖延者。我的行进便是他们的没落！</code></pre>
+<p>节选自《上海外国语大学 2017 年硕士研究生入学考试 德汉互译 试题》</p>
+<ol type="1">
+<li>Märchen sind nicht auf dem Rückmarsch, ganz im Gegenteil.</li>
+<li>Der Preisträger des Europäischen Märchenpreises 2012 setzt sich seit über 40 Jahren mit der Bedeutung und Weiterverbreitung von Märchen auseinander.</li>
+<li>Das Prinzip von Gut und Böse ist auch in modernen Sagen wie Harry Potter zu finden.</li>
+<li>Seine Liebe für deutsche Märchen und die deutsche Sprache entdeckte der Germanist und Folklorist auf Umwegen: nach dem Abitur ging der gebürtige Deutsche zum Studium in die USA, eigentlich wollte er Mathematiker werden.</li>
+<li>Heute sieht das natürlich anders aus: Durch das digitale Zeitalter hat sich die Verbreitung enorm verändert.</li>
+<li>别的表情等待反应，例如悲哀等待怜悯，威严等待慑服，滑稽等待嬉笑。唯美貌无为，无目的，使人没有特定的反应义务的挂念，就不由自主地被吸引，其实是被感动。</li>
+<li>其实美貌这个表情的意思，就是爱。这个意思既蕴藉又坦率地随时呈现出来。拥有美貌的人并没有这个意思，而美貌是这个意思。</li>
+<li>用美貌这个先验的基本表情，再变化为别的表情，特别容易奏效(所以演员总是以美貌者为上选。日常生活中，也是美貌者尽占优势)，那变化出来的别的表情，既是含义清晰，又反而强化美貌。</li>
+<li>美貌的人睡着了，后天的表情全停止，而美貌是不睡的，美貌不需要休息；倒是由于撤除附加的表情，纯然只剩美貌这一种表情，就尤其感动人，故曰：睡美人。</li>
+<li>老人睡着，见得更老，因为别的附加的表情率尔褪净，只剩下衰败的美貌这一种惨相，光荣销歇，美貌的废墟不及石头的废墟，罗马夕照供人凭吊，美貌的残局不忍卒睹。</li>
+</ol>
 <h2 id="附录详细评分规则">附录：详细评分规则</h2>
 <ul>
-<li>实验报告完成度：20%。</li>
-<li>能够使用训练的模型对新测试数据进行预测：20%。</li>
-<li>设计新的模型架构，并在测试集上的效能超过教材上的基准实现：10%。</li>
-<li>新测试数据上的正确率：10%。</li>
+<li>实验报告完成度、规范程度：15%。</li>
+<li>代码完成度：数据预处理，模型设计、训练、预测，评测模型：25%。</li>
+<li>模型架构创新，超过基准实现，实际预测应用：10%。</li>
 </ul>
-<h4 id="实验报告完成度20">实验报告完成度：20%</h4>
+<h4 id="实验报告完成度15">实验报告完成度：15%</h4>
 <ul>
-<li>结构清晰、完备（封面、正文、代码、总结）：10%。</li>
-<li>思路严谨、合理：5%。</li>
-<li>代码逻辑正确，保持原始输出：5%。</li>
+<li>结构清晰、完备（封面、正文、代码、总结）：5%。</li>
+<li>解决思路严谨、合理：5%。</li>
+<li>代码逻辑正确，保留原始输出：5%。</li>
 </ul>
-<h4 id="对新测试数据进行预测20">对新测试数据进行预测：20%</h4>
+<h4 id="代码完成度25">代码完成度：25%</h4>
+<p>参考<a href="https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html?highlight=mnist">3.6. softmax回归的从零开始实现</a>、<a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/kaggle-house-price.html">4.10. 实战Kaggle比赛：预测房价</a></p>
 <ul>
-<li>能够制作并展示新测试数据：10%。</li>
-<li>能够使用模型进行预测（<code>predict</code>、<code>argmax</code>）：10%。</li>
+<li>数据获取与预处理：5%。</li>
+<li>模型定义与训练：5%。</li>
+<li>模型选择（使用验证方法调节超参数）：5%。</li>
+<li>使用模型预测（<code>predict</code>、<code>argmax</code>）：5%。</li>
+<li>正确评测模型（<code>evaluate</code>）：5%。</li>
 </ul>
-<h4 id="设计新的模型架构10">设计新的模型架构：10%</h4>
+<h4 id="模型架构创新等10">模型架构创新等：10%</h4>
 <ul>
-<li>有自己的设计思路：5%。</li>
-<li>在测试集上的效能超过教材上的基准实现（<code>evaluate</code>，或将测试集用于验证）：5%。</li>
+<li>模型架构创新：5%。</li>
+<li>效能超过基准实现、实际预测应用：5%。</li>
 </ul>
 </section>
 <section class="footnotes footnotes-end-of-document" role="doc-endnotes">

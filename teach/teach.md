@@ -8,7 +8,7 @@ read_time: false
 **Naming Convention**: {[Edition]} {Title} {Level} {- Sub-level/topic}
 
 - Level I: for undergraduates.
-- Level II: for graduates, may branched into specific topics.
+- Level II: for graduates, may branch into specific topics.
 
 <hr>
 <br>
