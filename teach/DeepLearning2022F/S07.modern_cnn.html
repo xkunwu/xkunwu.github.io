@@ -166,6 +166,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -179,9 +180,6 @@ text-align: left;
 .reveal h4 {
 font-size: var(--r-heading4-size);
 text-align: left;
-}
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
 }
 
 
@@ -262,6 +260,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -309,8 +308,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -322,8 +320,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -1113,7 +1111,7 @@ background-color: var(--r-background-color);
 </ul>
 <p>AlexNet：更大、更深的LeNet</p>
 <ul>
-<li>ReLU、Dropout、数据增广</li>
+<li>ReLU、Dropout、最大池化、数据增广</li>
 </ul>
 <p>VGG：更大、更深的AlexNet</p>
 <ul>
@@ -1214,7 +1212,7 @@ background-color: var(--r-background-color);
 <p>交替使用：NiN模块、步幅2的最大池化层</p>
 <ul>
 <li>每个模块等价于完整网络</li>
-<li>逐步减小特征、增多通道</li>
+<li>逐步缩小特征图、增多通道</li>
 </ul>
 <p> </p>
 <p>无全连接层</p>
@@ -1292,7 +1290,6 @@ background-color: var(--r-background-color);
 <div class="nopub">
 
 </div>
-<div class="fragment">
 <ul>
 <li>4条路径：从<strong>不同视角</strong>提取信息
 <ul>
@@ -1300,7 +1297,6 @@ background-color: var(--r-background-color);
 <li>每条路径输出：形状不变；通道数是超参数</li>
 </ul></li>
 </ul>
-</div>
 <div class="fragment">
 <ul>
 <li>合并所有路径的输出通道：（不同视角的）<strong>模式组合</strong></li>
@@ -1308,8 +1304,60 @@ background-color: var(--r-background-color);
 </div>
 <div class="fragment">
 <blockquote>
-<p>We need to go deeper! – Inception</p>
+<p>We need to go deeper! – <em>Inception</em></p>
 </blockquote>
+</div>
+</section>
+<section id="googlenet" class="slide level2">
+<h2>GoogLeNet</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>5个“阶段”</li>
+<li>9个Inception模块</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+</section>
+<section id="阶段-12" class="slide level2">
+<h2>阶段 1，2</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>与AlexNet（右）对比</p>
+<ul>
+<li>更小窗口：减少计算量</li>
+<li>通道数增长速度更平稳</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+</section>
+<section id="阶段-3" class="slide level2">
+<h2>阶段 3</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>核心：2x Inception 模块</p>
+<ul>
+<li>通道数增加：递进的复杂度</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+</section>
+<section id="阶段-45" class="slide level2">
+<h2>阶段 4，5</h2>
+<div class="nopub">
+
 </div>
 </section>
 <section id="inception-模块s3b1" class="slide level2">
@@ -1357,58 +1405,6 @@ background-color: var(--r-background-color);
 </table>
 </div>
 </div>
-</div>
-</section>
-<section id="googlenet" class="slide level2">
-<h2>GoogLeNet</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>5个“阶段”</li>
-<li>9个Inception模块</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="阶段-12" class="slide level2">
-<h2>阶段 1，2</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>与AlexNet对比</p>
-<ul>
-<li>更小窗口：减少计算量</li>
-<li>更多输出通道：提取更多特征</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="阶段-3" class="slide level2">
-<h2>阶段 3</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>核心：2x Inception 模块</p>
-<ul>
-<li>通道数增加：递进的复杂度</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="阶段-45" class="slide level2">
-<h2>阶段 4，5</h2>
-<div class="nopub">
-
 </div>
 </section>
 <section id="inception变种" class="slide level2">
@@ -1535,7 +1531,11 @@ x_i = \gamma \frac{x_i - \mu}{\sigma} + \beta
 </span></p>
 <ul>
 <li><span class="math inline">\gamma</span>：拉伸参数；<span class="math inline">\beta</span>：偏移参数</li>
-<li>想象：按批次控制产品质量符号标准</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>想象：按批次控制产品质量（符号）标准</li>
 </ul>
 </div>
 </section>
@@ -1569,7 +1569,7 @@ x_i = \gamma \frac{x_i - \mu}{\sigma} + \beta
 </ul>
 </div>
 <div class="fragment">
-<p>测试模式：可以通过<strong>移动平均</strong>估算整个数据集的均值、方差</p>
+<p>测试模式：使用训练阶段的<strong>移动平均</strong>估算（整个数据集的均值、方差）</p>
 </div>
 </section>
 <section id="批量归一化层" class="slide level2">
@@ -1652,7 +1652,7 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 </ul>
 <div class="fragment">
 <ul>
-<li>但泛函理论上并不完全如此</li>
+<li>将所有函数种类看成集合：最优函数不一定能通过<strong>扩充函数类</strong>涵盖</li>
 </ul>
 <div class="nopub">
 
@@ -1691,10 +1691,18 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 </div>
 </div>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <p>实线旁路：数据可以<strong>跨层直接传播</strong></p>
 <ul>
-<li>避免因层数过多丢失信息的问题</li>
+<li>避免因层数过多而丢失信息</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="resnet模块" class="slide level2">
@@ -1706,12 +1714,22 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 <li>3x3卷积、BN、ReLU</li>
 </ul>
 <p><strong>数据旁路</strong>：接在最后激活之前</p>
+</div><div class="column" style="width:50%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>1x1卷积：调整成相同的通道数</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
 
+</div>
 </div>
 </div>
 </div>

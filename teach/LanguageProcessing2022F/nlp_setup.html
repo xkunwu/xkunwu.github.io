@@ -91,7 +91,7 @@
 --r-sider-margin: 100px;
 --r-heading-font: "Noto Serif", "Times New Roman", serif;
 --r-heading-color: #222;
---r-heading-line-height: 1.2;
+--r-heading-line-height: 1.2rem;
 --r-heading-letter-spacing: normal;
 --r-heading-text-shadow: none;
 --r-heading-font-weight: 600;
@@ -220,6 +220,15 @@ em {
 font-style: italic;
 }
 
+ol,
+dl,
+ul {
+display: block;
+text-align: left;
+margin: 0 1em;
+padding: 0 1em;
+
+}
 ol {
 list-style-type: decimal;
 }
@@ -237,13 +246,14 @@ ul ol,
 ol ol,
 ol ul {
 display: block;
-margin-left: 1em;
+margin: 0;
+padding: 0 1em;
 }
 dt {
 font-weight: bold;
 }
 dd {
-margin-left: 1em;
+padding: 0 1em;
 }
 
 blockquote {

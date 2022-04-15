@@ -166,6 +166,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -179,9 +180,6 @@ text-align: left;
 .reveal h4 {
 font-size: var(--r-heading4-size);
 text-align: left;
-}
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
 }
 
 
@@ -262,6 +260,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -309,8 +308,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -322,8 +320,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -816,7 +814,7 @@ background-color: var(--r-background-color);
 <ul>
 <li>提高模型的泛化性能</li>
 </ul>
-<p>常见操作：仿射变换、翻转、切割；色调、饱和度、明度</p>
+<p>常见操作：仿射变换、翻转、剪裁；色调、饱和度、明度</p>
 </section></section>
 <section>
 <section id="微调" class="title-slide slide level1 center">
@@ -857,7 +855,7 @@ background-color: var(--r-background-color);
 <tr class="odd">
 <td><strong>样本数</strong></td>
 <td>1.2 M</td>
-<td>50K</td>
+<td>500K</td>
 <td>60 K</td>
 </tr>
 <tr class="even">
@@ -899,10 +897,13 @@ background-color: var(--r-background-color);
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>特征提取：任务之间<strong>共享特征</strong>
+<li>图像的特征描述大同小异
 <ul>
-<li>图像的特征描述大同小异</li>
-<li>不同深度的<strong>特征含义不同</strong></li>
+<li>任务之间可以<strong>共享特征</strong></li>
+</ul></li>
+<li>但不同深度的<strong>特征含义不同</strong>
+<ul>
+<li>如何取舍？</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
@@ -927,10 +928,13 @@ background-color: var(--r-background-color);
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>特征提取：任务之间<strong>共享特征</strong>
+<li>图像的特征描述大同小异
 <ul>
-<li>图像的特征描述大同小异</li>
-<li>不同深度的<strong>特征含义不同</strong></li>
+<li>任务之间可以<strong>共享特征</strong></li>
+</ul></li>
+<li>但不同深度的<strong>特征含义不同</strong>
+<ul>
+<li>如何取舍？</li>
 </ul></li>
 </ul>
 <p> </p>
@@ -974,8 +978,8 @@ background-color: var(--r-background-color);
 <div class="nopub">
 
 </div>
-<p>但需要<strong>更强的正则化</strong>：避免参数剧烈变动</p>
 <ul>
+<li>需要<strong>更强的正则化</strong>：避免参数剧烈变动</li>
 <li><strong>小学习率</strong>：已经在最优点附近</li>
 <li>通常只需更少的数据迭代</li>
 </ul>
@@ -986,9 +990,12 @@ background-color: var(--r-background-color);
 </div>
 </div>
 <div class="fragment">
-<p>源数据集、模型远比目标复杂时，效果更好</p>
+<p>比直接训练：<strong>速度更快</strong>、<strong>精度更高</strong></p>
 <ul>
-<li>比直接训练：速度更快、精度更高</li>
+<li>源数据集、模型远比目标复杂时，效果更好
+<ul>
+<li>有可能出现过拟合，但也可能覆盖测试集</li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
@@ -1004,8 +1011,8 @@ background-color: var(--r-background-color);
 <div class="column" style="width:60%;">
 <p>后面层：<strong>概括、特性</strong>特征</p>
 <ul>
-<li>观察范围更大</li>
-<li>与数据更相关，必须替换</li>
+<li>观察范围（感受野）更大</li>
+<li>与任务更相关，必须替换</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1029,8 +1036,8 @@ background-color: var(--r-background-color);
 <div class="column" style="width:60%;">
 <p>后面层：<strong>概括、特性</strong>特征</p>
 <ul>
-<li>观察范围更大</li>
-<li>与数据更相关，必须替换</li>
+<li>观察范围（感受野）更大</li>
+<li>与任务更相关，必须替换</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1074,7 +1081,7 @@ background-color: var(--r-background-color);
 
 </div>
 <ul>
-<li>可以使用对应标签提取的向量</li>
+<li>可以使用<strong>对应标签</strong>提取的特征表示（向量）</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">

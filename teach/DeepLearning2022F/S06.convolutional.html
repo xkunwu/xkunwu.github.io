@@ -166,6 +166,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -179,9 +180,6 @@ text-align: left;
 .reveal h4 {
 font-size: var(--r-heading4-size);
 text-align: left;
-}
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
 }
 
 
@@ -262,6 +260,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -309,8 +308,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -322,8 +320,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -655,7 +653,10 @@ background-color: var(--r-background-color);
 <section id="两个原则" class="slide level2">
 <h2>两个原则</h2>
 <ul>
-<li><strong>平移不变性</strong>：位置无关；相似的区域激活相似的数值</li>
+<li><strong>平移不变性</strong>：位置无关；相似的区域激活相似的数值
+<ul>
+<li>例如：下图中俩个窗口内都有眼镜</li>
+</ul></li>
 <li><strong>局部性</strong>：操作限制在小的局部窗口内</li>
 </ul>
 <div class="nopub">
@@ -825,7 +826,7 @@ o_i &amp;= w^k x_k\\
 <p>应用卷积层：图像缩小，但核大小一般不变</p>
 <ul>
 <li>输出<span class="math inline">\mathbf{Y}变小: (n_h - k_h + 1) \times (n_w - k_w + 1)</span></li>
-<li>可以看成观察窗口中的<strong>信息提取</strong>和<strong>信息融合</strong></li>
+<li>可以看成观察窗口中的<strong>特征提取</strong>和<strong>信息融合</strong></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -867,7 +868,7 @@ o_i &amp;= w^k x_k\\
 <div class="column" style="width:70%;">
 <p>应用卷积层：图像缩小，但核大小一般不变</p>
 <ul>
-<li>可以看成观察窗口中的<strong>信息提取</strong>和<strong>信息融合</strong></li>
+<li>可以看成观察窗口中的<strong>特征提取</strong>和<strong>信息融合</strong></li>
 <li>最高层：<strong>融合整张图片的信息</strong></li>
 </ul>
 <p>想象：用显微镜观察目标</p>
@@ -880,7 +881,7 @@ o_i &amp;= w^k x_k\\
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:70%;">
-<p><strong>特征映射 feature map</strong>：信息提取的<strong>过程（或结果）</strong></p>
+<p><strong>特征映射 feature map</strong>：特征提取的<strong>过程（或结果）</strong></p>
 <ul>
 <li>每个层将输入映射为下一个<strong>特征空间中的表示</strong></li>
 </ul>
@@ -1049,7 +1050,7 @@ o_i &amp;= w^k x_k\\
 <p>应用卷积层：图像缩小，但核大小一般不变</p>
 <ul>
 <li>输出<span class="math inline">\mathbf{Y}变小: (n_h - k_h + 1) \times (n_w - k_w + 1)</span></li>
-<li>可以看成观察窗口中的<strong>信息提取</strong>和<strong>信息融合</strong></li>
+<li>可以看成观察窗口中的<strong>特征提取</strong>和<strong>信息融合</strong></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1069,7 +1070,7 @@ o_i &amp;= w^k x_k\\
 </section>
 <section id="填充计算" class="slide level2">
 <h2>填充：计算</h2>
-<p>假设填充<span class="math inline">p_h</span>行、<span class="math inline">p_w</span>列：两边同时填充</p>
+<p>假设填充<span class="math inline">p_h</span>行、<span class="math inline">p_w</span>列：两边同时填充，总数是<span class="math inline">p_h,p_w</span></p>
 <ul>
 <li><span class="math inline">\mathbf{Y}: (n_h - k_h + p_h + 1) \times (n_w - k_w + p_w + 1)</span></li>
 </ul>
@@ -1077,10 +1078,7 @@ o_i &amp;= w^k x_k\\
 
 </div>
 <ul>
-<li>注意：卷积核大小通常是<strong>奇数</strong>
-<ul>
-<li>图只是示例，偶数核大小需要修正</li>
-</ul></li>
+<li>注意：卷积核大小通常是<strong>奇数</strong>，图只是示例</li>
 </ul>
 <div class="fragment">
 <p>通常填充用于<strong>保持图像大小不变</strong></p>
@@ -1096,7 +1094,7 @@ o_i &amp;= w^k x_k\\
 <p>应用卷积层：图像缩小，但核大小一般不变</p>
 <ul>
 <li>输出<span class="math inline">\mathbf{Y}变小: (n_h - k_h + 1) \times (n_w - k_w + 1)</span></li>
-<li>可以看成观察窗口中的<strong>信息提取</strong>和<strong>信息融合</strong></li>
+<li>可以看成观察窗口中的<strong>特征提取</strong>和<strong>信息融合</strong></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1163,7 +1161,7 @@ o_i &amp;= w^k x_k\\
 </section>
 <section id="彩色图片上的卷积" class="slide level2">
 <h2>彩色图片上的卷积</h2>
-<p>彩色图片有<strong>多个通道</strong></p>
+<p>彩色图片有多个通道，即<strong>特征</strong>：颜色是最常见的特征描述</p>
 <ul>
 <li>Jpeg：RGB；PNG：RGBA</li>
 <li>转换为灰度值？三个通道的加权组合：丢失信息</li>
@@ -1190,7 +1188,7 @@ o_i &amp;= w^k x_k\\
 </section>
 <section id="彩色图片的多个通道" class="slide level2">
 <h2>彩色图片的多个通道</h2>
-<p>彩色图片有多个通道</p>
+<p>彩色图片有多个通道，即<strong>特征</strong>：颜色是最常见的特征描述</p>
 <ul>
 <li>对每个通道<strong>分别处理</strong>：卷积核参数不同，但大小、位置相同</li>
 </ul>
