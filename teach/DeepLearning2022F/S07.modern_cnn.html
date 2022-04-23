@@ -798,16 +798,14 @@ background-color: var(--r-background-color);
 <section id="实践派的崛起" class="slide level2">
 <h2>实践派的崛起</h2>
 <p>计算机视觉的新思路：<strong>特征本身应该是能够被学习的参数</strong></p>
-<ul>
-<li>底层：可能检测边缘、颜色和纹理</li>
-<li>高层：复合纹理、抽象概念</li>
-</ul>
 <div class="columns">
 <div class="column" style="width:50%;">
+<p>底层：边缘、颜色和纹理</p>
 <div class="nopub">
 
 </div>
 </div><div class="column" style="width:50%;">
+<p>高层：复合纹理、抽象概念</p>
 <div class="nopub">
 
 </div>
@@ -880,7 +878,10 @@ background-color: var(--r-background-color);
 <ul>
 <li>最大池化</li>
 </ul></li>
-<li>更大的核、步长</li>
+<li>更大的核、步长
+<ul>
+<li>11x11</li>
+</ul></li>
 <li>更大的图片
 <ul>
 <li>3通道（彩色）</li>
@@ -899,7 +900,7 @@ background-color: var(--r-background-color);
 <div class="column" style="width:50%;">
 <ul>
 <li>新加3个卷积层、1个池化层</li>
-<li>更多的输出通道</li>
+<li>更多的输出通道：增多，再减少</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
@@ -933,7 +934,7 @@ background-color: var(--r-background-color);
 <p>全连接模块中加入了丢弃层</p>
 </div>
 <div class="fragment">
-<p>数据增广</p>
+<p>数据增广：增强数据多样性</p>
 <div class="nopub">
 
 </div>
@@ -1053,7 +1054,7 @@ background-color: var(--r-background-color);
 <p> </p>
 <p>假如将AlexNet做得更大、更深呢？</p>
 <ul>
-<li>全连接层：得不偿失
+<li>全连接层？得不偿失（回顾参数表）
 <ul>
 <li>参数量大，丢失空间信息</li>
 </ul></li>
@@ -1119,8 +1120,6 @@ background-color: var(--r-background-color);
 </ul>
 <div class="fragment">
 <p>下一步：更大、更深的VGG？</p>
-</div>
-<div class="fragment">
 <ul>
 <li>的确有做深网络的尝试，但遇到了<strong>瓶颈</strong></li>
 <li>各种<strong>模块开发</strong>如百花齐放</li>
@@ -1166,7 +1165,12 @@ background-color: var(--r-background-color);
 </div>
 </div>
 <div class="fragment">
-<p>NiN将串联的每个模块看成<strong>完整的网络</strong></p>
+<p>NiN将串联的每个模块看成<strong>完整网络</strong></p>
+<ul>
+<li>架构设计：递归构造</li>
+</ul>
+</div>
+<div class="fragment">
 <ul>
 <li>简单方案：中间模块使用全连接
 <ul>
@@ -1247,7 +1251,10 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>参数量决定计算、存储：限制网络深度</p>
 <ul>
-<li>NiN标志着网络<strong>架构调优竞赛</strong>的开始</li>
+<li>NiN标志着网络<strong>架构调优竞赛</strong>的开始
+<ul>
+<li>给定硬件平台：参数量恒定，只能优化架构设计</li>
+</ul></li>
 </ul>
 </div>
 </section>
@@ -1354,19 +1361,12 @@ background-color: var(--r-background-color);
 </div>
 </div>
 </section>
-<section id="阶段-45" class="slide level2">
-<h2>阶段 4，5</h2>
-<div class="nopub">
-
-</div>
-</section>
 <section id="inception-模块s3b1" class="slide level2">
 <h2>Inception 模块：S3B1</h2>
 <p>第一个Inception 模块的通道数图示</p>
 <div class="nopub">
 
 </div>
-<div class="fragment">
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
@@ -1405,6 +1405,11 @@ background-color: var(--r-background-color);
 </table>
 </div>
 </div>
+</section>
+<section id="阶段-45" class="slide level2">
+<h2>阶段 4，5</h2>
+<div class="nopub">
+
 </div>
 </section>
 <section id="inception变种" class="slide level2">
@@ -1423,7 +1428,7 @@ background-color: var(--r-background-color);
 </div>
 </section>
 <section id="inception-v3-s3" class="slide level2">
-<h2>Inception-V3: s3</h2>
+<h2>Inception-V3: S3</h2>
 <p>替换5x5为两个3x3</p>
 <div class="nopub">
 
@@ -1441,13 +1446,13 @@ background-color: var(--r-background-color);
 </div>
 </section>
 <section id="inception-v3-s4" class="slide level2">
-<h2>Inception-V3: s4</h2>
-<p>替换5x5为1x7和7x1</p>
+<h2>Inception-V3: S4</h2>
+<p>替换3x3为1x7和7x1</p>
 <div class="nopub">
 
 </div>
 <ul>
-<li>参数：<span class="math inline">25 \rightarrow 4 \times 7 = 28</span></li>
+<li>参数：<span class="math inline">9 \rightarrow 2 \times 7 = 14</span></li>
 </ul>
 <div class="fragment">
 <ul>
@@ -1457,7 +1462,7 @@ background-color: var(--r-background-color);
 </div>
 </section>
 <section id="inception-v3-s5" class="slide level2">
-<h2>Inception-V3: s5</h2>
+<h2>Inception-V3: S5</h2>
 <p>替换3x3为1x3和3x1（也有替换5x5为两个3x3）</p>
 <div class="nopub">
 
@@ -1499,6 +1504,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="深度带来的问题" class="slide level2">
 <h2>深度带来的问题</h2>
+<p>网络非常深：计算<strong>依赖链过长</strong>，层间信息传递变难，导致收敛变慢</p>
 <div class="nopub">
 
 </div>
@@ -1507,7 +1513,6 @@ background-color: var(--r-background-color);
 <p>数据在最前：前面层易受<strong>数据影响</strong>、训练较慢</p>
 <ul>
 <li>前面层的变化导致全都跟着变，例如异常数据</li>
-<li>网络非常深时，层间信息传递变难，导致收敛变慢</li>
 </ul>
 </div>
 <div class="fragment">
@@ -1589,8 +1594,8 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>对全连接层：作用在<strong>特征维</strong></li>
-<li>对卷积层：作用在<strong>通道维</strong></li>
+<li>全连接层（2维张量）：作用在<strong>特征维</strong></li>
+<li>卷积层（4维张量）：作用在<strong>通道维</strong></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
@@ -1789,9 +1794,9 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 </section>
 <section id="本章内容" class="slide level2">
 <h2>本章内容</h2>
-<p>深度卷积神经网络 AlexNet。使用块的网络 VGG。网络中的网络 NiN。含并行连结的网络 GoogLeNet。</p>
+<p>深度卷积神经网络 AlexNet。使用块的网络 VGG。网络中的网络 NiN。含并行连结的网络 GoogLeNet。批量规范化。残差网络 ResNet。</p>
 <p> </p>
-<p><strong>重点</strong>：AlexNet；VGG；NiN；Inception模块。</p>
+<p><strong>重点</strong>：AlexNet；VGG；NiN；Inception模块；批量规范化；残差网络 ResNet。</p>
 <p><strong>难点</strong>：Inception变种。</p>
 </section>
 <section id="学习目标" class="slide level2">
@@ -1801,7 +1806,9 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 <li>理解AlexNet的设计特点（丢弃法、ReLU、最大池化、数据增广）、学术贡献（特征工程自动化）</li>
 <li>理解VGG的设计特点（模块化设计）</li>
 <li>理解NiN的设计特点（模块等价于完整网络）、创新点（1x1卷积替代全连接）</li>
-<li>理解Inception模块的设计特点（分支处理、模式组合）</li>
+<li>理解Inception模块的设计特点（分支处理、模式组合），及其变种的设计特点</li>
+<li>理解批量规范化的动机、原理、方法</li>
+<li>理解ResNet的原理，及其模块的设计特点</li>
 </ul>
 </section>
 <section id="问题" class="slide level2">
@@ -1809,7 +1816,9 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 <p>简述AlexNet的设计特点、学术贡献。</p>
 <p>简述VGG的设计特点。</p>
 <p>简述NiN的设计特点、创新点。</p>
-<p>简述Inception模块的设计特点。</p>
+<p>简述Inception模块的设计特点，及其变种的设计特点。</p>
+<p>简述批量规范化的动机、原理、方法。</p>
+<p>简述ResNet的原理，及其模块的设计特点。</p>
 </section></section>
     </div>
   </div>

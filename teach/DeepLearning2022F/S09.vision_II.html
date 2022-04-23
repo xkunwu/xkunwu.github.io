@@ -166,6 +166,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -179,9 +180,6 @@ text-align: left;
 .reveal h4 {
 font-size: var(--r-heading4-size);
 text-align: left;
-}
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
 }
 
 
@@ -262,6 +260,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -309,8 +308,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -322,8 +320,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -609,7 +607,7 @@ background-color: var(--r-background-color);
 <ul>
 <li><span class="math inline">s \in \{s_1,..,s_n\}, r \in \{r_1,..,r_m\}</span></li>
 </ul></li>
-<li>实践中只考虑包含<span class="math inline">s_1</span>或<span class="math inline">r_1</span>的<span class="math inline">n+m-1</span>个锚框
+<li>实践中只考虑包含<span class="math inline">s_1</span>或<span class="math inline">r_1</span>的<span class="math inline">m+n-1</span>个锚框
 <ul>
 <li><span class="math inline">(s_1,r_1),..,(s_1,r_m),(s_2,r_1),..,(s_n,r_1)</span></li>
 </ul></li>
@@ -647,8 +645,8 @@ background-color: var(--r-background-color);
 <p> </p>
 <p><strong>每段都生成锚框</strong>：预测类别、边界框</p>
 <ul>
-<li>底部：感受野小，拟合小物体</li>
 <li>顶部：感受野大，拟合大物体</li>
+<li>底部：感受野小，拟合小物体</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -667,7 +665,7 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>类别预测层：<strong>保持输入宽、高</strong>的卷积层</p>
 <ul>
-<li>空间坐标相同</li>
+<li>二维空间坐标保持一致</li>
 <li>每个通道：锚框、类别预测的<strong>组合</strong>，总共<span class="math inline">a(q+1)</span>个
 <ul>
 <li>通道<span class="math inline">i(q+1)+j</span>：锚框索引<span class="math inline">i</span>、类别索引<span class="math inline">j</span></li>
@@ -694,7 +692,7 @@ background-color: var(--r-background-color);
 </div>
 <div class="fragment">
 <ul>
-<li>转换成<strong>一致格式</strong>：（批量大小，高x宽x通道数）
+<li>转换成<strong>一致格式</strong>：（批量大小，高 x 宽 x 通道数）
 <ul>
 <li>批量大小相同，在维度1上拼接</li>
 </ul></li>
@@ -706,7 +704,7 @@ background-color: var(--r-background-color);
 <p>多尺度预测实现：宽、高减半</p>
 <ul>
 <li><p>模块与 VGG 类似：填充1的3x3卷积层 + 步幅2的最大池化</p></li>
-<li><p><strong>特征图减半</strong>：感受野加倍</p></li>
+<li><p><strong>特征图减半</strong>：感受野边长加倍</p></li>
 </ul>
 <div class="fragment">
 <p>基础网络实现：提取特征</p>
@@ -757,13 +755,13 @@ background-color: var(--r-background-color);
 <li>SSD：以每个像素为锚点、多尺度检测
 <ul>
 <li>单个神经网络</li>
-<li>多个输出段</li>
+<li>多个不同尺度的输出阶段</li>
 </ul></li>
 </ul>
 </section></section>
 <section>
-<section id="区域卷积神经网络r-cnn" class="title-slide slide level1 center">
-<h1 class="center">区域卷积神经网络（R-CNN）</h1>
+<section id="区域卷积神经网络r-cnn系列" class="title-slide slide level1 center">
+<h1 class="center">区域卷积神经网络（R-CNN）系列</h1>
 
 </section>
 <section id="r-cnn" class="slide level2">
@@ -796,11 +794,15 @@ background-color: var(--r-background-color);
 <p>R-CNN (2014) 早于 SSD (2016)</p>
 <ul>
 <li>锚框：边界框选取、预测的<strong>系统化方法</strong></li>
+</ul>
+<div class="fragment">
+<ul>
 <li>[Uijlings 2013] 选择性搜索：选取规则并不完善
 <ul>
-<li>单张图片选出上千个提议区域，计算缓慢</li>
+<li>单张图片随机选出上千个提议区域：覆盖率低、计算缓慢</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="r-cnn计算性能" class="slide level2">
 <h2>R-CNN：计算性能</h2>
@@ -811,9 +813,9 @@ background-color: var(--r-background-color);
 <div class="nopub">
 
 </div>
-<p>R-CNN主要性能瓶颈：每个提议区域上网络<strong>独立传播</strong>，而没有共享计算</p>
+<p>R-CNN主要性能瓶颈：每个提议区域上网络<strong>独立传播</strong></p>
 <ul>
-<li>但通常这些区域有大量重叠，导致重复计算</li>
+<li>但通常这些区域有大量重叠：本可以共享特征，却导致重复计算</li>
 </ul>
 </section>
 <section id="fast-r-cnn" class="slide level2">
@@ -841,7 +843,10 @@ background-color: var(--r-background-color);
 <p>RoI pooling：指定相同的输出形状</p>
 <ul>
 <li>给定备选区域：均匀分割</li>
-<li>输出窗口中的<strong>最大值</strong></li>
+<li>输出窗口中每个子区域的<strong>最大值</strong>
+<ul>
+<li>注意：子区域不重叠、形状不规则，如图中2x1、1x2、1x1</li>
+</ul></li>
 </ul>
 <div class="nopub">
 
@@ -849,7 +854,7 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>问题：还是不能系统地确定备选区域</p>
 <ul>
-<li>检测精度取决于提议区域的数量</li>
+<li>随机选取的检测精度取决于<strong>提议区域的数量</strong></li>
 </ul>
 </div>
 </section>
@@ -857,16 +862,16 @@ background-color: var(--r-background-color);
 <h2>Faster R-CNN</h2>
 <p>[Ren 2015] Faster R-CNN：将选择性搜索替换为网络学习</p>
 <ul>
-<li><strong>区域提议 region proposal 网络 (RCN)</strong>：从数据中学习选取规律</li>
+<li><strong>区域提议 region proposal 网络 (RPN)</strong>：从数据中学习选取规律</li>
 <li>输出数量可控，同时可以保证检测精度</li>
 </ul>
 <div class="nopub">
 
 </div>
 </section>
-<section id="faster-r-cnnrcn" class="slide level2">
-<h2>Faster R-CNN：RCN</h2>
-<p>RCN：从数据中学习选取规律</p>
+<section id="faster-r-cnnrpn" class="slide level2">
+<h2>Faster R-CNN：RPN</h2>
+<p>RPN：从数据中学习选取规律</p>
 <div class="nopub">
 
 </div>
@@ -877,7 +882,7 @@ background-color: var(--r-background-color);
 <li><strong>NMS</strong>：移除相似的结果，输出提议区域</li>
 </ol>
 <div class="fragment">
-<p>注意：RCN 随整个模型一起训练</p>
+<p>注意：RPN 随整个模型一起训练</p>
 </div>
 </section>
 <section id="mask-r-cnn" class="slide level2">
@@ -898,7 +903,7 @@ background-color: var(--r-background-color);
 <div class="columns">
 <div class="column" style="width:60%;">
 <ol type="1">
-<li>兴趣区域对齐层：保留特征图的空间信息</li>
+<li>备选区域对齐层：保留特征图的空间信息</li>
 <li>额外的<strong>全卷积网络</strong>：像素级预测</li>
 </ol>
 </div><div class="column" style="width:40%;">
@@ -922,11 +927,11 @@ background-color: var(--r-background-color);
 <li><p>R-CNN：选取若干提议区域，分别执行前向传播以抽取其特征，然后再预测类别、边界框。</p></li>
 <li><p>Fast R-CNN：只对整个图像做前向传播。</p>
 <ul>
-<li>兴趣区域池化层：为不同形状的兴趣区域抽取相同形状的特征。</li>
+<li>备选区域池化层：为不同形状的备选区域抽取相同形状的特征。</li>
 </ul></li>
 <li><p>Faster R-CNN：使用参与训练的区域提议网络</p>
 <ul>
-<li>减少提议区域数量，仍保证目标检测精度。</li>
+<li>可控提议区域数量，仍保证目标检测精度。</li>
 </ul></li>
 <li><p>Mask R-CNN：引入全卷积网络，像素级预测精度。</p></li>
 </ul>
@@ -1020,24 +1025,26 @@ background-color: var(--r-background-color);
 <div class="nopub">
 
 </div>
+<div class="fragment">
 <ul>
 <li>中间张量：替换一部分为卷积结果</li>
 </ul>
 <p><span class="math display">
-Y[i: i + h, j: j + w] += X[i, j] * K
+Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 </span></p>
+</div>
 <div class="fragment">
 <p>注意：不是数学上的“反卷积”</p>
 </div>
 </section>
 <section id="转置卷积填充步幅和多通道" class="slide level2">
 <h2>转置卷积：填充、步幅和多通道</h2>
-<p>转置卷积中，填充用于输出（常规卷积中用于输入）</p>
+<p>转置卷积中，<strong>填充用于输出</strong>（常规卷积中用于输入）</p>
 <ul>
 <li>例如：填充1的输出将删除第一、最后的行、列</li>
 </ul>
 <div class="fragment">
-<p>步幅用于中间结果（输出），而非输入</p>
+<p><strong>步幅用于中间结果</strong>（输出），而非输入</p>
 <div class="nopub">
 
 </div>
@@ -1069,13 +1076,14 @@ Y[i: i + h, j: j + w] += X[i, j] * K
 <h2>FCN：架构</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
+<p>三个主要阶段</p>
 <ol type="1">
 <li>卷积网络：提取特征图</li>
 <li>1x1卷积：通道数变换为类别数</li>
 <li>转置卷积：变换回输入尺寸</li>
 </ol>
 <p> </p>
-<p>转置卷积：假设需要放大<span class="math inline">s</span>倍恢复尺寸</p>
+<p>转置卷积：假设需要放大<span class="math inline">s</span>倍<strong>恢复尺寸</strong></p>
 <ul>
 <li>步幅<span class="math inline">s</span>，填充<span class="math inline">s/2</span>，卷积核<span class="math inline">2s</span></li>
 </ul>
@@ -1112,16 +1120,16 @@ Y[i: i + h, j: j + w] += X[i, j] * K
 </section>
 <section id="风格迁移-1" class="slide level2">
 <h2>风格迁移</h2>
-<p>[Gatys 2016] 将样例图片中的风格迁移到内容图像上</p>
+<p>[Gatys 2016] 将样例图片风格迁移到内容图像上</p>
 <div class="nopub">
 
 </div>
 </section>
 <section id="风格迁移模型" class="slide level2">
 <h2>风格迁移：模型</h2>
-<p>合成图像是唯一需要更新的模型参数</p>
+<p>合成图像是唯一需要更新的<strong>模型参数</strong></p>
 <ul>
-<li>预训练模型只提取图像特征：替换内容或风格</li>
+<li>预训练模型只<strong>提取图像特征</strong>：<strong>替换</strong>内容或风格</li>
 </ul>
 <div class="nopub">
 
@@ -1129,13 +1137,39 @@ Y[i: i + h, j: j + w] += X[i, j] * K
 </section>
 <section id="风格迁移原理" class="slide level2">
 <h2>风格迁移：原理</h2>
-<p>越靠近输入层，越容易抽取细节信息；反之，则越容易抽取全局信息</p>
+<p>回顾：越靠近输入层，越容易抽取细节信息；反之，则越容易抽取全局信息</p>
 <ul>
-<li>细节选用风格图像的特征</li>
+<li>人工决定细节选用哪些<strong>风格特征</strong></li>
 </ul>
 <div class="nopub">
 
 </div>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>单发多框检测（SSD）。区域卷积神经网络（R-CNN）系列。你只看一次（YOLO）。</p>
+<p> </p>
+<p><strong>重点</strong>：SSD；R-CNN、Fast R-CNN、Faster R-CNN、Mask R-CNN；YOLO。</p>
+<p><strong>难点</strong>：。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>理解SSD的设计特点（以每个像素为锚点、多尺度检测）</li>
+<li>理解R-CNN（多尺度提议区域）、Fast R-CNN（单个预训练网络、备选区域池化）、Faster R-CNN（区域提议网络）、Mask R-CNN（像素级预测）的设计特点</li>
+<li>理解YOLO的设计特点（图片均分为锚框）</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述SSD的设计特点。</p>
+<p>简述R-CNN、Fast R-CNN、Faster R-CNN、Mask R-CNN的设计特点。</p>
+<p>简述YOLO的设计特点。</p>
 </section></section>
     </div>
   </div>

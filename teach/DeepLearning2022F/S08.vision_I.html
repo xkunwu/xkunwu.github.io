@@ -1125,12 +1125,12 @@ background-color: var(--r-background-color);
 <h2>图片分类、目标检测</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>图片分类：输出类别标签</p>
+<p>图片<strong>分类</strong>：输出类别标签</p>
 <ul>
 <li>图像中只有一个目标对象</li>
 </ul>
 <p> </p>
-<p>目标检测：输出类别标签、<strong>位置</strong></p>
+<p>目标<strong>检测</strong>：输出类别标签、<strong>位置</strong></p>
 <ul>
 <li>图像中有多个目标对象</li>
 <li>如何确定目标的位置？</li>
@@ -1150,7 +1150,7 @@ background-color: var(--r-background-color);
 <h2>目标检测：位置的不同粒度</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>目标检测：输出类别标签、<strong>位置</strong></p>
+<p>目标<strong>检测</strong>：输出类别标签、<strong>位置</strong></p>
 <ul>
 <li>位置的描述有不同层次
 <ul>
@@ -1206,7 +1206,7 @@ background-color: var(--r-background-color);
 <h2>目标检测：数据集</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>每行一个物体</p>
+<p>多个目标：每行一个物体</p>
 <ul>
 <li>文件名、类别、边界框</li>
 </ul>
@@ -1245,10 +1245,10 @@ background-color: var(--r-background-color);
 <div class="column" style="width:60%;">
 <p>目标检测可以看成两个阶段</p>
 <ol type="1">
-<li>输出可能含物体的边界框</li>
-<li>判定边界框的类别</li>
+<li>输出<strong>可能</strong>含物体的边界框</li>
+<li>判定边界框中物体的类别</li>
 </ol>
-<p>因此边界框也称<strong>预备区域 Region of Interest (ROI)</strong></p>
+<p>因此边界框也称<strong>备选区域 Region of Interest (ROI)</strong></p>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
 
@@ -1258,7 +1258,7 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p><strong>ROI 调整算法</strong>：</p>
 <ol type="1">
-<li>采样大量边界框，并判定是否包含目标物体</li>
+<li>采样大量备选框，并判定是否包含任何物体</li>
 <li>调整边界：输出目标物体的真实边界框</li>
 </ol>
 </div>
@@ -1273,12 +1273,33 @@ background-color: var(--r-background-color);
 <ul>
 <li>锚框：宽<span class="math inline">ws\sqrt{r}</span>、高<span class="math inline">hs/\sqrt{r}</span></li>
 </ul></li>
+</ul>
+<p>中心点称为“<strong>锚点 anchor</strong>”</p>
+</div><div class="column" style="width:40%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+</section>
+<section id="锚框完全覆盖计算量" class="slide level2">
+<h2>锚框：完全覆盖计算量</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>以<strong>每个像素</strong>为中心生成不同形状的边界框</p>
+<ul>
+<li>图宽<span class="math inline">w</span>、高<span class="math inline">h</span>，缩放比<span class="math inline">s \in (0,1]</span>，宽高比<span class="math inline">r &gt; 0</span>
+<ul>
+<li>锚框：宽<span class="math inline">ws\sqrt{r}</span>、高<span class="math inline">hs/\sqrt{r}</span></li>
+</ul></li>
+</ul>
+<p>中心点称为“<strong>锚点 anchor</strong>”</p>
+<ul>
 <li>实际计算中缩放比、宽高比取有限的一系列值
 <ul>
 <li><span class="math inline">s \in \{s_1,..,s_n\}, r \in \{r_1,..,r_m\}</span></li>
 </ul></li>
 </ul>
-<p>中心点称为“<strong>锚点 anchor</strong>”</p>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
 
@@ -1288,15 +1309,15 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>问题：计算复杂度太高，不可能计算</p>
 <ul>
-<li>锚框总数：<span class="math inline">whnm</span></li>
+<li>锚框总数：<span class="math inline">whnm</span>，例如：<span class="math inline">500 \times 500 \times 9 = 2.25</span> M</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
 <li>实践中只考虑包含<span class="math inline">s_1</span>或<span class="math inline">r_1</span>的组合：<span class="math inline">(s_1,r_1),..,(s_1,r_m),(s_2,r_1),..,(s_n,r_1)</span>
 <ul>
-<li>每个锚点对应<span class="math inline">n+m-1</span>个锚框</li>
-<li>总共<span class="math inline">wh(n+m-1)</span>个锚框：<strong>计算复杂度还是太高</strong></li>
+<li>每个锚点对应<span class="math inline">m+n-1</span>个锚框</li>
+<li>总共<span class="math inline">wh(m+n-1)</span>个锚框：<strong>计算复杂度还是太高</strong></li>
 </ul></li>
 </ul>
 </div>
@@ -1305,9 +1326,12 @@ background-color: var(--r-background-color);
 <h2>交并比（IoU）</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>右图：以<span class="math inline">s=0.75,r=1</span>为参数似乎不错</p>
+<p>右图：蓝色框以<span class="math inline">s=0.75,r=1</span>为参数似乎不错</p>
 <ul>
-<li>那么如何量化误差呢？</li>
+<li>那么如何量化误差呢？
+<ul>
+<li>本质：计算两个矩形面积差异</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1318,13 +1342,12 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>IoU：计算框之间的相似度</p>
+<p>IoU，也称<strong>Jaccard相似度</strong>：计算框之间的相似度</p>
 <p><span class="math display">
 J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </span></p>
 <ul>
 <li>相似度取值范围：<span class="math inline">[0,1]</span></li>
-<li>也称<strong>Jaccard相似度</strong></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1334,17 +1357,20 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </section>
-<section id="锚框标注训练数据" class="slide level2">
-<h2>锚框：标注训练数据</h2>
+<section id="锚框标注训练预测" class="slide level2">
+<h2>锚框标注：训练、预测</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>训练：<strong>每个锚框</strong>都看成训练样本</p>
+<p>训练：<strong>每个锚框</strong>构造、标注一个训练样本</p>
 <ul>
-<li>标签：锚框中对象的类别，或背景
+<li>标签：锚框中物体的类别，或背景
 <ul>
-<li>背景：可能会生成大量负例</li>
+<li>背景：可能生成大量负例</li>
 </ul></li>
-<li>偏移量：真实边界框的<strong>相对位移</strong></li>
+<li>偏移量：真实边界框的<strong>相对位移</strong>
+<ul>
+<li><span class="math inline">(x,y) + (\Delta x,\Delta y)</span></li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1360,11 +1386,11 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </ol>
 </div>
 <div class="fragment">
-<p>首先考虑训练样本的标注：分配<strong>最接近</strong>的真实边界框</p>
+<p>首先考虑标注训练样本（锚框）：分配<strong>最接近</strong>的真实边界框</p>
 </div>
 </section>
-<section id="锚框分配算法-i" class="slide level2">
-<h2>锚框分配算法 I</h2>
+<section id="锚框标注分配算法-i" class="slide level2">
+<h2>锚框标注：分配算法 I</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
@@ -1387,8 +1413,8 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </section>
-<section id="锚框分配算法-ii" class="slide level2">
-<h2>锚框分配算法 II</h2>
+<section id="锚框标注分配算法-ii" class="slide level2">
+<h2>锚框标注：分配算法 II</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
@@ -1412,8 +1438,8 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </section>
-<section id="锚框分配算法-iii" class="slide level2">
-<h2>锚框分配算法 III</h2>
+<section id="锚框标注分配算法-iii" class="slide level2">
+<h2>锚框标注：分配算法 III</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
@@ -1438,8 +1464,8 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </section>
-<section id="锚框分配算法-iv" class="slide level2">
-<h2>锚框分配算法 IV</h2>
+<section id="锚框标注分配算法-iv" class="slide level2">
+<h2>锚框标注：分配算法 IV</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <p>每个锚框：分配<strong>最接近</strong>的真实边界框</p>
@@ -1453,7 +1479,7 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 <li>找出<strong>最大元素</strong><span class="math inline">x_{i_1j_1}</span>：将<span class="math inline">A_{i_1}</span>分配给<span class="math inline">B_{j_1}</span></li>
 <li>继续找出<strong>最大元素</strong><span class="math inline">x_{i_2j_2}</span>：将<span class="math inline">A_{i_2}</span>分配给<span class="math inline">B_{j_2}</span></li>
 <li>继续以上步骤，直到所有<span class="math inline">t</span>个<strong>真实边界框</strong>都已被分配</li>
-<li>遍历剩下的<span class="math inline">s-t</span>个锚框：只有当IoU<strong>大于阈值</strong>时分配</li>
+<li>遍历其余<span class="math inline">s-t</span>个锚框：只有当IoU<strong>大于阈值</strong>时分配</li>
 </ol>
 <p>输出：每个真实边界框对应多个锚框</p>
 <ul>
@@ -1466,34 +1492,15 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </section>
-<section id="锚框标记类别" class="slide level2">
-<h2>锚框：标记类别</h2>
+<section id="锚框标注类别" class="slide level2">
+<h2>锚框标注：类别</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>类别：按照分配情况标记</p>
 <ul>
-<li>没有分配：标记为<strong>“背景”，即负例</strong></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="nopub">
-
-</div>
-</div>
-</div>
-</section>
-<section id="锚框标记类别偏移量" class="slide level2">
-<h2>锚框：标记类别、偏移量</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>类别：按照分配情况标记</p>
+<li>没有分配：标记为<strong>“背景”，即负例</strong>
 <ul>
-<li>没有分配：标记为<strong>“背景”，即负例</strong></li>
-</ul>
-<p>偏移量：中心点、相对大小</p>
-<ul>
-<li>数据复杂：导致差异过大、难以拟合
-<ul>
-<li>位置、大小变换：使其<strong>分布更均匀</strong></li>
+<li>IoU 小于阈值</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -1502,19 +1509,51 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </div>
-<div class="fragment">
-<p>真实边界框<span class="math inline">B</span>偏移后得到锚框<span class="math inline">A</span></p>
+</section>
+<section id="锚框标注类别偏移量" class="slide level2">
+<h2>锚框标注：类别、偏移量</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>类别：按照分配情况标记</p>
+<ul>
+<li>没有分配：标记为<strong>“背景”，即负例</strong>
+<ul>
+<li>IoU 小于阈值</li>
+</ul></li>
+</ul>
+<p>偏移量：中心点、相对大小</p>
 <p><span class="math display">
-\left( \frac{ \frac{x_b - x_a}{w_a} - \mu_x }{\sigma_x},
+\left(
+\frac{x_b - x_a}{w_a},
+\frac{y_b - y_a}{h_a},
+\frac{w_b}{w_a},
+\frac{h_b}{h_a}
+\right)
+</span></p>
+<ul>
+<li>问题：数据复杂时<strong>差异过大</strong>、难以拟合</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>解决方案：变换位置、大小，使其<strong>分布更均匀</strong></p>
+<p><span class="math display">
+\left(
+\frac{ \frac{x_b - x_a}{w_a} - \mu_x }{\sigma_x},
 \frac{ \frac{y_b - y_a}{h_a} - \mu_y }{\sigma_y},
 \frac{ \log \frac{w_b}{w_a} - \mu_w }{\sigma_w},
-\frac{ \log \frac{h_b}{h_a} - \mu_h }{\sigma_h}\right)
+\frac{ \log \frac{h_b}{h_a} - \mu_h }{\sigma_h}
+\right)
 </span></p>
 </div>
 </section>
 <section id="锚框预测边界框" class="slide level2">
-<h2>锚框：预测边界框</h2>
-<p>预测：生成多个锚框，逐个预测类别、偏移量</p>
+<h2>锚框预测：边界框</h2>
+<p>然后看锚框预测：生成多个锚框，逐个预测类别、偏移量</p>
 <ol type="1">
 <li>计算、合并预测边界框</li>
 <li>根据<strong>置信度</strong>决定是否输出</li>
@@ -1524,7 +1563,10 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 <div class="column" style="width:60%;">
 <p>计算边界框：根据偏移量反向调整</p>
 <ul>
-<li>锚框<span class="math inline">A</span><strong>逆向偏移</strong>后得到预测边界框<span class="math inline">B</span></li>
+<li>锚框<span class="math inline">A</span><strong>逆向偏移</strong>后得到预测边界框<span class="math inline">B</span>
+<ul>
+<li>前一页公式反向操作</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1534,8 +1576,8 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </section>
-<section id="预测类别置信度" class="slide level2">
-<h2>预测：类别置信度</h2>
+<section id="锚框预测类别置信度" class="slide level2">
+<h2>锚框预测：类别置信度</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>计算每个类别的概率：取最大的作为预测类别</p>
@@ -1549,17 +1591,17 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </div>
 </div>
 </section>
-<section id="预测非极大值抑制" class="slide level2">
-<h2>预测：非极大值抑制</h2>
+<section id="锚框预测非极大值抑制" class="slide level2">
+<h2>锚框预测：非极大值抑制</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>计算每个类别的概率：取最大的作为预测类别</p>
 <ul>
-<li>称为预测边界框的<strong>置信度（confidence）</strong></li>
+<li>称为预测框的<strong>置信度（confidence）</strong></li>
 </ul>
-<p>锚框过于稠密：预测框相似，增加不必要的计算量</p>
+<p>生成锚框过于稠密，且相似：增加不必要计算量</p>
 <ul>
-<li>合并边界框：相同目标、相似边界框
+<li>合并预测框：相同物体、相似边界框
 <ul>
 <li><strong>非极大值抑制（non-maximum suppression，NMS）</strong></li>
 </ul></li>
@@ -1598,7 +1640,7 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 <h2>小结：锚框</h2>
 <ul>
 <li>目标检测：锚点附近的边界框 + 类别标签</li>
-<li>每个锚框看作一个样本
+<li>每个锚框构造、标注一个样本
 <ul>
 <li>锚框标注：类别标签、偏移量</li>
 </ul></li>
@@ -1681,7 +1723,7 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 <ul>
 <li>目标较大：必须使用<strong>相匹配</strong>的锚框尺寸
 <ul>
-<li>采样数可以相应减少</li>
+<li>由于均匀间隔，采样数可以相应减少</li>
 </ul></li>
 </ul>
 <div class="note">
@@ -1744,8 +1786,38 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 <ul>
 <li>目标尺寸不同：需要相应尺寸的锚框</li>
 <li>减少冗余计算：均匀间隔采样</li>
-<li>多尺度检测：</li>
+<li>多尺度检测：感受野大小不同、提取出特征的抽象级别不同</li>
 </ul>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>图像增广。微调。实战 Kaggle 比赛：图像分类。目标检测和边界框。锚框。多尺度目标检测。</p>
+<p> </p>
+<p><strong>重点</strong>：图像增广；微调；锚框；多尺度均匀间隔采样。</p>
+<p><strong>难点</strong>：部分重用式微调。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>理解图像增广的原因、主要方法。</li>
+<li>理解微调的动机、原理、方法。</li>
+<li>理解目标检测的特点（多物体）和表示方法（边界框）。</li>
+<li>理解锚框的表示、标注方法，及其在训练、预测中的应用方法。</li>
+<li>理解锚框的多尺度均匀间隔采样的方法、含义。</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述图像增广的原因、主要方法。</p>
+<p>简述微调的动机、原理、方法。</p>
+<p>简述目标检测问题的特点和表示方法。</p>
+<p>简述锚框的表示、标注方法，及其在训练、预测中的应用方法。</p>
+<p>简述锚框的多尺度均匀间隔采样的方法、含义。</p>
 </section></section>
     </div>
   </div>

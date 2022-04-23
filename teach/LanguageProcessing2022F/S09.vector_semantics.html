@@ -166,6 +166,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -179,9 +180,6 @@ text-align: left;
 .reveal h4 {
 font-size: var(--r-heading4-size);
 text-align: left;
-}
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
 }
 
 
@@ -262,6 +260,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -309,8 +308,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -322,8 +320,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -584,7 +582,7 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2022/02/28</p>
+  <p class="date">2022/04/15</p>
 </div>
 </div>
 </section>
@@ -655,7 +653,7 @@ background-color: var(--r-background-color);
 </ul></li>
 </ul>
 <blockquote>
-<p>无名天地之始，有名万物之母。–《道德经》</p>
+<p>凡所有相皆是虚妄 – 《金刚经》</p>
 </blockquote>
 </div>
 <div class="fragment">
@@ -665,11 +663,8 @@ background-color: var(--r-background-color);
 <ul>
 <li>能够<strong>度量差异</strong>，就能研究语义</li>
 </ul></li>
-<li>向量表示可以直接用于计算</li>
+<li>向量表示可以直接用于存储、计算</li>
 </ul>
-<div class="note">
-
-</div>
 <div class="note">
 
 </div>
@@ -707,7 +702,7 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>NLP强调自动化的<strong>数据表示学习 representation learning</strong></p>
 <ul>
-<li>而非人工特征工程</li>
+<li>而非人工特征工程，例如one-hot</li>
 </ul>
 <div class="note">
 
@@ -755,8 +750,8 @@ A: LIFE</p>
 <section id="词目与词义" class="slide level2">
 <h2>词目与词义</h2>
 <ul>
-<li><p><code>mouse</code>：老鼠；鼠标</p></li>
-<li><p><code>量</code>：名词；动词</p></li>
+<li><code>mouse</code>：老鼠；鼠标</li>
+<li><code>量</code>：名词；动词</li>
 </ul>
 <p> </p>
 <div class="fragment">
@@ -828,15 +823,15 @@ A: LIFE</p>
 
 </div>
 </section>
-<section id="相似度" class="slide level2">
-<h2>相似度</h2>
+<section id="间接讨论词义相似度" class="slide level2">
+<h2>间接讨论词义：相似度</h2>
 <p><strong>直接</strong>讨论词义的悖论：<strong>词义与表现形式绑定</strong></p>
 <ul>
 <li>如果固定表现形式：给不同任务的计算带来困难</li>
 <li>如果不确定表现形式：没法讨论问题</li>
 </ul>
 <blockquote>
-<p>凡所有相皆是虚妄 – 《金刚经》</p>
+<p>无名天地之始，有名万物之母。–《道德经》</p>
 </blockquote>
 <p> </p>
 <div class="fragment">
@@ -848,8 +843,16 @@ A: Not Nut, but very close.<br />
 </blockquote>
 <ul>
 <li>为什么“very close”？– <em>Universe in a Nutshell</em></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>相似度可以用于构造<strong>损失函数</strong></li>
 <li>对后面<strong>语义</strong>理解任务同样有简化作用</li>
 </ul>
+<div class="note">
+
+</div>
 <div class="note">
 
 </div>
@@ -904,8 +907,8 @@ A: Not Nut, but very close.<br />
 </div>
 </div>
 </section>
-<section id="关联度" class="slide level2">
-<h2>关联度</h2>
+<section id="关联度语义场" class="slide level2">
+<h2>关联度：语义场</h2>
 <p>例如：</p>
 <pre class="text"><code>咖啡、茶：相似
 茶、杯：相关联</code></pre>
@@ -924,8 +927,8 @@ A: Not Nut, but very close.<br />
 </div>
 </div>
 </section>
-<section id="语义框架角色" class="slide level2">
-<h2>语义框架、角色</h2>
+<section id="关联度语义框架角色" class="slide level2">
+<h2>关联度：语义框架、角色</h2>
 <p><strong>语义框架 semantic frame</strong>：针对特定事件的词集合，词间共享<strong>事件过程</strong></p>
 <ul>
 <li>商业交易：买、卖、付款</li>
@@ -938,7 +941,7 @@ A: Not Nut, but very close.<br />
 <p> </p>
 </div>
 <div class="fragment">
-<p>鉴别语义框架有助于机器理解：问答、翻译</p>
+<p>鉴别语义框架有助于语法结构分析、机器理解：问答、翻译</p>
 <pre class="text"><code>张三向李四买了一本书。
 李四卖给了张三一本书。</code></pre>
 </div>
@@ -1168,16 +1171,19 @@ mich isst Fisch.</code></pre>
 <p>之前：词的<strong>字符表示</strong></p>
 <ul>
 <li>对应的特征：这个词的字符表示是否出现</li>
-<li>需要<strong>完全一致</strong>的字符串：同时出现在训练集、测试集</li>
+<li>需要<strong>完全一致</strong>的字符串：同时出现在训练集、测试集
+<ul>
+<li>问题：很难处理未知词</li>
+</ul></li>
 </ul>
 <div class="fragment">
 <p> </p>
 <p>现代NPL算法全都使用<strong>词嵌入</strong>作为词义的表示形式</p>
 <ul>
-<li>对应的特征：表示词义的向量</li>
+<li>对应的特征：词嵌入向量中的每个维度</li>
 <li>可以推广到<strong>相似但未知</strong>的词
 <ul>
-<li>比较两点之间的距离</li>
+<li>比较（嵌入后）两点之间的距离</li>
 </ul></li>
 </ul>
 <div class="note">
@@ -1210,7 +1216,7 @@ mich isst Fisch.</code></pre>
 </section>
 <section id="共生矩阵" class="slide level2">
 <h2>共生矩阵</h2>
-<p><strong>共生矩阵 co-occurrence matrix</strong>：记录词同时出现的频率</p>
+<p><strong>共生 co-occurrence 矩阵</strong>：记录词同时出现的频率</p>
 <ul>
 <li>词嵌入计数的基础工具</li>
 </ul>
@@ -1667,7 +1673,7 @@ mich isst Fisch.</code></pre>
 </section>
 <section id="词向量的可视化" class="slide level2">
 <h2>词向量的可视化</h2>
-<p>反过来也成立：选取两个语义相近的词，向量也比较相似</p>
+<p>反过来也成立：选取两个关联度高的词，向量也比较相似</p>
 <div class="nopub">
 
 </div>
@@ -1683,13 +1689,13 @@ mich isst Fisch.</code></pre>
 </section>
 <section id="内积与度量" class="slide level2">
 <h2>内积与度量</h2>
-<p>向量的内积是标量：</p>
+<p>内积是<strong>内积空间的标准度量</strong></p>
 <p><span class="math display">
 \textbf{v} \cdot \textbf{w} = \sum_i v_i w_i = v_1 w_1 + v_2 w_2 + \dots
 </span></p>
 <p> </p>
 <div class="fragment">
-<p>内积是<strong>内积空间的标准度量</strong></p>
+<p>向量的内积是标量：</p>
 <ul>
 <li>数值大时：向量在同方向上重合较大</li>
 <li>最小值0：向量正交</li>
@@ -1706,7 +1712,7 @@ mich isst Fisch.</code></pre>
 <div class="fragment">
 <p><strong>频率</strong>更高的词：对应的向量更长</p>
 <ul>
-<li>例如词条-词条计数：有些词更有可能与其他词出现在一起</li>
+<li>例如词条-词条计数：有些词（“的”等停用词）更有可能与其他词出现在一起</li>
 </ul>
 </div>
 <div class="fragment">
@@ -1714,8 +1720,12 @@ mich isst Fisch.</code></pre>
 <li>这与理想度量相矛盾：度量应该反映对象的<strong>内在特性</strong>
 <ul>
 <li>内在特性不随外在表现而变化，故度量应该是频率无关的</li>
-<li>解决方法：应该对长度做<strong>归一化</strong></li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>解决方法：应该对长度做<strong>归一化</strong></li>
 </ul>
 <div class="note">
 
@@ -1861,7 +1871,7 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 \text{PMI}(w,c) = \log_2 \frac{P(w,c)}{P(w)P(c)}
 </span></p>
 <ul>
-<li>解决的问题：上下文中的词是不是<strong>偶然出现</strong>的？
+<li>解决的问题：上下文中的词是不是<strong>出现</strong>的？例如“蝴蝶”
 <ul>
 <li>计算思路：与<strong>先验期望值</strong>对比</li>
 </ul></li>
@@ -1872,7 +1882,7 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 <h2>词条频率 tf</h2>
 <p>之前使用文档中词条的简单计数</p>
 <p><span class="math display">
-\text{tf}_{t,d} = \Gamma(t,d)
+\text{tf}_{t,d} \propto \Gamma(t,d)
 </span></p>
 <div class="fragment">
 <p> </p>
@@ -1883,7 +1893,7 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 <ul>
 <li>“挤压”：重要性随着词频增加而减小
 <ul>
-<li>不能认为出现100次的词对文档有100倍的相关性</li>
+<li>不能认为“好”x100次的文档比“好”x1次重要100倍</li>
 </ul></li>
 </ul>
 </div>
@@ -1934,17 +1944,20 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 <section id="逆文档频率-idf" class="slide level2">
 <h2>逆文档频率 idf</h2>
 <p>idf的意义：给<span class="math inline">\text{df}_t</span>较低的词赋予更高的权重</p>
+<p><span class="math display">
+\text{idf}_{t} \propto \frac{1}{\text{df}_t}
+</span></p>
 <ul>
 <li><span class="math inline">\text{df}_t</span>较低：<strong>辨识度</strong>高，能够帮助区分文档</li>
 <li>反之，所有文档都出现的词并不重要</li>
 </ul>
 <div class="fragment">
-<p>定义：文档频率 vs 文档总数</p>
+<p>定义：文档总数<span class="math inline">N</span> vs 文档频率<span class="math inline">\text{df}_t</span></p>
 <p><span class="math display">
 \text{idf}_{t} = \log_{10} (\frac{N}{\text{df}_t})
 </span></p>
 <ul>
-<li><span class="math inline">N</span>是文档总数</li>
+<li>同样按对数“挤压”数值</li>
 </ul>
 <div class="note">
 
@@ -1956,16 +1969,19 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 <div class="columns" data-align="center">
 <div class="column" style="width:60%;">
 <p>idf的意义：给<span class="math inline">\text{df}_t</span>较低的词赋予更高的权重</p>
+<p><span class="math display">
+\text{idf}_{t} \propto \frac{1}{\text{df}_t}
+</span></p>
 <ul>
 <li><span class="math inline">\text{df}_t</span>较低：<strong>辨识度</strong>高，能够帮助区分文档</li>
 <li>反之，所有文档都出现的词并不重要</li>
 </ul>
-<p>idf的定义：文档频率 vs 文档总数</p>
+<p>定义：文档总数<span class="math inline">N</span> vs 文档频率<span class="math inline">\text{df}_t</span></p>
 <p><span class="math display">
 \text{idf}_{t} = \log_{10} (\frac{N}{\text{df}_t})
 </span></p>
 <ul>
-<li><span class="math inline">N</span>是文档总数</li>
+<li>同样按对数“挤压”数值</li>
 </ul>
 </div><div class="column" data-align="bottom" style="width:40%;">
 <table>
@@ -2122,7 +2138,7 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 </div>
 <div class="fragment">
 <ul>
-<li>解决的问题：上下文中的词是不是<strong>偶然出现</strong>的？
+<li>解决的问题：上下文中的词是不是<strong>出现</strong>的？例如“蝴蝶”
 <ul>
 <li>计算思路：与<strong>先验期望值</strong>对比</li>
 </ul></li>
@@ -2134,7 +2150,7 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 </section>
 <section id="pmi-定义" class="slide level2">
 <h2>PMI 定义</h2>
-<p>如何描述“偶然出现”？</p>
+<p>如何描述“偶然（同时）出现”？例如“上课”、“下雨”</p>
 <ul>
 <li>数学上：独立事件、同时发生</li>
 </ul>
@@ -2168,18 +2184,18 @@ w_{t,d} = \text{tf}_{t,d} \times \text{idf}_t
 </span></p>
 <p> </p>
 <div class="fragment">
-<p>趋向负无穷：极度不相关，但通常<strong>不可靠</strong></p>
+<p>趋向负无穷：极度不相关？通常<strong>不可靠</strong></p>
 <ul>
 <li>例如：单独出现的概率是<span class="math inline">10^{-6}</span>
 <ul>
 <li>只有共同出现的概率小于<span class="math inline">10^{-12}</span>，才能确定两个词不相关</li>
-<li>这个数量级需要非常大的语料集才能计算</li>
+<li>这个数量级需要非常大的语料集才能计算、训练</li>
 </ul></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>更重要：一般来说<strong>人也很难判断</strong>两个词到底有多“不相关”</li>
+<li>更严重：一般来说<strong>人也很难判断</strong>两个词到底有多“不相关”</li>
 </ul>
 </div>
 <div class="fragment">
@@ -2365,8 +2381,8 @@ P_\alpha(c) &amp;= \frac{\Gamma(c)^\alpha}{\sum_c \Gamma(c)^\alpha}
 <h1 class="center">向量模型的应用</h1>
 
 </section>
-<section id="向量语法小结" class="slide level2">
-<h2>向量语法小结</h2>
+<section id="回顾向量语法" class="slide level2">
+<h2>回顾：向量语法</h2>
 <p>向量语法模型将词表示为向量，向量中的元素是<strong>加权后的计数</strong></p>
 <ul>
 <li>词条-文档：文档集；TF-IDF</li>
@@ -2407,6 +2423,40 @@ P_\alpha(c) &amp;= \frac{\Gamma(c)^\alpha}{\sum_c \Gamma(c)^\alpha}
 <div class="note">
 
 </div>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>向量语义、词嵌入。词义需求。向量化词义。余弦相似度。TF-IDF模型、PPMI模型。</p>
+<p> </p>
+<p><strong>重点</strong>：向量语义、词嵌入；向量表示、上下文分布；共生矩阵（词条-文档矩阵、词条-词条矩阵）；余弦相似度；TF-IDF模型、PPMI模型。</p>
+<p><strong>难点</strong>：向量表示、上下文分布的优点。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>理解词、词嵌入都是词义的表现形式。</li>
+<li>理解间接讨论语义的原因（形、义不绑定）、方法（相似度）。</li>
+<li>理解语言学对语义的需求。</li>
+<li>理解向量语义是两种观点的融合：向量表示、上下文分布。</li>
+<li>理解向量表示的优点：便于计算、压缩信息、容易处理未知词。</li>
+<li>理解上下文分布的优点：通过相似度间接讨论词义。</li>
+<li>理解共生矩阵的两种常用形式（词条-文档矩阵、词条-词条矩阵），及其用法（行、列代表词义）。</li>
+<li>理解余弦相似度。</li>
+<li>理解TF-IDF模型的构造方法（统计词条-文档频数）、解决的问题（降低高频词的重要性）。</li>
+<li>理解PPMI模型的构造方法（统计词条-词条频数）、解决的问题（判断是否偶然同时出现）。</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述启发向量语义的两种观点，及其（间接讨论词义的）优点。</p>
+<p>简述向量语义、词嵌入的含义。</p>
+<p>简述共生矩阵的两种常用形式，及其用法。</p>
+<p>简述TF-IDF模型、PPMI模型的构造方法、解决的问题。</p>
 </section></section>
     </div>
   </div>

@@ -229,6 +229,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -242,9 +243,6 @@ text-align: left;
 .reveal h4 {
 font-size: var(--r-heading4-size);
 text-align: left;
-}
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
 }
 
 
@@ -325,6 +323,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -372,8 +371,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -385,8 +383,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -653,6 +651,11 @@ background-color: var(--r-background-color);
 </section>
 
 
+<section>
+<section id="序列模型" class="title-slide slide level1 center">
+<h1 class="center">序列模型</h1>
+
+</section>
 <section id="数据结构" class="slide level2">
 <h2>数据、结构</h2>
 <p>目前遇到的数据：表格、图像</p>
@@ -674,14 +677,9 @@ background-color: var(--r-background-color);
 </ul>
 </div>
 </section>
-<section>
-<section id="序列模型" class="title-slide slide level1 center">
-<h1 class="center">序列模型</h1>
-
-</section>
-<section id="序列数据" class="slide level2">
-<h2>序列数据</h2>
-<p><strong>季节性</strong>统计数据：年后、毕业季的就业率，“新增高素质人才”</p>
+<section id="序列数据难点" class="slide level2">
+<h2>序列数据：难点</h2>
+<p><strong>季节性</strong>统计规律：年后、毕业季的就业率，“新增高素质人才”</p>
 <div class="fragment">
 <p>预测明天比预测过去更难：特别是股价，先见之明比事后解释难得多</p>
 <ul>
@@ -708,7 +706,7 @@ background-color: var(--r-background-color);
 </ul>
 </div>
 <div class="fragment">
-<p>其他相关因素：</p>
+<p>其他相关因素</p>
 <ul>
 <li>季节性：很少观众在暑假看贺岁片</li>
 <li>道德高地：导演、演员的不当行为导致评分稍低</li>
@@ -803,7 +801,7 @@ h &amp;= g(x_{t-1}, h_{t-1})\\
 <h2>常见预处理步骤</h2>
 <ul>
 <li>将文本作为<strong>字符串</strong>加载到内存中。</li>
-<li>将字符串拆分为<strong>词元</strong>（如单词和字符）。</li>
+<li>将字符串拆分为<strong>词元</strong>（如单词、字符）。</li>
 <li>建立一个<strong>词表</strong>，将拆分的<strong>词元映射</strong>到数字索引。</li>
 <li>将文本转换为数字索引<strong>（向量）序列</strong>，方便模型操作。</li>
 </ul>
@@ -940,7 +938,7 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 </div>
 <div class="fragment">
 <ul>
-<li>词表中N元组的数量并不多：语言中存在大量<strong>结构</strong>，可应用模型</li>
+<li>词表中N元组的数量并不多：说明语言中存在大量<strong>结构</strong>，可应用模型</li>
 <li>很多N元组频率非常低：似然估计 + <strong>平滑处理（如加一）不适合语言模型</strong></li>
 </ul>
 </div>
@@ -1114,7 +1112,7 @@ PP(W) &amp;= P(w_1 w_2 .. w_N)^{-\frac{1}{N}} \\
 <div class="fragment">
 <p>信息论中<strong>平均交叉熵</strong>：<span class="math inline">- \frac{1}{N} \sum \log P(w_k|w_{1:k-1})</span></p>
 <ul>
-<li>预测准确含义：压缩序列容易、存储开销低</li>
+<li>何为准确预测？压缩序列容易、存储开销低</li>
 </ul>
 </div>
 </section>
@@ -1139,7 +1137,7 @@ PP(W) &amp;= P(w_1 w_2 .. w_N)^{-\frac{1}{N}} \\
 <li>基准：所有可用词元上等概率分布，PP = 词目数
 <ul>
 <li>无压缩存储序列：等概率情况下的最优编码方式</li>
-<li>可以看成<strong>实践上限</strong>：经过设计的模型理应超过随机猜测，类比抛硬币</li>
+<li>可以看成<strong>实践上限</strong>：经过设计的模型理应超过随机猜测（类比抛硬币）</li>
 </ul></li>
 </ul>
 </div>

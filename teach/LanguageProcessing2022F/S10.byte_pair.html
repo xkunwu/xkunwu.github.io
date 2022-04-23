@@ -166,6 +166,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -179,9 +180,6 @@ text-align: left;
 .reveal h4 {
 font-size: var(--r-heading4-size);
 text-align: left;
-}
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
 }
 
 
@@ -262,6 +260,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -309,8 +308,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -322,8 +320,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -584,7 +582,7 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2022/03/18</p>
+  <p class="date">2022/04/22</p>
 </div>
 </div>
 </section>
@@ -597,19 +595,22 @@ background-color: var(--r-background-color);
 </section>
 <section id="分词策略" class="slide level2">
 <h2>分词策略</h2>
-<p>手工指定规则：</p>
+<p>之前：手工指定规则</p>
 <ul>
-<li>空格、标点分隔；汉字字符</li>
+<li>空格、标点分隔；汉字、词组</li>
 </ul>
 <div class="fragment">
-<p>从文本数据本身分析</p>
+<p>机器学习：从文本数据训练，分析、提取规则</p>
 <ul>
-<li>使用训练文本提取规则
+<li>统计经常出现的子字符串：看成<strong>固定组合</strong>
 <ul>
-<li>把经常出现的子字符串看成<strong>固定组合</strong></li>
-<li>将所有固定组合写入词汇表</li>
+<li>将所有固定组合添加至词汇表</li>
 </ul></li>
-<li>适用于文本含有<strong>未知单词</strong>的情况</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>可以解决测试文本含有<strong>未知单词</strong>的问题</li>
 </ul>
 </div>
 <div class="fragment">
@@ -635,8 +636,8 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>现代分词机制包含两个部分：</p>
 <ul>
-<li><strong>学习器 learner</strong>：从训练文本中提取词汇表</li>
-<li><strong>分词器 segmenter</strong>：根据词汇表完成分词</li>
+<li><strong>学习器 learner</strong>：从训练文本中提取词汇表，即字典</li>
+<li><strong>分词器 segmenter</strong>：根据词汇表完成分词，如双向最长匹配等</li>
 </ul>
 <div class="note">
 
@@ -650,9 +651,9 @@ background-color: var(--r-background-color);
 <li>词汇表初始化为所有出现过的单独字母；</li>
 <li>重复 <span class="math inline">k</span> 次：
 <ol type="1">
-<li>找出频率最高的相邻单元 <span class="math inline">\pi</span>；</li>
-<li>将 <span class="math inline">\pi</span> 加入到词汇表中；</li>
-<li>将训练文本中所有出现的 <span class="math inline">\pi</span> 替换掉；</li>
+<li>找出频率最高的相邻单元 <span class="math inline">\alpha \beta</span>；</li>
+<li>将 <span class="math inline">\alpha \beta</span> 组合成 <span class="math inline">\pi</span>，并加入到词汇表中；</li>
+<li>将训练文本中所有出现的 <span class="math inline">\alpha \beta</span> 替换成 <span class="math inline">\pi</span>；</li>
 </ol></li>
 </ol>
 <p><code>BYTE-PAIR</code>(C, <span class="math inline">k</span>)</p>
@@ -666,8 +667,8 @@ background-color: var(--r-background-color);
 </ol></li>
 </ol>
 </section>
-<section id="词结束符" class="slide level2">
-<h2>词结束符</h2>
+<section id="文本预处理" class="slide level2">
+<h2>文本预处理</h2>
 <p>通常子词分解算法用于<strong>空格分隔</strong>的语言</p>
 <ul>
 <li>首先将语料库分隔成单词</li>
@@ -680,7 +681,7 @@ newer newer newer newer newer newer
 wider wider wider new new</code></pre>
 </div>
 <div class="fragment">
-<p>统计词汇并构建词汇表：</p>
+<p>统计词频，并构建词汇表：</p>
 <div class="columns" data-align="center">
 <div class="column" style="width:40%;">
 <pre class="text"><code>5   l o w _
@@ -796,22 +797,25 @@ wider wider wider new new</code></pre>
 ..., er, er_, ne, new, lo, low, newer_, low_</code></pre>
 </div>
 </div>
+<ul>
+<li>将最后一步构造出的词汇表输出</li>
+</ul>
 </section>
 <section id="bpe-分词器" class="slide level2">
 <h2>BPE 分词器</h2>
 <p>首先将测试文本分句，然后：</p>
 <ol type="1">
 <li>每个句子<strong>拆分为单独的字符</strong></li>
-<li>按照词汇表的顺序<strong>合并字符串</strong></li>
+<li>按照词汇表的顺序<strong>合并字符串</strong>：词频反映置信度</li>
 </ol>
 <p> </p>
-<p>例如</p>
+<p>当前词汇表：<code>..., er, er_, ne, new, lo, low, newer_, low_</code></p>
 <ul>
 <li><code>n e w e r _</code> -&gt; <code>newer_</code></li>
 <li><code>l o w e r _</code> -&gt; <code>low</code> <code>er_</code></li>
 </ul>
 <div class="fragment">
-<p>因此，测试文本中的<strong>词频不重要</strong></p>
+<p>因此，测试文本中的词频不重要</p>
 <div class="note">
 
 </div>
