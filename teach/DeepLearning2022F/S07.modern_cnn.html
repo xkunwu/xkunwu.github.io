@@ -189,7 +189,7 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
@@ -572,7 +572,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Deep Learning I</p>
+  <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">7. 现代卷积神经网络</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -1504,7 +1504,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="深度带来的问题" class="slide level2">
 <h2>深度带来的问题</h2>
-<p>网络非常深：计算<strong>依赖链过长</strong>，层间信息传递变难，导致收敛变慢</p>
+<p>网络非常深：计算<strong>依赖链过长</strong>，层间信息传递变难，导致收敛变慢。想象用桶烧水</p>
 <div class="nopub">
 
 </div>
@@ -1540,12 +1540,12 @@ x_i = \gamma \frac{x_i - \mu}{\sigma} + \beta
 </div>
 <div class="fragment">
 <ul>
-<li>想象：按批次控制产品质量（符号）标准</li>
+<li>想象：按生产线批次控制零件质量（符号）标准，便于组装产品</li>
 </ul>
 </div>
 </section>
-<section id="批量归一化" class="slide level2">
-<h2>批量归一化</h2>
+<section id="批量规范化-1" class="slide level2">
+<h2>批量规范化</h2>
 <p>估计批量的均值、方差：</p>
 <p><span class="math display">
 \begin{aligned}
@@ -1577,17 +1577,14 @@ x_i = \gamma \frac{x_i - \mu}{\sigma} + \beta
 <p>测试模式：使用训练阶段的<strong>移动平均</strong>估算（整个数据集的均值、方差）</p>
 </div>
 </section>
-<section id="批量归一化层" class="slide level2">
-<h2>批量归一化层</h2>
+<section id="批量规范化层" class="slide level2">
+<h2>批量规范化层</h2>
 <p>可学习参数：<span class="math inline">\gamma,\beta</span></p>
 <p><span class="math display">
 x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 </span></p>
 <ul>
-<li>作用在：<strong>全连接层、卷积层</strong>的输入
-<ul>
-<li>以及输出：激活函数之前</li>
-</ul></li>
+<li>作用在：<strong>全连接、卷积层</strong>的输出，激活函数之前</li>
 </ul>
 <div class="fragment">
 <p> </p>
@@ -1605,8 +1602,8 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 </div>
 </div>
 </section>
-<section id="批量归一化在做什么" class="slide level2">
-<h2>批量归一化在做什么？</h2>
+<section id="批量规范化在做什么" class="slide level2">
+<h2>批量规范化在做什么？</h2>
 <p>最初论文<strong>猜测</strong>：减少内部协方差的偏移</p>
 <ul>
 <li>但其实与协变量偏移的严格定义不同</li>
@@ -1637,7 +1634,7 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 <section id="小结批量规范化" class="slide level2">
 <h2>小结：批量规范化</h2>
 <ul>
-<li>批量归一化：估计批量的均值、方差
+<li>批量规范化：估计批量的均值、方差
 <ul>
 <li>学习出合适的偏移、缩放</li>
 </ul></li>
@@ -1651,13 +1648,13 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 </section>
 <section id="网络可以无限加深吗" class="slide level2">
 <h2>网络可以无限加深吗？</h2>
-<p>回顾：似乎将网络做深就能提高效能</p>
+<p>回顾：似乎将网络做深就能提升效能。那么有极限吗？</p>
 <ul>
 <li>越深的网络：可表示出<strong>更多函数种类</strong></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>将所有函数种类看成集合：最优函数不一定能通过<strong>扩充函数类</strong>涵盖</li>
+<li>将所有可表示的函数种类看成集合：最优函数不一定能通过<strong>扩充函数类</strong>涵盖</li>
 </ul>
 <div class="nopub">
 
@@ -1667,9 +1664,13 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 <ul>
 <li>扩充得到的函数类：应该<strong>严格包含</strong>原函数类
 <ul>
-<li><span class="math inline">f_2(f_1(t)) = f_1(t) \Rightarrow f_2(x) = x</span></li>
+<li>将新添加的层训练成<strong>恒等映射</strong>，新、原模型将同等有效</li>
+<li><span class="math inline">\forall t, f_2(f_1(t)) = f_1(t) \Rightarrow f_2(x) = x</span></li>
 </ul></li>
 </ul>
+<div class="note">
+
+</div>
 </div>
 </section>
 <section id="残差" class="slide level2">
@@ -1777,7 +1778,7 @@ x_i = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 <section id="小结resnet" class="slide level2">
 <h2>小结：ResNet</h2>
 <ul>
-<li>ResNet 模块：训练更稳定
+<li>ResNet 模块：训练更稳定，跨层直接传递信息
 <ul>
 <li>甚至可以训练一千层的网络</li>
 </ul></li>

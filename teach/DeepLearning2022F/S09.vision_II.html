@@ -189,7 +189,7 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
@@ -572,7 +572,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Deep Learning I</p>
+  <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">8. 计算机视觉II</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -757,6 +757,7 @@ background-color: var(--r-background-color);
 <li>单个神经网络</li>
 <li>多个不同尺度的输出阶段</li>
 </ul></li>
+<li>SSD 可以认为是集成了之前的数据结构、算法（没有按历史顺序安排章节）</li>
 </ul>
 </section></section>
 <section>
@@ -784,7 +785,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="r-cnn与ssd比较" class="slide level2">
 <h2>R-CNN：与SSD比较</h2>
-<p>[Girshick 2014] 启发式搜索：选择出<strong>提议区域</strong>（如锚框）</p>
+<p>[Girshick 2014] 启发式搜索：选择出<strong>提议区域</strong>（如边界框）</p>
 <ul>
 <li>使用预训练模型前向传播、提取特征</li>
 </ul>
@@ -862,8 +863,11 @@ background-color: var(--r-background-color);
 <h2>Faster R-CNN</h2>
 <p>[Ren 2015] Faster R-CNN：将选择性搜索替换为网络学习</p>
 <ul>
-<li><strong>区域提议 region proposal 网络 (RPN)</strong>：从数据中学习选取规律</li>
+<li><strong>区域提议 region proposal 网络 (RPN)</strong>：从数据中学习选取规律
+<ul>
 <li>输出数量可控，同时可以保证检测精度</li>
+<li>“深度学习算法很靠谱”已经成为此时（2015年）的主流观点</li>
+</ul></li>
 </ul>
 <div class="nopub">
 
@@ -932,6 +936,7 @@ background-color: var(--r-background-color);
 <li><p>Faster R-CNN：使用参与训练的区域提议网络</p>
 <ul>
 <li>可控提议区域数量，仍保证目标检测精度。</li>
+<li>“深度学习算法很靠谱”已经成为此时（2015年）的主流观点</li>
 </ul></li>
 <li><p>Mask R-CNN：引入全卷积网络，像素级预测精度。</p></li>
 </ul>
@@ -964,12 +969,12 @@ background-color: var(--r-background-color);
 </section>
 <section id="语义分割" class="slide level2">
 <h2>语义分割</h2>
-<p>将图像分割成语义区域：像素级标注、预测</p>
+<p>将图像分割成<strong>语义</strong>区域：像素级标注、预测</p>
 <div class="nopub">
 
 </div>
 <div class="fragment">
-<p>与示例分割的区别</p>
+<p>与<strong>实例</strong>分割的区别</p>
 <div class="nopub">
 
 </div>
@@ -999,9 +1004,9 @@ background-color: var(--r-background-color);
 </section>
 <section id="特征提取语义分割" class="slide level2">
 <h2>特征提取、语义分割</h2>
-<p>神经网络：逐层提取不同层级的特征</p>
+<p>神经网络：逐层提取不同尺寸的特征</p>
 <ul>
-<li>不断<strong>对特征下采样</strong>：最深层的特征图尺寸很小</li>
+<li>不断<strong>对特征下采样</strong>：最深层的“视野”大，故特征图尺寸很小</li>
 </ul>
 <div class="nopub">
 
@@ -1041,7 +1046,7 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 <h2>转置卷积：填充、步幅和多通道</h2>
 <p>转置卷积中，<strong>填充用于输出</strong>（常规卷积中用于输入）</p>
 <ul>
-<li>例如：填充1的输出将删除第一、最后的行、列</li>
+<li>例如：填充1的输出将<strong>删减</strong>第一、最后的行、列</li>
 </ul>
 <div class="fragment">
 <p><strong>步幅用于中间结果</strong>（输出），而非输入</p>
@@ -1052,6 +1057,19 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 <div class="fragment">
 <p>多通道：与常规卷积相同</p>
 </div>
+</section>
+<section id="实验转置卷积" class="slide level2">
+<h2>实验：转置卷积</h2>
+</section>
+<section id="小结转置卷积" class="slide level2">
+<h2>小结：转置卷积</h2>
+<ul>
+<li>转置卷积：本质是上采样
+<ul>
+<li>命名：将卷积转换成矩阵乘积后，转置矩阵恰好对应转置卷积</li>
+</ul></li>
+<li>填充用于输出，删减行、列；步幅用于中间结果；多通道与常规卷积相同</li>
+</ul>
 </section></section>
 <section>
 <section id="全卷积网络-fcn" class="title-slide slide level1 center">
@@ -1096,22 +1114,33 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 </section>
 <section id="fcn初始化转置卷积层" class="slide level2">
 <h2>FCN：初始化转置卷积层</h2>
-<p>借鉴图像处理中<strong>上采样</strong>方法：<strong>双线性插值</strong></p>
+<p>坐标按尺寸比例放大，映射回输入图像空间</p>
 <ul>
-<li>二维平面4个角点上数值的加权组合</li>
-<li>权重：水平、垂直方向的相对距离</li>
+<li>大概率落在相邻<strong>四个像素之间</strong></li>
 </ul>
 <div class="nopub">
 
 </div>
 <div class="fragment">
+<p>借鉴图像处理中<strong>上采样</strong>方法：<strong>双线性插值</strong></p>
 <ul>
-<li>坐标按尺寸比例映射回输入图像空间
-<ul>
-<li>大概率落在相邻<strong>四个像素之间</strong></li>
-</ul></li>
+<li>二维平面4个角点上数值的加权组合</li>
+<li>权重：水平、垂直方向的相对距离</li>
 </ul>
 </div>
+</section>
+<section id="实验fcn" class="slide level2">
+<h2>实验：FCN</h2>
+</section>
+<section id="小结fcn" class="slide level2">
+<h2>小结：FCN</h2>
+<ul>
+<li>全卷积网络 (FCN)：利用转置卷积恢复图像尺寸
+<ul>
+<li>用于像素级预测：使用1x1卷积调整通道数（与类别数相同）</li>
+</ul></li>
+<li>初始化转置卷积：双线性插值</li>
+</ul>
 </section></section>
 <section>
 <section id="风格迁移" class="title-slide slide level1 center">
@@ -1137,13 +1166,25 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 </section>
 <section id="风格迁移原理" class="slide level2">
 <h2>风格迁移：原理</h2>
-<p>回顾：越靠近输入层，越容易抽取细节信息；反之，则越容易抽取全局信息</p>
+<p>回顾：越靠近输入层，越容易抽取细节信息；反之，则越容易抽取全局概述</p>
 <ul>
 <li>人工决定细节选用哪些<strong>风格特征</strong></li>
 </ul>
 <div class="nopub">
 
 </div>
+</section>
+<section id="实验风格迁移" class="slide level2">
+<h2>实验：风格迁移</h2>
+</section>
+<section id="小结风格迁移" class="slide level2">
+<h2>小结：风格迁移</h2>
+<ul>
+<li>风格迁移：混合内容、风格图像
+<ul>
+<li>类比微调：人工决定细节选用哪些风格特征</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="review" class="title-slide slide level1 center">
@@ -1152,10 +1193,10 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 </section>
 <section id="本章内容" class="slide level2">
 <h2>本章内容</h2>
-<p>单发多框检测（SSD）。区域卷积神经网络（R-CNN）系列。你只看一次（YOLO）。</p>
+<p>单发多框检测（SSD）。区域卷积神经网络（R-CNN）系列。你只看一次（YOLO）。转置卷积。全卷积网络 (FCN)。风格迁移。</p>
 <p> </p>
-<p><strong>重点</strong>：SSD；R-CNN、Fast R-CNN、Faster R-CNN、Mask R-CNN；YOLO。</p>
-<p><strong>难点</strong>：。</p>
+<p><strong>重点</strong>：SSD；R-CNN、Fast R-CNN、Faster R-CNN、Mask R-CNN；YOLO；转置卷积、FCN；风格迁移。</p>
+<p><strong>难点</strong>：目标检测算法的实现。</p>
 </section>
 <section id="学习目标" class="slide level2">
 <h2>学习目标</h2>
@@ -1163,6 +1204,8 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 <li>理解SSD的设计特点（以每个像素为锚点、多尺度检测）</li>
 <li>理解R-CNN（多尺度提议区域）、Fast R-CNN（单个预训练网络、备选区域池化）、Faster R-CNN（区域提议网络）、Mask R-CNN（像素级预测）的设计特点</li>
 <li>理解YOLO的设计特点（图片均分为锚框）</li>
+<li>理解转置卷积的作用（上采样）、计算方法，及全卷积网络 (FCN)的架构</li>
+<li>理解风格迁移的原理</li>
 </ul>
 </section>
 <section id="问题" class="slide level2">
@@ -1170,6 +1213,8 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 <p>简述SSD的设计特点。</p>
 <p>简述R-CNN、Fast R-CNN、Faster R-CNN、Mask R-CNN的设计特点。</p>
 <p>简述YOLO的设计特点。</p>
+<p>简述转置卷积的作用、计算方法，及全卷积网络 (FCN)的架构。</p>
+<p>简述风格迁移的原理。</p>
 </section></section>
     </div>
   </div>

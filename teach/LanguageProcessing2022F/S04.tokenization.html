@@ -229,6 +229,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -243,9 +244,6 @@ text-align: left;
 font-size: var(--r-heading4-size);
 text-align: left;
 }
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
-}
 
 
 
@@ -254,7 +252,7 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
@@ -325,6 +323,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -372,8 +371,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -385,8 +383,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -637,7 +635,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Natural Language Processing I</p>
+  <p class="course">Natural Language Processing I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">4. 词典分词</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />

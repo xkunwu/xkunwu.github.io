@@ -189,7 +189,7 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
@@ -572,7 +572,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Deep Learning I</p>
+  <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">10. 现代循环神经网络</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -582,7 +582,7 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2022/02/28</p>
+  <p class="date">2022/05/04</p>
 </div>
 </div>
 </section>
@@ -613,19 +613,22 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>不同时间步使用<strong>相同参数</strong>：<span class="math inline">\textbf{W}_x^h, \textbf{W}_h^h, \textbf{W}_h^o, b^h, b^o</span></p>
 <ul>
-<li>每个时间步整合新的观测：长期信息在不断更新中逐渐消失</li>
+<li>每个时间步整合新的观测：长期信息在不断更新中逐渐消失
+<ul>
+<li>模型架构、<strong>存储空间固定</strong>：新信息必定挤占旧信息的位置，类比监控磁盘</li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
-<p>[Hochreiter 1997] LSTM：引入类似逻辑门电路的<strong>记忆单元</strong></p>
+<p>[Hochreiter 1997] LSTM：引入类似逻辑门电路的<strong>记忆元</strong></p>
 <ul>
-<li>根据需要选择保存、丢弃信息</li>
+<li>根据需要选择保存、丢弃信息：解决<strong>信息选取</strong>的问题</li>
 </ul>
 </div>
 </section>
 <section id="lstm输入门忘记门输出门" class="slide level2">
 <h2>LSTM：输入门、忘记门、输出门</h2>
-<p>门控：决定信息传递的比例</p>
+<p>门控：决定信息<strong>整合比例</strong>（类比电流，可想象成水阀）</p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="nopub">
@@ -660,7 +663,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="lstm候选记忆元" class="slide level2">
 <h2>LSTM：候选记忆元</h2>
-<p>来自当前时间步的信息</p>
+<p>候选记忆：来自当前时间步的<strong>编码信息</strong></p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><span class="math display">
@@ -668,16 +671,22 @@ background-color: var(--r-background-color);
 \tilde{\textbf{C}}_t &amp;= \tanh(\textbf{X}_t \textbf{W}_x^c + \textbf{H}_{t-1} \textbf{W}_h^c + \textbf{b}^c)\\
 \end{aligned}
 </span></p>
+<ul>
+<li><code>tanh</code>激活：只挤压，不截取</li>
+</ul>
 </div><div class="column" style="width:55%;">
 <div class="nopub">
 
 </div>
 </div>
 </div>
+<ul>
+<li>对比门控（<code>sigma</code>激活）：从信息本身分析重要程度，即<strong>权重值</strong></li>
+</ul>
 </section>
 <section id="lstm记忆元" class="slide level2">
 <h2>LSTM：记忆元</h2>
-<p>输入门<span class="math inline">\textbf{I}_t</span>控制采用多少来自<span class="math inline">\tilde{\textbf{C}}_t</span>的新数据；遗忘门<span class="math inline">\textbf{F}_t</span>控制保留多少过去的记忆<span class="math inline">\textbf{C}_{t-1}</span></p>
+<p>输入门<span class="math inline">\textbf{I}_t</span>控制<strong>采用</strong>多少来自<span class="math inline">\tilde{\textbf{C}}_t</span>的新数据；遗忘门<span class="math inline">\textbf{F}_t</span>控制<strong>保留</strong>多少过去的记忆<span class="math inline">\textbf{C}_{t-1}</span></p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><span class="math display">
@@ -700,6 +709,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="lstm隐状态" class="slide level2">
 <h2>LSTM：隐状态</h2>
+<p>输出门<span class="math inline">\textbf{O}_t</span>控制<strong>传出</strong>多少更新后的记忆<span class="math inline">\textbf{C}_t</span></p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><span class="math display">
@@ -707,6 +717,9 @@ background-color: var(--r-background-color);
 \textbf{H}_t &amp;= \textbf{O}_t \odot \tanh(\textbf{C}_{t})\\
 \end{aligned}
 </span></p>
+<ul>
+<li><code>tanh</code>激活：只挤压，不截取</li>
+</ul>
 </div><div class="column" style="width:55%;">
 <div class="nopub">
 
@@ -720,7 +733,10 @@ background-color: var(--r-background-color);
 </ul>
 </div>
 <div class="fragment">
-<p>注意：只有隐状态传递到输出层；记忆元不直接参与输出计算</p>
+<p>注意：<strong>只有隐状态传递到输出层</strong>；记忆元不直接参与输出计算</p>
+<ul>
+<li>思考：似乎记忆元与隐状态的作用有些类似？</li>
+</ul>
 </div>
 </section>
 <section id="实验lstm" class="slide level2">
@@ -762,12 +778,12 @@ background-color: var(--r-background-color);
 </div>
 <p>参数：<span class="math inline">\textbf{W}_x^i, \textbf{W}_h^i, \textbf{W}_x^f, \textbf{W}_h^f, \textbf{W}_x^o, \textbf{W}_h^o, \textbf{W}_x^c, \textbf{W}_h^c, \textbf{W}_h^y, b^i, b^f, b^o, b^c, \textbf{b}^y</span></p>
 <div class="fragment">
-<p>[Cho 2014] GRU：（简化的）门控循环网络</p>
+<p>[Cho 2014] GRU：（<strong>简化</strong>的）门控循环网络，且将记忆元<strong>合并</strong>到隐状态</p>
 </div>
 </section>
 <section id="gru重置门更新门" class="slide level2">
 <h2>GRU：重置门、更新门</h2>
-<p>重置门：控制“可能还想记住”的隐状态数量；更新门：控制更新的幅度</p>
+<p>重置门：控制“<strong>可能还想记住</strong>”的隐状态数量；更新门：控制<strong>更新幅度</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -776,6 +792,9 @@ background-color: var(--r-background-color);
 \textbf{Z}_t &amp;= \sigma(\textbf{X}_t \textbf{W}_x^z + \textbf{H}_{t-1} \textbf{W}_h^z + \textbf{b}^z)\\
 \end{aligned}
 </span></p>
+<ul>
+<li><code>sigma</code>激活：转换成权重值</li>
+</ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
 
@@ -785,7 +804,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="gru候选隐状态" class="slide level2">
 <h2>GRU：候选隐状态</h2>
-<p><span class="math inline">\textbf{R}_t</span>门控：减少以往隐状态的影响</p>
+<p><span class="math inline">\textbf{R}_t</span>门控：取值<span class="math inline">(0,1)</span>，减少以往隐状态的影响</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -808,7 +827,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="gru隐状态" class="slide level2">
 <h2>GRU：隐状态</h2>
-<p><span class="math inline">\textbf{Z}_t</span>门控：决定新、旧隐状态的比例</p>
+<p><span class="math inline">\textbf{Z}_t</span>门控：决定新、旧隐状态整合的比例</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -816,6 +835,9 @@ background-color: var(--r-background-color);
 \textbf{H}_t &amp;= \textbf{Z}_t \odot \textbf{H}_{t-1} + (1 - \textbf{Z}_t) \odot \tilde{\textbf{H}}_t\\
 \end{aligned}
 </span></p>
+<ul>
+<li>记忆元合并到隐状态</li>
+</ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
 
@@ -860,7 +882,10 @@ background-color: var(--r-background-color);
 <section id="小结gru" class="slide level2">
 <h2>小结：GRU</h2>
 <ul>
-<li>GRU使用两种门控单元：重置门、更新门</li>
+<li>GRU使用两种门控单元：重置门、更新门
+<ul>
+<li>只有一个隐状态：记忆元合并到隐状态</li>
+</ul></li>
 <li>缓解梯度消失问题，并捕获长距离依赖关系</li>
 </ul>
 </section></section>
@@ -890,7 +915,7 @@ background-color: var(--r-background-color);
 <li>对<strong>当前时间步的观测信息</strong><span class="math inline">\textbf{X}_t</span>描述不足</li>
 </ul>
 <div class="fragment">
-<p>如何获得更多的非线性？思考感知机的设计</p>
+<p>如何获得更多的非线性？思考感知机的设计（多层变换解决 XOR 问题）</p>
 </div>
 </section>
 <section id="drnn架构" class="slide level2">
@@ -1004,8 +1029,8 @@ P(x_1,..,x_T) &amp;= \sum_{h_1,..,h_{T}} P(x_1,..,x_T,h_1,..,h_{T})\\
 <div class="column" style="width:60%;">
 <p>隐状态的两个信息流向</p>
 <ul>
-<li>前向、后向分别传递的隐藏层</li>
-<li>合并两个方向的隐状态输出</li>
+<li>隐藏层：前向、后向分别传递</li>
+<li>输出：整合两个方向的隐状态</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1040,7 +1065,7 @@ P(x_1,..,x_T) &amp;= \sum_{h_1,..,h_{T}} P(x_1,..,x_T,h_1,..,h_{T})\\
 <h2>双向RNN模型：应用</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>不能用于单边预测</p>
+<p>不能用于“单边预测”，例如不能用未来信息预测现在</p>
 <ul>
 <li>预测时无法获得对应数据</li>
 </ul>
@@ -1062,8 +1087,39 @@ P(x_1,..,x_T) &amp;= \sum_{h_1,..,h_{T}} P(x_1,..,x_T,h_1,..,h_{T})\\
 <h2>小结：BiRNN</h2>
 <ul>
 <li>BiRNN：隐藏层前向、后向分别传递时间信息</li>
-<li>应用：特征提取、完形填空</li>
+<li>应用：特征提取、完形填空、词元标注、机器翻译
+<ul>
+<li>不能用于“单边预测”</li>
+</ul></li>
 </ul>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>长短期记忆网络（LSTM）。门控循环单元（GRU）。深度循环神经网络。双向循环神经网络。</p>
+<p> </p>
+<p><strong>重点</strong>：LSTM 的设计特点、网络架构；GRU 的设计特点、网络架构；深度循环神经网络的信息流向、网络架构；双向循环神经网络的信息流向、网络架构。</p>
+<p><strong>难点</strong>：现代循环神经网络的实现。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>理解 LSTM 的设计特点（门控，记忆元）、网络架构</li>
+<li>理解 GRU 设计特点（简化门控，合并记忆元到隐状态）、网络架构</li>
+<li>理解深度循环神经网络的信息流向、网络架构。</li>
+<li>理解双向循环神经网络的信息流向、网络架构。</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述 LSTM 的设计特点、网络架构。</p>
+<p>简述 GRU 的设计特点、网络架构。</p>
+<p>简述深度循环神经网络的信息流向、网络架构。</p>
+<p>简述双向循环神经网络的信息流向、网络架构。</p>
 </section></section>
     </div>
   </div>

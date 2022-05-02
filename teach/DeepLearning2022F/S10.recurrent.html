@@ -252,7 +252,7 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
@@ -635,7 +635,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Deep Learning I</p>
+  <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">10. 循环神经网络</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -645,7 +645,7 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2022/02/28</p>
+  <p class="date">2022/04/29</p>
 </div>
 </div>
 </section>
@@ -660,7 +660,7 @@ background-color: var(--r-background-color);
 <h2>数据、结构</h2>
 <p>目前遇到的数据：表格、图像</p>
 <ul>
-<li>图像数据：二维空间结构</li>
+<li>图像数据：二维空间结构假设，用于<strong>简化计算</strong></li>
 </ul>
 <div class="fragment">
 <p>序列化数据：依赖某种<strong>序关系</strong></p>
@@ -670,10 +670,10 @@ background-color: var(--r-background-color);
 </ul>
 </div>
 <div class="fragment">
-<p>序关系假设：<strong>预测</strong>序列的后续</p>
+<p>序关系假设：先验知识，<strong>预测</strong>序列的后续</p>
 <ul>
 <li>文本生成</li>
-<li>价格、天气预测</li>
+<li>股价、天气预测</li>
 </ul>
 </div>
 </section>
@@ -719,7 +719,7 @@ background-color: var(--r-background-color);
 <ul>
 <li><strong>序列化随机变量</strong>的分布：<span class="math inline">x_1,..,x_T \sim p(x_1,..,x_T) = p(\mathbf{x})</span></li>
 </ul>
-<p>注意：序列化随机变量一般不是相互独立的</p>
+<p>注意：序列化随机变量一般<strong>不是相互独立</strong>的；此处省略了模型参数</p>
 <div class="nopub">
 
 </div>
@@ -749,7 +749,7 @@ P(x_1, x_2, .., x_T) &amp;= P(x_T)P(x_{T-1}|x_{T})P(x_{T-2}|x_{T-1:T})...P(x_1|x
 <h2>自回归模型</h2>
 <p>外推预测：<span class="math inline">x_t \sim p(x_t | x_{1:t-1})</span></p>
 <ul>
-<li><strong>自回归模型</strong>：对见过的数据建模、对自己执行回归</li>
+<li><strong>自回归模型</strong>：对见过的数据建模、对自己执行回归，即自监督学习</li>
 </ul>
 <p><span class="math display">
 x_t \sim p(x_t | x_{1:t-1}) = p(x_t | f(x_{1:t-1}))
@@ -773,7 +773,7 @@ x_t \sim p(x_t | x_{1:t-1}) = p(x_t | f(x_{1:t-1}))
 <p><span class="math display">
 \begin{aligned}
 \hat{x}_t &amp;= p(x_t | h_t)\\
-h &amp;= g(x_{t-1}, h_{t-1})\\
+h_t &amp;= g(x_{t-1}, h_{t-1})\\
 \end{aligned}
 </span></p>
 <div class="nopub">
@@ -786,9 +786,11 @@ h &amp;= g(x_{t-1}, h_{t-1})\\
 <section id="小结序列模型" class="slide level2">
 <h2>小结：序列模型</h2>
 <ul>
-<li>序列模型：当前预测与之前的观测数据相关</li>
+<li>序列模型：当前预测与之前的观测数据相关
+<ul>
+<li>Markov假设：当前预测只取决于之前的最近几个观测数据</li>
+</ul></li>
 <li>自回归模型：使用自身历史数据建模</li>
-<li>Markov假设：当前预测只取决于之前最近的几个观测数据</li>
 <li>隐变量模型：使用隐状态整合过去所有的观测信息</li>
 </ul>
 </section></section>
@@ -887,6 +889,12 @@ P(w_{1:n}) &amp;\approx \prod_{k=1}^n P(w_k|w_{k-N+1}) \\
 <li>语言中<strong>长距离依赖</strong>对语义理解很重要</li>
 </ul>
 </div>
+<div class="fragment">
+<blockquote>
+<p>虽然<strong>一切可能性的总和</strong>的这一理念，就该总和作为条件是任何一个事物普遍的规定的基础而言，在可能构成该总和的种种谓词方面本身还是未被规定的，而且我们由此所思维的，在根本上无非就是一切可能的谓词的总和，然而，我们在更仔细的研究中毕竟发现，这个理念作为元始概念排除了一大堆作为通过别的谓词引申出来的而已经被给予的、或者与其他谓词不能共存的谓词；它把自己提炼为一个普遍先天地被规定的概念，并由此成为一个单一的对象的概念，这个对象通过纯然的理念完全地被规定，从而必须被称为纯粹理性的<strong>理想</strong>。<br />
+–《纯粹理性批判》，康德</p>
+</blockquote>
+</div>
 </section>
 <section id="最大似然估计" class="slide level2">
 <h2>最大似然估计</h2>
@@ -929,17 +937,32 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 </section>
 <section id="n元模型词频比较" class="slide level2">
 <h2>N元模型词频比较</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <p>都遵循<strong>Zipf定律</strong>：<span class="math inline">n_i \propto \frac{1}{i^\alpha}</span></p>
 <ul>
 <li><strong>双对数空间</strong>上近似直线：<span class="math inline">\log n_i = - \alpha \log i + c</span></li>
 </ul>
+</div><div class="column" style="width:40%;">
 <div class="nopub">
 
 </div>
+</div>
+</div>
 <div class="fragment">
 <ul>
-<li>词表中N元组的数量并不多：说明语言中存在大量<strong>结构</strong>，可应用模型</li>
-<li>很多N元组频率非常低：似然估计 + <strong>平滑处理（如加一）不适合语言模型</strong></li>
+<li>词表中N元组数量并不多，却可以表述非常复杂的语句
+<ul>
+<li>说明语言中存在大量<strong>结构</strong>，可应用模型提取模式</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>很多N元组频率非常低：似然估计 + <strong>平滑处理（如加一）不适合语言模型</strong>
+<ul>
+<li>信息非常稀疏：直接改公式对统计规律的破坏过于严重</li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
@@ -949,13 +972,19 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 <section id="读取长序列数据" class="slide level2">
 <h2>读取长序列数据</h2>
 <p>序列太长、在线应用：拆分成<strong>相同时间步</strong>的子序列方便模型读取</p>
+<div class="nopub">
+
+</div>
+<div class="fragment">
+<ul>
+<li>预测词元：真实标签对应原序列中<strong>下一个位置</strong></li>
+</ul>
+</div>
+<div class="fragment">
 <ul>
 <li>起始位置：随机偏移量</li>
 <li>采样策略：随机、顺序</li>
-<li>预测词元：真实标签对应原序列中下一个位置</li>
 </ul>
-<div class="nopub">
-
 </div>
 </section>
 <section id="实验语言模型和数据集" class="slide level2">
@@ -986,9 +1015,9 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 
 </div>
 <ul>
-<li>长距离依赖？必须增加N
+<li>长距离依赖？必须增加N（回忆德语例子）
 <ul>
-<li>参数量呈<strong>指数增长</strong>：词表存储<span class="math inline">|V|^N</span></li>
+<li>参数量呈<strong>指数增长</strong>：词表存储<span class="math inline">|V|^N</span>，例如<span class="math inline">8000^{100}</span>？</li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -1028,6 +1057,15 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 <div class="fragment">
 <p>注意：不是隐变量，没有按时间步“阶段性整合信息”</p>
 </div>
+</section>
+<section id="基于循环神经网络的字符级语言模型" class="slide level2">
+<h2>基于循环神经网络的字符级语言模型</h2>
+<div class="nopub">
+
+</div>
+<ul>
+<li>预测下一个词元：将原始序列移位一个词元作为标签</li>
+</ul>
 </section>
 <section id="循环神经网络时间步隐变量" class="slide level2">
 <h2>循环神经网络：时间步、隐变量</h2>
@@ -1079,21 +1117,12 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
         [-1.3559,  0.8042, -1.4394, -3.1735],
         [ 0.6559,  1.3140,  0.2949,  0.0781]])</code></pre>
 <div class="fragment">
-<p>等价于<span class="math inline">\textbf{X}_t</span>和<span class="math inline">\textbf{H}_{t-1}</span>拼接与<span class="math inline">\textbf{W}_x^h</span>和<span class="math inline">\textbf{W}_h^h</span><strong>拼接的矩阵乘法</strong></p>
+<p>等价于<span class="math inline">\textbf{X}_t</span>和<span class="math inline">\textbf{H}_{t-1}</span>拼接与<span class="math inline">\textbf{W}_x^h</span>和<span class="math inline">\textbf{W}_h^h</span><strong>拼接的矩阵乘法</strong>：并行计算</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>torch.matmul(torch.cat((X, H), <span class="dv">1</span>), torch.cat((W_xh, W_hh), <span class="dv">0</span>))</span></code></pre></div>
 <pre class="text"><code>tensor([[-0.5702, -0.4673, -0.1508, -0.0185],
         [-1.3559,  0.8042, -1.4394, -3.1735],
         [ 0.6559,  1.3140,  0.2949,  0.0781]])</code></pre>
 </div>
-</section>
-<section id="基于循环神经网络的字符级语言模型" class="slide level2">
-<h2>基于循环神经网络的字符级语言模型</h2>
-<div class="nopub">
-
-</div>
-<ul>
-<li>预测下一个词元：将原始序列移位一个词元作为标签</li>
-</ul>
 </section>
 <section id="困惑度" class="slide level2">
 <h2>困惑度</h2>
@@ -1206,6 +1235,35 @@ PP(W) &amp;= P(w_1 w_2 .. w_N)^{-\frac{1}{N}} \\
 <h1 class="center">实验：循环神经网络的简洁实现</h1>
 
 </section>
+
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>序列模型。语言模型。循环神经网络。</p>
+<p> </p>
+<p><strong>重点</strong>：序列模型、自回归模型、隐变量模型；N元语法、最大似然估计、平滑处理；序列化数据集的构造；循环神经网络的架构，及其预测、评测、应用方法。</p>
+<p><strong>难点</strong>：困惑度的原理；循环神经网络的实现。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>理解序列模型、自回归模型、隐变量模型</li>
+<li>理解N元语法、最大似然估计、平滑处理</li>
+<li>理解序列化数据集的构造方法</li>
+<li>理解循环神经网络的架构，及其预测、评测、应用方法</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述序列模型、自回归模型、隐变量模型的建模方法。</p>
+<p>简述N元语法、最大似然估计、平滑处理的原理。</p>
+<p>简述序列化数据集的构造方法。</p>
+<p>简述循环神经网络的架构，及其预测、评测、应用方法。</p>
+</section></section>
     </div>
   </div>
 

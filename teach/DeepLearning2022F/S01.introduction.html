@@ -229,6 +229,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -243,9 +244,6 @@ text-align: left;
 font-size: var(--r-heading4-size);
 text-align: left;
 }
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
-}
 
 
 
@@ -254,7 +252,7 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
@@ -325,6 +323,7 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
@@ -372,8 +371,7 @@ position: relative;
 
 margin: var(--r-block-margin) 1em;
 padding: var(--r-block-padding);
-font-style: normal;
-
+font-style: italic;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 text-align: left;
 }
@@ -385,8 +383,8 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
-font-style: normal;
 
+font-style: italic;
 }
 .reveal div.sourceCode {
 margin: 0;
@@ -637,7 +635,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Deep Learning I</p>
+  <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">1. Introduction 导言</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -922,13 +920,11 @@ background-color: var(--r-background-color);
 <section id="机器学习算法的核心问题" class="slide level2">
 <h2>机器学习算法的核心问题</h2>
 <p>机器学习模型将输入数据变换为<strong>有意义的输出</strong>，这是一个从已知的输入和输出示例中进行“学习”的过程。</p>
-<p> </p>
 <div class="fragment">
 <p>机器学习和深度学习的核心问题在于<strong>有意义地变换数据</strong></p>
 <ul>
 <li>学习输入数据的有用<strong>表示 representation</strong>：这种表示可以让数据更接近预期输出。</li>
 </ul>
-<p> </p>
 </div>
 <div class="fragment">
 <p>举例：信号灯图像的颜色<strong>响应 activation</strong></p>

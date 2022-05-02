@@ -189,7 +189,7 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
@@ -572,7 +572,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Deep Learning I</p>
+  <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">8. 计算机视觉I</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -728,7 +728,10 @@ background-color: var(--r-background-color);
 </ul>
 </div>
 <div class="fragment">
-<p>减小模型对特定属性的依赖：提高模型的<strong>泛化能力</strong></p>
+<p>减小模型对特定特征的依赖：提高模型的<strong>泛化能力</strong></p>
+<ul>
+<li>假设固定特征数量：数据信息量少时，特征之间容易相关</li>
+</ul>
 </div>
 </section>
 <section id="图像增广物理定律" class="slide level2">
@@ -839,7 +842,7 @@ background-color: var(--r-background-color);
 <ul>
 <li>推论：数据规模需要非常大
 <ul>
-<li><strong>标注成本</strong>高；可用于相关任务；公司核心资产</li>
+<li><strong>标注成本</strong>高；可用于相关任务；通常公司视为核心资产</li>
 </ul></li>
 </ul>
 <table>
@@ -868,7 +871,7 @@ background-color: var(--r-background-color);
 </table>
 </div>
 <div class="fragment">
-<p>问题：难道模型只能是一次性产品？标注数据不够导致过拟合怎么办？</p>
+<p>问题：难道模型只能是一次性产品？标注数据不够导致过拟合（需要重新训练）怎么办？</p>
 </div>
 </section>
 <section id="网络架构解析" class="slide level2">
@@ -1758,7 +1761,7 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </section>
 <section id="多尺度检测" class="slide level2">
 <h2>多尺度检测</h2>
-<p>锚框大小：等价于<strong>感受野尺寸</strong></p>
+<p>锚框大小：等价于<strong>感受野尺寸</strong>，“站得高看得远”</p>
 <div class="nopub">
 
 </div>
