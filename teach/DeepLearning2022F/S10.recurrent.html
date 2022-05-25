@@ -258,9 +258,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -278,7 +280,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -717,14 +719,14 @@ background-color: var(--r-background-color);
 <h2>统计建模</h2>
 <p>将观测看成随机变量：时间<span class="math inline">t</span>观测到<span class="math inline">x_t</span></p>
 <ul>
-<li><strong>序列化随机变量</strong>的分布：<span class="math inline">x_1,..,x_T \sim p(x_1,..,x_T) = p(\mathbf{x})</span></li>
+<li><strong>序列化随机变量</strong>的分布：<span class="math inline">x_1,..,x_T \sim p(x_1,..,x_T) \equiv p(\mathbf{x})</span></li>
 </ul>
 <p>注意：序列化随机变量一般<strong>不是相互独立</strong>的；此处省略了模型参数</p>
 <div class="nopub">
 
 </div>
 <div class="fragment">
-<p><strong>外推预测</strong>：<span class="math inline">x_t \sim p(x_t | x_{t-1},..,x_1) = p(x_t | x_{1:t-1})</span></p>
+<p><strong>外推预测</strong>：<span class="math inline">x_t \sim p(x_t | x_{t-1},..,x_1) \equiv p(x_t | x_{1:t-1})</span></p>
 </div>
 </section>
 <section id="统计建模联合条件概率" class="slide level2">
@@ -752,12 +754,12 @@ P(x_1, x_2, .., x_T) &amp;= P(x_T)P(x_{T-1}|x_{T})P(x_{T-2}|x_{T-1:T})...P(x_1|x
 <li><strong>自回归模型</strong>：对见过的数据建模、对自己执行回归，即自监督学习</li>
 </ul>
 <p><span class="math display">
-x_t \sim p(x_t | x_{1:t-1}) = p(x_t | f(x_{1:t-1}))
+x_t \sim p(x_t | x_{1:t-1}) \equiv p(x_t | f(x_{1:t-1}))
 </span></p>
 <div class="fragment">
 <p>Markov 假设：当前预测只取决于之前<strong>最近的<span class="math inline">\tau</span>个观测</strong></p>
 <ul>
-<li><span class="math inline">\hat{x}_t = p(x_t | x_{t-\tau:t-1}) = p(x_t | f(x_{t-\tau:t-1}))</span></li>
+<li><span class="math inline">\hat{x}_t \sim p(x_t | x_{t-\tau:t-1}) \equiv p(x_t | f(x_{t-\tau:t-1}))</span></li>
 </ul>
 <div class="nopub">
 
@@ -969,8 +971,8 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 <p>推论：需要深度神经网络模型学习语言内在规律</p>
 </div>
 </section>
-<section id="读取长序列数据" class="slide level2">
-<h2>读取长序列数据</h2>
+<section id="构造序列化数据集" class="slide level2">
+<h2>构造序列化数据集</h2>
 <p>序列太长、在线应用：拆分成<strong>相同时间步</strong>的子序列方便模型读取</p>
 <div class="nopub">
 
@@ -983,7 +985,7 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 <div class="fragment">
 <ul>
 <li>起始位置：随机偏移量</li>
-<li>采样策略：随机、顺序</li>
+<li>采样策略：随机（生成文本更多变化）、顺序（生成文本更连贯）</li>
 </ul>
 </div>
 </section>
@@ -1090,14 +1092,14 @@ P_{Add-1}(w_i) &amp;= \frac{c_i + 1}{N + |V|}
 </div>
 </div>
 <div class="fragment">
-<ul>
-<li>循环：隐变量的当前时间步定义<span class="math inline">\textbf{H}_t</span>与前一时间步定义<span class="math inline">\textbf{H}_{t-1}</span><strong>模式相同</strong></li>
-</ul>
-</div>
-<div class="fragment">
 <p>注意：不同时间步使用<strong>相同参数</strong><span class="math inline">\textbf{W}_x^h, \textbf{W}_h^h, \textbf{W}_h^o, b^h, b^o</span></p>
 <ul>
 <li>参数量不会随时间推移而增长，计算开销恒定</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>“循环”：隐变量的当前时间步定义<span class="math inline">\textbf{H}_t</span>与前一时间步定义<span class="math inline">\textbf{H}_{t-1}</span><strong>模式相同</strong></li>
 </ul>
 </div>
 </section>

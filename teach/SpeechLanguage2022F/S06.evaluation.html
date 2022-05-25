@@ -195,9 +195,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,7 +217,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -789,6 +791,37 @@ background-color: var(--r-background-color);
 </div>
 </div>
 </section>
+<section id="分类问题应用" class="slide level2">
+<h2>分类问题应用</h2>
+<p>精确度高：阳性<strong>置信度</strong>高；召回率高：阳性<strong>辨识力</strong>强。</p>
+<ul>
+<li>如何确定辨识力？选取<strong>阈值</strong></li>
+</ul>
+<div class="fragment">
+<p>例如分类真值：<span class="math inline">[T, F, F]</span>；预测值：<span class="math inline">[0.7, 0.3, 0.5]</span></p>
+<ul>
+<li>阈值<span class="math inline">0.5</span>：<span class="math inline">P = \frac{TP}{TP+FP} = 1/2</span>；<span class="math inline">R = \frac{TP}{TP+FN} = 1</span></li>
+</ul>
+</div>
+</section>
+<section id="precision-recall-curve" class="slide level2">
+<h2>Precision-Recall Curve</h2>
+<div class="nopub">
+
+</div>
+<ul>
+<li>阈值<span class="math inline">0</span>：所有真值都检出；阈值接近<span class="math inline">1</span>：所有真值都正确
+<ul>
+<li>曲线越向右上角越好</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><strong>Area Under Curve (AUC)</strong>：面积越大越好</p>
+<div class="note">
+
+</div>
+</div>
+</section>
 <section id="准确度精确度" class="slide level2">
 <h2>准确度、精确度</h2>
 <div class="nopub">
@@ -883,6 +916,22 @@ F_1 &amp;= \frac{2 PR}{P + R}\\
 <div class="note">
 
 </div>
+</div>
+</section>
+<section id="average-precision-ap" class="slide level2">
+<h2>Average Precision (AP)</h2>
+<p>精确度的加权和；权重：召回率增量</p>
+<p><span class="math display">
+AP = \sum_{k=0}^{n-1} [R(k) - R(k+1)] * P(k)
+</span></p>
+<ul>
+<li><span class="math inline">R(n) = 0, P(n) = 1</span></li>
+</ul>
+<div class="fragment">
+<p>Mean Average Precision (mAP)：多类AP均值</p>
+<p><span class="math display">
+AP = \frac{1}{n} \sum_{k=1}^n AP_k
+</span></p>
 </div>
 </section></section>
     </div>

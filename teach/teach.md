@@ -27,12 +27,12 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="LanguageProcessing2022F/teaser.png">
+    <img src="SpeechLanguage2022F/teaser.png">
   </div>
   <div class="pub_txt">
     <title>[2022] Natural Language Processing I</title>
     <links>
-      [<a href="LanguageProcessing2022F/2022F.html">2022F</a>]
+      [<a href="SpeechLanguage2022F/2022F.html">2022F</a>]
     </links>
   </div>
 </div>

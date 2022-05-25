@@ -195,9 +195,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,7 +217,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -655,7 +657,7 @@ background-color: var(--r-background-color);
 <li>多头注意力：融合多个注意力池化的不同知识
 <ul>
 <li>知识来源于相同的查询、键、值</li>
-<li>提取不同的子空间表示</li>
+<li>提取不同的子空间表示，学习不同长度的依赖关系</li>
 </ul></li>
 </ul>
 </section></section>
@@ -699,7 +701,7 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 <div class="column" style="width:60%;">
 <p><span class="math display">
 \mathbf{y}_i = f(\mathbf{x}_i,(\mathbf{x}_1,\mathbf{x}_1),..,(\mathbf{x}_n,\mathbf{x}_n)) =
-\sum_i \alpha(\mathbf{x}_i,\mathbf{x}_i) \mathbf{x}_i
+\sum_j \alpha(\mathbf{x}_i,\mathbf{x}_j) \mathbf{x}_j
 </span></p>
 <ul>
 <li>查询<span class="math inline">\mathbf{q}</span>、键<span class="math inline">\mathbf{k}</span>、值<span class="math inline">\mathbf{v}</span>：都用<span class="math inline">\mathbf{x}</span>替代</li>
@@ -820,7 +822,7 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 </section>
 <section id="位置编码" class="slide level2">
 <h2>位置编码</h2>
-<p>自注意力：为了并行计算，<strong>丢失顺序信息</strong></p>
+<p>自注意力的问题：为了并行计算，<strong>丢失顺序信息</strong></p>
 <div class="nopub">
 
 </div>
@@ -907,9 +909,9 @@ p_{i,2j+1} = \cos \left( \frac{i}{10000^{2j/d}} \right)
 <li>多头注意力、自注意力、位置编码</li>
 <li>残差连接、<strong>层规范化</strong>
 <ul>
-<li>层规范化：针对特征维度
+<li>层规范化：针对特征（编码）维度
 <ul>
-<li>输入通常是变长序列</li>
+<li>输入通常是变长序列，按长度规范</li>
 </ul></li>
 </ul></li>
 <li><strong>基于位置的前馈网络</strong>
@@ -937,9 +939,9 @@ p_{i,2j+1} = \cos \left( \frac{i}{10000^{2j/d}} \right)
 <li><span class="math inline">(b,n,d)</span>变形成<span class="math inline">(bn,d)</span></li>
 </ul></li>
 </ul></li>
-<li><strong>层规范化</strong>：针对特征维度
+<li><strong>层规范化</strong>：针对特征（编码）维度
 <ul>
-<li>输入通常是变长序列</li>
+<li>输入通常是变长序列，按长度规范</li>
 </ul></li>
 <li><strong>输出两条路径</strong>：“键”、“值”
 <ul>
@@ -1108,7 +1110,7 @@ p_{i,2j+1} = \cos \left( \frac{i}{10000^{2j/d}} \right)
 
 </div>
 <div class="fragment">
-<p>注意：词嵌入是<strong>上下文无关</strong>的</p>
+<p>注意：（静态）词嵌入是<strong>上下文无关</strong>的</p>
 <ul>
 <li>例如word2vec和GloVe：预训练后，将词嵌入<strong>固定分配</strong>给词</li>
 <li>但相同词目可以有不同含义，例如<code>mouse</code>：老鼠；鼠标</li>
@@ -1128,6 +1130,12 @@ p_{i,2j+1} = \cos \left( \frac{i}{10000^{2j/d}} \right)
 </div>
 </div>
 </section>
+<section id="elmo示例" class="slide level2">
+<h2>ELMo：示例</h2>
+<div class="nopub">
+
+</div>
+</section>
 <section id="从特定任务到不可知任务" class="slide level2">
 <h2>从特定任务到不可知任务</h2>
 <p>[Radford 2018] GPT（Generative Pre Training，生成式预训练）</p>
@@ -1143,11 +1151,19 @@ p_{i,2j+1} = \cos \left( \frac{i}{10000^{2j/d}} \right)
 </section>
 <section id="bert结合两者优点" class="slide level2">
 <h2>BERT：结合两者优点</h2>
+<div class="columns">
+<div class="column" style="width:80%;">
 <p>[Devlin 2018] BERT（来自Transformers的双向编码器表示）</p>
 <ul>
 <li>对上下文双向编码：<strong>上下文敏感表示</strong></li>
 <li>只训练任务相关的额外输出层：<strong>极少架构修改</strong></li>
 </ul>
+</div><div class="column" style="width:20%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
 <div class="nopub">
 
 </div>
@@ -1286,7 +1302,7 @@ p_{i,2j+1} = \cos \left( \frac{i}{10000^{2j/d}} \right)
 <li>ELMo、GPT构建上下文敏感词表示
 <ul>
 <li>ELMo对上下文双向编码，但使用特定于任务的架构</li>
-<li>PT是任务无关的，但单向从左到右编码上下文</li>
+<li>GPT是任务无关的，但单向从左到右编码上下文</li>
 </ul></li>
 <li>BERT结合两方面优点：对上下文双向编码；仅需最小的架构更改
 <ul>
@@ -1294,6 +1310,36 @@ p_{i,2j+1} = \cos \left( \frac{i}{10000^{2j/d}} \right)
 <li>预训练包括两个任务：掩蔽语言模型、下一句预测</li>
 </ul></li>
 </ul>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>多头注意力。自注意力和位置编码。Transformer。词嵌入。来自Transformers的双向编码器表示（BERT）。</p>
+<p> </p>
+<p><strong>重点</strong>：多头注意力；自注意力，位置编码；Transformer；词嵌入；BERT。</p>
+<p><strong>难点</strong>：注意力模型的实现。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>理解多头注意力的原理（融合多个注意力池化的不同知识）</li>
+<li>理解自注意力的特点（查询、键、值来自同一组输入）与技术优势（高度并行，善于处理远距离依赖）；了解位置编码的原理（给输入注入绝对或相对位置信息）</li>
+<li>理解 Transformer 模型架构</li>
+<li>理解词嵌入方法 word2vec（包括skip-gram、CBOW）、GloVe、BPE 的原理</li>
+<li>理解 ELMo、GPT、BERT 模型的原理</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述多头注意力的原理。</p>
+<p>简述自注意力的特点与技术优势。</p>
+<p>简述 Transformer 模型架构。</p>
+<p>简述词嵌入方法 word2vec（包括skip-gram、CBOW）、GloVe、BPE 的原理。</p>
+<p>简述 ELMo、GPT、BERT 模型的原理。</p>
 </section></section>
     </div>
   </div>

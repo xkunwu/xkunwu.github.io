@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="WU Xiaokun 吴晓堃">
-  <title>12. 机器翻译</title>
+  <title>12. 自然语言处理I</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=1600, height=1000, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -195,9 +195,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,7 +217,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -574,7 +576,8 @@ background-color: var(--r-background-color);
 <div class="title">
   <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
-  <p class="title">12. 机器翻译</p>
+  <p class="title">12. 自然语言处理I</p>
+  <p class="subtitle">情感分析、机器翻译</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
 </div>
 <div class="author">
@@ -582,26 +585,22 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2022/02/28</p>
+  <p class="date">2022/05/09</p>
 </div>
 </div>
 </section>
 
-
-<section id="实验情感分析数据集" class="title-slide slide level1 center">
-<h1 class="center">实验：情感分析数据集</h1>
-
-</section>
-
-<section id="实验情感分析rnn实现" class="title-slide slide level1 center">
-<h1 class="center">实验：情感分析RNN实现</h1>
-
-</section>
 
 <section>
-<section id="实验情感分析cnn实现" class="title-slide slide level1 center">
-<h1 class="center">实验：情感分析CNN实现</h1>
+<section id="情感分析" class="title-slide slide level1 center">
+<h1 class="center">情感分析</h1>
 
+</section>
+<section id="实验情感分析数据集" class="slide level2">
+<h2>实验：情感分析数据集</h2>
+</section>
+<section id="实验情感分析rnn实现" class="slide level2">
+<h2>实验：情感分析RNN实现</h2>
 </section>
 <section id="一维卷积" class="slide level2">
 <h2>一维卷积</h2>
@@ -624,6 +623,9 @@ background-color: var(--r-background-color);
 <div class="nopub">
 
 </div>
+</section>
+<section id="实验情感分析cnn实现" class="slide level2">
+<h2>实验：情感分析CNN实现</h2>
 </section></section>
 <section>
 <section id="机器翻译与数据集" class="title-slide slide level1 center">
@@ -632,9 +634,9 @@ background-color: var(--r-background-color);
 </section>
 <section id="机器翻译" class="slide level2">
 <h2>机器翻译</h2>
-<p>机器翻译：序列转换的核心问题</p>
+<p>机器翻译：<strong>序列转换</strong>的核心问题</p>
 <ul>
-<li>统计方法：例如字符/词频率对照表，早期曾用于破译密码</li>
+<li>统计方法：例如字符/词频率对照表，早期曾用于破译密码、翻译古文字</li>
 </ul>
 <div class="fragment">
 <ul>
@@ -651,7 +653,7 @@ background-color: var(--r-background-color);
 <section id="小结机器翻译与数据集" class="slide level2">
 <h2>小结：机器翻译与数据集</h2>
 <ul>
-<li>机器翻译：语音文本序列的自动转换</li>
+<li>机器翻译：语言文本序列的自动转换</li>
 <li>单词级词元化：词表大、稀疏，故将低频词元视为相同的未知词元</li>
 <li>小批量加载数据：截断、填充文本序列成相同长度</li>
 </ul>
@@ -685,8 +687,8 @@ background-color: var(--r-background-color);
 <h2>回顾：RNN</h2>
 <p>循环神经网络也可以划分成两个组件</p>
 <ul>
-<li><strong>编码器</strong>：输入 -&gt; 向量表示，即词嵌入</li>
-<li><strong>解码器</strong>：向量表示 -&gt; 输出</li>
+<li><strong>编码器</strong>：输入 -&gt; 定长向量表示，即词嵌入</li>
+<li><strong>解码器</strong>：定长向量表示 -&gt; 输出</li>
 </ul>
 <div class="nopub">
 
@@ -707,13 +709,15 @@ background-color: var(--r-background-color);
 <section id="小结编码器-解码器架构" class="slide level2">
 <h2>小结：编码器-解码器架构</h2>
 <ul>
-<li>编码器-解码器：隐藏层提取词的向量表示（词嵌入）</li>
+<li>编码器-解码器：隐藏层提取词的向量表示（词嵌入）
+<ul>
+<li>编码器：将可变序列转换成固定形状的编码状态</li>
+<li>解码器：将固定形状的编码状态映射为长度可变的输出序列</li>
+</ul></li>
 <li>编码器-解码器架构：可以解决不定长输入、输出序列问题
 <ul>
 <li>故适用于机器翻译等序列转换问题</li>
 </ul></li>
-<li>编码器：将可变序列转换成固定形状的编码状态</li>
-<li>解码器：将固定形状的编码状态映射为长度可变的输出序列</li>
 </ul>
 </section></section>
 <section>
@@ -760,11 +764,11 @@ background-color: var(--r-background-color);
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>编码器：不输出、只学习词嵌入
+<li>编码器：不输出、只<strong>学习词嵌入</strong>
 <ul>
 <li>最后时间步隐状态：初始化解码器</li>
 </ul></li>
-<li>解码器：循环预测</li>
+<li>解码器：根据上一输出<strong>循环预测</strong></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
@@ -779,9 +783,11 @@ background-color: var(--r-background-color);
 <div class="nopub">
 
 </div>
-<p>预测时没有真实标签：前一时间步的预测作为当前时间步的输入</p>
+<div class="fragment">
+<p>预测时没有真实标签：<strong>前一时间步的预测</strong>作为当前时间步的输入</p>
 <div class="nopub">
 
+</div>
 </div>
 </section>
 <section id="机器翻译评测" class="slide level2">
@@ -791,7 +797,7 @@ background-color: var(--r-background-color);
 \exp \left( \min \left( 0, 1 - \frac{|Y|}{|\hat{Y}|} \right) \right) \prod_n p_n^{\frac{1}{2^n}}
 </span></p>
 <ul>
-<li><span class="math inline">|Y|</span>：标注词元数；<span class="math inline">|\hat{Y}|</span>：预测词元数</li>
+<li><span class="math inline">|Y|</span>：标注词元数；<span class="math inline">|\hat{Y}|</span>：预测词元数；取值：<span class="math inline">[0,1]</span></li>
 </ul>
 <div class="fragment">
 <ul>
@@ -803,7 +809,7 @@ background-color: var(--r-background-color);
 </div>
 <div class="fragment">
 <ul>
-<li><span class="math inline">p_n</span>：预测序列中所有n-gram的<strong>匹配度</strong>，即匹配数量占总数的比例
+<li><span class="math inline">p_n</span>：<strong>预测序列中所有</strong>n-gram的<strong>匹配度</strong>，即匹配数量占总数的比例
 <ul>
 <li>例如标注序列“ABCDEF”、预测序列“ABBCD”
 <ul>
@@ -814,7 +820,7 @@ background-color: var(--r-background-color);
 </div>
 <div class="fragment">
 <ul>
-<li><strong>鼓励长匹配</strong>：长匹配难度更大，故分配更高权重
+<li><strong>鼓励长匹配</strong>：<span class="math inline">N^V</span>种可能性，长匹配难度更大，故分配更高权重
 <ul>
 <li><span class="math inline">p_n^{\frac{1}{2^n}}</span>：多项式反函数；固定<span class="math inline">0 \le p_n \le 1</span>时，<span class="math inline">n</span>越大，函数值也越大</li>
 </ul></li>
@@ -853,7 +859,7 @@ background-color: var(--r-background-color);
 <ul>
 <li>解码输出：词汇表上的概率分布
 <ul>
-<li><strong>贪心搜索</strong>：选取概率值最大的词作为当前预测</li>
+<li><strong>贪心搜索</strong>：选取概率值最大的词作为当前预测，见下页</li>
 </ul></li>
 </ul>
 </section>
@@ -861,7 +867,7 @@ background-color: var(--r-background-color);
 <h2>贪心搜索</h2>
 <p><strong>贪心搜索</strong>：选取概率值最大的词作为当前预测</p>
 <ul>
-<li>贪心选取很可能不是最优</li>
+<li>贪心选取很可能不是最优：上一输出不同时，搜索空间也不同</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -896,10 +902,10 @@ background-color: var(--r-background-color);
 </section>
 <section id="束搜索-1" class="slide level2">
 <h2>束搜索</h2>
-<p>束搜索：贪心、穷举的折衷，每步都只保留<span class="math inline">k</span>个候选</p>
+<p>束搜索：贪心、穷举的折衷，每步都只保留<span class="math inline">k</span>个<strong>候选</strong></p>
 <ul>
-<li>第一步后：从个<span class="math inline">k|\mathcal{Y}|</span>可能中挑选概率最高的<span class="math inline">k</span>个候选</li>
-<li>复杂度：<span class="math inline">O(k|\mathcal{Y}|T)</span></li>
+<li>第一步后：从个<span class="math inline">k|V|</span>可能中挑选概率最高的<span class="math inline">k</span>个候选</li>
+<li>复杂度：<span class="math inline">O(k|V|T)</span></li>
 </ul>
 <div class="nopub">
 
@@ -911,9 +917,37 @@ background-color: var(--r-background-color);
 <li>束搜索：贪心、穷举的折衷，每步都只保留<span class="math inline">k</span>个候选
 <ul>
 <li><span class="math inline">k = 1</span>：贪心搜索</li>
-<li><span class="math inline">k = |\mathcal{Y}|</span>：穷举搜索</li>
+<li><span class="math inline">k = |V|</span>：穷举搜索</li>
 </ul></li>
 </ul>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>情感分析。机器翻译与数据集。编码器-解码器架构。序列到序列学习（seq2seq）。</p>
+<p> </p>
+<p><strong>重点</strong>：两种方法实现情感分析；构建机器翻译数据集；编码器-解码器架构；seq2seq；束搜索。</p>
+<p><strong>难点</strong>：seq2seq 的实现。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>掌握情感分析的两种实现方法：RNN、CNN</li>
+<li>掌握机器翻译数据集的构建方法</li>
+<li>理解编码器-解码器架构的设计思路（定长编码）、解决的问题（不定长输入、输出）</li>
+<li>理解 seq2seq 的数据处理、训练、预测、评测方法</li>
+<li>理解束搜索的原理</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述编码器-解码器架构的设计思路、解决的问题。</p>
+<p>简述 seq2seq 的数据处理、训练、预测、评测方法。</p>
+<p>简述束搜索的原理。</p>
 </section></section>
     </div>
   </div>

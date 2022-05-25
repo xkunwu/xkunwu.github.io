@@ -195,9 +195,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,7 +217,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -575,6 +577,7 @@ background-color: var(--r-background-color);
   <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">8. 计算机视觉II</p>
+  <p class="subtitle">目标检测算法、语义分割、风格迁移</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
 </div>
 <div class="author">
@@ -1006,7 +1009,7 @@ background-color: var(--r-background-color);
 <h2>特征提取、语义分割</h2>
 <p>神经网络：逐层提取不同尺寸的特征</p>
 <ul>
-<li>不断<strong>对特征下采样</strong>：最深层的“视野”大，故特征图尺寸很小</li>
+<li>不断<strong>对特征图下采样</strong>：深层的“视野”相对变大，“站得高看得远”</li>
 </ul>
 <div class="nopub">
 
@@ -1025,7 +1028,7 @@ background-color: var(--r-background-color);
 <h2>转置卷积操作</h2>
 <p>转置卷积：本质上是<strong>上采样</strong></p>
 <ul>
-<li>通过卷积核“广播”输入元素：产生更大的输出</li>
+<li>通过卷积核逐点“广播”输入元素：故产生更大的输出</li>
 </ul>
 <div class="nopub">
 
@@ -1097,7 +1100,7 @@ Y[i: i + h, j: j + w] \mathrel{+}= X[i, j] * K
 <p>三个主要阶段</p>
 <ol type="1">
 <li>卷积网络：提取特征图</li>
-<li>1x1卷积：通道数变换为类别数</li>
+<li>1x1卷积：通道数调整为类别数</li>
 <li>转置卷积：变换回输入尺寸</li>
 </ol>
 <p> </p>

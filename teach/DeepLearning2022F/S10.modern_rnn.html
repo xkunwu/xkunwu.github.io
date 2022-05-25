@@ -195,9 +195,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,7 +217,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -597,7 +599,7 @@ background-color: var(--r-background-color);
 <h2>回顾：隐变量模型的信息传递</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>当前隐状态<strong>整合过去所有</strong>的观测信息</p>
+<p>当前隐状态<span class="math inline">\textbf{H}_t</span><strong>整合过去所有</strong>的观测信息</p>
 <p><span class="math display">
 \begin{aligned}
 \textbf{H}_t &amp;= \sigma(\textbf{X}_t \textbf{W}_x^h + \textbf{H}_{t-1} \textbf{W}_h^h + \textbf{b}^h)\\
@@ -622,7 +624,7 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>[Hochreiter 1997] LSTM：引入类似逻辑门电路的<strong>记忆元</strong></p>
 <ul>
-<li>根据需要选择保存、丢弃信息：解决<strong>信息选取</strong>的问题</li>
+<li>根据需要（重要程度）选择保存、丢弃信息：解决<strong>信息选取</strong>的问题</li>
 </ul>
 </div>
 </section>
@@ -704,6 +706,7 @@ background-color: var(--r-background-color);
 <p>例如<span class="math inline">\textbf{F}_t = 1, \textbf{I}_t = 0</span>：<strong>所有记忆都保存</strong>并传递到当前时间步</p>
 <ul>
 <li>缓解梯度消失问题，并捕获<strong>长距离依赖</strong>关系</li>
+<li>反之，<span class="math inline">\textbf{F}_t = 0, \textbf{I}_t = 1</span>：重置记忆，由当前时间步初始化</li>
 </ul>
 </div>
 </section>
@@ -729,11 +732,11 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>例如<span class="math inline">\textbf{O}_t = 1</span>：<strong>所有记忆都传递</strong>给预测</p>
 <ul>
-<li><span class="math inline">\textbf{O}_t = 0</span>：记忆传递给下一时间步，但不更新隐状态</li>
+<li><span class="math inline">\textbf{O}_t = 0</span>：记忆传递给下一时间步；隐状态清零</li>
 </ul>
 </div>
 <div class="fragment">
-<p>注意：<strong>只有隐状态传递到输出层</strong>；记忆元不直接参与输出计算</p>
+<p>注意：只有隐状态<span class="math inline">\textbf{H}_t</span><strong>传递到输出层</strong>；记忆元<span class="math inline">\textbf{C}_t</span>不直接参与输出计算</p>
 <ul>
 <li>思考：似乎记忆元与隐状态的作用有些类似？</li>
 </ul>
@@ -745,9 +748,15 @@ background-color: var(--r-background-color);
 <section id="小结lstm" class="slide level2">
 <h2>小结：LSTM</h2>
 <ul>
-<li>LSTM使用三种门控单元：输入门、遗忘门、输出门</li>
-<li>隐藏层输出：隐状态（传递到输出层）、记忆元（内部传递）</li>
-<li>缓解梯度消失、梯度爆炸</li>
+<li>LSTM使用三种门控单元：输入门、遗忘门、输出门
+<ul>
+<li>输出小数（百分比）：想象成水阀</li>
+</ul></li>
+<li>隐藏层输出：隐状态（传递到输出层）、记忆元（内部传递）
+<ul>
+<li>输出挤压到<span class="math inline">(-1,1)</span>：归一化的信息</li>
+</ul></li>
+<li>缓解梯度消失、梯度爆炸；可以捕获长距离依赖关系</li>
 </ul>
 </section></section>
 <section>
@@ -783,7 +792,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="gru重置门更新门" class="slide level2">
 <h2>GRU：重置门、更新门</h2>
-<p>重置门：控制“<strong>可能还想记住</strong>”的隐状态数量；更新门：控制<strong>更新幅度</strong></p>
+<p>重置门：控制“<strong>可能还想记住</strong>”的候选隐状态数量；更新门：控制<strong>更新比例</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
@@ -793,7 +802,7 @@ background-color: var(--r-background-color);
 \end{aligned}
 </span></p>
 <ul>
-<li><code>sigma</code>激活：转换成权重值</li>
+<li><code>sigma</code>激活：转换成权重（百分比）值</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
@@ -812,6 +821,9 @@ background-color: var(--r-background-color);
 \tilde{\textbf{H}}_t &amp;= \tanh(\textbf{X}_t \textbf{W}_x^h + (\mathbf{R}_t \odot \textbf{H}_{t-1}) \textbf{W}_h^h + \textbf{b}^h)\\
 \end{aligned}
 </span></p>
+<ul>
+<li><code>tanh</code>激活：只挤压，不截取</li>
+</ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
 
@@ -875,6 +887,9 @@ background-color: var(--r-background-color);
 <div class="fragment">
 <p>LSTM：<span class="math inline">\textbf{W}_x^i, \textbf{W}_h^i, \textbf{W}_x^f, \textbf{W}_h^f, \textbf{W}_x^o, \textbf{W}_h^o, \textbf{W}_x^c, \textbf{W}_h^c, \textbf{W}_h^y, b^i, b^f, b^o, b^c, \textbf{b}^y</span></p>
 </div>
+<div class="fragment">
+<p>参数少，但功能不少：更简单的效能更好</p>
+</div>
 </section>
 <section id="实验gru" class="slide level2">
 <h2>实验：GRU</h2>
@@ -886,7 +901,7 @@ background-color: var(--r-background-color);
 <ul>
 <li>只有一个隐状态：记忆元合并到隐状态</li>
 </ul></li>
-<li>缓解梯度消失问题，并捕获长距离依赖关系</li>
+<li>缓解梯度消失问题；可以捕获长距离依赖关系</li>
 </ul>
 </section></section>
 <section>
@@ -898,7 +913,7 @@ background-color: var(--r-background-color);
 <h2>回顾：隐变量模型的表达能力</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>当前隐状态<strong>整合过去所有</strong>的观测信息</p>
+<p>当前隐状态<span class="math inline">\textbf{H}_t</span><strong>整合过去所有</strong>的观测信息</p>
 <p><span class="math display">
 \begin{aligned}
 \textbf{H}_t &amp;= \sigma(\textbf{X}_t \textbf{W}_x^h + \textbf{H}_{t-1} \textbf{W}_h^h + \textbf{b}^h)\\
@@ -912,21 +927,30 @@ background-color: var(--r-background-color);
 </div>
 </div>
 <ul>
-<li>对<strong>当前时间步的观测信息</strong><span class="math inline">\textbf{X}_t</span>描述不足</li>
+<li>隐状态<span class="math inline">\textbf{H}_t</span>产生<strong>信息瓶颈</strong>：融合之前所有信息
+<ul>
+<li>对当前时间步的观测信息<span class="math inline">\textbf{X}_t</span><strong>编码、描述不足</strong></li>
+</ul></li>
 </ul>
 <div class="fragment">
-<p>如何获得更多的非线性？思考感知机的设计（多层变换解决 XOR 问题）</p>
+<p>如何获得更多<strong>非线性</strong>、构造更复杂模型？思考感知机的设计（多层变换解决 XOR 问题）</p>
 </div>
 </section>
 <section id="drnn架构" class="slide level2">
 <h2>DRNN：架构</h2>
-<p>深度循环神经网络：隐藏层的堆叠</p>
+<p>深度循环神经网络：隐藏层的<strong>堆叠</strong></p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>隐状态的<strong>两个信息流向</strong></p>
 <ul>
-<li>当前层的下一时间步</li>
-<li>下一层的当前时间步</li>
+<li>当前层的下一时间步
+<ul>
+<li>横列构成 HMM</li>
+</ul></li>
+<li>下一层的当前时间步
+<ul>
+<li>纵列构成感知机</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -937,7 +961,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="drnn计算" class="slide level2">
 <h2>DRNN：计算</h2>
-<p>深度循环神经网络：隐藏层的堆叠</p>
+<p>深度循环神经网络：隐藏层的<strong>堆叠</strong></p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p><span class="math display">
@@ -960,7 +984,7 @@ background-color: var(--r-background-color);
 <h2>小结：DRNN</h2>
 <ul>
 <li>DRNN：隐藏层横向、纵向分别传递信息</li>
-<li>超参数：层数</li>
+<li>超参数：隐变量数、层数</li>
 </ul>
 </section></section>
 <section>
@@ -1086,7 +1110,7 @@ P(x_1,..,x_T) &amp;= \sum_{h_1,..,h_{T}} P(x_1,..,x_T,h_1,..,h_{T})\\
 <section id="小结birnn" class="slide level2">
 <h2>小结：BiRNN</h2>
 <ul>
-<li>BiRNN：隐藏层前向、后向分别传递时间信息</li>
+<li>BiRNN：隐藏层前向、后向分别传递时序信息</li>
 <li>应用：特征提取、完形填空、词元标注、机器翻译
 <ul>
 <li>不能用于“单边预测”</li>

@@ -195,9 +195,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,7 +217,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -575,6 +577,7 @@ background-color: var(--r-background-color);
   <p class="course">Deep Learning I</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">8. 计算机视觉I</p>
+  <p class="subtitle">图像增广、微调、锚框</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
 </div>
 <div class="author">
@@ -1136,7 +1139,7 @@ background-color: var(--r-background-color);
 <p>目标<strong>检测</strong>：输出类别标签、<strong>位置</strong></p>
 <ul>
 <li>图像中有多个目标对象</li>
-<li>如何确定目标的位置？</li>
+<li>如何确定、表示目标的位置？</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1193,7 +1196,10 @@ background-color: var(--r-background-color);
 <p>定义：只需4个数字</p>
 <ul>
 <li>左上<span class="math inline">(x,y)</span>，右下<span class="math inline">(x,y)</span></li>
-<li>左上<span class="math inline">(x,y)</span>，宽、高<span class="math inline">(w,h)</span></li>
+<li>左上<span class="math inline">(x,y)</span>，宽、高<span class="math inline">(w,h)</span>
+<ul>
+<li>或中心点 + 宽、高</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">
@@ -1262,7 +1268,7 @@ background-color: var(--r-background-color);
 <p><strong>ROI 调整算法</strong>：</p>
 <ol type="1">
 <li>采样大量备选框，并判定是否包含任何物体</li>
-<li>调整边界：输出目标物体的真实边界框</li>
+<li>调整边界：计算、输出目标物体的真实边界框</li>
 </ol>
 </div>
 </section>
@@ -1333,7 +1339,7 @@ background-color: var(--r-background-color);
 <ul>
 <li>那么如何量化误差呢？
 <ul>
-<li>本质：计算两个矩形面积差异</li>
+<li>本质：计算两个矩形面积的相对差异</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -1389,7 +1395,7 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 </ol>
 </div>
 <div class="fragment">
-<p>首先考虑标注训练样本（锚框）：分配<strong>最接近</strong>的真实边界框</p>
+<p>首先考虑标注训练样本（锚框）：分配到<strong>最接近</strong>的真实边界框</p>
 </div>
 </section>
 <section id="锚框标注分配算法-i" class="slide level2">
@@ -1534,7 +1540,7 @@ J(A,B) = \frac{|A \cap B|}{|A \cup B|}
 \right)
 </span></p>
 <ul>
-<li>问题：数据复杂时<strong>差异过大</strong>、难以拟合</li>
+<li>问题：数据复杂时<strong>数值差异过大</strong>、难以拟合</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="nopub">

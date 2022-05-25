@@ -195,9 +195,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,7 +217,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -582,7 +584,7 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2022/02/28</p>
+  <p class="date">2022/05/09</p>
 </div>
 </div>
 </section>
@@ -603,9 +605,22 @@ background-color: var(--r-background-color);
 </ul></li>
 </ul>
 <div class="fragment">
-<p>视觉神经系统：每秒大概接受几十兆信息，远超大脑的处理能力</p>
+<div class="columns">
+<div class="column" style="width:75%;">
+<p>视觉神经系统：每秒大概接受几十兆信息，<strong>远超大脑处理能力</strong></p>
 <ul>
+<li>《史记》：52万字，需要104MB存储</li>
 <li>大脑的“寄存器”大概只有10个字节</li>
+</ul>
+</div><div class="column" style="width:25%;">
+<div class="nopub">
+
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
 <li>进化经验：感官输入<strong>并非同等重要</strong>
 <ul>
 <li>大脑只关注少量信息，如发现食物、天敌、异性等</li>
@@ -630,8 +645,8 @@ background-color: var(--r-background-color);
 </div>
 </div>
 </section>
-<section id="生物学中的注意力" class="slide level2">
-<h2>生物学中的注意力</h2>
+<section id="注意力生物学解释" class="slide level2">
+<h2>注意力：生物学解释</h2>
 <p>双组件框架：自主性、非自主性</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -650,20 +665,24 @@ background-color: var(--r-background-color);
 
 </div>
 </section>
-<section id="注意力查询键和值" class="slide level2">
-<h2>注意力：查询、键和值</h2>
+<section id="非自主性注意力" class="slide level2">
+<h2>非自主性注意力</h2>
 <p>非自主性：简单全连接，甚至最大池化均可</p>
 <ul>
 <li>选取结果：<strong>自动偏向</strong>高强度感官输入信号</li>
 </ul>
-<div class="fragment">
+<div class="nopub">
+
+</div>
+</section>
+<section id="自主性注意力查询键值" class="slide level2">
+<h2>自主性注意力：查询、键、值</h2>
 <p><strong>主观意志</strong>是自主性注意力的关键，可看成<strong>主动查询</strong></p>
 <ul>
 <li>键-值对：感官输入的非自主信号</li>
 </ul>
 <div class="nopub">
 
-</div>
 </div>
 </section>
 <section id="小结注意力提示" class="slide level2">
@@ -674,8 +693,11 @@ background-color: var(--r-background-color);
 <li>非自主性：基于突出性</li>
 <li>自主性：基于主观意志</li>
 </ul></li>
+<li>注意力建模
+<ul>
 <li>非自主：简单全连接，甚至最大池化</li>
 <li>自主：自主提示（查询）</li>
+</ul></li>
 </ul>
 </section></section>
 <section>
@@ -685,7 +707,7 @@ background-color: var(--r-background-color);
 </section>
 <section id="nadaraya-watson-核回归" class="slide level2">
 <h2>Nadaraya-Watson 核回归</h2>
-<p>[Nadaraya, 1964] [Watson, 1964] 根据输入的位置对输出加权</p>
+<p>[Nadaraya 1964] [Watson 1964] 根据输入的位置对输出<strong>加权</strong></p>
 <p><span class="math display">
 f(x) = \sum_i \frac{K(x-x_i)}{\sum_j K(x-x_j)} y_i
 </span></p>
@@ -693,6 +715,10 @@ f(x) = \sum_i \frac{K(x-x_i)}{\sum_j K(x-x_j)} y_i
 <p><strong>注意力池化</strong>：<span class="math inline">f(x) = \sum_i \alpha(x,x_i)y_i</span></p>
 <ul>
 <li><span class="math inline">x</span>：查询；<span class="math inline">(x_i,y_i)</span>：键-值对</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><span class="math inline">\alpha(x,x_i)</span>：注意力权重，度量<span class="math inline">x,x_i</span>之间的<strong>相似度</strong>
 <ul>
 <li>故<span class="math inline">f</span>是<span class="math inline">y_i</span>的加权平均：“键”相似，注意力强</li>
@@ -723,9 +749,6 @@ f(x) &amp;= \sum_i \alpha(x,x_i)y_i\\
 <section id="注意力权重" class="slide level2">
 <h2>注意力权重</h2>
 <p>测试数据的输入相当于<strong>查询</strong>，训练数据的输入相当于<strong>键</strong></p>
-<ul>
-<li>输入经过排序：由观察可知“查询-键”对越接近，注意力权重就越高</li>
-</ul>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="nopub">
@@ -737,15 +760,18 @@ f(x) &amp;= \sum_i \alpha(x,x_i)y_i\\
 </div>
 </div>
 </div>
+<ul>
+<li>输入经过排序：由观察可知“查询-键”对越接近，注意力权重就越高</li>
+</ul>
 </section>
 <section id="带参数注意力池化" class="slide level2">
 <h2>带参数注意力池化</h2>
-<p>非参数NW 核回归：<strong>一致性</strong>，即不偏向某个“键”<span class="math inline">x_i</span></p>
+<p>非参数 NW 核回归：<strong>一致性</strong>，即不偏向某个“键”<span class="math inline">x_i</span></p>
 <ul>
 <li>只要数据足够多，一定能收敛到最优结果</li>
 </ul>
 <div class="fragment">
-<p>带参数注意力池化：添加<strong>可学习参数</strong><span class="math inline">w</span>到度量函数</p>
+<p>带参数注意力池化：添加<strong>可学习参数</strong><span class="math inline">w</span>到度量函数，即区分“键”的重要性</p>
 <p><span class="math display">
 \begin{aligned}
 f(x) &amp;= \sum_i \alpha(x,x_i)y_i\\
@@ -764,7 +790,7 @@ f(x) &amp;= \sum_i \alpha(x,x_i)y_i\\
 <li>NW 核回归：具有注意力机制的机器学习范例</li>
 <li>注意力池化：对训练数据中输出的加权平均
 <ul>
-<li>权重：查询、键之间的相似度</li>
+<li>权重：“查询”、“键”之间的相似度</li>
 <li>分为非参数型、带参数型</li>
 </ul></li>
 </ul>
@@ -774,8 +800,8 @@ f(x) &amp;= \sum_i \alpha(x,x_i)y_i\\
 <h1 class="center">注意力评分函数</h1>
 
 </section>
-<section id="回顾注意力查询键和值" class="slide level2">
-<h2>回顾：注意力查询、键和值</h2>
+<section id="回顾注意力查询键值" class="slide level2">
+<h2>回顾：注意力查询、键、值</h2>
 <p><strong>主观意志</strong>是自主性注意力的关键，可看成<strong>主动查询</strong></p>
 <ul>
 <li>键-值对：感官输入的非自主信号</li>
@@ -818,7 +844,7 @@ f(x) &amp;= \sum_i \alpha(x,x_i)y_i\\
 f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 \sum_i \alpha(\mathbf{q},\mathbf{k}_i) \mathbf{v}_i
 </span></p>
-<p>评分函数<span class="math inline">\alpha</span></p>
+<p><strong>评分函数</strong><span class="math inline">\alpha</span></p>
 <p><span class="math display">
 \alpha(\mathbf{q},\mathbf{k}_i) = 
 \text{softmax}(a(\mathbf{q},\mathbf{k}_i)) = 
@@ -854,17 +880,22 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 </ul></li>
 </ul>
 </div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\mathbf{w}_v</span>：可学习参数，用于区分隐状态的重要性</li>
+</ul>
+</div>
 </section>
 <section id="缩放点积注意力" class="slide level2">
 <h2>缩放点积注意力</h2>
-<p>如果查询和键是<strong>想同长度</strong>的向量：点积的计算效率更高</p>
+<p>如果查询和键是<strong>相同长度</strong>的向量：点积的计算效率更高</p>
 <p><span class="math display">
 \alpha(\mathbf{q},\mathbf{k}) = \mathbf{q}^T \mathbf{k} / \sqrt{d}
 </span></p>
 <ul>
 <li>向量长度<span class="math inline">d</span>：保证<strong>归一化</strong>后点积的方差为1
 <ul>
-<li>假设查询、键的所有元素是随机变量，且满足0均值、单位方差
+<li>假设“查询”、“键”的所有元素是随机变量，且满足0均值、单位方差
 <ul>
 <li>向量点积：均值0、方差<span class="math inline">d</span></li>
 </ul></li>
@@ -889,8 +920,8 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 </ul></li>
 <li>不同评分函数带来不同注意力池化操作
 <ul>
-<li>查询、键长度不同：加性注意力</li>
-<li>查询、键长度相同：缩放点积注意力</li>
+<li>“查询”、“键”长度不同：加性注意力</li>
+<li>“查询”、“键”长度相同：缩放点积注意力</li>
 </ul></li>
 </ul>
 </section></section>
@@ -904,11 +935,11 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>编码器：不输出、只学习词嵌入
+<li>编码器：不输出、只<strong>学习词嵌入</strong>
 <ul>
 <li>最后时间步隐状态：初始化解码器</li>
 </ul></li>
-<li>解码器：循环预测</li>
+<li>解码器：根据上一输出<strong>循环预测</strong></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="nopub">
@@ -925,12 +956,15 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 </section>
 <section id="bahdanau-注意力模型" class="slide level2">
 <h2>Bahdanau 注意力：模型</h2>
-<p>[Bahdanau 2014] 仅考虑与当前预测相关的输入子序列</p>
+<p>[Bahdanau 2014] 仅考虑<strong>与当前预测相关</strong>的输入子序列</p>
 <div class="nopub">
 
 </div>
 <ul>
-<li>编码器隐状态既是“键”、也是“值”</li>
+<li>编码器隐状态<strong>既是“键”、也是“值”</strong>
+<ul>
+<li>注意观测注意力模块的三条输入路径</li>
+</ul></li>
 </ul>
 </section>
 <section id="bahdanau-注意力解码器" class="slide level2">
@@ -941,8 +975,8 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 <p>初始化解码器状态需要以下输入</p>
 <ol type="1">
 <li>编码器所有时间步的最终层隐状态：作为注意力的<strong>键、值</strong></li>
-<li>上一时间步编码器的全层隐状态：用于初始化解码器隐状态</li>
-<li>编码器有效长度：排除注意力池中填充词元</li>
+<li>上一时间步编码器的全层隐状态：用于<strong>初始化</strong>解码器隐状态</li>
+<li>编码器有效长度：<strong>掩蔽</strong>注意力池中填充词元</li>
 </ol>
 <div class="fragment">
 <p>每个解码时间步：上一时间步的最终层隐状态用作<strong>查询</strong></p>
@@ -957,6 +991,34 @@ f(\mathbf{q},(\mathbf{k}_1,\mathbf{v}_1),..,(\mathbf{k}_m,\mathbf{v}_m)) =
 <li>如果不是所有输入词元都相关：通过注意力机制筛选</li>
 <li>Bahdanau 注意力：解码器上一时间步的隐状态用于查询；编码器所有时间步的隐状态用作键、值</li>
 </ul>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center">
+<h1 class="center">Review</h1>
+
+</section>
+<section id="本章内容" class="slide level2">
+<h2>本章内容</h2>
+<p>注意力提示。注意力池化。注意力评分函数。Bahdanau 注意力。</p>
+<p> </p>
+<p><strong>重点</strong>：两类注意力；Nadaraya-Watson 核回归、注意力池化；注意力权重、注意力评分函数；Bahdanau 注意力。</p>
+<p><strong>难点</strong>：Bahdanau 注意力模型的实现。</p>
+</section>
+<section id="学习目标" class="slide level2">
+<h2>学习目标</h2>
+<ul>
+<li>理解两类注意力的区别（是否自主）与建模思路（全连接、自主提示）</li>
+<li>了解 NW 核回归，并基于此理解两类（是否参数型）注意力池化的原理（“值”加权平均）、计算方法（“查询”、“键”之间的相似度）</li>
+<li>理解注意力权重的意义（“键”的评分函数值），并基于此理解两类（加性、缩放点积）评分函数的原理、计算方法</li>
+<li>理解 Bahdanau 注意力模型</li>
+</ul>
+</section>
+<section id="问题" class="slide level2">
+<h2>问题</h2>
+<p>简述两类注意力的区别与建模思路。</p>
+<p>简述两类注意力池化的原理、计算方法。</p>
+<p>简述两类评分函数的原理、计算方法。</p>
+<p>简述 Bahdanau 注意力模型。</p>
 </section></section>
     </div>
   </div>
