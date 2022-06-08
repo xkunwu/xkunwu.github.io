@@ -1,4 +1,4 @@
-# xkunwu.github.io
+# WU Xiaokun's personal homepage
 
 > This is the code base of [my personal homepage](https://xkunwu.github.io/).
 

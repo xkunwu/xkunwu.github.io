@@ -1,5 +1,5 @@
 ---
-last_modified_at: 2018-12-11
+last_modified_at: 2022-06-08
 mathjax: true
 toc: true
 toc_label: "Table of Contents"
@@ -26,3 +26,9 @@ There are several cases that counted as dangerous or against general regulations
 There are also cases that may imply hazard:
 
 - Fall down: especially elder people.
+
+## Solutions
+
+### Computation on Server
+
+### Computation on Edge
