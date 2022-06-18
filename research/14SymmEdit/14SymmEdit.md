@@ -33,8 +33,7 @@ Our work is targeted at building an intelligent tool for _3D content creation_, 
 
 <figure>
     <img src="/research/14SymmEdit/media/bottles.png">
-    <figcaption>Fig~1: Maximize variance, while keeping shape structure.
-.</figcaption>
+    <figcaption>Fig~1: Maximize variance, while keeping shape structure.</figcaption>
 </figure>
 
 To create a new model, people normally start from a _exist template shape_. Such as these bottles, they look different, but all of the left three are derived from the rightmost neutral shape.

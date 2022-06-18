@@ -150,6 +150,7 @@ _ECCV 2018_
     <links>
       [<a href="http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/globFit_sigg11.html">Webpage</a>]
       [<a href="http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/paper_docs/globFit_sigg11.pdf">Paper</a>]
+      [<a href="https://dl.acm.org/doi/10.1145/2010324.1964947">DOI</a>]
       [<a href="http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/paper_docs/globFit_slides_sigg11.pptx">Slides</a>]
       [<a href="/research/11GlobFit/Li11GlobFit.txt">BibTex</a>]
     </links>

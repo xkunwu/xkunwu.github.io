@@ -8,7 +8,7 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="/projects/liftcam/ebike.png">
+    <img src="/projects/liftcam/ebike.gif">
   </div>
   <div class="pub_txt">
     <title>Abnormal detection – monitoring via lift video cameras</title>
