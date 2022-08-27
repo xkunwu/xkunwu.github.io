@@ -20,7 +20,7 @@ read_time: false
   <div class="pub_txt">
     <title>[2022] Artificial Intelligence (I)</title>
     <links>
-      <!-- [<a href="ArtificialIntelligence22H/2022H.html">2022H</a>] -->
+      [<a href="ArtificialIntelligence22H/2022H.html">2022H</a>]
     </links>
   </div>
 </div>
@@ -32,7 +32,7 @@ read_time: false
   <div class="pub_txt">
     <title>[2022] Operating System (I)</title>
     <links>
-      <!-- [<a href="OperatingSystem22H/2022H.html">2022H</a>] -->
+      [<a href="OperatingSystem22H/2022H.html">2022H</a>]
     </links>
   </div>
 </div>
@@ -44,7 +44,7 @@ read_time: false
   <div class="pub_txt">
     <title>[2022] Computer Graphics (I)</title>
     <links>
-      <!-- [<a href="Graphics22H/2022H.html">2022H</a>] -->
+      [<a href="Graphics22H/2022H.html">2022H</a>]
     </links>
   </div>
 </div>
