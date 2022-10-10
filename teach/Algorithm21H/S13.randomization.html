@@ -72,13 +72,18 @@ div.palette, div.boardhandle, .chalkboard-button { display: none!important; }
 </style>
 
   <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
 
   <style type="text/css">
 section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
@@ -90,8 +95,8 @@ color: #fff;
 --r-main-font: "Noto Sans", Helvetica, sans-serif;
 --r-main-font-size: 42px;
 --r-main-color: #222;
---r-block-margin: 20px;
---r-block-padding: 10px;
+--r-block-margin: 0.5em;
+--r-block-padding: 0.2em;
 --r-sider-margin: 100px;
 --r-heading-margin: var(--r-block-margin) var(--r-sider-margin);
 --r-content-margin: var(--r-block-margin) var(--r-sider-margin);
@@ -152,7 +157,7 @@ font-weight: inherit;
 .reveal h5,
 .reveal h6 {
 
-padding: var(--r-block-padding);
+
 color: var(--r-heading-color);
 font-family: var(--r-heading-font);
 font-weight: var(--r-heading-font-weight);
@@ -166,6 +171,7 @@ word-wrap: break-word;
 font-size: var(--r-heading1-size);
 margin: 0;
 padding: 0;
+text-shadow: var(--r-heading1-text-shadow);
 }
 .reveal h2 {
 font-size: var(--r-heading2-size);
@@ -180,9 +186,6 @@ text-align: left;
 font-size: var(--r-heading4-size);
 text-align: left;
 }
-.reveal h1 {
-text-shadow: var(--r-heading1-text-shadow);
-}
 
 
 
@@ -191,15 +194,17 @@ div.cover-slide > div.title {
 grid-area: title;
 align-self: center;
 }
-div.cover-slide > div.title .institute {
+div.cover-slide > div.title .course {
 font-size: 1em;
 }
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -217,7 +222,7 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 25% 5% 20% 5%;
 grid-template-areas: "."
 "title"
 "author"
@@ -232,7 +237,8 @@ text-align: left;
 }
 
 .reveal p {
-margin: 0;
+margin: 0 0em var(--r-block-margin) 0em;
+
 padding: var(--r-block-padding);
 line-height: 1.3;
 text-align: left;
@@ -261,13 +267,14 @@ font-weight: bold;
 .reveal em {
 font-style: italic;
 }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
 display: block;
 text-align: left;
-margin: var(--r-block-margin) 1em;
-padding: 0 1em;
+margin: 0 0em var(--r-block-margin) 1em;
+padding: 0 0em var(--r-block-padding) 1em;
 
 }
 .reveal ol {
@@ -320,6 +327,7 @@ margin: 0;
 display: inline-block;
 }
 .reveal q {
+
 font-style: italic;
 }
 .reveal div.sourceCode {
@@ -335,7 +343,8 @@ text-align: left;
 font-size: 0.9em;
 font-family: var(--r-code-font);
 line-height: 1.2em;
-overflow: auto;
+
+overflow-y: auto;
 max-height: 400px;
 word-wrap: break-word;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
@@ -360,6 +369,7 @@ white-space: pre;
 margin: var(--r-block-margin) auto;
 border-collapse: collapse;
 border-spacing: 0;
+
 
 }
 .reveal table th {
@@ -435,10 +445,16 @@ align-items: center;
 .reveal div.imgbox > p {
 flex: 1 1 auto;
 }
+.reveal div.block,
+.reveal div.alert,
+.reveal div.example {
+margin: var(--r-block-margin) 0em;
+padding: var(--r-block-padding);
+}
 .reveal div.hdrbox {
 display: block;
 position: relative;
-margin: var(--r-block-margin) 1em;
+
 text-align: left;
 word-wrap: break-word;
 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
@@ -475,7 +491,11 @@ background-color: #2196F3;
 background-color: #f37521;
 }
 .reveal div.example > div h3 {
-background-color: #21f380;
+background-color: #33d17a;
+}
+
+.reveal .katex-display {
+margin: var(--r-block-margin) 0em;
 }
 
 
@@ -542,7 +562,6 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
-  <p class="institute">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">13. Randomization</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -565,49 +584,56 @@ background-color: var(--r-background-color);
 <li>Greedy. Divide-and-conquer. Dynamic programming. Network flow.</li>
 <li>Randomization.</li>
 </ul>
-<p><strong>Randomization</strong>. Allow fair coin flip in unit time.</p>
+<p><strong>Randomization</strong>. Allow fair coin flip in unit
+time.</p>
 <ol type="1">
-<li>Efficient deterministic algorithms that always yield correct answer;</li>
-<li>Efficient randomized algorithms that yield correct answer with high probability;</li>
-<li>Randomized algorithms that always correct, and run efficiently in expectation.</li>
+<li>Efficient deterministic algorithms that always yield correct
+answer;</li>
+<li>Efficient randomized algorithms that yield correct answer with high
+probability;</li>
+<li>Randomized algorithms that always correct, and run efficiently in
+expectation.</li>
 </ol>
 <div class="fragment">
-<p><strong>Why randomize</strong>? Can lead to simplest, fastest, or only known algorithm for a particular problem.</p>
-<p><strong>Ex</strong>. Symmetry-breaking protocols, graph algorithms, quicksort, hashing, load balancing, closest pair, Monte Carlo integration, cryptography, etc.</p>
+<p><strong>Why randomize</strong>? Can lead to simplest, fastest, or
+only known algorithm for a particular problem.</p>
+<p><strong>Ex</strong>. Symmetry-breaking protocols, graph algorithms,
+quicksort, hashing, load balancing, closest pair, Monte Carlo
+integration, cryptography, etc.</p>
 </div>
 </section>
 <section id="contention-resolution" class="title-slide slide level1 center">
-<h1 class="center center">Contention resolution</h1>
+<h1 class="center">Contention resolution</h1>
 
 </section>
 
 <section id="global-min-cut" class="title-slide slide level1 center">
-<h1 class="center center">Global min cut</h1>
+<h1 class="center">Global min cut</h1>
 
 </section>
 
 <section id="linearity-of-expectation" class="title-slide slide level1 center">
-<h1 class="center center">Linearity of expectation</h1>
+<h1 class="center">Linearity of expectation</h1>
 
 </section>
 
 <section id="max-3-satisfiability" class="title-slide slide level1 center">
-<h1 class="center center">Max 3-satisfiability</h1>
+<h1 class="center">Max 3-satisfiability</h1>
 
 </section>
 
 <section id="universal-hashing" class="title-slide slide level1 center">
-<h1 class="center center">Universal hashing</h1>
+<h1 class="center">Universal hashing</h1>
 
 </section>
 
 <section id="chernoff-bounds" class="title-slide slide level1 center">
-<h1 class="center center">Chernoff bounds</h1>
+<h1 class="center">Chernoff bounds</h1>
 
 </section>
 
 <section id="load-balancing" class="title-slide slide level1 center">
-<h1 class="center center">Load balancing</h1>
+<h1 class="center">Load balancing</h1>
 
 </section>
     </div>
@@ -3009,11 +3035,13 @@ console.warn( "toggleNotesButton is deprecated, use customcontrols plugin instea
         // Bounds for smallest/largest possible scale to apply to content
         minScale: 0.2,
         maxScale: 1,
+        // Modifier key used to click-zoom to part of the slide
+        zoomKey: 'alt',
         // The display mode that will be used to show slides
         display: 'block',
 
         keyboard: {
-          80: function() {
+          120: function() {
             RevealSpotlight.togglePresentationMode();
           },
         },

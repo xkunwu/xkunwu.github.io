@@ -15,12 +15,25 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="Algorithm21H/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2021] Algorithm (II) - Design, Analysis</title>
+    <links>
+      [<a href="Algorithm21H/A2022H.html">2022H</a>]
+      [<a href="Algorithm21H/A2021H.html">2021H</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="ArtificialIntelligence22H/teaser.png">
   </div>
   <div class="pub_txt">
     <title>[2022] Artificial Intelligence (I)</title>
     <links>
-      [<a href="ArtificialIntelligence22H/2022H.html">2022H</a>]
+      [<a href="ArtificialIntelligence22H/AI2022H.html">2022H</a>]
     </links>
   </div>
 </div>
@@ -32,7 +45,7 @@ read_time: false
   <div class="pub_txt">
     <title>[2022] Operating System (I)</title>
     <links>
-      [<a href="OperatingSystem22H/2022H.html">2022H</a>]
+      [<a href="OperatingSystem22H/OS2022H.html">2022H</a>]
     </links>
   </div>
 </div>
@@ -44,7 +57,7 @@ read_time: false
   <div class="pub_txt">
     <title>[2022] Computer Graphics (I)</title>
     <links>
-      [<a href="Graphics22H/2022H.html">2022H</a>]
+      [<a href="Graphics22H/CG2022H.html">2022H</a>]
     </links>
   </div>
 </div>
@@ -69,18 +82,6 @@ read_time: false
     <title>[2022] Natural Language Processing (I)</title>
     <links>
       [<a href="SpeechLanguage22F/2022F.html">2022F</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="Algorithm21H/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2021] Algorithm (II)</title>
-    <links>
-      [<a href="Algorithm21H/2021H.html">2021H</a>]
     </links>
   </div>
 </div>
