@@ -72,13 +72,18 @@ div.palette, div.boardhandle, .chalkboard-button { display: none!important; }
 </style>
 
   <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
 
   <style type="text/css">
 section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
@@ -195,9 +200,11 @@ font-size: 1em;
 div.cover-slide > div.title .title {
 font-size: 2.5em;
 font-weight: bold;
+margin-bottom: 0;
 }
 div.cover-slide > div.title .subtitle {
 font-size: 1.6em;
+margin-top: 0;
 }
 div.cover-slide > div.author {
 grid-area: author;
@@ -215,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 50% 25% 5% 10% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
