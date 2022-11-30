@@ -222,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 40% 25% 5% 20% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
@@ -579,6 +580,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
+  <p class="course">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">11. Approximation Algorithms</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -588,7 +590,6 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/12/03</p>
 </div>
 </div>
 </section>
@@ -1078,7 +1079,7 @@ edge in <span class="math inline">E</span> has at least one end in <span class="
 <p><strong>Weighted vertex cover</strong>. Given a graph <span class="math inline">G = (V, E)</span> with vertex weights <span class="math inline">w_i \ge 0</span>, find a vertex cover of minimum
 weight.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 <p>How to define “progress” in this setting?</p>
 <ul>
@@ -1115,7 +1116,7 @@ w_i</span> in total.</p>
 w_i</span></li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 <p><strong>Fairness lemma</strong>. For any vertex cover <span class="math inline">S</span> and any fair prices <span class="math inline">p_e: \sum_e p_e \le w(S)</span>.<br />
 <strong>Pf</strong>. <span class="math inline">\sum_{e \in E} p_e \le
@@ -1147,7 +1148,7 @@ p_e = w_i</span></p>
 <section id="pricing-method-example" class="slide level2">
 <h2>Pricing method: example</h2>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="800" /></p>
 </div>
 </section>
 <section id="pricing-method-analysis" class="slide level2">
@@ -1192,7 +1193,7 @@ edge in <span class="math inline">E</span> has at least one end in <span class="
 <p><strong>Weighted vertex cover</strong>. Given a graph <span class="math inline">G = (V, E)</span> with vertex weights <span class="math inline">w_i \ge 0</span>, find a vertex cover of minimum
 weight.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 </section>
 <section id="weighted-vertex-cover-ilp-formulation" class="slide level2">
@@ -1233,7 +1234,7 @@ min-weight vertex cover.</p>
 <p>Given integers <span class="math inline">a_{ij}, b_i, c_j</span>,
 find <em>integers</em> <span class="math inline">x_j</span> that
 satisfy:</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
@@ -1243,7 +1244,7 @@ x &amp; \ge 0 \\
 x &amp; \ \text{is integral} \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
 \min \sum_{j=1}^n c_j x_j &amp; &amp; \\
@@ -1263,7 +1264,7 @@ INTEGER-PROGRAMMING is an NP-hard optimization problem.</p>
 <p>Given integers <span class="math inline">a_{ij}, b_i, c_j</span>,
 find <em>real numbers</em> <span class="math inline">x_j</span> that
 satisfy:</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
@@ -1272,7 +1273,7 @@ satisfy:</p>
 x &amp; \ge 0 \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
 \min \sum_{j=1}^n c_j x_j &amp; &amp; \\
@@ -1302,7 +1303,7 @@ in poly-time.</p>
 <section id="weighted-vertex-cover-lp-relaxation" class="slide level2">
 <h2>Weighted vertex cover: LP relaxation</h2>
 <p><strong>Linear programming relaxation.</strong></p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
@@ -1311,7 +1312,7 @@ in poly-time.</p>
 &amp; &amp; x_i &amp; \in \{0, 1\} &amp; i \in V \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
 \text{(LP)}\ &amp; \min &amp; \sum_{i \in V} w_i x_i &amp; &amp; \\
@@ -1324,11 +1325,11 @@ in poly-time.</p>
 <div class="fragment">
 <p><strong>Observation</strong>. Optimal value of LP is <span class="math inline">\le</span> optimal value of ILP, ie. better.<br />
 <strong>Pf</strong>. LP has fewer constraints.</p>
-<div class="columns" data-align="center">
-<div class="column" style="width:80%;">
+<div class="columns">
+<div class="column" style="width:70%;">
 <p><strong>Note</strong>. LP solution <span class="math inline">x^\ast</span> may not correspond to a vertex cover.
 (even if all weights are 1)</p>
-</div><div class="column" data-align="bottom" style="width:20%;">
+</div><div class="column" style="width:30%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="100" /></p>
 </div>
@@ -1484,7 +1485,7 @@ authorized machines.<br />
 assigned to machine <span class="math inline">i</span>, then <span class="math inline">x_{ij} &gt; 0</span>. LP solution can only assign
 positive value to authorized machines.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="generalized-lb-analysis" class="slide level2">
@@ -1504,7 +1505,7 @@ machine.<br />
 <strong>Pf</strong>. The only possible non-leaf job assigned to machine
 <span class="math inline">i</span> is <span class="math inline">parent(i)</span>.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="generalized-lb-analysis-1" class="slide level2">
@@ -1538,7 +1539,7 @@ L^\ast</span>.</li>
 <section id="generalized-lb-flow-formulation" class="slide level2">
 <h2>Generalized LB: flow formulation</h2>
 <p><strong>Flow formulation of LP</strong>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
@@ -1548,7 +1549,7 @@ x_{ij} &amp; \ge 0 &amp; \forall j \in J, i \in M_j \\
 x_{ij} &amp; = 0 &amp; \forall j \in J, i \notin M_j \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
@@ -1774,7 +1775,7 @@ integers.</p>
 instance.</li>
 <li>Return optimal items in rounded instance.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <table>
 <thead>
@@ -1812,7 +1813,7 @@ instance.</li>
 </tr>
 </tbody>
 </table>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <table>
 <thead>
 <tr class="header">

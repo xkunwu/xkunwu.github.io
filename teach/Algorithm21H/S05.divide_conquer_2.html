@@ -222,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 40% 25% 5% 20% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
@@ -579,6 +580,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
+  <p class="course">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">5. Divide and Conquer II</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -588,7 +590,6 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/10/29</p>
 </div>
 </div>
 </section>
@@ -607,7 +608,7 @@ recurrences:</p>
 T(n) = a T(\frac{n}{b}) + f(n)
 </span></p>
 <p>with <span class="math inline">T(0) = 0</span> and <span class="math inline">T(1) = \Theta(1)</span>.</p>
-<div class="fragment">
+<p> </p>
 <p><strong>Terms</strong>.</p>
 <ul>
 <li><span class="math inline">a \ge 1</span>: number of
@@ -617,7 +618,6 @@ subproblem size decreases.</li>
 <li><span class="math inline">f(n) \ge 0</span>: work to divide and
 combine sub-problems.</li>
 </ul>
-</div>
 </section>
 <section id="recursion-tree" class="slide level2">
 <h2>Recursion tree</h2>
@@ -627,9 +627,9 @@ with <span class="math inline">T(1) = 1</span> and <span class="math inline">n</
 <li><span class="math inline">a</span>: branching factor.</li>
 <li><span class="math inline">a^i</span>: number of sub-problems at
 level <span class="math inline">i</span>.</li>
-<li><span class="math inline">1 + \log_b n</span> levels.</li>
 <li><span class="math inline">n / b^i</span>: size of subproblem at
 level <span class="math inline">i</span>.</li>
+<li><span class="math inline">1 + \log_b n</span> levels.</li>
 </ul>
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
@@ -670,7 +670,7 @@ dominated by leaves}\\
 <p> </p>
 <p><strong>Geometric series</strong>.</p>
 <ul>
-<li>If <span class="math inline">0 &lt; r &lt; 1</span>, then <span class="math inline">1 + r + r^2 + r^3 + \ldots + r^k \le 1 / (1 −
+<li>If <span class="math inline">0 &lt; r &lt; 1</span>, then <span class="math inline">1 + r + r^2 + r^3 + \ldots + r^k = 1 / (1 −
 r)</span>.</li>
 <li>If <span class="math inline">r = 1</span>, then <span class="math inline">1 + r + r^2 + r^3 + \ldots + r^k = k +
 1</span>.</li>
@@ -728,7 +728,7 @@ a})</span>.</p>
 <ul>
 <li>Can replace <span class="math inline">\Theta</span> with <span class="math inline">O</span> everywhere.</li>
 <li>Can replace <span class="math inline">\Theta</span> with <span class="math inline">\Omega</span> everywhere.</li>
-<li>Can replace initial conditions with <span class="math inline">T(n) =
+<li>Can replace initial conditions so <span class="math inline">T(n) =
 \Theta(1)</span> for all <span class="math inline">n \le n_0</span> and
 require recurrence to hold only for all <span class="math inline">n &gt;
 n_0</span>.</li>
@@ -753,13 +753,12 @@ a</span>, then <span class="math inline">T(n) = \Theta(n^{\log_b
 a})</span>.</p>
 </div>
 </div>
-<p><strong>Ex</strong>. [Case 1] <span class="math inline">T(n) = 3
-T(\lfloor n / 2 \rfloor) + 5 n</span>.</p>
+<p><strong>Ex</strong>. [Case 1] <span class="math inline">T(n) = 48
+T(\lfloor n / 4 \rfloor) + n^3</span>.</p>
 <ul>
-<li><span class="math inline">a = 3, b = 2, c = 1 &lt; \log_b a =
-1.5849...</span>.</li>
-<li><span class="math inline">T(n) = \Theta(n^{log_2 3}) =
-O(n^{1.58})</span>.</li>
+<li><span class="math inline">a = 48, b = 4, c = 3 &gt; \log_b a =
+2.7924...</span>.</li>
+<li><span class="math inline">T(n) = \Theta(n^3)</span>.</li>
 </ul>
 </section>
 <section id="dnc-master-theorem---case-2" class="slide level2">
@@ -808,12 +807,13 @@ a</span>, then <span class="math inline">T(n) = \Theta(n^{\log_b
 a})</span>.</p>
 </div>
 </div>
-<p><strong>Ex</strong>. [Case 3] <span class="math inline">T(n) = 48
-T(\lfloor n / 4 \rfloor) + n^3</span>.</p>
+<p><strong>Ex</strong>. [Case 3] <span class="math inline">T(n) = 3
+T(\lfloor n / 2 \rfloor) + 5 n</span>.</p>
 <ul>
-<li><span class="math inline">a = 48, b = 4, c = 3 &gt; \log_b a =
-2.7924...</span>.</li>
-<li><span class="math inline">T(n) = \Theta(n^3)</span>.</li>
+<li><span class="math inline">a = 3, b = 2, c = 1 &lt; \log_b a =
+1.5849...</span>.</li>
+<li><span class="math inline">T(n) = \Theta(n^{log_2 3}) =
+O(n^{1.58})</span>.</li>
 </ul>
 </section>
 <section id="dnc-master-theorem---exceptions" class="slide level2">
@@ -851,12 +851,12 @@ T(n) = \sum_{i=1}^k a_i T(b_i n + h_i(n)) + g(n)
 </div>
 </div>
 <p><strong>Ex</strong>. <span class="math inline">T(n) = T(\lfloor n / 5
-\rfloor) + T(n – 3\lfloor n / 10 \rfloor) + 11/5 n</span>, with <span class="math inline">T(0) = 0, T(1) = 0</span>.</p>
+\rfloor) + T(n - 3\lfloor n / 10 \rfloor) + 11/5 n</span>, with <span class="math inline">T(0) = 0, T(1) = 0</span>.</p>
 <ul>
 <li><span class="math inline">a_1 = 1, b_1 = 1/5, a_2 = 1, b2 = 7/10
 \Rightarrow p = 0.83978... &lt; 1</span>.</li>
-<li><span class="math inline">h_1(n) = \lfloor n / 5 \rfloor – n / 5,
-h_2(n) = 3/10 n – 3\lfloor n / 10 \rfloor</span>.</li>
+<li><span class="math inline">h_1(n) = \lfloor n / 5 \rfloor - n / 5,
+h_2(n) = 3/10 n - 3\lfloor n / 10 \rfloor</span>.</li>
 <li><span class="math inline">g(n) = 11/5 n \Rightarrow T(n) =
 \Theta(n)</span>.</li>
 </ul>
@@ -871,7 +871,7 @@ h_2(n) = 3/10 n – 3\lfloor n / 10 \rfloor</span>.</li>
 <p><strong>Addition</strong>. Given two <span class="math inline">n</span>-bit integers <span class="math inline">a</span> and <span class="math inline">b</span>,
 compute <span class="math inline">a + b</span>.</p>
 <p><strong>Subtraction</strong>. Given two <span class="math inline">n</span>-bit integers <span class="math inline">a</span> and <span class="math inline">b</span>,
-compute <span class="math inline">a – b</span>.</p>
+compute <span class="math inline">a - b</span>.</p>
 <p> </p>
 <p><strong>Grade-school algorithm</strong>. <span class="math inline">\Theta(n)</span> bit operations.</p>
 <table>
@@ -1070,7 +1070,7 @@ n)</span>.<br />
 <li>To compute middle term <span class="math inline">bc + ad</span>, use
 identity:
 <ul>
-<li><span class="math inline">bc + ad = ac + bd – (a – b) (c –
+<li><span class="math inline">bc + ad = ac + bd - (a - b) (c -
 d)</span></li>
 </ul></li>
 <li>Multiply only <em>three</em> <span class="math inline">(n/2)</span>-bit integers, recursively.
@@ -1081,7 +1081,7 @@ d)</span></li>
 <p><span class="math display">
 \begin{aligned}
 x y = (2^m a + b) (2^m c + d) &amp; = 2^{2m} ac + 2^m (bc + ad) + bd \\
-&amp; = 2^{2m} ac + 2^m (ac + bd – (a – b) (c – d)) + bd \\
+&amp; = 2^{2m} ac + 2^m (ac + bd - (a - b) (c - d)) + bd \\
 \end{aligned}
 </span></p>
 </section>
@@ -1103,7 +1103,7 @@ m</span>);</li>
 <code>KARATSUBA-MULTIPLY</code>(<span class="math inline">b, d,
 m</span>);</li>
 <li><span class="math inline">g</span> =
-<code>KARATSUBA-MULTIPLY</code>(<span class="math inline">|a – b|, |c –
+<code>KARATSUBA-MULTIPLY</code>(<span class="math inline">|a - b|, |c -
 d|, m</span>);</li>
 <li>Flip sign of <span class="math inline">g</span> if needed.</li>
 </ol></li>
@@ -1134,11 +1134,13 @@ T(n) = \left\{ \begin{array}{lcl}
 </span></p>
 <p><span class="math inline">\Rightarrow T(n) = \Theta(n^{\log_2 3}) =
 O(n^{1.585})</span></p>
+<div class="fragment">
 <p><strong>Practice</strong>.</p>
 <ul>
 <li>Use base-32 or -64 (instead of base-2).</li>
-<li>Faster than grade-school algorithm for about 320–640 bits.</li>
+<li>Faster than grade-school algorithm for about 320 – 640 bits.</li>
 </ul>
+</div>
 </section>
 <section id="integer-arithmetic-reductions" class="slide level2">
 <h2>Integer arithmetic reductions</h2>
@@ -1278,7 +1280,7 @@ blocks.</li>
 matrices, recursively.</li>
 <li>Combine: add appropriate products using 4 matrix additions.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:60%;">
 <p><span class="math display">
 \begin{aligned}
@@ -1300,7 +1302,7 @@ B_{21} &amp; B_{22} \\
 \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:40%;">
+</div><div class="column" style="width:40%;">
 <p><span class="math display">
 \begin{aligned}
 C_{11} &amp; = A_{11} \times B_{11} + A_{12} \times B_{21} \\
@@ -1320,7 +1322,7 @@ T(n) = \Theta(n^3)</span></p>
 <h2>Strassen’s trick</h2>
 <p><strong>Key idea</strong>. Can multiply two 2-by-2 matrices via 7
 scalar multiplications (plus 11 additions and 7 subtractions).</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:60%;">
 <p><span class="math display">
 \begin{aligned}
@@ -1342,57 +1344,57 @@ B_{21} &amp; B_{22} \\
 \end{aligned}
 </span> <span class="math display">
 \begin{aligned}
-C_{11} &amp; = P_5 + P_4 – P_2 + P_6 \\
+C_{11} &amp; = P_5 + P_4 - P_2 + P_6 \\
 C_{12} &amp; = P_1 + P_2 \\
 C_{21} &amp; = P_3 + P_4 \\
-C_{22} &amp; = P_1 + P_5 – P_3 – P_7 \\
+C_{22} &amp; = P_1 + P_5 - P_3 - P_7 \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:40%;">
+</div><div class="column" style="width:40%;">
 <p><span class="math display">
 \begin{aligned}
-P_1 &amp; = A_{11} \times (B_{12} – B_{22}) \\
+P_1 &amp; = A_{11} \times (B_{12} - B_{22}) \\
 P_2 &amp; = (A_{11} + A_{12}) \times B_{22} \\
 P_3 &amp; = (A_{21} + A_{22}) \times B_{11} \\
-P_4 &amp; = A_{22} \times (B_{21} – B_{11}) \\
+P_4 &amp; = A_{22} \times (B_{21} - B_{11}) \\
 P_5 &amp; = (A_{11} + A_{22}) \times (B_{11} + B_{22}) \\
-P_6 &amp; = (A_{12} – A_{22}) \times (B_{21} + B_{22}) \\
-P_7 &amp; = (A_{11} – A_{21}) \times (B_{11} + B_{12}) \\
+P_6 &amp; = (A_{12} - A_{22}) \times (B_{21} + B_{22}) \\
+P_7 &amp; = (A_{11} - A_{21}) \times (B_{11} + B_{12}) \\
 \end{aligned}
 </span></p>
 </div>
 </div>
 <p><strong>Pf</strong>. <span class="math inline">C_{12} = P_1 + P_2 =
-A_{11} \times (B_{12} – B_{22}) + (A_{11} + A_{12}) \times B_{22} =
+A_{11} \times (B_{12} - B_{22}) + (A_{11} + A_{12}) \times B_{22} =
 A_{11} \times B_{12} + A_{12} \times B_{22}</span></p>
 </section>
 <section id="strassens-algorithm" class="slide level2">
 <h2>Strassen’s algorithm</h2>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:70%;">
 <ol type="1">
 <li>IF (<span class="math inline">n = 1</span>): RETURN <span class="math inline">A \times B</span>;</li>
 <li>Partition <span class="math inline">A</span> and <span class="math inline">B</span> into <span class="math inline">n/2</span>-by-<span class="math inline">n/2</span>
 blocks;</li>
-<li><span class="math inline">P_{1}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, A_{11}, (B_{12} – B_{22})</span>);</li>
+<li><span class="math inline">P_{1}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, A_{11}, (B_{12} - B_{22})</span>);</li>
 <li><span class="math inline">P_{2}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, (A_{11} + A_{12}), B_{22}</span>);</li>
 <li><span class="math inline">P_{3}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, (A_{21} + A_{22}), B_{11}</span>);</li>
-<li><span class="math inline">P_{4}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, A_{22}, (B_{21} – B_{11})</span>);</li>
+<li><span class="math inline">P_{4}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, A_{22}, (B_{21} - B_{11})</span>);</li>
 <li><span class="math inline">P_{5}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, (A_{11} + A_{22}), (B_{11} +
 B_{22})</span>);</li>
-<li><span class="math inline">P_{6}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, (A_{12} – A_{22}), (B_{21} +
+<li><span class="math inline">P_{6}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, (A_{12} - A_{22}), (B_{21} +
 B_{22})</span>);</li>
-<li><span class="math inline">P_{7}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, (A_{11} – A_{21}), (B_{11} +
+<li><span class="math inline">P_{7}</span> = <code>STRASSEN</code>(<span class="math inline">n / 2, (A_{11} - A_{21}), (B_{11} +
 B_{12})</span>);</li>
-<li><span class="math inline">C_{11} = P_{5} + P_{4} – P_{2} +
+<li><span class="math inline">C_{11} = P_{5} + P_{4} - P_{2} +
 P_{6}</span>;</li>
 <li><span class="math inline">C_{12} = P_{1} + P_{2}</span>;</li>
 <li><span class="math inline">C_{21} = P_{3} + P_{4}</span>;</li>
-<li><span class="math inline">C_{22} = P_{1} + P_{5} – P_{3} –
+<li><span class="math inline">C_{22} = P_{1} + P_{5} - P_{3} -
 P_{7}</span>;</li>
 <li>RETURN C;</li>
 </ol>
-</div><div class="column" data-align="bottom" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <p><strong>Time</strong>.</p>
 <ul>
 <li><code>3-9</code>: <span class="math inline">7 T(n/2) +
@@ -1491,7 +1493,7 @@ multiplications?<br />
 </tr>
 <tr class="odd">
 <td>matrix inversion</td>
-<td><span class="math inline">A^{–1}</span></td>
+<td><span class="math inline">A^{-1}</span></td>
 <td><span class="math inline">\Theta(MM(n))</span></td>
 </tr>
 <tr class="even">
@@ -1516,7 +1518,7 @@ multiplications?<br />
 </tr>
 <tr class="even">
 <td>least squares</td>
-<td><span class="math inline">\min \Vert Ax – b\Vert_2</span></td>
+<td><span class="math inline">\min \Vert Ax - b\Vert_2</span></td>
 <td><span class="math inline">\Theta(MM(n))</span></td>
 </tr>
 </tbody>
@@ -1539,7 +1541,7 @@ sum of a series of sinusoids.</p>
 domain.</li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="eulers-identity" class="slide level2">
@@ -1608,11 +1610,11 @@ b_{i-j}</span>.</li>
 <p><strong>Fundamental theorem of algebra</strong>. A degree <span class="math inline">n</span> univariate polynomial with complex
 coefficients has exactly <span class="math inline">n</span> complex
 roots.</p>
-<p><strong>Corollary</strong>. A degree <span class="math inline">n –
+<p><strong>Corollary</strong>. A degree <span class="math inline">n -
 1</span> univariate polynomial <span class="math inline">A(x)</span> is
 uniquely specified by its evaluation at <span class="math inline">n</span> distinct values of <span class="math inline">x</span>.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="polynomials-point-value-cont." class="slide level2">
@@ -1710,7 +1712,7 @@ representation).</p>
 <h2>Converting representation: brute-force</h2>
 <p><strong>Coefficient <span class="math inline">\Rightarrow</span>
 Point-value</strong>. Given a polynomial <span class="math inline">A(x)
-= a_0 + a_1 x + ... + a_{n–1} x^{n–1}</span>, evaluate it at <span class="math inline">n</span> distinct points <span class="math inline">x_0, ..., x_{n–1}</span>.</p>
+= a_0 + a_1 x + ... + a_{n-1} x^{n-1}</span>, evaluate it at <span class="math inline">n</span> distinct points <span class="math inline">x_0, ..., x_{n-1}</span>.</p>
 <p><span class="math display">
 \left[ \begin{array}{c}
 y_{0} \\
@@ -1737,16 +1739,16 @@ a_{n-1} \\
 \end{array} \right]
 </span></p>
 <p> </p>
-<p><strong>Running time</strong>. <span class="math inline">O(n^2)</span> via matrix–vector multiply (or <span class="math inline">O(n)</span> Horner’s).</p>
+<p><strong>Running time</strong>. <span class="math inline">O(n^2)</span> via matrix-vector multiply (or <span class="math inline">O(n)</span> Horner’s).</p>
 </section>
 <section id="converting-brute-force-cont." class="slide level2">
 <h2>Converting: brute-force (cont.)</h2>
 <p><strong>Point-value <span class="math inline">\Rightarrow</span>
 Coefficient</strong>. Given <span class="math inline">n</span> distinct
-points <span class="math inline">x_0, ..., x_{n–1}</span> and values
-<span class="math inline">y_0, ..., y_{n–1}</span>, find unique
-polynomial <span class="math inline">A(x) = a_0 + a_1 x + ... + a_{n–1}
-x^{n–1}</span>, that has given values at given points.</p>
+points <span class="math inline">x_0, ..., x_{n-1}</span> and values
+<span class="math inline">y_0, ..., y_{n-1}</span>, find unique
+polynomial <span class="math inline">A(x) = a_0 + a_1 x + ... + a_{n-1}
+x^{n-1}</span>, that has given values at given points.</p>
 <p><span class="math display">
 \left[ \begin{array}{c}
 y_{0} \\
@@ -1814,7 +1816,7 @@ A_{high}(x)</span>.</li>
 Point-value: intuition</h2>
 <p><strong>Coefficient <span class="math inline">\Rightarrow</span>
 Point-value</strong>. Given a polynomial <span class="math inline">A(x)
-= a_0 + a_1 x + ... + a_{n–1} x^{n–1}</span>, evaluate it at <span class="math inline">n</span> distinct points <span class="math inline">x_0, ..., x_{n–1}</span>.</p>
+= a_0 + a_1 x + ... + a_{n-1} x^{n-1}</span>, evaluate it at <span class="math inline">n</span> distinct points <span class="math inline">x_0, ..., x_{n-1}</span>.</p>
 <p><strong>Divide</strong>. Break up polynomial into even- and
 odd-degree terms.</p>
 <ul>
@@ -1859,22 +1861,22 @@ of unity is a complex number <span class="math inline">x</span> such
 that <span class="math inline">x^n = 1</span>.</p>
 <p><strong>Fact</strong>. The <span class="math inline">n^{th}</span>
 roots of unity are: <span class="math inline">\omega^0, \omega^1,
-\ldots, \omega^{n–1}</span> where <span class="math inline">\omega =
+\ldots, \omega^{n-1}</span> where <span class="math inline">\omega =
 e^{2π i / n}</span>.<br />
 <strong>Pf</strong>. <span class="math inline">(\omega^k)^n = (e^{2π i k
 / n})^n = (e^{π i})^{2k} = (−1)^{2k} = 1</span>.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 <div class="fragment">
-<p><strong>Fact</strong>. The <span class="math inline">(n/2)^{th}</span> roots of unity are: <span class="math inline">\nu^0, \nu^1, \ldots, \nu^{n/2–1}</span> where <span class="math inline">\nu = \omega^2 = e^{4π i / n}</span>.</p>
+<p><strong>Fact</strong>. The <span class="math inline">(n/2)^{th}</span> roots of unity are: <span class="math inline">\nu^0, \nu^1, \ldots, \nu^{n/2-1}</span> where <span class="math inline">\nu = \omega^2 = e^{4π i / n}</span>.</p>
 </div>
 </section>
 <section id="discrete-fourier-transform" class="slide level2">
 <h2>Discrete Fourier transform</h2>
 <p><strong>Coefficient <span class="math inline">\Rightarrow</span>
 Point-value</strong>. Given a polynomial <span class="math inline">A(x)
-= a_0 + a_1 x + ... + a_{n–1} x^{n–1}</span>, evaluate it at <span class="math inline">n</span> distinct points <span class="math inline">x_0, ..., x_{n–1}</span>.</p>
+= a_0 + a_1 x + ... + a_{n-1} x^{n-1}</span>, evaluate it at <span class="math inline">n</span> distinct points <span class="math inline">x_0, ..., x_{n-1}</span>.</p>
 <p><strong>Key idea</strong>. Choose <span class="math inline">x_k =
 \omega^k</span> where <span class="math inline">\omega</span> is
 principal <span class="math inline">n^{th}</span> root of unity.</p>
@@ -1915,10 +1917,10 @@ a_{n-1} \\
 <section id="fast-fourier-transform-steps" class="slide level2">
 <h2>Fast Fourier transform: steps</h2>
 <p><strong>Goal</strong>. Evaluate a degree <span class="math inline">n
-– 1</span> polynomial <span class="math inline">A(x) = a_0 + a_1 x + ...
-+ a_{n–1} x^{n–1}</span> at its <span class="math inline">n^{th}</span>
+- 1</span> polynomial <span class="math inline">A(x) = a_0 + a_1 x + ...
++ a_{n-1} x^{n-1}</span> at its <span class="math inline">n^{th}</span>
 roots of unity: <span class="math inline">\omega^0, \omega^1, \ldots,
-\omega^{n–1}</span>.</p>
+\omega^{n-1}</span>.</p>
 <p><strong>Divide</strong>. Break up polynomial into even- and
 odd-degree terms.</p>
 <ul>
@@ -1931,38 +1933,38 @@ A_{odd}(x^2)</span>.</li>
 <li><span class="math inline">A(-x) = A_{even}(x^2) - x
 A_{odd}(x^2)</span>.</li>
 </ul>
-<p><strong>Conquer</strong>. Evaluate <span class="math inline">A_{even}(x)</span> and <span class="math inline">A_{odd}(x)</span> at <span class="math inline">(n/2)^{th}</span> roots of unity: <span class="math inline">\nu^0, \nu^1, \ldots, \nu^{n/2–1}</span></p>
+<p><strong>Conquer</strong>. Evaluate <span class="math inline">A_{even}(x)</span> and <span class="math inline">A_{odd}(x)</span> at <span class="math inline">(n/2)^{th}</span> roots of unity: <span class="math inline">\nu^0, \nu^1, \ldots, \nu^{n/2-1}</span></p>
 <p><strong>Combine</strong>.</p>
 <ul>
 <li><span class="math inline">y_k = A(\omega^k) = A_{even}(\nu^k) +
 \omega^k A_{odd}(\nu^k), 0 \le k &lt; n/2</span>.</li>
 <li><span class="math inline">y_{k+ n/2} = A(\omega^{k+ n/2}) =
-A_{even}(\nu^k) – \omega^k A_{odd}(\nu^k), 0 \le k &lt; n/2</span>.</li>
+A_{even}(\nu^k) - \omega^k A_{odd}(\nu^k), 0 \le k &lt; n/2</span>.</li>
 </ul>
 </section>
 <section id="fast-fourier-transform-algorithm" class="slide level2">
 <h2>Fast Fourier transform: algorithm</h2>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:70%;">
 <ol type="1">
 <li>IF (<span class="math inline">n = 1</span>): RETURN <span class="math inline">a_0</span>;</li>
-<li><span class="math inline">(e_0, e_1, \ldots, e_{n/2–1})</span> =
+<li><span class="math inline">(e_0, e_1, \ldots, e_{n/2-1})</span> =
 <code>FFT</code>(<span class="math inline">n / 2, a_0, a_2, a_4, \ldots,
-a_{n–2}</span>);</li>
-<li><span class="math inline">(d_0, d_1, \ldots, d_{n/2–1})</span> =
+a_{n-2}</span>);</li>
+<li><span class="math inline">(d_0, d_1, \ldots, d_{n/2-1})</span> =
 <code>FFT</code>(<span class="math inline">n / 2, a_1, a_3, a_5, \ldots,
-a_{n–1}</span>);</li>
-<li>FOR <span class="math inline">k = 0 .. n / 2 – 1</span>:
+a_{n-1}</span>);</li>
+<li>FOR <span class="math inline">k = 0 .. n / 2 - 1</span>:
 <ol type="1">
 <li><span class="math inline">\omega^k = e^{2π i k/n}</span>;</li>
 <li><span class="math inline">y_k = e_k + \omega^k d_k</span>;</li>
-<li><span class="math inline">y_{k + n/2} = e_k – \omega^k
+<li><span class="math inline">y_{k + n/2} = e_k - \omega^k
 d_k</span>;</li>
 </ol></li>
 <li>RETURN (<span class="math inline">y_0, y_1, y_2, \ldots,
-y_{n–1}</span>).</li>
+y_{n-1}</span>).</li>
 </ol>
-</div><div class="column" data-align="bottom" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <p><strong>Time</strong>.</p>
 <ul>
 <li><code>2-3</code>: <span class="math inline">2 T(n/2)</span></li>
@@ -1973,7 +1975,7 @@ y_{n–1}</span>).</li>
 </section>
 <section id="fft-analysis" class="slide level2">
 <h2>FFT: analysis</h2>
-<p><strong>Theorem</strong>. The FFT algorithm evaluates a degree <span class="math inline">n – 1</span> polynomial at each of the <span class="math inline">n^{th}</span> roots of unity in <span class="math inline">O(n \log n)</span> arithmetic operations and <span class="math inline">O(n)</span> extra space.<br />
+<p><strong>Theorem</strong>. The FFT algorithm evaluates a degree <span class="math inline">n - 1</span> polynomial at each of the <span class="math inline">n^{th}</span> roots of unity in <span class="math inline">O(n \log n)</span> arithmetic operations and <span class="math inline">O(n)</span> extra space.<br />
 <strong>Pf</strong>.</p>
 <p><span class="math display">
 T(n) = \left\{ \begin{array}{lcl}
@@ -1987,18 +1989,20 @@ T(n) = \left\{ \begin{array}{lcl}
 <p>When computing the FFT of <span class="math inline">(a_0, a_1, a_2,
 \dots, a_7)</span>, which are the first two coefficients involved in an
 arithmetic operation?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <p><strong>A</strong>. <span class="math inline">a_0</span> and <span class="math inline">a_1</span>.<br />
 <strong>B</strong>. <span class="math inline">a_0</span> and <span class="math inline">a_2</span>.<br />
 <strong>C</strong>. <span class="math inline">a_0</span> and <span class="math inline">a_4</span>.<br />
 <strong>D</strong>. <span class="math inline">a_0</span> and <span class="math inline">a_7</span>.<br />
 <strong>E</strong>. None of the above.</p>
-<div class="fragment">
+</div><div class="column" style="width:50%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
+</div>
 </div>
 </div>
 <div class="fragment">
-<p> </p>
 <p>C: first leaf of the FFT tree.</p>
 </div>
 </section>
@@ -2064,10 +2068,10 @@ F_{n/2} a_{odd} \\
 <h2>Inverse discrete Fourier transform</h2>
 <p><strong>Point-value <span class="math inline">\Rightarrow</span>
 Coefficient</strong>. Given <span class="math inline">n</span> distinct
-points <span class="math inline">x_0, ..., x_{n–1}</span> and values
-<span class="math inline">y_0, ..., y_{n–1}</span>, find unique
-polynomial <span class="math inline">A(x) = a_0 + a_1 x + ... + a_{n–1}
-x^{n–1}</span>, that has given values at given points.</p>
+points <span class="math inline">x_0, ..., x_{n-1}</span> and values
+<span class="math inline">y_0, ..., y_{n-1}</span>, find unique
+polynomial <span class="math inline">A(x) = a_0 + a_1 x + ... + a_{n-1}
+x^{n-1}</span>, that has given values at given points.</p>
 <p><span class="math display">
 \left[ \begin{array}{c}
 a_{0} \\
@@ -2121,7 +2125,7 @@ G_n = \frac{1}{n} =
 \end{array} \right]
 </span></p>
 <p><strong>Consequence</strong>. To compute the inverse FFT, apply the
-same algorithm but use <span class="math inline">\omega^{–1} = e^{–2π i
+same algorithm but use <span class="math inline">\omega^{-1} = e^{-2π i
 / n}</span> as principal <span class="math inline">n^{th}</span> root of
 unity (and divide the result by <span class="math inline">n</span>).</p>
 </section>
@@ -2153,7 +2157,7 @@ n &amp; \text{if}\ k \equiv 0 \pmod{0} \\
 <ul>
 <li>If <span class="math inline">k</span> is a multiple of <span class="math inline">n</span>, then <span class="math inline">\omega^k =
 1 \Rightarrow</span> series sums to <span class="math inline">n</span>.</li>
-<li>Each <span class="math inline">n^{th}</span> root of unity <span class="math inline">\omega^k</span> is a root of <span class="math inline">x^n – 1 = (x – 1) (1 + x + x^2 + ... +
+<li>Each <span class="math inline">n^{th}</span> root of unity <span class="math inline">\omega^k</span> is a root of <span class="math inline">x^n - 1 = (x - 1) (1 + x + x^2 + ... +
 x^{n−1})</span>.</li>
 <li>if <span class="math inline">\omega^k \ne 1</span>, then <span class="math inline">1 + \omega^k + \omega^{k(2)} + … + \omega^{k(n−1)} =
 0 \Rightarrow</span> series sums to 0.</li>
@@ -2161,27 +2165,27 @@ x^{n−1})</span>.</li>
 </section>
 <section id="inverse-fft-algorithm" class="slide level2">
 <h2>Inverse FFT: algorithm</h2>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:70%;">
 <ol type="1">
 <li>IF (<span class="math inline">n = 1</span>): RETURN <span class="math inline">y_0</span>;</li>
-<li><span class="math inline">(e_0, e_1, \ldots, e_{n/2–1})</span> =
+<li><span class="math inline">(e_0, e_1, \ldots, e_{n/2-1})</span> =
 <code>INVERSE-FFT</code>(<span class="math inline">n / 2, y_0, y_2, y_4,
-\ldots, y_{n–2}</span>);</li>
-<li><span class="math inline">(d_0, d_1, \ldots, d_{n/2–1})</span> =
+\ldots, y_{n-2}</span>);</li>
+<li><span class="math inline">(d_0, d_1, \ldots, d_{n/2-1})</span> =
 <code>INVERSE-FFT</code>(<span class="math inline">n / 2, y_1, y_3, y_5,
-\ldots, y_{n–1}</span>);</li>
-<li>FOR <span class="math inline">k = 0 .. n / 2 – 1</span>:
+\ldots, y_{n-1}</span>);</li>
+<li>FOR <span class="math inline">k = 0 .. n / 2 - 1</span>:
 <ol type="1">
 <li><span class="math inline">\omega^k = e^{-2π i k/n}</span>;</li>
 <li><span class="math inline">a_k = e_k + \omega^k d_k</span>;</li>
-<li><span class="math inline">a_{k + n/2} = e_k – \omega^k
+<li><span class="math inline">a_{k + n/2} = e_k - \omega^k
 d_k</span>;</li>
 </ol></li>
 <li>RETURN (<span class="math inline">a_0, a_1, a_2, \ldots,
-a_{n–1}</span>);</li>
+a_{n-1}</span>);</li>
 </ol>
-</div><div class="column" data-align="bottom" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <p><strong>Time</strong>.</p>
 <ul>
 <li><code>2-3</code>: <span class="math inline">2 T(n/2)</span></li>
@@ -2193,7 +2197,7 @@ a_{n–1}</span>);</li>
 <section id="inverse-fft-analysis" class="slide level2">
 <h2>Inverse FFT: analysis</h2>
 <p><strong>Theorem</strong>. The inverse FFT algorithm interpolates a
-degree <span class="math inline">n – 1</span> polynomial at each of the
+degree <span class="math inline">n - 1</span> polynomial at each of the
 <span class="math inline">n^{th}</span> roots of unity in <span class="math inline">O(n \log n)</span> arithmetic operations.</p>
 <ul>
 <li>assumes <span class="math inline">n</span> is a power of 2</li>
@@ -2232,7 +2236,7 @@ n)</span> arithmetic operations.</p>
 <h2>Polynomial multiplication</h2>
 <p><strong>Theorem</strong>. Given two polynomials <span class="math inline">A(x) = a_0 + a_1 x + a_2 x^2 + \ldots + a_{n−1}
 x^{n−1}</span> and <span class="math inline">B(x) = b_0 + b_1 x + b_2
-x^2 + \ldots + b_{n−1} x^{n−1}</span> of degree <span class="math inline">n – 1</span>, can multiply them in <span class="math inline">O(n \log n)</span> arithmetic operations.</p>
+x^2 + \ldots + b_{n−1} x^{n−1}</span> of degree <span class="math inline">n - 1</span>, can multiply them in <span class="math inline">O(n \log n)</span> arithmetic operations.</p>
 <ul>
 <li>pad with 0s to make <span class="math inline">n</span> a power of
 2</li>
@@ -2297,7 +2301,7 @@ a_{n-1} b_0 &amp; a_{n-1} b_1 &amp; a_{n-1} b_2 &amp; a_{n-1} b_3 &amp;
 <section id="integer-multiplication-revisit" class="slide level2">
 <h2>Integer multiplication, revisit</h2>
 <p><strong>Integer multiplication</strong>. Given two n-bit integers
-<span class="math inline">a = a_{n–1} … a_1 a_0</span> and <span class="math inline">b = b_{n–1} … b_1 b_0</span>, compute their product
+<span class="math inline">a = a_{n-1} … a_1 a_0</span> and <span class="math inline">b = b_{n-1} … b_1 b_0</span>, compute their product
 <span class="math inline">a \cdot b</span>.</p>
 <p><strong>Convolution algorithm</strong>.</p>
 <ul>
@@ -2319,7 +2323,7 @@ floating-point operations.</li>
 <p><strong>Practice</strong>. [GNU Multiple Precision Arithmetic
 Library]</p>
 <ul>
-<li>Switches to FFT-based algorithm when <span class="math inline">n</span> is large (<span class="math inline">\ge</span> 5–10K).</li>
+<li>Switches to FFT-based algorithm when <span class="math inline">n</span> is large (<span class="math inline">\ge</span> 5 – 10K).</li>
 </ul>
 </div>
 </section>
@@ -2361,7 +2365,7 @@ an integer <span class="math inline">j \in Y</span> that sum to exactly
 <span class="math inline">c_k &gt; 0</span>.</li>
 </ul>
 <p><strong>Ex</strong>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:30%;">
 <p><span class="math inline">m = 19, n = 3</span></p>
 <ul>
@@ -2370,7 +2374,7 @@ an integer <span class="math inline">j \in Y</span> that sum to exactly
 <li><span class="math inline">Z = \{ 4, 13, 19 \}</span></li>
 </ul>
 <p><span class="math inline">4 + 15 = 19</span></p>
-</div><div class="column" data-align="bottom" style="width:70%;">
+</div><div class="column" style="width:70%;">
 <p><span class="math display">
 \begin{aligned}
 A(x) &amp; = x^4 + x^7 + x^{10} \\

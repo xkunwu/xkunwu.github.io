@@ -222,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 40% 25% 5% 20% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
@@ -579,6 +580,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
+  <p class="course">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">5. Divide and Conquer I</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -588,7 +590,6 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/10/29</p>
 </div>
 </div>
 </section>
@@ -720,8 +721,8 @@ constant; <span class="math inline">cn = O(n)</span>.</li>
 <span class="math inline">O(n \log_2 n)</span>.</p>
 <div class="fragment">
 <p> </p>
-<p><strong>Assorted proofs</strong>. We describe several ways to solve
-this recurrence.</p>
+<p><strong>Assorted proofs</strong>. several ways to solve this
+recurrence (following slides).</p>
 <ul>
 <li>Initially, assume <span class="math inline">n</span> is a power of
 <span class="math inline">2</span> and replace <span class="math inline">\le</span> with <span class="math inline">=</span>.</li>
@@ -729,8 +730,8 @@ this recurrence.</p>
 </ul>
 </div>
 </section>
-<section id="recurrence-unrolling-tree" class="slide level2">
-<h2>Recurrence: unrolling tree</h2>
+<section id="recurrence-pf.-1-unrolling-tree" class="slide level2">
+<h2>Recurrence Pf. 1: unrolling tree</h2>
 <p><strong>Proposition</strong>. If <span class="math inline">T(n)</span> satisfies the following recurrence, then
 <span class="math inline">T(n) = cn \log_2 n</span>.</p>
 <p><span class="math display">
@@ -740,13 +741,13 @@ T(n) = \left\{ \begin{array}{lcl}
 \end{array}\right.
 </span></p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 <p><strong>Pf</strong>. [ by identifying a pattern ]<br />
 <span class="math inline">cn</span> per level, <span class="math inline">\log_2 n</span> levels.</p>
 </section>
-<section id="recurrence-substitution" class="slide level2">
-<h2>Recurrence: substitution</h2>
+<section id="recurrence-pf.-2-substitution" class="slide level2">
+<h2>Recurrence Pf. 2: substitution</h2>
 <p><strong>Proposition</strong>. If <span class="math inline">T(n)</span> satisfies the following recurrence, then
 <span class="math inline">T(n) = cn \log_2 n</span>.</p>
 <p><span class="math display">
@@ -757,11 +758,9 @@ T(n) = \left\{ \begin{array}{lcl}
 </span></p>
 <p><strong>Pf</strong>. [ by induction on n ]</p>
 <ul>
-<li><span class="math inline">T(1) = 0 = cn \log_2 n</span>.
-<ul>
+<li><span class="math inline">T(1) = 0 = cn \log_2 n</span>.</li>
 <li>assume <span class="math inline">T(n/2) = c(n/2) \log_2
 (n/2)</span>.</li>
-</ul></li>
 </ul>
 <p><span class="math display">
 \begin{aligned}
@@ -773,8 +772,8 @@ T(n) &amp; = 2T(n/2) + cn \\
 \end{aligned}
 </span></p>
 </section>
-<section id="recurrence-partial-substitution" class="slide level2">
-<h2>Recurrence: partial substitution</h2>
+<section id="recurrence-pf.-3-partial-substitution" class="slide level2">
+<h2>Recurrence Pf. 3: partial substitution</h2>
 <p><strong>Proposition</strong>. If <span class="math inline">T(n)</span> satisfies the following recurrence, then
 <span class="math inline">T(n) = cn \log_2 n</span>.</p>
 <p><span class="math display">
@@ -816,7 +815,7 @@ n \rfloor</span><br />
 \rceil − 2^{\lceil \log_2 n \rceil} + 1</span><br />
 <strong>E</strong>. Not even Knuth knows.</p>
 <div class="fragment">
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
@@ -827,7 +826,7 @@ T(2n) &amp; = 2T(n) + 2n - 1 \\
 + 1 \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
 T(2n) &amp; = 2n \lceil \log_2 2n \rceil − 2^{\lceil \log_2 2n \rceil} +
@@ -861,7 +860,7 @@ n – 1</span>.<br />
 Let <span class="math inline">n_1 = \lfloor n / 2 \rfloor</span> and
 <span class="math inline">n_2 = \lceil n / 2 \rceil</span>: note that
 <span class="math inline">n = n_1 + n_2</span>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
@@ -875,7 +874,7 @@ n \\
 &amp; = n \lceil \log_2 n \rceil \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
 n_2 &amp; = \lceil n/2 \rceil \\
@@ -898,7 +897,7 @@ n_2 &amp; = \lceil n/2 \rceil \\
 <li>Can access the elements only through pairwise comparisons.</li>
 <li>All other operations (control, data movement, etc.) are free.</li>
 </ul>
-<p><strong>Cost model</strong>. Number of compares.</p>
+<p><strong>Cost</strong>. Number of compares.</p>
 </div>
 <div class="fragment">
 <p><strong>Q</strong>. Realistic model?<br />
@@ -932,7 +931,7 @@ values <span class="math inline">a_1 .. a_n</span>.</li>
 <li><span class="math inline">n!</span> different orderings <span class="math inline">\Rightarrow n!</span> reachable leaves.</li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="sorting-lower-bound-cont." class="slide level2">
@@ -955,10 +954,6 @@ values <span class="math inline">a_1 .. a_n</span>.</li>
 (Stirling’s) &amp; \ge n \log_2 n - n / \ln 2 \\
 \end{aligned}
 </span></p>
-<div class="fragment">
-<p><strong>Note</strong>. Lower bound can be extended to include
-<em>randomized</em> algorithms.</p>
-</div>
 </section></section>
 <section>
 <section id="further-recurrence-relations" class="title-slide slide level1 center">
@@ -989,7 +984,7 @@ T(n) \le qT(n/2) + cn
 <p><strong>Pf</strong>. Geometric sum: <span class="math inline">\sum_{j=0}^{\log_2 n - 1}(r)^j = \frac{r^{\log_2 n}
 - 1}{r - 1}</span>.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="350" /></p>
 </div>
 <div class="fragment">
 <p>Especially, <span class="math inline">O(n^{\log_2 3}) =
@@ -1007,7 +1002,7 @@ T(n) \le qT(n/2) + cn
 <p><strong>Pf</strong>. Geometric sum: <span class="math inline">\sum_{j=0}^{\log_2 n - 1}(\frac{1}{2^j}) =
 2</span>.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="recurrence-relations-quadratic-time" class="slide level2">
@@ -1035,6 +1030,10 @@ constant; <span class="math inline">cn^2 = O(n^2)</span>.</li>
 <section>
 <section id="counting-inversions" class="title-slide slide level1 center">
 <h1 class="center">Counting inversions</h1>
+
+</section>
+<section id="music-recommendation" class="slide level2">
+<h2>Music recommendation</h2>
 <p><strong>Music recommendation</strong>. Music site tries to match your
 preference with others.</p>
 <ul>
@@ -1148,7 +1147,7 @@ with <span class="math inline">a \in A, b \in B</span>.</li>
 A, b \in B</span>?<br />
 <strong>A</strong>. Easy if A and B are sorted!</p>
 <p><strong>Warmup algorithm</strong>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:60%;">
 <ol type="1">
 <li>Sort <span class="math inline">A</span> and <span class="math inline">B</span></li>
@@ -1158,9 +1157,9 @@ A, b \in B</span>?<br />
 a_i\}</span>;</li>
 </ol></li>
 </ol>
-</div><div class="column" data-align="bottom" style="width:40%;">
+</div><div class="column" style="width:40%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="200" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="250" /></p>
 </div>
 </div>
 </div>
@@ -1527,7 +1526,7 @@ of the other.
 </ul></li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="quiz-quicksort-1" class="slide level2">
@@ -1542,15 +1541,14 @@ are compared during randomized quicksort?</p>
 <strong>D</strong>. 1<br />
 </p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 <div class="fragment">
-<p> </p>
 <p>D: ancestry</p>
 </div>
 </section>
-<section id="quiz-quicksort-1-1" class="slide level2">
-<h2>Quiz: Quicksort 1</h2>
+<section id="quiz-quicksort-2" class="slide level2">
+<h2>Quiz: Quicksort 2</h2>
 <p>Given an array of <span class="math inline">n \ge 2</span> distinct
 elements <span class="math inline">a_1 &lt; a_2 &lt; \ldots &lt;
 a_n</span>, what is the probability that <span class="math inline">a_1</span> and <span class="math inline">a_n</span>
@@ -1561,10 +1559,9 @@ are compared during randomized quicksort?</p>
 <strong>D</strong>. 1<br />
 </p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 <div class="fragment">
-<p> </p>
 <p>C: compared iff either is chosen as pivot before any of the other</p>
 </div>
 </section>
@@ -1586,7 +1583,7 @@ a_5, a_6, a_7\}</span></li>
 </ul></li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="randomized-quicksort-analysis-cont.-2" class="slide level2">
@@ -1720,7 +1717,7 @@ point in the 2 <span class="math inline">\delta</span>-strip, with the
 and <span class="math inline">s_j</span> is at least <span class="math inline">\delta</span>.<br />
 <strong>Pf</strong>.</p>
 <p>Consider the <span class="math inline">2\delta</span>-by-<span class="math inline">\delta</span> rectangle <span class="math inline">R</span> in strip whose min <span class="math inline">y</span>-coordinate is <span class="math inline">y</span>-coordinate of <span class="math inline">s_i</span>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:60%;">
 <ul>
 <li>Distance between <span class="math inline">s_i</span> and any point
@@ -1736,7 +1733,7 @@ and <span class="math inline">s_j</span> is at least <span class="math inline">\
 <li>At most 7 other points can be in R.</li>
 </ul></li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:40%;">
+</div><div class="column" style="width:40%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>

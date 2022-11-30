@@ -222,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 40% 25% 5% 20% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
@@ -579,6 +580,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
+  <p class="course">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">8. Intractability II</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -588,7 +590,6 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/11/19</p>
 </div>
 </div>
 </section>
@@ -782,7 +783,7 @@ clever?<br />
 <strong>Conjecture</strong>. No poly-time algorithm (ie.
 <em>intractable</em>) for 3-SAT.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="600" /></p>
 </div>
 </section>
 <section id="the-main-question-mathcalp-vs.-mathcalnp" class="slide level2">
@@ -884,12 +885,12 @@ important unsolved problems in mathematics.
 </section>
 <section id="princeton-cs-building" class="slide level2">
 <h2>Princeton CS Building</h2>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:70%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <table>
 <thead>
 <tr class="header">
@@ -1258,7 +1259,7 @@ there exist <span class="math inline">x \in \Re^n</span> such that <span class="
 \text{co-}NP</span>.<br />
 <strong>Pf sketch</strong>. If (P) and (D) are nonempty, then
 <code>max</code> = <code>min</code>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
@@ -1267,7 +1268,7 @@ there exist <span class="math inline">x \in \Re^n</span> such that <span class="
 &amp;&amp; x &amp; \ge 0 \\
 \end{aligned}
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <p><span class="math display">
 \begin{aligned}
 \text{(Dual)} \min y^Tb &amp;&amp; \\
@@ -1294,7 +1295,7 @@ t^{\frac{s-1}{p}} &amp; \ne 1 \pmod{s} \\
 \end{aligned}
 </span></p>
 <p>for all prime divisors <span class="math inline">p</span> of <span class="math inline">s-1</span>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <ul>
 <li>instance <span class="math inline">s</span>: <span class="math inline">437677</span></li>
@@ -1304,7 +1305,7 @@ t^{\frac{s-1}{p}} &amp; \ne 1 \pmod{s} \\
 need a recursive certificate to assert 36,473 is prime</li>
 </ul></li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <p><code>CERTIFIER</code> (<span class="math inline">s</span>)</p>
 <p>CHECK <span class="math inline">s - 1 = 2 \times 2 \times 3 \times
 36473</span>.<br />

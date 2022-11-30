@@ -222,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 40% 25% 5% 20% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
@@ -579,6 +580,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
+  <p class="course">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">3. Graphs</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -588,7 +590,6 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/10/15</p>
 </div>
 </div>
 </section>
@@ -600,6 +601,16 @@ background-color: var(--r-background-color);
 <ul>
 <li>core subject: combinatorial structures</li>
 <li>graphs: fundamental, expressive</li>
+</ul>
+</section>
+<section id="content" class="slide level2">
+<h2>Content</h2>
+<ul>
+<li>Basic Definitions</li>
+<li>Graph Connectivity and Graph Traversal</li>
+<li>Testing Bipartiteness</li>
+<li>Connectivity in Directed Graphs</li>
+<li>DAGs and Topological Ordering</li>
 </ul>
 </section>
 <section>
@@ -619,19 +630,17 @@ nodes.</li>
 <li>Graph size parameters: <span class="math inline">n = | V |, m = | E
 |</span>.</li>
 </ul>
-<div class="fragment">
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:40%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:60%;">
+</div><div class="column" style="width:60%;">
 <p><span class="math inline">V = \{ 1, 2, 3, 4, 5, 6, 7, 8
 \}</span><br />
 <span class="math inline">E = \{ 1–2, 1–3, 2–3, 2–4, 2–5, 3–5, 3–7, 3–8,
 4–5, 5–6, 7–8 \}</span><br />
 <span class="math inline">m = 11, n = 8</span></p>
-</div>
 </div>
 </div>
 </section>
@@ -709,20 +718,20 @@ nodes.</li>
 <p><strong>Adjacency matrix</strong>. <span class="math inline">n</span>-by-<span class="math inline">n</span>
 matrix with <span class="math inline">A_{uv} = 1</span> if <span class="math inline">(u, v)</span> is an edge.</p>
 <ul>
-<li>Two representations of each edge.</li>
+<li>Symmetry: two representations of each edge.</li>
 <li>Space proportional to <span class="math inline">n^2</span>.</li>
 <li>Check if <span class="math inline">(u, v)</span> is an edge: <span class="math inline">\Theta(1)</span> time.</li>
 <li>Identify all edges: <span class="math inline">\Theta(n^2)</span>
 time.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:40%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:60%;">
+</div><div class="column" style="width:60%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
 </div>
 </div>
@@ -731,20 +740,20 @@ time.</li>
 <h2>Graph representation: adjacency lists</h2>
 <p><strong>Adjacency lists</strong>. Node-indexed array of lists.</p>
 <ul>
-<li>Two representations of each edge.</li>
+<li>Symmetry: two representations of each edge.</li>
 <li>Space is <span class="math inline">\Theta(m + n)</span>.</li>
 <li>Check if <span class="math inline">(u, v)</span> is an edge: <span class="math inline">O(degree(u))</span> time.</li>
 <li>Identify all edges: <span class="math inline">\Theta(m + n)</span>
 time.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:40%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:60%;">
+</div><div class="column" style="width:60%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </div>
 </div>
@@ -784,9 +793,8 @@ are distinct.</p>
 <p><strong>Def</strong>. An undirected graph is
 <strong>connected</strong> if for every pair of nodes <span class="math inline">u</span> and <span class="math inline">v</span>,
 there is a path between them.</p>
-<p> </p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="cycles" class="slide level2">
@@ -797,7 +805,7 @@ there is a path between them.</p>
 are distinct (except for <span class="math inline">v_1</span> and <span class="math inline">v_k</span>).</p>
 <p> </p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="trees" class="slide level2">
@@ -805,7 +813,7 @@ are distinct (except for <span class="math inline">v_1</span> and <span class="m
 <p><strong>Def</strong>. An undirected graph is a <strong>tree</strong>
 if it is connected and contains no cycle.</p>
 <p><strong>Theorem</strong>. Let <span class="math inline">G</span> be
-an undirected graph on <span class="math inline">n</span> odes. Any two
+an undirected graph on <span class="math inline">n</span> nodes. Any two
 of the following statements imply the third:</p>
 <ul>
 <li><span class="math inline">G</span> is connected.</li>
@@ -813,23 +821,22 @@ of the following statements imply the third:</p>
 <li><span class="math inline">G</span> has <span class="math inline">n –
 1</span> edges.</li>
 </ul>
-<p> </p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="rooted-trees" class="slide level2">
 <h2>Rooted trees</h2>
 <p><strong>Rooted tree</strong>. Given a tree <span class="math inline">T</span>, choose a root node <span class="math inline">r</span> and orient each edge away from <span class="math inline">r</span>.</p>
 <p><strong>Importance</strong>. Models hierarchical structure.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:40%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:60%;">
+</div><div class="column" style="width:60%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </div>
 </div>
@@ -845,23 +852,32 @@ of the following statements imply the third:</p>
 there a path between them?</p>
 <p><strong>s-t shortest path problem</strong>. Given two nodes <span class="math inline">s</span> and <span class="math inline">t</span>,
 what is the length of a shortest path between them?</p>
+<div class="nopub">
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+</div>
 <div class="fragment">
-<p> </p>
 <p><strong>Applications</strong>.</p>
 <ul>
-<li>Maze traversal.</li>
-<li>Fewest hops in a communication network.</li>
+<li>Maze traversal, map navigation, etc.</li>
 </ul>
 </div>
 </section>
 <section id="breadth-first-search-bfs" class="slide level2">
 <h2>Breadth-first search (BFS)</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
 <p><strong>BFS intuition</strong>. Start at root <span class="math inline">s</span> and “flood” the graph.</p>
 <ul>
 <li>Explore outward from <span class="math inline">s</span> in all
 possible directions,</li>
 <li>Adding nodes one “layer” at a time.</li>
 </ul>
+</div><div class="column" style="width:30%;">
+<div class="nopub">
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="250" /></p>
+</div>
+</div>
+</div>
 <div class="fragment">
 <p><strong>BFS algorithm</strong>.</p>
 <ul>
@@ -869,7 +885,7 @@ possible directions,</li>
 \}</span>.</li>
 <li><span class="math inline">L_1</span>: all neighbors of <span class="math inline">L_0</span>.</li>
 <li><span class="math inline">L_{i+1}</span>: all nodes that do not
-belong to an earlier layer, and that have an edge to a node in <span class="math inline">L_i</span>.</li>
+belong to any earlier layer, and that have an edge to a node in <span class="math inline">L_i</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -924,10 +940,10 @@ layers <span class="math inline">L_{i+1}</span> or earlier</li>
 </ul>
 <div class="fragment">
 <p> </p>
-<p>Array <code>Discovered</code> of length <span class="math inline">n</span></p>
+<p>Cycle? Array <code>Discovered</code> of length <span class="math inline">n</span></p>
 <ul>
-<li>set <code>Discovered[v]= true</code> as soon as our search first
-sees <span class="math inline">v</span>.</li>
+<li>set <code>Discovered[v]= true</code> as soon as our search
+<em>first</em> sees <span class="math inline">v</span>.</li>
 </ul>
 </div>
 </section>
@@ -937,35 +953,38 @@ sees <span class="math inline">v</span>.</li>
 <code>true</code>; <code>Discovered</code>[<span class="math inline">v</span>] = <code>false</code> for all other <span class="math inline">v</span>;<br />
 <span class="math inline">L[0] = \{s\}</span>; layer counter <span class="math inline">i = 0</span>; current tree <span class="math inline">T = \{\}</span>;<br />
 While <span class="math inline">L[i]</span> is not empty:</p>
-<ul>
+<ol type="1">
 <li>Initialize an empty list <span class="math inline">L[i +
 1]</span>;</li>
 <li>For each node <span class="math inline">u \in L[i]</span>:
-<ul>
+<ol type="1">
 <li>Consider each edge <span class="math inline">(u, v)</span> incident
 to <span class="math inline">u</span>:</li>
 <li>If <code>Discovered</code>[v] = <code>false</code>:
-<ul>
+<ol type="1">
 <li>Set <code>Discovered</code>[v] = <code>true</code>;</li>
 <li>Add edge <span class="math inline">(u, v)</span> to the tree <span class="math inline">T</span>;</li>
 <li>Add <span class="math inline">v</span> to the list <span class="math inline">L[i + 1]</span>;</li>
-</ul></li>
+</ol></li>
 <li>++<span class="math inline">i</span>;</li>
-</ul></li>
-</ul>
+</ol></li>
+</ol>
 </section>
 <section id="bfs-analysis" class="slide level2">
 <h2>BFS: analysis</h2>
 <p><strong>Theorem</strong>. The above implementation of the BFS
-algorithm runs in time O(m + n) (i.e., linear in the input size), if the
-graph is given by the adjacency list representation.<br />
+algorithm runs in time <span class="math inline">O(m + n)</span> (i.e.,
+linear in the input size), if the graph is given by the adjacency list
+representation.<br />
 <strong>Pf</strong>.</p>
 <ul>
-<li>easy to prove <span class="math inline">O(n^2)</span> time
+<li>[worst case] easy to prove <span class="math inline">O(n^2)</span>
+time
 <ul>
 <li>at most <span class="math inline">n</span> lists <span class="math inline">L[i]</span>
 <ul>
-<li>for loop runs at most <span class="math inline">n</span> times</li>
+<li>while loop runs at most <span class="math inline">n</span>
+times</li>
 </ul></li>
 <li>at most <span class="math inline">n</span> neighbors for each node
 <ul>
@@ -997,22 +1016,24 @@ manage <code>Discovered</code>.</li>
 <li>backtrack until an unexplored branch</li>
 </ul></li>
 </ul>
+<div class="nopub">
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+</div>
 <div class="fragment">
-<p> </p>
 <p><strong>Depth-first search tree</strong>: non-tree edges can only
 connect ancestors to descendants.</p>
 </div>
 </section>
 <section id="depth-first-search-tree" class="slide level2">
 <h2>Depth-first search tree</h2>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:40%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:60%;">
+</div><div class="column" style="width:60%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="600" /></p>
 </div>
 </div>
 </div>
@@ -1026,10 +1047,10 @@ connect ancestors to descendants.</p>
 </ul>
 <div class="fragment">
 <p> </p>
-<p>Array <code>Discovered</code> of length <span class="math inline">n</span></p>
+<p>Cycle? Array <code>Discovered</code> of length <span class="math inline">n</span></p>
 <ul>
-<li>set <code>Discovered[v]= true</code> as soon as our search first
-sees <span class="math inline">v</span>.</li>
+<li>set <code>Discovered[v]= true</code> as soon as our search
+<em>first</em> sees <span class="math inline">v</span>.</li>
 </ul>
 </div>
 </section>
@@ -1038,7 +1059,7 @@ sees <span class="math inline">v</span>.</li>
 <p><strong>Connected component</strong>. Find all nodes reachable from
 <span class="math inline">s</span>.</p>
 <ul>
-<li>Initially R = {s}</li>
+<li>Initially <span class="math inline">R = \{s\}</span></li>
 <li>While there is an edge <span class="math inline">(u, v)</span> where
 <span class="math inline">u \in R</span> and <span class="math inline">v
 \notin R</span>
@@ -1046,10 +1067,10 @@ sees <span class="math inline">v</span>.</li>
 <li>Add <span class="math inline">v</span> to <span class="math inline">R</span></li>
 </ul></li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:60%;">
 <p><strong>Theorem</strong>. Upon termination, <span class="math inline">R</span> is the connected component containing <span class="math inline">s</span>.</p>
-</div><div class="column" data-align="bottom" style="width:40%;">
+</div><div class="column" style="width:40%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
@@ -1071,7 +1092,9 @@ sees <span class="math inline">v</span>.</li>
 = (V, E)</span> is <strong>bipartite</strong> if the nodes can be
 colored blue or <code>white</code> such that every edge has one
 <code>white</code> and one <code>blue</code> end.</p>
-<p> </p>
+<div class="nopub">
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+</div>
 <p><strong>Applications</strong>.</p>
 <ul>
 <li>Stable matching: men = <code>blue</code>, women =
@@ -1082,18 +1105,16 @@ colored blue or <code>white</code> such that every edge has one
 </section>
 <section id="testing-bipartiteness-1" class="slide level2">
 <h2>Testing bipartiteness</h2>
-<p>Many graph problems become:</p>
+<p>If the underlying graph is bipartite, many graph problems become:</p>
 <ul>
-<li><em>Easier</em> if the underlying graph is bipartite
-(matching).</li>
-<li><em>Tractable</em> if the underlying graph is bipartite (independent
-set).</li>
+<li><em>Easier</em> (matching).</li>
+<li><em>Tractable</em> (independent set).</li>
 </ul>
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
-<p>Before attempting to design an algorithm, we need to understand
-structure of bipartite graphs.</p>
+<p>Before attempting to design an algorithm, we need to <em>understand
+structure</em> of bipartite graphs.</p>
 </section>
 <section id="an-obstruction-to-bipartiteness" class="slide level2">
 <h2>An obstruction to bipartiteness</h2>
@@ -1125,8 +1146,7 @@ odd-length cycle (and hence is not bipartite).</li>
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
-<p><br />
-</p>
+<p>(Proofs in the following slides.)</p>
 </section>
 <section id="bipartiteness-bfs-algorithm-pf.-i" class="slide level2">
 <h2>Bipartiteness: BFS algorithm, pf. I</h2>
@@ -1141,7 +1161,7 @@ same layer, and <span class="math inline">G</span> is bipartite.<br />
 same layer, and <span class="math inline">G</span> contains an
 odd-length cycle (and hence is not bipartite).</li>
 </ol>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:70%;">
 <p><strong>Pf</strong>. (i)</p>
 <ul>
@@ -1150,7 +1170,7 @@ odd-length cycle (and hence is not bipartite).</li>
 <li>Bipartition: <code>white</code> = nodes on odd levels,
 <code>blue</code> = nodes on even levels.</li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
 </div>
@@ -1170,7 +1190,7 @@ same layer, and <span class="math inline">G</span> is bipartite.<br />
 same layer, and <span class="math inline">G</span> contains an
 odd-length cycle (and hence is not bipartite).</li>
 </ol>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:80%;">
 <p><strong>Pf</strong>. (ii)</p>
 <ul>
@@ -1186,7 +1206,7 @@ path from <span class="math inline">y</span> to <span class="math inline">z</spa
 <li>Its length is <span class="math inline">1 + (j – i) + (j –
 i)</span>, which is odd.</li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:20%;">
+</div><div class="column" style="width:20%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
 </div>
@@ -1227,7 +1247,7 @@ webpages by importance.</li>
 <p> </p>
 <p><strong>Ex</strong>. Road network</p>
 <ul>
-<li>Node = intersection;</li>
+<li>Node = crossroad;</li>
 <li>edge = one-way street.</li>
 </ul>
 </div>
@@ -1276,10 +1296,12 @@ u</span> path.</li>
 <p><strong>Theorem</strong>. Can determine if <span class="math inline">G</span> is strongly connected in <span class="math inline">O(m + n)</span> time.<br />
 <strong>Pf</strong>.</p>
 <ul>
-<li>Pick any node <span class="math inline">s</span>.</li>
+<li>Pick any node <span class="math inline">s</span>.
+<ul>
 <li>Run BFS from <span class="math inline">s</span> in <span class="math inline">G</span>.</li>
 <li>Run BFS from <span class="math inline">s</span> in <span class="math inline">G^{reverse}</span>.</li>
 <li>Return true iff all nodes reached in both BFS executions.</li>
+</ul></li>
 <li>Correctness follows immediately from previous lemma.</li>
 </ul>
 </section>
@@ -1332,14 +1354,16 @@ order <span class="math inline">v_1, v_2, \ldots, v_n</span> and that
 <span class="math inline">G</span> also has a directed cycle <span class="math inline">C</span>. Let’s see what happens.</li>
 <li>Let <span class="math inline">v_i</span> be the lowest-indexed node
 in <span class="math inline">C</span>, and let <span class="math inline">v_j</span> be the node just before <span class="math inline">v_i</span>; thus <span class="math inline">(v_j,
-v_i)</span> is an edge.</li>
+v_i)</span> is an edge.
+<ul>
 <li>By our choice of <span class="math inline">i</span>, we have <span class="math inline">i &lt; j</span>.</li>
 <li>On the other hand, since <span class="math inline">(v_j ,
 v_i)</span> is an edge and <span class="math inline">v_1, v_2, \ldots,
 v_n</span> is a topological order, we must have <span class="math inline">j &lt; i</span>, a contradiction.</li>
+</ul></li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="200" /></p>
 </div>
 </section>
 <section id="dag-head" class="slide level2">
@@ -1353,17 +1377,19 @@ edges.<br />
 node has at least one entering edge. Let’s see what happens.</li>
 <li>Pick any node <span class="math inline">v</span>, and begin
 following edges backward from <span class="math inline">v</span>. Since
-<span class="math inline">v</span> has at least one entering edge <span class="math inline">(u, v)</span> we can walk backward to <span class="math inline">u</span>.</li>
+<span class="math inline">v</span> has at least one entering edge <span class="math inline">(u, v)</span> we can walk backward to <span class="math inline">u</span>.
+<ul>
 <li>Since <span class="math inline">u</span> has at least one entering
 edge <span class="math inline">(x, u)</span>, we can walk backward to
 <span class="math inline">x</span>.</li>
 <li>Repeat until we visit a node, say <span class="math inline">w</span>, twice.</li>
+</ul></li>
 <li>Let <span class="math inline">C</span> denote the sequence of nodes
 encountered between successive visits to <span class="math inline">w</span>. <span class="math inline">C</span> is a
 cycle.</li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="200" /></p>
 </div>
 </section>
 <section id="dag-property" class="slide level2">
@@ -1419,7 +1445,7 @@ from <span class="math inline">v</span> to <span class="math inline">w</span>
 <section id="ts-algorithm-example" class="slide level2">
 <h2>TS algorithm: example</h2>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="800" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="700" /></p>
 </div>
 </section></section>
     </div>

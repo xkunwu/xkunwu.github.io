@@ -222,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 40% 25% 5% 20% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
@@ -579,6 +580,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
+  <p class="course">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">6. Dynamic Programming I</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -588,7 +590,6 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/11/05</p>
 </div>
 </div>
 </section>
@@ -596,21 +597,21 @@ background-color: var(--r-background-color);
 
 <section id="algorithmic-paradigms" class="slide level2">
 <h2>Algorithmic paradigms</h2>
-<p><strong>Greedy</strong>. Process the input in some order,
-<em>myopically</em> making <em>irrevocable</em> decisions.</p>
+<p><strong>Greedy</strong>. <em>Myopically</em> ordering, making
+<em>irrevocable</em> decisions.</p>
 <ul>
-<li>possibly, <em>no</em> natural greedy algorithm works.</li>
+<li>possibly, <em>no</em> natural greedy strategy.</li>
 </ul>
 <p><strong>Divide-and-conquer</strong>. Break up a problem into
 <em>independent</em> sub-problems; solve each subproblem; combine
-solutions to sub-problems to form solution to original problem.</p>
+solutions to sub-problems (form solution to original problem).</p>
 <ul>
 <li>Not strong enough: reduce polynomial to faster running time.</li>
 </ul>
 <div class="fragment">
 <p><strong>Dynamic programming</strong>. Break up a problem into a
 series of <em>overlapping</em> sub-problems; combine solutions to
-smaller sub-problems to form solution to large subproblem.</p>
+smaller sub-problems (form solution to larger subproblem).</p>
 <ul>
 <li>opposite of greedy: work through all possible global optimal.
 <ul>
@@ -642,8 +643,8 @@ explicitly.</li>
 </ul>
 <div class="fragment">
 <p> </p>
-<p><strong>Goal</strong>: find max-weight subset of mutually compatible
-jobs.</p>
+<p><strong>Goal</strong>: find <em>max-weight</em> subset of mutually
+compatible jobs.</p>
 <table>
 <thead>
 <tr class="header">
@@ -715,12 +716,11 @@ jobs.</li>
 <p><strong>Recall</strong>. Greedy algorithm is correct if all weights
 are 1.</p>
 <div class="fragment">
-<p> </p>
 <p><strong>Observation</strong>. Greedy algorithm fails for weighted
 version.</p>
 <ul>
-<li>goal and progress measure are unrelated.</li>
-<li>previous greedy decisions are irrevocable.</li>
+<li>goal and progress measure are <em>unrelated</em>.</li>
+<li>previous greedy decisions are <em>irrevocable</em>.</li>
 </ul>
 <table>
 <thead>
@@ -787,11 +787,12 @@ version.</p>
 <p><strong>Convention</strong>. Jobs are in ascending order of finish
 time: <span class="math inline">f_1 \le f_2 \le . . . \le
 f_n</span>.</p>
-<p><strong>Def</strong>. <span class="math inline">p(j)</span> = largest
-index <span class="math inline">i &lt; j</span> such that job <span class="math inline">i</span> is compatible with <span class="math inline">j</span>.</p>
+<p><strong>Def</strong>. <span class="math inline">p(j)</span> =
+<em>largest</em> index <span class="math inline">i &lt; j</span> such
+that job <span class="math inline">i</span> is compatible with <span class="math inline">j</span>.</p>
 <ul>
-<li><span class="math inline">i</span> is rightmost interval that ends
-before <span class="math inline">j</span> begins</li>
+<li><span class="math inline">i</span> is <em>rightmost</em> interval
+that ends before <span class="math inline">j</span> begins</li>
 </ul>
 <table>
 <thead>
@@ -859,17 +860,16 @@ before <span class="math inline">j</span> begins</li>
 <section id="dynamic-programming-binary-choice" class="slide level2">
 <h2>Dynamic programming: binary choice</h2>
 <p><strong>Def</strong>. <span class="math inline">OPT(j)</span> = max
-weight of any subset of mutually compatible jobs for subproblem
-consisting only of jobs <span class="math inline">1, 2, ...,
-j</span>.</p>
+weight of <em>any subset</em> of mutually compatible jobs (for
+subproblem consisting only of jobs <span class="math inline">1, 2, ...,
+j</span>).</p>
 <p><strong>Goal</strong>. <span class="math inline">OPT(n)</span> = max
-weight of any subset of mutually compatible jobs.</p>
+weight of <em>any subset</em> of mutually compatible jobs.</p>
 <div class="fragment">
 <p><strong>Case 1</strong>. <span class="math inline">OPT(j)</span> does
 not select job <span class="math inline">j</span>.</p>
 <ul>
-<li>Must be an optimal solution to problem consisting of remaining jobs
-<span class="math inline">1, 2, ..., j – 1</span>.</li>
+<li>Optimal solution to <em>smaller problem</em>: remaining jobs <span class="math inline">1, 2, ..., j – 1</span>.</li>
 </ul>
 <p><strong>Case 2</strong>. <span class="math inline">OPT(j)</span>
 selects job <span class="math inline">j</span>.</p>
@@ -877,19 +877,19 @@ selects job <span class="math inline">j</span>.</p>
 <li>Collect profit <span class="math inline">w_j</span>.</li>
 <li>Can’t use incompatible jobs <span class="math inline">\{ p(j) + 1,
 p(j) + 2, ..., j – 1 \}</span>.</li>
-<li>Must include optimal solution to problem consisting of remaining
-compatible jobs <span class="math inline">1, 2, ..., p(j)</span>.</li>
+<li>Optimal solution to <em>smaller problem</em>: remaining compatible
+jobs <span class="math inline">1, 2, ..., p(j)</span>.</li>
 </ul>
 </div>
 </section>
 <section id="dp-binary-choice-cont." class="slide level2">
 <h2>DP: binary choice (cont.)</h2>
 <p><strong>Def</strong>. <span class="math inline">OPT(j)</span> = max
-weight of any subset of mutually compatible jobs for subproblem
-consisting only of jobs <span class="math inline">1, 2, ...,
-j</span>.</p>
+weight of <em>any subset</em> of mutually compatible jobs (for
+subproblem consisting only of jobs <span class="math inline">1, 2, ...,
+j</span>).</p>
 <p><strong>Goal</strong>. <span class="math inline">OPT(n)</span> = max
-weight of any subset of mutually compatible jobs.</p>
+weight of <em>any subset</em> of mutually compatible jobs.</p>
 <p><strong>Case 1</strong>. <span class="math inline">OPT(j)</span> does
 not select job <span class="math inline">j</span>.</p>
 <p><strong>Case 2</strong>. <span class="math inline">OPT(j)</span>
@@ -941,6 +941,7 @@ n)</span><br />
 <code>COMPUTE-OPT</code>(<span class="math inline">j – 1</span>), <span class="math inline">w_j</span> + <code>COMPUTE-OPT</code>(<span class="math inline">p[j]</span>) };</li>
 </ol></li>
 </ol>
+<p>Discussed next.</p>
 </section>
 <section id="brute-force-scheduling-analysis" class="slide level2">
 <h2>Brute-force scheduling: analysis</h2>
@@ -949,7 +950,7 @@ slow because of overlapping sub-problems <span class="math inline">\Rightarrow</
 algorithm.</p>
 <p><strong>Ex</strong>. # recursive calls for family of “layered”
 instances grows like Fibonacci sequence.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <table>
 <thead>
@@ -997,11 +998,15 @@ instances grows like Fibonacci sequence.</p>
 </tr>
 </tbody>
 </table>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p><strong>Key insight</strong>. Avoid repeated computations using
+memory.</p>
 </div>
 </section>
 <section id="memoized-scheduling" class="slide level2">
@@ -1013,6 +1018,7 @@ instances grows like Fibonacci sequence.</p>
 <li>Use <span class="math inline">M[j]</span> to avoid solving
 subproblem <span class="math inline">j</span> more than once.</li>
 </ul>
+<div class="fragment">
 <p><code>TOP-DOWN</code>(<span class="math inline">n, s_1, \ldots, s_n,
 f_1, \ldots, f_n, w_1, \ldots, w_n</span>)</p>
 <ol type="1">
@@ -1032,6 +1038,7 @@ via binary search;</li>
 </ol></li>
 <li>RETURN <span class="math inline">M[j]</span>;</li>
 </ol>
+</div>
 </section>
 <section id="memoized-scheduling-analysis" class="slide level2">
 <h2>Memoized scheduling: analysis</h2>
@@ -1054,8 +1061,11 @@ either</p>
 recursive calls</li>
 </ol></li>
 </ul></li>
-<li><p>Progress measure <span class="math inline">\Phi</span> = #
-initialized entries among <span class="math inline">M[1..n]</span>.</p>
+</ul>
+<div class="fragment">
+<ul>
+<li>Define progress measure <span class="math inline">\Phi</span>: #
+initialized entries among <span class="math inline">M[1..n]</span>.
 <ul>
 <li>initially <span class="math inline">\Phi = 0</span>; throughout
 <span class="math inline">\Phi \le n</span>.</li>
@@ -1063,15 +1073,17 @@ initialized entries among <span class="math inline">M[1..n]</span>.</p>
 <li>increases <span class="math inline">\Phi</span> by 1 <span class="math inline">\Rightarrow \le 2n</span> recursive calls.</li>
 </ol></li>
 </ul></li>
-<li><p>Overall running time of <code>M-COMPUTE-OPT</code>(<span class="math inline">n</span>) is <span class="math inline">O(n)</span>.</p></li>
+<li>Overall running time of <code>M-COMPUTE-OPT</code>(<span class="math inline">n</span>) is <span class="math inline">O(n)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="memoized-scheduling-find-a-solution" class="slide level2">
 <h2>Memoized scheduling: find a solution</h2>
-<p><strong>Q</strong>. DP algorithm computes optimal value. How to find
-optimal solution?<br />
-<strong>A</strong>. Make a second pass by calling
-<code>FIND-SOLUTION</code>(<span class="math inline">n</span>).</p>
+<p><strong>Q</strong>. DP algorithm computes optimal <em>value</em>. How
+to find optimal <em>solution</em>?<br />
+</p>
+<div class="fragment">
+<p><strong>A</strong>. Make a second pass, ie., backtrace.</p>
 <p> </p>
 <p><code>FIND-SOLUTION</code>(<span class="math inline">j</span>)</p>
 <ol type="1">
@@ -1088,12 +1100,13 @@ optimal solution?<br />
 1</span>);</li>
 </ol></li>
 </ol>
+</div>
 </section>
 <section id="bottom-up-dp" class="slide level2">
 <h2>Bottom-up DP</h2>
 <p><strong>Bottom-up dynamic programming</strong>. Unwind recursion.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
 </section>
 <section id="bottom-up-dp-algorithm" class="slide level2">
@@ -1112,7 +1125,9 @@ via binary search;</li>
 </ol></li>
 </ol>
 <p> </p>
+<div class="fragment">
 <p><strong>Running time</strong>. The bottom-up version takes <span class="math inline">O(n \log n)</span> time.</p>
+</div>
 </section>
 <section id="maximum-sub-array-problem" class="slide level2">
 <h2>Maximum Sub-array Problem</h2>
@@ -1254,6 +1269,7 @@ contiguous sub-array whose sum is maximum.</p>
 a[i+1] + \ldots + a[j]</span>.</li>
 <li>Takes <span class="math inline">\Theta(n^3)</span> time.</li>
 </ul>
+<div class="fragment">
 <p><strong>Apply “cumulative sum” trick</strong>.</p>
 <ul>
 <li>Pre-compute cumulative sums: <span class="math inline">S[i] = a[0] +
@@ -1262,6 +1278,7 @@ a[1] + \ldots + a[i]</span>.</li>
 S[i−1]</span>.</li>
 <li>Improves running time <span class="math inline">\Theta(n^2)</span>.</li>
 </ul>
+</div>
 </section>
 <section id="kadanes-algorithm" class="slide level2">
 <h2>Kadane’s algorithm</h2>
@@ -1270,6 +1287,7 @@ sum of any sub-array of <span class="math inline">x</span> whose
 rightmost index is <span class="math inline">i</span>.</p>
 <p><strong>Goal</strong>. <span class="math inline">\max_i
 OPT(i)</span></p>
+<div class="fragment">
 <p><strong>Bellman equation</strong>.</p>
 <p><span class="math display">
 OPT(i) = \left\{ \begin{array}{lcl}
@@ -1277,7 +1295,15 @@ x_1 &amp; \text{if} &amp; i = 1 \\
 \max \{x_i, x_i + OPT(i-1)\} &amp; \text{if} &amp; i &gt; 1 \\
 \end{array}\right.
 </span></p>
+<ul>
+<li>take only element <span class="math inline">i</span></li>
+<li>take <span class="math inline">i</span> and best sub-array ending at
+<span class="math inline">i-1</span></li>
+</ul>
+</div>
+<div class="fragment">
 <p><strong>Running time</strong>. <span class="math inline">O(n)</span>.</p>
+</div>
 </section>
 <section id="maximum-rectangle-problem" class="slide level2">
 <h2>Maximum Rectangle Problem</h2>
@@ -1378,7 +1404,7 @@ likelihood estimation, technical job interviews, etc.</p>
 <h2>Bentley’s algorithm</h2>
 <p><strong>Assumption</strong>. Suppose you knew the left and right
 column indices <span class="math inline">j</span> and <span class="math inline">jʹ</span>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <table>
 <thead>
@@ -1458,7 +1484,7 @@ column indices <span class="math inline">j</span> and <span class="math inline">
 </tr>
 </tbody>
 </table>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <table>
 <thead>
 <tr class="header">
@@ -1524,23 +1550,29 @@ y_n)</span>.</li>
 <li>Find a line <span class="math inline">y = ax + b</span> that
 minimizes the sum of the squared error:</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">
 SSE = \sum_{i=1}^n (y_i - ax_i - b)^2
 </span></p>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="250" /></p>
 </div>
 </div>
 </div>
+<div class="fragment">
 <p><strong>Solution</strong>. Calculus <span class="math inline">\Rightarrow</span> min error is achieved when</p>
+<p><span class="math display">
+a = \frac{n \sum_i x_i y_i - (\sum_i x_i) (\sum_i y_i)}{n \sum_i x_i^2 -
+(\sum_i x_i)^2}, b = \frac{\sum_i y_i - a \sum_i x_i}{n}
+</span></p>
+</div>
 </section>
 <section id="segmented-least-squares-problem" class="slide level2">
 <h2>Segmented Least Squares Problem</h2>
 <p><strong>Segmented least squares</strong>.</p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:75%;">
 <ul>
 <li>Points lie roughly on a sequence of line segments.</li>
@@ -1548,17 +1580,19 @@ SSE = \sum_{i=1}^n (y_i - ax_i - b)^2
 with <span class="math inline">x_1 &lt; x_2 &lt; ... &lt; x_n</span>,
 find a <em>sequence of lines</em> that minimizes <span class="math inline">f(x)</span>.</li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:25%;">
+</div><div class="column" style="width:25%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 </div>
 </div>
+<div class="fragment">
 <p><strong>Q</strong>. What is a reasonable choice for <span class="math inline">f(x)</span> to balance <em>accuracy</em> and
 <em>parsimony</em>?</p>
 <ul>
 <li>goodness of fit vs. number of lines</li>
 </ul>
+</div>
 <div class="fragment">
 <p><strong>Goal</strong>. Minimize <span class="math inline">f(x) = E +
 c L</span> for some constant <span class="math inline">c &gt; 0</span>,
@@ -1578,7 +1612,7 @@ segment.</li>
 <span class="math inline">p_1, p_2, \ldots, p_j</span>.</li>
 <li><span class="math inline">e_{ij}</span> = SSE for for points <span class="math inline">p_i, p_{i+1}, \ldots, p_j</span>.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:75%;">
 <p><strong>To compute <span class="math inline">OPT(j)</span></strong>:</p>
 <ul>
@@ -1588,12 +1622,13 @@ j</span>.</li>
 <li>Cost = <span class="math inline">e_{ij} + c + OPT(i –
 1)</span>.</li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:25%;">
+</div><div class="column" style="width:25%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 </div>
 </div>
+<div class="fragment">
 <p><strong>Bellman equation</strong>.</p>
 <p><span class="math display">
 OPT(j) = \left\{ \begin{array}{lcl}
@@ -1602,6 +1637,7 @@ OPT(j) = \left\{ \begin{array}{lcl}
 &gt; 0 \\
 \end{array}\right.
 </span></p>
+</div>
 </section>
 <section id="segmented-least-squares-algorithm" class="slide level2">
 <h2>Segmented Least Squares: algorithm</h2>
@@ -1672,13 +1708,13 @@ items taken.</p>
 </ul>
 <p><strong>Assumption</strong>. All values and weights are integral.</p>
 <p> </p>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:60%;">
-<p><strong>Ex</strong>. The subset { 1, 2, 5 } has value $35 (and weight
+<p><strong>Ex</strong>. The subset { 1, 2, 5 } has value 35 (and weight
 10).</p>
-<p><strong>Ex</strong>. The subset { 3, 4 } has value $40 (and weight
+<p><strong>Ex</strong>. The subset { 3, 4 } has value 40 (and weight
 11).</p>
-</div><div class="column" data-align="bottom" style="width:40%;">
+</div><div class="column" style="width:40%;">
 <table>
 <thead>
 <tr class="header">
@@ -1819,9 +1855,8 @@ OPT(i-1, w) &amp; \text{if}\ w_i &gt; w \\
 <section id="dp-two-dimensional-table" class="slide level2">
 <h2>DP: two-dimensional table</h2>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
-<p> </p>
 <p><span class="math display">
 OPT(i, w) = \left\{ \begin{array}{ll}
 0 &amp; \text{if}\ i = 0 \\
@@ -1860,9 +1895,8 @@ OPT(i-1, w) &amp; \text{if}\ w_i &gt; w \\
 <h2>Knapsack problem: bottom-up DP demo</h2>
 <p>Knapsack size <span class="math inline">W = 6</span>, items <span class="math inline">w_1 = 2, w_2 = 2, w_3 = 3</span>.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
-<p> </p>
 <p><span class="math display">
 OPT(i, w) = \left\{ \begin{array}{ll}
 0 &amp; \text{if}\ i = 0 \\
@@ -1949,7 +1983,7 @@ V)</span>.</p>
 tends to loop back and form <em>base pairs</em> with itself. This
 structure is essential for understanding behavior of molecule.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
 </section>
 <section id="rna-matching-rule" class="slide level2">
@@ -1982,7 +2016,6 @@ then <span class="math inline">i &lt; j – 4</span>.</li>
 <li>[Non-crossing] If <span class="math inline">(b_i, bj)</span> and
 <span class="math inline">(b_k, bl)</span> are two pairs in <span class="math inline">S</span>, then we cannot have <span class="math inline">i &lt; k &lt; j &lt; l</span>.</li>
 </ul>
-<p> </p>
 <p><strong>Free-energy hypothesis</strong>. RNA molecule will form
 secondary structure with <em>minimum total free energy</em>.</p>
 <ul>
@@ -2001,7 +2034,7 @@ base pairs.</p>
 <strong>D</strong>. No, violates no-crossing condition.</p>
 <p> </p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 </section>
 <section id="quiz-rna-secondary-structure" class="slide level2">
@@ -2064,7 +2097,7 @@ OPT(t + 1, j – 1) }</span>.</li>
 </ul></li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="100" /></p>
 </div>
 </section>
 <section id="quiz-dp-for-rna" class="slide level2">
@@ -2092,7 +2125,7 @@ then <span class="math inline">j</span>.<br />
 <p> </p>
 <p><strong>Ex</strong>. RNA sequence ACCGGUAGU.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
 </section>
 <section id="dp-for-rna-algorithm" class="slide level2">

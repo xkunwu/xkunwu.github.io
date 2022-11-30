@@ -222,9 +222,10 @@ align-self: start;
 div.cover-slide {
 height: 100vh;
 display: grid;
-grid-template-rows: 5% 40% 25% 5% 20% 5%;
+grid-template-rows: 5% 40% 15% 20% 5% 10% 5%;
 grid-template-areas: "."
 "title"
+"."
 "author"
 "."
 "date"
@@ -579,6 +580,7 @@ background-color: var(--r-background-color);
 <section id="cover-slide">
 <div class="cover-slide">
 <div class="title">
+  <p class="course">Algorithm II</p>
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
   <p class="title">4. Greedy Algorithms II</p>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
@@ -588,7 +590,6 @@ background-color: var(--r-background-color);
   <p class="email">xkun.wu [at] gmail</p>
 </div>
 <div class="date">
-  <p class="date">2021/10/22</p>
 </div>
 </div>
 </section>
@@ -596,33 +597,33 @@ background-color: var(--r-background-color);
 
 <section>
 <section id="dijkstras-algorithm" class="title-slide slide level1 center">
-<h1 class="center">Dijkstra′s algorithm</h1>
+<h1 class="center">Dijkstra’s algorithm</h1>
 
 </section>
 <section id="single-pair-shortest-path-problem" class="slide level2">
 <h2>Single-pair shortest path problem</h2>
 <p><strong>Problem</strong>. Given a digraph <span class="math inline">G
-= (V, E)</span>, edge lengths <span class="math inline">l_e \le
+= (V, E)</span>, edge lengths <span class="math inline">l_e \ge
 0</span>, source <span class="math inline">s \in V</span>, and
 destination <span class="math inline">t \in V</span>, find a shortest
 directed path from <span class="math inline">s</span> to <span class="math inline">t</span>.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="600" /></p>
 </div>
 </section>
 <section id="single-source-shortest-paths-problem" class="slide level2">
 <h2>Single-source shortest paths problem</h2>
 <p><strong>Problem</strong>. Given a digraph <span class="math inline">G
-= (V, E)</span>, edge lengths <span class="math inline">l_e \le
+= (V, E)</span>, edge lengths <span class="math inline">l_e \ge
 0</span>, source <span class="math inline">s \in V</span>, find a
 shortest directed path from <span class="math inline">s</span> to every
 node.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="600" /></p>
 </div>
 </section>
 <section id="dijkstras-single-source-shortest-paths" class="slide level2">
-<h2>Dijkstra′s (single-source shortest-paths)</h2>
+<h2>Dijkstra’s (single-source shortest-paths)</h2>
 <p><strong>Greedy approach</strong>. Maintain a set of explored nodes
 <span class="math inline">S</span> for which algorithm has determined
 <span class="math inline">d[u]</span> = length of a shortest <span class="math inline">s \leadsto u</span> path.</p>
@@ -643,7 +644,7 @@ S</span> which minimizes <span class="math inline">\pi(v) =
 </div>
 </section>
 <section id="dijkstras-proof-of-correctness" class="slide level2">
-<h2>Dijkstra′s: proof of correctness</h2>
+<h2>Dijkstra’s: proof of correctness</h2>
 <p><strong>Invariant</strong>. For each node <span class="math inline">u
 \notin S</span>: <span class="math inline">d[u]</span> = length of a
 shortest <span class="math inline">s \leadsto u</span> path.<br />
@@ -671,14 +672,14 @@ the subpath <span class="math inline">s \leadsto x</span>.</li>
 </ul></li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="250" /></p>
 </div>
 <div class="note">
 
 </div>
 </section>
 <section id="dijkstras-efficient-implementation" class="slide level2">
-<h2>Dijkstra′s: efficient implementation</h2>
+<h2>Dijkstra’s: efficient implementation</h2>
 <p><strong>Critical optimization 1</strong>. For each unexplored node
 <span class="math inline">v \notin S</span>: explicitly maintain <span class="math inline">\pi[v]</span> instead of computing directly from
 definition <span class="math inline">\pi(v) = \min_{e=(u,v): u \in S}
@@ -698,7 +699,6 @@ priority queue (PQ)</em> to choose an unexplored node that minimizes
 <span class="math inline">\pi[v]</span>.</p>
 </div>
 <div class="fragment">
-<p> </p>
 <p><strong>Implementation</strong>.</p>
 <ul>
 <li>Algorithm maintains <span class="math inline">\pi[v]</span> for each
@@ -711,7 +711,7 @@ shortest <span class="math inline">s \leadsto u</span> path.</li>
 </div>
 </section>
 <section id="dijkstras-algorithm-1" class="slide level2">
-<h2>Dijkstra′s: algorithm</h2>
+<h2>Dijkstra’s: algorithm</h2>
 <ol type="1">
 <li>FOREACH <span class="math inline">v \ne s</span>: <span class="math inline">\pi[v] = \infty</span>, <span class="math inline">pred[v]</span> = <code>null</code>; <span class="math inline">\pi[s] = 0</span>;</li>
 <li>Create an empty priority queue <code>pq</code>;</li>
@@ -736,10 +736,10 @@ l_e</span>);</li>
 </ol>
 </section>
 <section id="demo-dijkstras-algorithm" class="slide level2">
-<h2>Demo: Dijkstra′s algorithm</h2>
+<h2>Demo: Dijkstra’s algorithm</h2>
 </section>
 <section id="dijkstras-analysis" class="slide level2">
-<h2>Dijkstra′s: analysis</h2>
+<h2>Dijkstra’s: analysis</h2>
 <p><strong>Performance</strong>. Depends on <code>PQ</code>: <span class="math inline">n</span> <code>INSERT</code>, <span class="math inline">n</span> <code>DELETE-MIN</code>, <span class="math inline">\le m</span> <code>DECREASE-KEY</code>.</p>
 <ul>
 <li>each priority queue operation can be made to run in <span class="math inline">O(\log n)</span> time.</li>
@@ -748,7 +748,7 @@ l_e</span>);</li>
 </ul>
 </section>
 <section id="dijkstras-which-priority-queue" class="slide level2">
-<h2>Dijkstra′s: which priority queue?</h2>
+<h2>Dijkstra’s: which priority queue?</h2>
 <p><strong>Performance</strong>. Depends on <code>PQ</code>: <span class="math inline">n</span> <code>INSERT</code>, <span class="math inline">n</span> <code>DELETE-MIN</code>, <span class="math inline">\le m</span> <code>DECREASE-KEY</code>.</p>
 <ul>
 <li>Array implementation optimal for dense graphs (<span class="math inline">\Theta(n^2)</span> edges).</li>
@@ -789,7 +789,7 @@ lengths in <span class="math inline">O(m)</span> time.</p>
 of distance from s.</p>
 </section>
 <section id="dijkstras-extensions" class="slide level2">
-<h2>Dijkstra′s: extensions</h2>
+<h2>Dijkstra’s: extensions</h2>
 <p>Dijkstra’s algorithm and proof extend to several related
 problems:</p>
 <ul>
@@ -844,19 +844,18 @@ have in common? Choose the best answer.</p>
 <li>not 1</li>
 <li>an even number</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p> </p>
 <p>Hint: cycle cross the cut, so even number of times</p>
 </div>
 </section>
@@ -865,7 +864,7 @@ have in common? Choose the best answer.</p>
 <p><strong>Proposition</strong>. A cycle and a cutset intersect in an
 even number of edges.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
 </section>
 <section id="spanning-tree" class="slide level2">
@@ -990,11 +989,16 @@ edges.</li>
 <p><strong>Greedy coloring</strong>.</p>
 <ul>
 <li>Apply the red and blue rules (non-deterministically!) until all
-edges are colored. The blue edges form an MST.</li>
+edges are colored. The blue edges form an MST.
+<ul>
 <li>Note: can stop once <span class="math inline">n – 1</span> edges
 colored blue.</li>
+</ul></li>
 </ul>
 </div>
+</section>
+<section id="demo-greedy-coloring" class="slide level2">
+<h2>Demo: Greedy coloring</h2>
 </section>
 <section id="greedy-coloring-invariant" class="slide level2">
 <h2>Greedy coloring: invariant</h2>
@@ -1007,7 +1011,7 @@ and no red edge.<br />
 <span class="math inline">f</span> be edge colored blue.</li>
 <li>if <span class="math inline">f \in T^\ast</span>, then <span class="math inline">T^\ast</span> still satisfies invariant.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:70%;">
 <ul>
 <li>Otherwise, consider fundamental cycle <span class="math inline">C</span> by adding <span class="math inline">f</span> to <span class="math inline">T^\ast</span>.
@@ -1025,7 +1029,7 @@ and <span class="math inline">c_e \ge c_f</span></li>
 satisfies invariant.</li>
 </ul></li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
 </div>
@@ -1046,7 +1050,7 @@ and no red edge.<br />
 <span class="math inline">e</span> be edge colored red.</li>
 <li>if <span class="math inline">e \notin T^\ast</span>, then <span class="math inline">T^\ast</span> still satisfies invariant.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:70%;">
 <ul>
 <li>Otherwise, consider fundamental cutset <span class="math inline">D</span> by deleting <span class="math inline">e</span> from <span class="math inline">T^\ast</span>.
@@ -1064,7 +1068,7 @@ blue</li>
 <li>Thus, <span class="math inline">T^\ast \cup \{ f \} – \{ e \}</span>
 satisfies invariant.</li>
 </ul>
-</div><div class="column" data-align="bottom" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
 </div>
@@ -1122,7 +1126,7 @@ different blue trees.
 
 </section>
 <section id="prims-algorithm" class="slide level2">
-<h2>Prim′s algorithm</h2>
+<h2>Prim’s algorithm</h2>
 <p>Initialize <span class="math inline">S = \{ s \}</span> for any node
 <span class="math inline">s</span>, <span class="math inline">T =
 \emptyset</span>.<br />
@@ -1137,7 +1141,7 @@ exactly one endpoint in <span class="math inline">S</span>.</li>
 <strong>Pf</strong>. Special case of greedy coloring (blue rule
 repeatedly applied to <span class="math inline">S</span>).</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="200" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 <div class="note">
 
@@ -1145,7 +1149,7 @@ repeatedly applied to <span class="math inline">S</span>).</p>
 </div>
 </section>
 <section id="prims-algorithm-implementation" class="slide level2">
-<h2>Prim′s algorithm: implementation</h2>
+<h2>Prim’s algorithm: implementation</h2>
 <ol type="1">
 <li><span class="math inline">S = \emptyset, T = \emptyset</span>;</li>
 <li><span class="math inline">s</span> = any node in <span class="math inline">V</span>;</li>
@@ -1169,8 +1173,11 @@ repeatedly applied to <span class="math inline">S</span>).</p>
 </ol></li>
 </ol>
 </section>
+<section id="demo-prims-algorithm" class="slide level2">
+<h2>Demo: Prim’s algorithm</h2>
+</section>
 <section id="prims-algorithm-analysis" class="slide level2">
-<h2>Prim′s algorithm: analysis</h2>
+<h2>Prim’s algorithm: analysis</h2>
 <p><strong>Theorem</strong>. Prim’s algorithm can be implemented to run
 in <span class="math inline">O(m \log n)</span> time.<br />
 <strong>Pf</strong>. Implementation almost identical to Dijkstra’s
@@ -1184,7 +1191,7 @@ algorithm.</p>
 </ul>
 </section>
 <section id="kruskals-algorithm" class="slide level2">
-<h2>Kruskal′s algorithm</h2>
+<h2>Kruskal’s algorithm</h2>
 <p>Consider edges in <em>ascending</em> order of cost:</p>
 <ul>
 <li>Add to tree unless it would create a cycle.</li>
@@ -1221,7 +1228,7 @@ n)</span></li>
 </ul>
 </section>
 <section id="kruskals-algorithm-implementation" class="slide level2">
-<h2>Kruskal′s algorithm: implementation</h2>
+<h2>Kruskal’s algorithm: implementation</h2>
 <ol type="1">
 <li>SORT <span class="math inline">m</span> edges by cost and renumber
 so that <span class="math inline">c(e_1) \le c(e_2) \le \ldots \le
@@ -1241,8 +1248,11 @@ c(e_m)</span>;</li>
 <li>RETURN T.</li>
 </ol>
 </section>
+<section id="demo-kruskals-algorithm" class="slide level2">
+<h2>Demo: Kruskal’s algorithm</h2>
+</section>
 <section id="kruskals-algorithm-analysis" class="slide level2">
-<h2>Kruskal′s algorithm: analysis</h2>
+<h2>Kruskal’s algorithm: analysis</h2>
 <p><strong>Theorem</strong>. Kruskal’s algorithm can be implemented to
 run in <span class="math inline">O(m \log m)</span> time.<br />
 <strong>Pf</strong>.</p>
@@ -1287,6 +1297,9 @@ by either component</li>
 </div>
 </div>
 </section>
+<section id="demo-reverse-delete-algorithm" class="slide level2">
+<h2>Demo: Reverse-delete algorithm</h2>
+</section>
 <section id="review-greedy-mst-algorithms" class="slide level2">
 <h2>Review: greedy MST algorithms</h2>
 <p><strong>Red rule</strong>.</p>
@@ -1306,9 +1319,11 @@ edges.</li>
 <p><strong>Greedy coloring</strong>.</p>
 <ul>
 <li>Apply the red and blue rules (non-deterministically!) until all
-edges are colored. The blue edges form an MST.</li>
+edges are colored. The blue edges form an MST.
+<ul>
 <li>Note: can stop once <span class="math inline">n – 1</span> edges
 colored blue.</li>
+</ul></li>
 </ul>
 <div class="fragment">
 <p><strong>Theorem</strong>. The greedy algorithm is correct.</p>
@@ -1316,7 +1331,7 @@ colored blue.</li>
 </div>
 </section>
 <section id="borůvkas-algorithm" class="slide level2">
-<h2>Borůvka′s algorithm</h2>
+<h2>Borůvka’s algorithm</h2>
 <p>Repeat until only one tree.</p>
 <ul>
 <li>Apply blue rule to cutset corresponding to <em>each</em> blue
@@ -1332,8 +1347,11 @@ blue rule).</p>
 </div>
 </div>
 </section>
+<section id="demo-borůvkas-algorithm" class="slide level2">
+<h2>Demo: Borůvka’s algorithm</h2>
+</section>
 <section id="borůvkas-analysis" class="slide level2">
-<h2>Borůvka′s: analysis</h2>
+<h2>Borůvka’s: analysis</h2>
 <p><strong>Theorem</strong>. Borůvka’s algorithm can be implemented to
 run in <span class="math inline">O(m \log n)</span> time.<br />
 <strong>Pf</strong>.</p>
@@ -1351,11 +1369,11 @@ if <span class="math inline">u</span> and <span class="math inline">v</span> are
 phase (at least) halves total # components.</li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="200" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
 </section>
 <section id="borůvkas-contraction-implementation" class="slide level2">
-<h2>Borůvka′s: Contraction implementation</h2>
+<h2>Borůvka’s: Contraction implementation</h2>
 <p><strong>Contraction version</strong>.</p>
 <ul>
 <li>After each phase, contract each blue tree to a single
@@ -1365,14 +1383,14 @@ one).</li>
 <li>Borůvka phase becomes: take cheapest edge incident to each
 node.</li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" width="1600" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="600" /></p>
 </div>
 </div>
 </div>
@@ -1386,7 +1404,7 @@ self-loops or parallel edges.</p>
 <p><strong>Goal</strong>. <span class="math inline">O(m + n)</span>
 time.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="500" /></p>
 </div>
 </section>
 <section id="contract-a-set-of-edges-solution" class="slide level2">
@@ -1420,7 +1438,7 @@ removing parallel edges.</li>
 </div>
 </section>
 <section id="borůvkas-algorithm-on-planar-graphs" class="slide level2">
-<h2>Borůvka′s algorithm on planar graphs</h2>
+<h2>Borůvka’s algorithm on planar graphs</h2>
 <p><strong>Theorem</strong>. Borůvka’s algorithm (contraction version)
 can be implemented to run in <span class="math inline">O(n)</span> time
 on planar graphs.<br />
@@ -1438,7 +1456,7 @@ contractions/deletions.</li>
 + cn / 4 + cn / 8 + \ldots = O(n)</span>.</li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="400" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="350" /></p>
 </div>
 </section>
 <section id="borůvkaprim-algorithm" class="slide level2">
@@ -1479,7 +1497,7 @@ n</span> nodes and <span class="math inline">\le m</span> edges.</li>
 of <span class="math inline">n</span> objects labeled <span class="math inline">p_1 .. p_n</span>, partition into clusters so that
 objects in different clusters are far apart.</p>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="600" /></p>
 </div>
 </section>
 <section id="clustering-of-maximum-spacing" class="slide level2">
@@ -1706,12 +1724,12 @@ v)</span>.</li>
 </ul></li>
 </ul></li>
 </ul>
-<div class="columns" data-align="center">
+<div class="columns">
 <div class="column" style="width:50%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
-</div><div class="column" data-align="bottom" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="nopub">
 <p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
 </div>
@@ -1804,7 +1822,7 @@ a node in <span class="math inline">C</span> except <span class="math inline">(a
 one that enters <span class="math inline">b</span>.</li>
 </ul>
 <div class="nopub">
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="300" /></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAZCAIAAADMuvsyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAPtJREFUSEu9lkESgkAQA30IR///M96gIxOt2OwuAyhdfdtMcuDCbZ7u7uOf+BCHUwV/B/rD9nCoi9Og9uNt8Bbm8WHQ5r6Gx4kwM7tAA4yAhhM8u0oUwCFUCMMBclChPsi7SrzhcIIbV4kViEGFjPZwgmNXiQU8QYVWjIYDtMBxIBt6bAwnaKyoyz6l4QC9A3WwRXU4wQZUqMaOYcw0VbTAX76xzoZsD6O0qI77jIbRBeuZJu1h3EOFDARcJVY0hnHpKtEBYVcJ42sYaajQEJxAhRY0jATMTB2cu0rkMN7cDB0APTAC3X+uMCvOgEL3ir9MlKcX/VdjZZ7uT8xiusGakVnUAAAAAElFTkSuQmCC" height="250" /></p>
 </div>
 <p><strong>Claim</strong>. <span class="math inline">T^\ast</span> is a
 min-cost arborescence.</p>
