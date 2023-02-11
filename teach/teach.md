@@ -15,6 +15,44 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="MachineLearning23/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2023] Machine Learning (I)</title>
+    <links>
+      [<a href="MachineLearning23/ML2023F.html">2023F</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="DeepLearning22F/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2022] Deep Learning (I)</title>
+    <links>
+      [<a href="DeepLearning22F/DL2023F.html">2023F</a>]
+      [<a href="DeepLearning22F/DL2022F.html">2022F</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="SpeechLanguage22F/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2022] Natural Language Processing (I)</title>
+    <links>
+      [<a href="SpeechLanguage22F/NLP2023F.html">2023F</a>]
+      [<a href="SpeechLanguage22F/NLP2022F.html">2022F</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="Algorithm21H/teaser.png">
   </div>
   <div class="pub_txt">
@@ -59,30 +97,6 @@ read_time: false
     <links>
       [<a href="Graphics21H/CG2022H.html">2022H</a>]
       [<a href="Graphics21H/CG2021H.html">2021H</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="DeepLearning22F/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2022] Deep Learning (I)</title>
-    <links>
-      [<a href="DeepLearning22F/DL2022F.html">2022F</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="SpeechLanguage22F/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2022] Natural Language Processing (I)</title>
-    <links>
-      [<a href="SpeechLanguage22F/NLP2022F.html">2022F</a>]
     </links>
   </div>
 </div>
