@@ -6,7 +6,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="WU Xiaokun 吴晓堃" />
-  <title>Tutorial 1: Getting start</title>
+  <title>实验环境配置</title>
 
   <style>
 code{white-space: pre-wrap;}
@@ -402,7 +402,7 @@ background: var(--r-link-color-dark);
   <hr style="height:9px;border:none;color:#222;background-color:#222;" />
 <div class="banner-header">
 <p class="course">Natural Language Processing I</p>
-<p class="term">2022春</p>
+<p class="term">2023春</p>
 </div>
 <div class="banner-header">
 <p class="author">WU Xiaokun 吴晓堃</p>
@@ -412,51 +412,54 @@ background: var(--r-link-color-dark);
 </header>
 
 
-<section id="tutorial-1-getting-start" class="lenotes">
-<h1>Tutorial 1: Getting start</h1>
+<section id="实验环境配置" class="lenotes">
+<h1>实验环境配置</h1>
 <h2 id="基础安装配置">基础安装配置</h2>
 <h4 id="anaconda或miniconda">Anaconda（或Miniconda）</h4>
 <p>按官网文档下载安装<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
-<h4 id="创建新的python沙盘">创建新的python沙盘</h4>
+<h4 id="创建新的python环境">创建新的python环境</h4>
 <p>打开命令行终端
 <code>Anaconda Powershell Prompt</code>，并输入以下代码：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new environment</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> nlp python=3.8</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate nlp</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">## pyhanlp</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge openjdk jpype1=0.7.0 <span class="at">-y</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pyhanlp</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install jupyterlab</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge jupyterlab <span class="at">-y</span></span></code></pre></div>
-<h4 id="安装其他可选包">安装其他可选包</h4>
-<p>在 <code>Anaconda</code> 命令行输入如下代码：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install numpy matplotlib requests pandas</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install hanlp</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cat &gt;&gt; .bashrc &lt;&lt;&#39;EOF&#39;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># export HANLP_HOME=/mnt/d/data/hanlp</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># EOF</span></span></code></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install jupyterlab</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge jupyterlab <span class="at">-y</span></span></code></pre></div>
+<h4 id="安装hanlp">安装HanLP</h4>
+<p>参考官方安装说明<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<h5 id="x-restful版">2.x RESTful版</h5>
+<p>仅数KB，适合敏捷开发、移动APP等场景。简单易用，无需GPU配环境，秒速安装。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pip install hanlp_restful</span></code></pre></div>
+<h5 id="x-本地版">2.x 本地版</h5>
+<p>依赖PyTorch、TensorFlow等深度学习技术，适合专业NLP工程师、研究者以及本地海量数据场景。要求Python
+3.6至3.9，支持Windows，推荐*nix。可以在CPU上运行，推荐GPU/TPU。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pip install hanlp</span></code></pre></div>
+<p>安装本地完整版：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pip install hanlp[full]</span></code></pre></div>
 <h4 id="验证安装是否成功">验证安装是否成功</h4>
 <p>首先打开 <code>JupyterLab</code>：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> code-data-folder</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cd D:\teach\DeepLearning22S\code\pytorch</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cd /mnt/d/teach</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> code-data-folder</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cd D:\teach\DeepLearning22S\code\pytorch</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cd /mnt/d/teach</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre></div>
 <p>程序会自动跳转到默认浏览器。</p>
 <p>下面测试<code>pyhanlp</code>是否可用（in JupyterLab）：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hanlp</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>HanLP <span class="op">=</span> hanlp.load(hanlp.pretrained.mtl.CLOSE_TOK_POS_NER_SRL_DEP_SDP_CON_ELECTRA_SMALL_ZH) <span class="co"># 世界最大中文语料库</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>HanLP([<span class="st">&#39;2021年HanLPv2.1为生产环境带来次世代最先进的多语种NLP技术。&#39;</span>, <span class="st">&#39;阿婆主来到北京立方庭参观自然语义科技公司。&#39;</span>]).pretty_print()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hanlp_restful <span class="im">import</span> HanLPClient</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>HanLP <span class="op">=</span> HanLPClient(<span class="st">&#39;https://www.hanlp.com/api&#39;</span>, auth<span class="op">=</span><span class="va">None</span>, language<span class="op">=</span><span class="st">&#39;zh&#39;</span>) <span class="co"># auth不填则匿名，zh中文，mul多语种</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>HanLP(<span class="st">&#39;2021年HanLPv2.1为生产环境带来次世代最先进的多语种NLP技术。晓美焰来到北京立方庭参观自然语义科技公司。&#39;</span>).pretty_print()</span></code></pre></div>
 <h2 id="faq">FAQ</h2>
 <h2 id="quickstart">Quickstart</h2>
-<p>See: 快速上手 @ HanLP<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>See: 快速上手 @ HanLP<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>简单测试可查看：在线演示<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>https://docs.anaconda.com/anaconda/install<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>https://github.com/hankcs/HanLP/blob/doc-zh/README.md<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://docs.anaconda.com/anaconda/install">https://docs.anaconda.com/anaconda/install</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://hanlp.hankcs.com/install.html">https://hanlp.hankcs.com/install.html</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://github.com/hankcs/HanLP/blob/doc-zh/README.md">https://github.com/hankcs/HanLP/blob/doc-zh/README.md</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://hanlp.hankcs.com/demos/">https://hanlp.hankcs.com/demos/</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
