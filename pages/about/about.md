@@ -13,7 +13,7 @@ sidebar:
 ---
 I am WU Xiaokun, aka Kelvin, and my Chinese name is 吴晓堃.
 
-I received my PhD in *Computer Science* and my Master degree in *Mathematics*.
+I received my Doctoral degree (Dr. rer. nat.) in *Computer Science* and my Master degree in *Mathematics*.
 I also know a little about wine.
 
 When I feel too tired to read books or write codes, I do sports.
