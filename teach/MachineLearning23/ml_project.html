@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="机器学习课程团队" />
+  <title>机器学习课程设计</title>
+
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  <style type="text/css">
+:root {
+--r-background-color: #fff;
+--r-main-font: "Noto Serif", "Times New Roman", serif;
+--r-main-font-size: 16px;
+--r-main-color: #222;
+--r-page-max-width: 800px;
+--r-block-margin: 20px;
+--r-block-padding: 10px;
+--r-sider-margin: 100px;
+--r-heading-font: "Noto Serif", "Times New Roman", serif;
+--r-heading-color: #222;
+--r-heading-line-height: 1.2rem;
+--r-heading-letter-spacing: normal;
+--r-heading-text-shadow: none;
+--r-heading-font-weight: 600;
+--r-heading1-text-shadow: none;
+--r-heading1-size: 2.2rem;
+--r-heading2-size: 1.8rem;
+--r-heading3-size: 1.6rem;
+--r-heading4-size: 1.3rem;
+--r-heading5-size: 1rem;
+--r-code-font: "Noto Sans Mono", "Noto Mono", monospace;
+--r-link-color: #2a76dd;
+--r-link-color-dark: #1a53a1;
+--r-link-color-hover: #6ca0e8;
+--r-selection-background-color: #98bdef;
+--r-selection-color: #fff;
+}
+
+body { font-family: var(--r-main-font);
+font-size: var(--r-main-font-size);
+font-weight: normal;
+color: var(--r-main-color);
+background: #fff;
+background-color: var(--r-background-color);
+
+display: grid;
+grid-template-columns: auto 800px auto;
+grid-template-areas: ". header ."
+". lenotes meta-right"
+". footnotes ."
+;
+}
+body .lenotes {
+grid-area: lenotes;
+}
+body .meta-right {
+grid-area: meta-right;
+}
+body .footnotes {
+grid-area: footnotes;
+}
+
+body header {
+
+
+grid-area: header;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: var(--r-heading-font);
+color: var(--r-heading-color);
+font-weight: var(--r-heading-font-weight);
+line-height: var(--r-heading-line-height);
+letter-spacing: var(--r-heading-letter-spacing);
+text-transform: var(--r-heading-text-transform);
+text-shadow: var(--r-heading-text-shadow);
+word-wrap: break-word;
+}
+h1 {
+font-size: var(--r-heading1-size);
+}
+h2 {
+font-size: var(--r-heading2-size);
+text-align: left;
+
+}
+h3 {
+font-size: var(--r-heading3-size);
+text-align: left;
+}
+h4 {
+font-size: var(--r-heading4-size);
+text-align: left;
+}
+h5 {
+font-size: var(--r-heading5-size);
+text-align: left;
+}
+h1 {
+text-shadow: var(--r-heading1-text-shadow);
+}
+
+.banner-header {
+display: flex;
+align-items: baseline;
+}
+.banner-header > .course {
+font-size: 2.5em;
+font-weight: bold;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .term {
+font-size: 1.6em;
+margin-left: auto;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .author {
+margin-top: 1em;
+margin-bottom: 0;
+}
+.banner-header > .email {
+font-size: 0.8em;
+margin-left: 2em;
+margin-top: 1em;
+margin-bottom: 0;
+}
+.banner-header > .date {
+font-size: 1em;
+margin-left: auto;
+margin-top: 1em;
+margin-bottom: 0;
+}
+
+
+
+img,
+video,
+iframe {
+max-width: 95%;
+max-height: 95%;
+}
+strong,
+b {
+font-weight: bold;
+}
+em {
+font-style: italic;
+}
+
+ol,
+dl,
+ul {
+display: block;
+text-align: left;
+margin: 0 1em;
+padding: 0 1em;
+
+}
+ol {
+list-style-type: decimal;
+}
+ul {
+list-style-type: disc;
+}
+ul ul {
+list-style-type: square;
+}
+ul ul ul {
+list-style-type: circle;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+display: block;
+margin: 0;
+padding: 0 1em;
+}
+dt {
+font-weight: bold;
+}
+dd {
+padding: 0 1em;
+}
+
+blockquote {
+display: block;
+position: relative;
+width: 70%;
+
+padding: var(--r-block-padding);
+font-style: italic;
+box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+text-align: left;
+}
+blockquote p:first-child,
+blockquote p:last-child {
+display: inline-block;
+}
+q {
+font-style: italic;
+}
+
+div.sourceCode {
+margin: 0 1em;
+
+-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre {
+display: block;
+position: relative;
+
+margin: var(--r-block-margin) 1em;
+padding: var(--r-block-padding);
+text-align: left;
+font-size: 0.9em;
+font-family: var(--r-code-font);
+line-height: 1.2em;
+overflow: auto;
+max-width: 800px;
+max-height: 400px;
+word-wrap: break-word;
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre code {
+display: block;
+word-wrap: normal;
+}
+
+code {
+display: inline-block;
+font-family: var(--r-code-font);
+text-transform: none;
+tab-size: 2;
+}
+.code-wrapper {
+white-space: normal;
+}
+.code-wrapper code {
+white-space: pre;
+}
+
+table {
+margin: var(--r-block-margin) auto;
+border-collapse: collapse;
+border-spacing: 0;
+}
+table th {
+font-weight: bold;
+text-align: center;
+padding: 0.1em 0.5em;
+border-bottom: 2px solid #222;
+}
+table td {
+text-align: left;
+padding: 0.1em 0.5em;
+border-bottom: 1px solid #222;
+}
+table th[align=center],
+table td[align=center] {
+text-align: center;
+}
+table th[align=right],
+table td[align=right] {
+text-align: right;
+}
+table thead tr:first-child th {
+border-top: 3px solid #222;
+}
+table tbody tr:first-child td {
+border-top: 3px solid #222;
+}
+table tbody tr:last-child td {
+border-bottom: 3px solid #222;
+}
+sup {
+vertical-align: super;
+font-size: smaller;
+}
+sub {
+vertical-align: sub;
+font-size: smaller;
+}
+small {
+display: inline-block;
+font-size: 0.6em;
+line-height: 1.2em;
+vertical-align: top;
+}
+small * {
+vertical-align: top;
+}
+img {
+display: block;
+margin: var(--r-block-margin) auto;
+}
+
+a {
+color: var(--r-link-color);
+text-decoration: none;
+transition: color 0.15s ease;
+}
+a:hover {
+color: var(--r-link-color-hover);
+text-shadow: none;
+border: none;
+}
+.roll span:after {
+color: #fff;
+background: var(--r-link-color-dark);
+}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+
+<header id="banner-header">
+  <hr style="height:9px;border:none;color:#222;background-color:#222;" />
+<div class="banner-header">
+<p class="course">机器学习课程设计</p>
+<p class="term">2023F</p>
+</div>
+<div class="banner-header">
+<p class="author">机器学习课程团队</p>
+<p class="email">xkun.wu [at] gmail</p>
+<p class="date">Created: 2023/04/28</p>
+</div>
+  <hr style="height:3px;border:none;color:#222;background-color:#222;" />
+</header>
+
+
+<section id="课程考核说明" class="lenotes">
+<h1>课程考核说明</h1>
+<h2 id="课程要求">课程要求</h2>
+<p>本课程（机器学习）要求必须使用<strong>机器学习方法</strong>，否则课程<strong>原则上最高60分</strong>。</p>
+<h3 id="选题范围">选题范围</h3>
+<p>可选题目包括：课程推荐问题（参见附录）、公开竞赛问题、实习实践问题等。</p>
+<h4 id="项目等级分类">项目等级分类</h4>
+<p>注意：选题等级分类直接决定最终成绩分数段！</p>
+<ul>
+<li>I类：教材案例改版、网上教程改编，<strong>原则上最高80分，创新加分后90分封顶</strong>。</li>
+<li>II类：自选<strong>进行中的</strong>Kaggle或其他竞赛问题。注意：需要<strong>提交申请并通过题目审核，否则视为I类</strong>。</li>
+<li>III类：实践工业问题获奖，Kaggle或其他竞赛获奖，<strong>酌情给予荣誉加分</strong>。</li>
+</ul>
+<h3 id="任务列表">任务列表</h3>
+<h4 id="课程项目报告格式要求">课程项目报告格式要求</h4>
+<ul>
+<li>完整个人/团队信息：学号、姓名、专业，团队须注明组长、组员。</li>
+<li>项目报告书需写明选题，及原因；正文中详细阐述解决思路、总体流程、核心算法、创新方案等。</li>
+<li>代码笔记本：<strong>必须使用Jupyter笔记，并保留原始输出</strong>，其中包括评测指标，否则课程<strong>原则上最高80分</strong>。</li>
+<li>总结：除了项目总结，还需对照评分规则给出自我评价分数，并说明依据。</li>
+</ul>
+<h4 id="截止日期提交要求">截止日期、提交要求</h4>
+<p>结课后3周，即6月1日（第16教学周）。需提交：</p>
+<ol type="1">
+<li>项目报告：纸版、电子版（<code>pdf</code>）</li>
+<li>代码：<code>Jupyter</code>笔记文件</li>
+</ol>
+<p>电子版命名格式：</p>
+<pre class="text"><code>ml23_专业班级_组长姓名.(pdf|ipynb)</code></pre>
+<ul>
+<li>专业班级：(计科|软件)(1-4)班。</li>
+<li>项目报告保存成<code>pdf</code>，代码保存成<code>ipynb</code>。</li>
+</ul>
+<h2 id="考核标准">考核标准</h2>
+<p>考核的主要参考依据是课程项目报告书及代码笔记本。</p>
+<h3 id="基本评分规则">基本评分规则</h3>
+<p>注意：严禁代码抄袭、造假！否则课程<strong>原则上最高50分</strong>。</p>
+<ul>
+<li>项目报告完成度、规范程度：30%。</li>
+<li>代码完成度、正确度：数据预处理，模型设计、训练、预测，模型评测：50%。</li>
+<li>模型架构创新，超过基准实现、实践预测应用：20%。</li>
+</ul>
+<h3 id="评分细则">评分细则</h3>
+<p>评分细则供任课教师参考，也可作为自评参考。</p>
+<h4 id="项目报告完成度30">项目报告完成度：30%</h4>
+<ul>
+<li>结构清晰、完备（封面、正文、代码、总结）：10%。</li>
+<li>解决思路严谨、合理：10%。</li>
+<li>代码逻辑正确，保留原始输出：10%。</li>
+</ul>
+<h4 id="代码完成度50">代码完成度：50%</h4>
+<p>参考<a href="https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html">3.6.
+softmax回归的从零开始实现</a>、<a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/kaggle-house-price.html">4.10.
+实战Kaggle比赛：预测房价</a>。</p>
+<ul>
+<li>数据获取与预处理：10%。</li>
+<li>模型定义与训练：10%。</li>
+<li>模型选择（使用验证方法调节超参数）：10%。</li>
+<li>使用模型预测（<code>predict</code>、<code>argmax</code>）：10%。</li>
+<li>正确评测模型（<code>evaluate</code>）：10%。</li>
+</ul>
+<h4 id="应用前景创新性20">应用前景、创新性：20%</h4>
+<ul>
+<li>效能超过基准实现、实践预测应用：10%。</li>
+<li>思路创新、模型架构创新：10%。</li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q</strong>: 是否可以按小组提交？</p>
+<p><strong>A</strong>: 本课程遵循《人才培养方案》中“毕业要求
+9：个人和团队”，故项目报告原则上必须以小组形式提交。但每组最多不超过6人，人数越多则应当体现出足够工作量，否则酌情扣分。封面上需标明负责人1人、其他组员（不标注组长视为全是组员）。此外，小组间重复度过高将视为抄袭，根据总人数酌情扣分。</p>
+<p><strong>Q</strong>: 如何保存代码？</p>
+<p><strong>A</strong>: 使用 <code>Jupyter Notebook</code>
+导出成<code>HTML</code>格式，然后再转成<code>PDF</code>格式或直接打印。注意：<code>Jupyter</code>
+对中文的支持不好，直接转成<code>PDF</code>格式可能中文是空白或乱码。也可以只用
+<code>Jupyter</code>
+完成代码部分并导出打印，而正文部分在另外一个文档中撰写。</p>
+<h2 id="附录可选项目参考列表">附录：可选项目参考列表</h2>
+<p>注意：每道选题都已注明等级分类。</p>
+<ul>
+<li>MNIST手写数字分类</li>
+<li>预测房价</li>
+<li>照片风格迁移</li>
+<li>图像分类 (CIFAR-10)</li>
+<li>狗的品种识别（ImageNet Dogs）</li>
+<li>毕设评语分类问题</li>
+<li>毕设评语生成机</li>
+<li>机器翻译：德汉互译</li>
+</ul>
+<h3 id="mnist手写数字分类">MNIST手写数字分类</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_linear-networks/softmax-regression-concise.html">3.7.
+softmax回归的简洁实现</a>、<a href="https://zh-v2.d2l.ai/chapter_convolutional-modern/alexnet.html">7.1.
+深度卷积神经网络（AlexNet）</a>。 基准实现的测试精度：99.3%。</p>
+<h4 id="准备新测试数据">准备新测试数据</h4>
+<p>在任意画图软件上做出10个手写阿拉伯数字：</p>
+<ul>
+<li>分别对应数字0-9。</li>
+<li>保存成网络输入要求的尺寸及格式。</li>
+<li>代码部分：能够用绘图函数绘制出这10张图片。</li>
+<li>计算正确率：每识别正确一个计1%，总计10%。</li>
+</ul>
+<h3 id="预测房价">预测房价</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/kaggle-house-price.html">4.10.
+实战Kaggle比赛：预测房价</a>。</p>
+<h3 id="照片风格迁移">照片风格迁移</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_computer-vision/neural-style.html">13.12.
+风格迁移</a>。</p>
+<h4 id="准备新测试数据-1">准备新测试数据</h4>
+<p>将自己的照片作为内容图像，迁移成任意风格图像。</p>
+<h3 id="图像分类-cifar-10">图像分类 (CIFAR-10)</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_computer-vision/kaggle-cifar10.html">13.13.
+实战 Kaggle 比赛：图像分类 (CIFAR-10)</a>。</p>
+<h3 id="狗的品种识别imagenet-dogs">狗的品种识别（ImageNet Dogs）</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_computer-vision/kaggle-dog.html">13.14.
+实战Kaggle比赛：狗的品种识别（ImageNet Dogs）</a>。</p>
+<h3 id="毕设评语分类问题">毕设评语分类问题</h3>
+<p>本题视为I类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/sentiment-analysis-rnn.html">15.2.
+情感分析：使用递归神经网络</a>、<a href="https://zh-v2.d2l.ai/chapter_natural-language-processing-applications/sentiment-analysis-cnn.html">15.3.
+情感分析：使用卷积神经网络</a>。</p>
+<h4 id="准备新测试数据-2">准备新测试数据</h4>
+<p>参考附录：</p>
+<ul>
+<li>代码部分：能够打印出这10条评论内容。</li>
+<li>计算正确率：每识别正确一个计1%，总计10%。</li>
+</ul>
+<h3 id="毕设评语生成机">毕设评语生成机</h3>
+<p>本题视为II类项目。</p>
+<p>自行设计文本生成算法，并能够按照《评分标准》输出毕设评语。可以参考CFG句法结构、语言模型可视化、朴素贝叶斯、隐式马尔科夫模型、风格迁移学习、GAN等。</p>
+<ul>
+<li>要求：严格控制语料筛选，尽量保证内容积极、健康；<strong>严禁违法、极端言论，否则以0分判处！</strong></li>
+</ul>
+<h3 id="机器翻译德汉互译">机器翻译：德汉互译</h3>
+<p>本题视为II类项目。</p>
+<p>可以参考<a href="https://zh-v2.d2l.ai/chapter_recurrent-modern/seq2seq.html">9.7.
+序列到序列学习（seq2seq）</a>、<a href="https://zh-v2.d2l.ai/chapter_attention-mechanisms/bahdanau-attention.html">10.4.
+Bahdanau 注意力</a>、<a href="https://zh-v2.d2l.ai/chapter_attention-mechanisms/transformer.html">10.7.
+Transformer</a>。</p>
+<h4 id="准备新测试数据-3">准备新测试数据</h4>
+<p>参考附录：共两部分，《查拉图斯特如是说》要求计算BLEU分数评测，《德汉互译试题》只要求翻译。</p>
+<ul>
+<li>代码部分：能够打印出这10条语句的内容。</li>
+<li>计算正确率：计算BLEU分数，超过0.6算正确。</li>
+</ul>
+<h2 id="附录毕设评语示例">附录：毕设评语示例</h2>
+<p><strong>优</strong>：</p>
+<ol type="1">
+<li><p>该生使用深度学习的方法，实现了一个文本情感分类系统。很好的完成了任务书规定的工作量，除按时完成外文翻译外，并能阅读一些自选资料，设计合理，有较强的实践动手能力，成果具有实际应用意义，论文结构合理，论述层次清晰，论文符合规范化要求。在答辩过程中能够对系统进行分析并得出合理正确的结论。</p></li>
+<li><p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，能够对系统进行分析并得出合理正确的结论。能够在系统实现过程中充分考虑对社会的影响，能够准确表达自己的观点，正确回答老师的提问；能够正确分析所系统中所涉及的前沿技术，正确分析其国际发展趋势、研究热点。能够在系统实现过程中充分考虑经济、工程管理问题。毕业结构合理，写作规范，语句通顺，图标清晰。评定小组同意该同学通过答辩，成绩为优秀。</p></li>
+</ol>
+<p><strong>良</strong>：</p>
+<ol type="1">
+<li><p>较好地完成了任务书规定的工作量，能阅读指导教师指定的参考资料、文献、设计合理，理论分析与计算正确，较好地掌握了Unity3D的使用方法，论文结构合理，符合逻辑，语言准确。在答辩过程中能正确表达自己的观点，正确回答老师的提问。</p></li>
+<li><p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，能够对系统进行分析并得出合理的结论。能够在系统实现过程中考虑系统对社会的影响，能正确表达自己的观点，正确回答老师的提问；能够正确分析所系统中所涉及的前沿技术，正确分析其国际发展趋势、研究热点。能够在系统实现过程中考了经济、工程管理问题。毕业结构合理，写作较规范，语句较通顺，图标清晰。评定小组同意该同学通过答辩，成绩为良好。</p></li>
+</ol>
+<p><strong>中</strong>：</p>
+<ol type="1">
+<li><p>基本完成了任务书规定的工作量，能阅读指导教师指定的参考文献，按要求完成外文翻译，设计基本合理，理论分析与计算无差错，论文结构基本合理，层次较为清楚，文字尚通顺，基本达到规范化要求。在答辩过程中表达的观点基本正确，正确回答老师的大部分提问。</p></li>
+<li><p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，有对系统进行分析，也能够给出较合理的结论。在系统实现过程中考虑了系统对社会的影响，表达的观点基本正确，正确回答老师的大部分提问；能够正确分析所系统中所涉及的前沿技术，正确分析其国际发展趋势、研究热点。能够在系统实现过程中考虑经济、工程管理问题。毕业论文较合理，写作较规范，语句较通顺，图标清晰。评定小组同意该同学通过答辩，成绩为中等。</p></li>
+</ol>
+<p><strong>及格</strong>：</p>
+<ol type="1">
+<li><p>基本完成了任务书规定的工作量，能阅读指导教师指定的参考文献，按要求完成外文翻译，但设计不太合理，实验数据不可靠，实践动手较差，论文结构基本合理，勉强达到规范化要求。对答辩小组突出的主要问题的回答基本正确。</p></li>
+<li><p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，有对系统进行分析，给出的结论基本正确。在系统实现过程中初步考虑了系统对社会的影响，表达的观点基本正确，对答辩小组突出的主要问题的回答基本正确，论文中说明了系统中所涉及的前沿技术，有分析所在领域的国际发展趋势、研究热点。能够在系统实现过程中考了经济、工程管理问题。毕业结构较合理，写作较规范，语句较通顺，图标清晰。评定小组同意该同学通过答辩，成绩为及格。</p></li>
+</ol>
+<p><strong>不及格</strong>：</p>
+<ol type="1">
+<li><p>该生使用Unity3D框架完成了一个小游戏。在答辩过程中对问题不能正确回答。</p></li>
+<li><p>该生使用深度学习的方法，实现了一个文本情感分类系统。在答辩过程中，未对系统进行分析，未给出正确的结论。在系统实现过程中未考虑系统对社会的影响，未表达自己的观点，对答辩小组突出的主要问题不能正确回答，论文未对系统中所涉及的前沿技术进行说明，也未分析所在领域的国际发展趋势、研究热点。未在系统实现过程中考了经济、工程管理问题。毕业结构较合理，写作较不规范，语句基本通顺，图标清晰。评定小组认为该同学未能通过答辩，成绩不及格。</p></li>
+</ol>
+<h2 id="附录德汉互译示例">附录：德汉互译示例</h2>
+<p>节选自《查拉图斯特如是说》（<a href="https://www.gutenberg.org/ebooks/7205">„Also sprach Zarathustra.
+Ein Buch für Alle und Keinen”</a>）。</p>
+<pre class="text"><code>Du großes Gestirn! Was wäre dein Glück, wenn du nicht Die hättest, welchen du leuchtest!
+你，伟大的星球！假若你没有被你照耀的人们，你的幸福何在呢！</code></pre>
+<pre class="text"><code>Siehe! Ich bin meiner Weisheit überdrüssig, wie die Biene, die des Honigs zu viel gesammelt hat, ich bedarf der Hände, die sich ausstrecken.
+看啊！我像积蜜太多的蜂儿一样，对于我的智慧已经厌倦了；我需要有人伸手来领受这智慧。</code></pre>
+<pre class="text"><code>Und also sprach der Greis zu Zarathustra: &quot;Verwandelt ist Zarathustra, zum Kind ward Zarathustra, ein Erwachter ist Zarathustra: was willst du nun bei den Schlafenden?
+老者对查拉图斯特拉如是说道：“查拉图斯特拉变了，查拉图斯特拉变成了孩子，查拉图斯特拉是个觉醒者：现在你要到沉睡者那里去干什么呢？”</code></pre>
+<pre class="text"><code>Als Zarathustra aber allein war, sprach er also zu seinem Herzen: &quot;Sollte es denn möglich sein! Dieser alte Heilige hat in seinem Walde noch Nichts davon gehört, dass Gott tot ist!&quot;
+可是当查拉图斯特拉独自一人时，他对他的心如是说道：“难道有这种可能！这位老圣人在森林中竟毫无所闻，不知道上帝已经死了！”</code></pre>
+<pre class="text"><code>Ich lehre euch den Übermenschen. Der Mensch ist Etwas, das überwunden werden soll. Was habt ihr getan, ihn zu überwinden?
+我教你们何谓超人。人是应被超越的某种东西。你们为了超越自己，做过些什么呢？</code></pre>
+<pre class="text"><code>Wahrlich, ein schmutziger Strom ist der Mensch. Man muss schon ein Meer sein, um einen schmutzigen Strom aufnehmen zu können, ohne unrein zu werden.
+确实，人是一条不洁的河。要能容纳不洁的河流而不致污浊，人必须是大海。</code></pre>
+<pre class="text"><code>Was gross ist am Menschen, das ist, dass er eine Brücke und kein Zweck ist: was geliebt werden kann am Menschen, das ist, dass er ein Übergang und ein Untergang ist.
+人类之伟大处，正在它是一座桥而不是一个目的。人类之可爱处，正在它是一个过程与一个没落。</code></pre>
+<pre class="text"><code>Seht, ich bin ein Verkündiger des Blitzes und ein schwerer Tropfen aus der Wolke: Dieser Blitz aber heißt Übermensch.
+看，我是闪电的宣告者，从云中落下的一滴沉重的雨点：而这个闪电就叫做超人。</code></pre>
+<pre class="text"><code>Man muss noch Chaos in sich haben, um einen tanzenden Stern gebären zu können.
+存在于混沌之中，才能生出舞动的星。</code></pre>
+<pre class="text"><code>Zu meinem Ziele will ich, ich gehe meinen Gang; über die Zögernden und Saumseligen werde ich hinwegspringen. Also sei mein Gang ihr Untergang!
+我要朝着我的目标行进，我要超越那些迟疑者和拖延者。我的行进便是他们的没落！</code></pre>
+<p>节选自<a href="http://yz.shisu.edu.cn/_upload/article/files/56/83/4b02a3f647f7b80c7fedaf8ce1b6/e9309645-c112-4dfc-b469-eb61f0a388d7.pdf">《上海外国语大学
+2017 年硕士研究生入学考试 德汉互译 试题》</a></p>
+<ol type="1">
+<li>Märchen sind nicht auf dem Rückmarsch, ganz im Gegenteil.</li>
+<li>Der Preisträger des Europäischen Märchenpreises 2012 setzt sich seit
+über 40 Jahren mit der Bedeutung und Weiterverbreitung von Märchen
+auseinander.</li>
+<li>Das Prinzip von Gut und Böse ist auch in modernen Sagen wie Harry
+Potter zu finden.</li>
+<li>Seine Liebe für deutsche Märchen und die deutsche Sprache entdeckte
+der Germanist und Folklorist auf Umwegen: nach dem Abitur ging der
+gebürtige Deutsche zum Studium in die USA, eigentlich wollte er
+Mathematiker werden.</li>
+<li>Heute sieht das natürlich anders aus: Durch das digitale Zeitalter
+hat sich die Verbreitung enorm verändert.</li>
+<li>别的表情等待反应，例如悲哀等待怜悯，威严等待慑服，滑稽等待嬉笑。唯美貌无为，无目的，使人没有特定的反应义务的挂念，就不由自主地被吸引，其实是被感动。</li>
+<li>其实美貌这个表情的意思，就是爱。这个意思既蕴藉又坦率地随时呈现出来。拥有美貌的人并没有这个意思，而美貌是这个意思。</li>
+<li>用美貌这个先验的基本表情，再变化为别的表情，特别容易奏效(所以演员总是以美貌者为上选。日常生活中，也是美貌者尽占优势)，那变化出来的别的表情，既是含义清晰，又反而强化美貌。</li>
+<li>美貌的人睡着了，后天的表情全停止，而美貌是不睡的，美貌不需要休息；倒是由于撤除附加的表情，纯然只剩美貌这一种表情，就尤其感动人，故曰：睡美人。</li>
+<li>老人睡着，见得更老，因为别的附加的表情率尔褪净，只剩下衰败的美貌这一种惨相，光荣销歇，美貌的废墟不及石头的废墟，罗马夕照供人凭吊，美貌的残局不忍卒睹。</li>
+</ol>
+</section>
+
+
+</body>
+
+</html>
