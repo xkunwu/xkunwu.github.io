@@ -15,6 +15,21 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="Algorithm21H/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2021] Algorithm (II) - Design, Analysis</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="Algorithm21H/A2023H.html">2023H</a>]
+      [<a href="Algorithm21H/A2022H.html">2022H</a>]
+      [<a href="Algorithm21H/A2021H.html">2021H</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="DataStructure23H/teaser.png">
   </div>
   <div class="pub_txt">
@@ -91,20 +106,6 @@ read_time: false
     <links>
       [<a href="SpeechLanguage22F/NLP2023F.html">2023F</a>]
       [<a href="SpeechLanguage22F/NLP2022F.html">2022F</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="Algorithm21H/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2021] Algorithm (II) - Design, Analysis</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="Algorithm21H/A2022H.html">2022H</a>]
-      [<a href="Algorithm21H/A2021H.html">2021H</a>]
     </links>
   </div>
 </div>
