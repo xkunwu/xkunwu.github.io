@@ -543,16 +543,92 @@ The main contents are listed below:</p>
 <tr class="odd">
 <td>1</td>
 <td>2023/09/08</td>
-<td>[<a href="raster/S01.os22h_intro">导言</a>]</td>
-<td>[<a href="S00.os22h_info.html">课程信息</a>]</td>
+<td>导言：虚拟化、并发、持久存储，设计目标</td>
+<td>课程信息</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2023/09/15</td>
+<td>导言：简单历史；进程概览：进程的抽象化描述，进程创建的更多细节，进程状态，数据结构</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>2023/09/22</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>2023/10/08</td>
+<td>受限直接执行：直接执行，限制进程操作，在进程之间切换；进程调度简介：工作负载假设及调度指标，先进先出(FIFO)，最短任务优先
+(SJF)，最短完成时间优先 (STCF)，轮转 (RR)，结合 I/O；多级反馈队列：MLFQ
+基本规则，实现 MLFQ，调优
+MLFQ；比例份额调度：基本概念，机制与实现，随机性的正当理由</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>2023/10/06</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>2023/10/13</td>
+<td>进程调度小结；地址空间概述：多道程序和时分共享，地址空间，设计目标；地址转换机制：问题引入，基础方案，动态(基于硬件)重定位，硬件支持总结，操作系统的职责；分段：分段基本思想，显式标识与引用</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>2023/10/20</td>
+<td>分段：硬件支持，操作系统支持；空闲空间管理：关键问题与基本假设，底层机制，基本策略，其他方式；分页：分页原理，页表实现概述</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>2023/11/03</td>
+<td>分页：分页原理，页表实现概述，分页时间开销、内存追踪示例；快速地址转换(TLB)：TLB
+的基本算法，访问数组示例，处理 TLB 未命中，TLB 的内容，上下文切换时对
+TLB 的处理，TLB 替换策略，实际系统的 TLB 表项</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>2023/11/04</td>
+<td>高级页表设计：页表大小，混合分页和分段，多级页表，其他页表设计，页交换机制；页交换机制：交换空间，存在位，页错误及处理流程，交换发生时机；页交换策略：缓存管理，最优替换策略，简单策略(FIFO、随机)，利用历史数据(LRU)，工作负载示例，近似LRU(时钟)，其他细节问题</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>2023/11/10</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>2023/11/17</td>
+<td>并发概述：线程概述，线程创建实例，共享数据，不可控的调度，原子性</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>2023/11/24</td>
+<td>锁：锁的基本思想，实现一个锁，控制中断，测试并设置指令(原子交换)，其他硬件原语，自旋过多怎么办；条件变量：定义和程序</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>2023/12/01</td>
+<td>条件变量：生产者/消费者(有界缓冲区)问题；信号量：信号量的定义，二值信号量(锁)信号量，信号量用作条件变量，生产者/消费者(有界缓冲区)问题，经典问题</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h4 id="evaluation">Evaluation</h4>
 <ul>
-<li>Attendance &amp; participation: 10%</li>
 <li>Assignments &amp; exercises: 40%</li>
-<li>Exam: 50%</li>
+<li>Exam: 60%</li>
 </ul>
 <h4 id="textbook">Textbook</h4>
 <p>Not mandatory but recommended:</p>
