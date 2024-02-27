@@ -72,20 +72,6 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="OperatingSystem22H/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2022] Operating System (I)</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="OperatingSystem22H/OS2023H.html">2023 Autumn</a>]
-      [<a href="OperatingSystem22H/OS2022H.html">2022 Autumn</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
     <img src="ArtificialIntelligence22H/teaser.png">
   </div>
   <div class="pub_txt">
@@ -94,19 +80,6 @@ read_time: false
     <links>
       [<a href="ArtificialIntelligence22H/AI2023H.html">2023 Autumn</a>]
       [<a href="ArtificialIntelligence22H/AI2022H.html">2022 Autumn</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="MachineLearning23/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2023] Machine Learning (I)</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="MachineLearning23/ML2023F.html">2023 Spring</a>]
     </links>
   </div>
 </div>
