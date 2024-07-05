@@ -50,6 +50,7 @@ read_time: false
     <title>[2021] Algorithm (II) - Design, Analysis</title>
     <!-- note: do not forget updating index.html -->
     <links>
+      [<a href="Algorithm21H/A2024F.html">2024 Spring</a>]
       [<a href="Algorithm21H/A2023H.html">2023 Autumn</a>]
       [<a href="Algorithm21H/A2022H.html">2022 Autumn</a>]
       [<a href="Algorithm21H/A2021H.html">2021 Autumn</a>]
