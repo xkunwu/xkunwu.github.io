@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="WU Xiaokun 吴晓堃" />
+  <title>CN(I) - Course Information</title>
+
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  <style type="text/css">
+:root {
+--r-background-color: #fff;
+--r-main-font: "Noto Serif", "Times New Roman", serif;
+--r-main-font-size: 16px;
+--r-main-color: #222;
+--r-page-max-width: 800px;
+--r-block-margin: 20px;
+--r-block-padding: 10px;
+--r-sider-margin: 100px;
+--r-heading-font: "Noto Serif", "Times New Roman", serif;
+--r-heading-color: #222;
+--r-heading-line-height: 1.2rem;
+--r-heading-letter-spacing: normal;
+--r-heading-text-shadow: none;
+--r-heading-font-weight: 600;
+--r-heading1-text-shadow: none;
+--r-heading1-size: 2.2rem;
+--r-heading2-size: 1.8rem;
+--r-heading3-size: 1.6rem;
+--r-heading4-size: 1.3rem;
+--r-heading5-size: 1rem;
+--r-code-font: "Noto Sans Mono", "Noto Mono", monospace;
+--r-link-color: #2a76dd;
+--r-link-color-dark: #1a53a1;
+--r-link-color-hover: #6ca0e8;
+--r-selection-background-color: #98bdef;
+--r-selection-color: #fff;
+}
+
+body { font-family: var(--r-main-font);
+font-size: var(--r-main-font-size);
+font-weight: normal;
+color: var(--r-main-color);
+background: #fff;
+background-color: var(--r-background-color);
+
+display: grid;
+grid-template-columns: auto 800px auto;
+grid-template-areas: ". header ."
+". lenotes meta-right"
+". footnotes ."
+;
+}
+body .lenotes {
+grid-area: lenotes;
+}
+body .meta-right {
+grid-area: meta-right;
+}
+body .footnotes {
+grid-area: footnotes;
+}
+
+body header {
+
+
+grid-area: header;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: var(--r-heading-font);
+color: var(--r-heading-color);
+font-weight: var(--r-heading-font-weight);
+line-height: var(--r-heading-line-height);
+letter-spacing: var(--r-heading-letter-spacing);
+text-transform: var(--r-heading-text-transform);
+text-shadow: var(--r-heading-text-shadow);
+word-wrap: break-word;
+}
+h1 {
+font-size: var(--r-heading1-size);
+}
+h2 {
+font-size: var(--r-heading2-size);
+text-align: left;
+
+}
+h3 {
+font-size: var(--r-heading3-size);
+text-align: left;
+}
+h4 {
+font-size: var(--r-heading4-size);
+text-align: left;
+}
+h5 {
+font-size: var(--r-heading5-size);
+text-align: left;
+}
+h1 {
+text-shadow: var(--r-heading1-text-shadow);
+}
+
+.banner-header {
+display: flex;
+align-items: baseline;
+}
+.banner-header > .course {
+font-size: 2.5em;
+font-weight: bold;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .term {
+font-size: 1.6em;
+margin-left: auto;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .author {
+margin-top: 1em;
+margin-bottom: 0;
+}
+.banner-header > .email {
+font-size: 0.8em;
+margin-left: 2em;
+margin-top: 1em;
+margin-bottom: 0;
+}
+.banner-header > .date {
+font-size: 1em;
+margin-left: auto;
+margin-top: 1em;
+margin-bottom: 0;
+}
+
+
+
+img,
+video,
+iframe {
+max-width: 95%;
+max-height: 95%;
+}
+strong,
+b {
+font-weight: bold;
+}
+em {
+font-style: italic;
+}
+
+ol,
+dl,
+ul {
+display: block;
+text-align: left;
+margin: 0 1em;
+padding: 0 1em;
+
+}
+ol {
+list-style-type: decimal;
+}
+ul {
+list-style-type: disc;
+}
+ul ul {
+list-style-type: square;
+}
+ul ul ul {
+list-style-type: circle;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+display: block;
+margin: 0;
+padding: 0 1em;
+}
+dt {
+font-weight: bold;
+}
+dd {
+padding: 0 1em;
+}
+
+blockquote {
+display: block;
+position: relative;
+width: 70%;
+
+padding: var(--r-block-padding);
+font-style: italic;
+box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+text-align: left;
+}
+blockquote p:first-child,
+blockquote p:last-child {
+display: inline-block;
+}
+q {
+font-style: italic;
+}
+
+div.sourceCode {
+margin: 0 1em;
+
+-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre {
+display: block;
+position: relative;
+
+margin: var(--r-block-margin) 1em;
+padding: var(--r-block-padding);
+text-align: left;
+font-size: 0.9em;
+font-family: var(--r-code-font);
+line-height: 1.2em;
+overflow: auto;
+max-width: 800px;
+max-height: 400px;
+word-wrap: break-word;
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre code {
+display: block;
+word-wrap: normal;
+}
+
+code {
+display: inline-block;
+font-family: var(--r-code-font);
+text-transform: none;
+tab-size: 2;
+}
+.code-wrapper {
+white-space: normal;
+}
+.code-wrapper code {
+white-space: pre;
+}
+
+table {
+margin: var(--r-block-margin) auto;
+border-collapse: collapse;
+border-spacing: 0;
+}
+table th {
+font-weight: bold;
+text-align: center;
+padding: 0.1em 0.5em;
+border-bottom: 2px solid #222;
+}
+table td {
+text-align: left;
+padding: 0.1em 0.5em;
+border-bottom: 1px solid #222;
+}
+table th[align=center],
+table td[align=center] {
+text-align: center;
+}
+table th[align=right],
+table td[align=right] {
+text-align: right;
+}
+table thead tr:first-child th {
+border-top: 3px solid #222;
+}
+table tbody tr:first-child td {
+border-top: 3px solid #222;
+}
+table tbody tr:last-child td {
+border-bottom: 3px solid #222;
+}
+sup {
+vertical-align: super;
+font-size: smaller;
+}
+sub {
+vertical-align: sub;
+font-size: smaller;
+}
+small {
+display: inline-block;
+font-size: 0.6em;
+line-height: 1.2em;
+vertical-align: top;
+}
+small * {
+vertical-align: top;
+}
+img {
+display: block;
+margin: var(--r-block-margin) auto;
+}
+
+a {
+color: var(--r-link-color);
+text-decoration: none;
+transition: color 0.15s ease;
+}
+a:hover {
+color: var(--r-link-color-hover);
+text-shadow: none;
+border: none;
+}
+.roll span:after {
+color: #fff;
+background: var(--r-link-color-dark);
+}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+
+<header id="banner-header">
+  <hr style="height:9px;border:none;color:#222;background-color:#222;" />
+<div class="banner-header">
+<p class="course">Computer Networking I</p>
+<p class="term">2024 Autumn</p>
+</div>
+<div class="banner-header">
+<p class="author">WU Xiaokun 吴晓堃</p>
+<p class="email">xkun.wu [at] gmail</p>
+<p class="date">Updated: 2024/10/25</p>
+</div>
+  <hr style="height:3px;border:none;color:#222;background-color:#222;" />
+</header>
+
+
+<div class="meta-right">
+<div class="html">
+<table>
+<thead>
+<tr>
+<th colspan="2">
+Computer Science - UG3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Course
+</td>
+<td>
+Computer Networking I
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Term
+</td>
+<td>
+2024 Autumn
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Final
+</td>
+<td>
+Tba
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Credits
+</td>
+<td>
+3
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Staff
+</td>
+<td>
+WU Xiaokun 吴晓堃
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Lecture
+</td>
+<td>
+32 hours (8 weeks)
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Tutorial
+</td>
+<td>
+16 hours (2 weeks)
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th colspan="2">
+计算机科学专业必修课
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+课程名称
+</td>
+<td>
+计算机网络I
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+授课时间
+</td>
+<td>
+2024年秋
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+考试形式
+</td>
+<td>
+考试/考查
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+学分
+</td>
+<td>
+3
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+讲者
+</td>
+<td>
+吴晓堃
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+教学时长
+</td>
+<td>
+32学时（8周）
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+实验时长
+</td>
+<td>
+16学时（2周）
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="course-information" class="lenotes">
+<h1>Course Information</h1>
+<div class="latex">
+
+
+</div>
+<h4 id="short-intro">Short Intro</h4>
+<p>The objective of this course is to provide a complete introduction to
+Computer Networking.</p>
+<h4 id="description">Description</h4>
+<p>This course was assigned to me under the “same course, same content”
+rule, so I do not have much freedom in deciding what knowledge to
+share.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>We expect you to have the following skills before taking this
+course:</p>
+<p><strong>Required</strong>：</p>
+<ul>
+<li>Data Structure and Algorithms</li>
+<li>Proficient in one programming language (C recommended).</li>
+</ul>
+<p><strong>Recommended</strong>：</p>
+<ul>
+<li>Computer Architecture</li>
+<li>Operating System</li>
+</ul>
+<h4 id="teaching-plan">Teaching Plan</h4>
+<p>This course is organized into a 8-week session (4 hours per week).
+The main contents are listed below:</p>
+<ol type="1">
+<li>Computer Networks and the Internet 导言</li>
+<li>The Physical Layer 物理层</li>
+<li>The Link Layer 数据链路层</li>
+<li>The Network Layer 网络层</li>
+<li>The Transport Layer 运输层</li>
+<li>The Application Layer 应用层</li>
+</ol>
+<p>Tutorials are designed to consistent with lectures:</p>
+<ol type="1">
+<li>Getting Started and the Physical Layer
+常用命令、实验工具、物理层实验</li>
+<li>The Link Layer 链路层实验</li>
+<li>The Network Layer 网络层实验</li>
+<li>The Transport Layer 运输层实验</li>
+<li>The Application Layer 应用层实验</li>
+</ol>
+<h4 id="schedule">Schedule</h4>
+<p>Multiple time; multiple locations.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Date</th>
+<th>Lecture</th>
+<th>Handouts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>9</td>
+<td>2024/10/18</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>2024/11/04</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>2024/11/11</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>2024/11/18</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>2024/11/25</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>2024/12/02</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>2024/12/09</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>2024/12/16</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Tutorials:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Date</th>
+<th>Lecture</th>
+<th>Handouts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>14</td>
+<td>2024/12/02</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>2024/12/09</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="methodology">Methodology</h4>
+<p>Problem-solving oriented, equal emphasis on lecture and practice.</p>
+<p>以解决实际问题为导向，教学与实践并重。</p>
+<p>Each lecture is roughly organized into 3 progressive units:</p>
+<ol type="1">
+<li>Core Concepts 核心概念: provides elementary knowledge of the
+topic</li>
+<li>Advanced Discussion 进阶讨论: provides in-depth understanding,
+mathematical formulations</li>
+<li>Practical Skills 实践技巧: provides problem-solving skills through
+hands-on programming training</li>
+</ol>
+<h4 id="evaluation">Evaluation</h4>
+<ul>
+<li>Attendance &amp; participation: 10%</li>
+<li>Understanding of topics: 20%</li>
+<li>Practical exercises: 20%</li>
+<li>Final exam/project: 50%</li>
+</ul>
+<h4 id="textbook">Textbook</h4>
+<p>Not mandatory but recommended:</p>
+<ul>
+<li>J.F. Kurose, K.W. Ross, <em>Computer Networking: a Top Down
+Approach</em>.</li>
+</ul>
+<h4 id="resource">Resource</h4>
+<ul>
+<li>Computer Networking: a Top Down Approach (8th edition)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://gaia.cs.umass.edu/kurose_ross/index.php">https://gaia.cs.umass.edu/kurose_ross/index.php</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+</body>
+
+</html>

@@ -21,23 +21,9 @@ read_time: false
     <title>[2023] Machine Learning (I)</title>
     <!-- note: do not forget updating index.html -->
     <links>
+      [<a href="MachineLearning23/ML2024H.html">2024 Autumn</a>]
       [<a href="MachineLearning23/ML2024F.html">2024 Spring</a>]
       [<a href="MachineLearning23/ML2023F.html">2023 Spring</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="OperatingSystem22H/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2022] Operating System (I)</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="OperatingSystem22H/OS2024F.html">2024 Spring</a>]
-      [<a href="OperatingSystem22H/OS2023H.html">2023 Autumn</a>]
-      [<a href="OperatingSystem22H/OS2022H.html">2022 Autumn</a>]
     </links>
   </div>
 </div>
@@ -50,10 +36,39 @@ read_time: false
     <title>[2021] Algorithm (II) - Design, Analysis</title>
     <!-- note: do not forget updating index.html -->
     <links>
+      [<a href="Algorithm21H/A2024H.html">2024 Autumn</a>]
       [<a href="Algorithm21H/A2024F.html">2024 Spring</a>]
       [<a href="Algorithm21H/A2023H.html">2023 Autumn</a>]
       [<a href="Algorithm21H/A2022H.html">2022 Autumn</a>]
       [<a href="Algorithm21H/A2021H.html">2021 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+<<div class="pub_row">
+  <div class="pub_img">
+    <img src="ComputerNetworking24/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2024] Computer Networking (I)</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="ComputerNetworking24/CN2024H.html">2024 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+div class="pub_row">
+  <div class="pub_img">
+    <img src="OperatingSystem22H/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2022] Operating System (I)</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="OperatingSystem22H/OS2024F.html">2024 Spring</a>]
+      [<a href="OperatingSystem22H/OS2023H.html">2023 Autumn</a>]
+      [<a href="OperatingSystem22H/OS2022H.html">2022 Autumn</a>]
     </links>
   </div>
 </div>
