@@ -45,7 +45,7 @@ read_time: false
   </div>
 </div>
 
-<<div class="pub_row">
+<div class="pub_row">
   <div class="pub_img">
     <img src="ComputerNetworking24/teaser.png">
   </div>
@@ -58,7 +58,7 @@ read_time: false
   </div>
 </div>
 
-div class="pub_row">
+<div class="pub_row">
   <div class="pub_img">
     <img src="OperatingSystem22H/teaser.png">
   </div>
