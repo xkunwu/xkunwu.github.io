@@ -46,23 +46,17 @@ read_time: false
   </div>
 </div>
 
-<hr>
-<br>
-
-**Archive**
-
-Usually, I teach one course only once - "usual" courses are listed below as archives.
-
 <div class="pub_row">
   <div class="pub_img">
     <!-- <img src="EmbeddedSystem24/BalancePCB_v1_t.png"> -->
-    <img src="EmbeddedSystem24/resist_fall.gif">
+    <!-- <img src="EmbeddedSystem24/resist_fall.gif"> -->
+    <video src="EmbeddedSystem24/resist_fall.mp4" autoplay="" loop="" muted=""></video>
   </div>
   <div class="pub_txt">
     <title>[2024] Embedded System Development (T) - STM32</title>
     <!-- note: do not forget updating index.html -->
     <links>
-      [<a href="EmbeddedSystem24/ESD2024H.html">2024 Autumn</a>]
+      [<a href="EmbeddedSystem24/STM2024H.html">2024 Autumn</a>]
     </links>
   </div>
 </div>
@@ -75,7 +69,7 @@ Usually, I teach one course only once - "usual" courses are listed below as arch
     <title>[2024] Computer Networking Tutorial (T) - eNSP</title>
     <!-- note: do not forget updating index.html -->
     <links>
-      [<a href="ComputerNetworking24/CNT2024H.html">2024 Autumn</a>]
+      [<a href="ComputerNetworking24/Tutorial/eNSP2024H.html">2024 Autumn</a>]
     </links>
   </div>
 </div>
@@ -92,6 +86,13 @@ Usually, I teach one course only once - "usual" courses are listed below as arch
     </links>
   </div>
 </div>
+
+<hr>
+<br>
+
+**Archive**
+
+Usually, I teach one course only once - "usual" courses are listed below as archives.
 
 <div class="pub_row">
   <div class="pub_img">
