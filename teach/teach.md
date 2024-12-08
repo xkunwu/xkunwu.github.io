@@ -9,6 +9,7 @@ read_time: false
 
 - Level I: for undergraduates.
 - Level II: for graduates, may branch into specific topics.
+- Level T: independent tutorials, developments or projects.
 
 <hr>
 <br>
@@ -41,6 +42,40 @@ read_time: false
       [<a href="Algorithm21H/A2023H.html">2023 Autumn</a>]
       [<a href="Algorithm21H/A2022H.html">2022 Autumn</a>]
       [<a href="Algorithm21H/A2021H.html">2021 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+<hr>
+<br>
+
+**Archive**
+
+Usually, I teach one course only once - "usual" courses are listed below as archives.
+
+<div class="pub_row">
+  <div class="pub_img">
+    <!-- <img src="EmbeddedSystem24/BalancePCB_v1_t.png"> -->
+    <img src="EmbeddedSystem24/resist_fall.gif">
+  </div>
+  <div class="pub_txt">
+    <title>[2024] Embedded System Development (T) - STM32</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="EmbeddedSystem24/ESD2024H.html">2024 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="ComputerNetworking24/Tutorial/2core.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2024] Computer Networking Tutorial (T) - eNSP</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="ComputerNetworking24/CNT2024H.html">2024 Autumn</a>]
     </links>
   </div>
 </div>

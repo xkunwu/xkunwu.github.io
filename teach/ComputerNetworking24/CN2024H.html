@@ -14,8 +14,10 @@ span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
 div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
+
+ul.task-list[class]{list-style: none;}
 ul.task-list li input[type="checkbox"] {
+font-size: inherit;
 width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
@@ -350,7 +352,7 @@ background: var(--r-link-color-dark);
 <div class="banner-header">
 <p class="author">WU Xiaokun 吴晓堃</p>
 <p class="email">xkun.wu [at] gmail</p>
-<p class="date">Updated: 2024/10/25</p>
+<p class="date">Updated: 2024/12/07</p>
 </div>
   <hr style="height:3px;border:none;color:#222;background-color:#222;" />
 </header>
@@ -388,7 +390,7 @@ Term
 Final
 </td>
 <td>
-Tba
+Exam
 </td>
 </tr>
 <tr class="even">
@@ -455,7 +457,7 @@ Tutorial
 考试形式
 </td>
 <td>
-考试/考查
+考试
 </td>
 </tr>
 <tr class="even">
@@ -543,8 +545,14 @@ The main contents are listed below:</p>
 <h4 id="schedule">Schedule</h4>
 <p>Multiple time; multiple locations.</p>
 <table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 15%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Week</th>
 <th>Date</th>
 <th>Lecture</th>
@@ -552,81 +560,58 @@ The main contents are listed below:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>9</td>
 <td>2024/10/18</td>
-<td></td>
+<td>概述：分组交换，性能指标，体系结构</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr>
 <td>10</td>
 <td>2024/11/04</td>
-<td></td>
+<td>物理层：编码与调制，信道极限容量，传输媒介，信道复用技术</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>11</td>
 <td>2024/11/11</td>
-<td></td>
+<td>链路层：PPP协议，停等协议</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr>
 <td>12</td>
 <td>2024/11/18</td>
-<td></td>
+<td>链路层：CSMA/CD协议，链路层设备</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>13</td>
 <td>2024/11/25</td>
-<td></td>
+<td>网络层：数据报服务，IP数据报格式，IP地址格式、分配</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr>
 <td>14</td>
 <td>2024/12/02</td>
-<td></td>
+<td>网络层：ARP、ICMP，RIP、OSPF，IPv6，NAT</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>15</td>
 <td>2024/12/09</td>
-<td></td>
+<td>运输层：UDP，TCP</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr>
 <td>16</td>
 <td>2024/12/16</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Tutorials:</p>
-<table>
-<thead>
-<tr class="header">
-<th>Week</th>
-<th>Date</th>
-<th>Lecture</th>
-<th>Handouts</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>14</td>
-<td>2024/12/02</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>15</td>
-<td>2024/12/09</td>
-<td></td>
+<td>应用层：DNS，HTTP，DHCP</td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<p>Tutorials: see <a href="./Tutorial/">Computer Networking
+Tutorial</a></p>
 <h4 id="methodology">Methodology</h4>
 <p>Problem-solving oriented, equal emphasis on lecture and practice.</p>
 <p>以解决实际问题为导向，教学与实践并重。</p>
@@ -655,12 +640,14 @@ Approach</em>.</li>
 <h4 id="resource">Resource</h4>
 <ul>
 <li>Computer Networking: a Top Down Approach (8th edition)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>eNSP simulator installation software<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 </ul>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1"><p><a href="https://gaia.cs.umass.edu/kurose_ross/index.php">https://gaia.cs.umass.edu/kurose_ross/index.php</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://forum.huawei.com/enterprise/en/download-ensp-simulator-installation-software-here/thread/667238396713648128-667213852955258880">https://forum.huawei.com/enterprise/en/download-ensp-simulator-installation-software-here/thread/667238396713648128-667213852955258880</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
