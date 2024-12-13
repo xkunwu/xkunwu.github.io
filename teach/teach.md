@@ -50,7 +50,7 @@ read_time: false
   <div class="pub_img">
     <!-- <img src="EmbeddedSystem24/BalancePCB_v1_t.png"> -->
     <!-- <img src="EmbeddedSystem24/resist_fall.gif"> -->
-    <video src="EmbeddedSystem24/resist_fall.mp4" autoplay="" loop="" muted=""></video>
+    <video src="EmbeddedSystem24/resist_fall.mp4" autoplay loop muted controls></video>
   </div>
   <div class="pub_txt">
     <title>[2024] Embedded System Development (T) - STM32</title>
