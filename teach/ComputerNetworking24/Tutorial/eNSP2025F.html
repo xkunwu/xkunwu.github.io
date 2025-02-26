@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="WU Xiaokun 吴晓堃" />
+  <title>CN(T) - Course Information</title>
+
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  <style type="text/css">
+:root {
+--r-background-color: #fff;
+--r-main-font: "Noto Serif", "Times New Roman", serif;
+--r-main-font-size: 16px;
+--r-main-color: #222;
+--r-page-max-width: 800px;
+--r-block-margin: 20px;
+--r-block-padding: 10px;
+--r-sider-margin: 100px;
+--r-heading-font: "Noto Serif", "Times New Roman", serif;
+--r-heading-color: #222;
+--r-heading-line-height: 1.2rem;
+--r-heading-letter-spacing: normal;
+--r-heading-text-shadow: none;
+--r-heading-font-weight: 600;
+--r-heading1-text-shadow: none;
+--r-heading1-size: 2.2rem;
+--r-heading2-size: 1.8rem;
+--r-heading3-size: 1.6rem;
+--r-heading4-size: 1.3rem;
+--r-heading5-size: 1rem;
+--r-code-font: "Noto Sans Mono", "Noto Mono", monospace;
+--r-link-color: #2a76dd;
+--r-link-color-dark: #1a53a1;
+--r-link-color-hover: #6ca0e8;
+--r-selection-background-color: #98bdef;
+--r-selection-color: #fff;
+}
+
+body { font-family: var(--r-main-font);
+font-size: var(--r-main-font-size);
+font-weight: normal;
+color: var(--r-main-color);
+background: #fff;
+background-color: var(--r-background-color);
+
+display: grid;
+grid-template-columns: auto 800px auto;
+grid-template-areas: ". header ."
+". lenotes meta-right"
+". footnotes ."
+;
+}
+body .lenotes {
+grid-area: lenotes;
+}
+body .meta-right {
+grid-area: meta-right;
+}
+body .footnotes {
+grid-area: footnotes;
+}
+
+body header {
+
+
+grid-area: header;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: var(--r-heading-font);
+color: var(--r-heading-color);
+font-weight: var(--r-heading-font-weight);
+line-height: var(--r-heading-line-height);
+letter-spacing: var(--r-heading-letter-spacing);
+text-transform: var(--r-heading-text-transform);
+text-shadow: var(--r-heading-text-shadow);
+word-wrap: break-word;
+}
+h1 {
+font-size: var(--r-heading1-size);
+}
+h2 {
+font-size: var(--r-heading2-size);
+text-align: left;
+
+}
+h3 {
+font-size: var(--r-heading3-size);
+text-align: left;
+}
+h4 {
+font-size: var(--r-heading4-size);
+text-align: left;
+}
+h5 {
+font-size: var(--r-heading5-size);
+text-align: left;
+}
+h1 {
+text-shadow: var(--r-heading1-text-shadow);
+}
+
+.banner-header {
+display: flex;
+align-items: baseline;
+}
+.banner-header > .course {
+font-size: 2.5em;
+font-weight: bold;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .term {
+font-size: 1.6em;
+margin-left: auto;
+margin-top: 0;
+margin-bottom: 0;
+}
+.banner-header > .author {
+margin-top: 1em;
+margin-bottom: 0;
+}
+.banner-header > .email {
+font-size: 0.8em;
+margin-left: 2em;
+margin-top: 1em;
+margin-bottom: 0;
+}
+.banner-header > .date {
+font-size: 1em;
+margin-left: auto;
+margin-top: 1em;
+margin-bottom: 0;
+}
+
+
+
+.reveal img,
+.reveal video,
+.reveal iframe {
+max-width: 95%;
+max-height: 95%;
+}
+strong,
+b {
+font-weight: bold;
+}
+em {
+font-style: italic;
+}
+
+ol,
+dl,
+ul {
+display: block;
+text-align: left;
+margin: 0 1em;
+padding: 0 1em;
+
+}
+ol {
+list-style-type: decimal;
+}
+ul {
+list-style-type: disc;
+}
+ul ul {
+list-style-type: square;
+}
+ul ul ul {
+list-style-type: circle;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+display: block;
+margin: 0;
+padding: 0 1em;
+}
+dt {
+font-weight: bold;
+}
+dd {
+padding: 0 1em;
+}
+
+blockquote {
+display: block;
+position: relative;
+width: 70%;
+
+padding: var(--r-block-padding);
+font-style: italic;
+box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+text-align: left;
+}
+blockquote p:first-child,
+blockquote p:last-child {
+display: inline-block;
+}
+q {
+font-style: italic;
+}
+
+div.sourceCode {
+margin: 0 1em;
+
+-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre {
+display: block;
+position: relative;
+
+margin: var(--r-block-margin) 1em;
+padding: var(--r-block-padding);
+text-align: left;
+font-size: 0.9em;
+font-family: var(--r-code-font);
+line-height: 1.2em;
+overflow: auto;
+max-width: 800px;
+max-height: 400px;
+word-wrap: break-word;
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+pre code {
+display: block;
+word-wrap: normal;
+}
+
+code {
+display: inline-block;
+font-family: var(--r-code-font);
+text-transform: none;
+tab-size: 2;
+}
+.code-wrapper {
+white-space: normal;
+}
+.code-wrapper code {
+white-space: pre;
+}
+
+table {
+margin: var(--r-block-margin) auto;
+border-collapse: collapse;
+border-spacing: 0;
+}
+table th {
+font-weight: bold;
+text-align: center;
+padding: 0.1em 0.5em;
+border-bottom: 2px solid #222;
+}
+table td {
+text-align: left;
+padding: 0.1em 0.5em;
+border-bottom: 1px solid #222;
+}
+table th[align=center],
+table td[align=center] {
+text-align: center;
+}
+table th[align=right],
+table td[align=right] {
+text-align: right;
+}
+table thead tr:first-child th {
+border-top: 3px solid #222;
+}
+table tbody tr:first-child td {
+border-top: 3px solid #222;
+}
+table tbody tr:last-child td {
+border-bottom: 3px solid #222;
+}
+sup {
+vertical-align: super;
+font-size: smaller;
+}
+sub {
+vertical-align: sub;
+font-size: smaller;
+}
+small {
+display: inline-block;
+font-size: 0.6em;
+line-height: 1.2em;
+vertical-align: top;
+}
+small * {
+vertical-align: top;
+}
+.reveal img,
+.reveal video,
+.reveal iframe {
+display: block;
+margin: var(--r-block-margin) auto;
+}
+
+a {
+color: var(--r-link-color);
+text-decoration: none;
+transition: color 0.15s ease;
+}
+a:hover {
+color: var(--r-link-color-hover);
+text-shadow: none;
+border: none;
+}
+.roll span:after {
+color: #fff;
+background: var(--r-link-color-dark);
+}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+
+<header id="banner-header">
+  <hr style="height:9px;border:none;color:#222;background-color:#222;" />
+<div class="banner-header">
+<p class="course">Networking Tutorial - eNSP</p>
+<p class="term">2025 Spring</p>
+</div>
+<div class="banner-header">
+<p class="author">WU Xiaokun 吴晓堃</p>
+<p class="email">xkun.wu [at] gmail</p>
+<p class="date">Updated: 2025/02/26</p>
+</div>
+  <hr style="height:3px;border:none;color:#222;background-color:#222;" />
+</header>
+
+
+<div class="meta-right">
+<div class="html">
+<table>
+<thead>
+<tr>
+<th colspan="2">
+Computer Science - UG3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Course
+</td>
+<td>
+Computer Networking Tutorial
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Term
+</td>
+<td>
+2025 Spring
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+Final
+</td>
+<td>
+Project
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+Credits
+</td>
+<td>
+WU Xiaokun 吴晓堃
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th colspan="2">
+计算机科学专业必修课
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+课程名称
+</td>
+<td>
+计算机网络课程设计
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+授课时间
+</td>
+<td>
+2025年春
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold">
+考试形式
+</td>
+<td>
+实践项目
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold">
+学分
+</td>
+<td>
+吴晓堃
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="course-information" class="lenotes">
+<h1>Course Information</h1>
+<div class="latex">
+
+
+</div>
+<h4 id="short-intro">Short Intro</h4>
+<p>This course provides practical tutorials for Computer Networking,
+based on <code>eNSP</code> software from <code>Huawei</code>.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>We expect you to have the following skills before taking this
+course:</p>
+<p><strong>Required</strong>：</p>
+<ul>
+<li>Computer Networking</li>
+</ul>
+<p><strong>Recommended</strong>：</p>
+<ul>
+<li>Comfortable with interactive shells</li>
+</ul>
+<h4 id="teaching-plan">Teaching Plan</h4>
+<p>We organize this course into a 8-week session (4 hours per week). The
+main contents are listed below:</p>
+<ol type="1">
+<li>办公室网络搭建
+<ol type="1">
+<li>认识网络通信</li>
+<li>终端网络设置</li>
+<li>终端网络安全</li>
+</ol></li>
+<li>写字楼网络搭建
+<ol type="1">
+<li>VLAN通信配置</li>
+<li>解决交换网络环路问题</li>
+<li>链路聚合配置</li>
+<li>网络设备管理</li>
+<li>DHCP初级应用</li>
+<li>网络设备故障排除</li>
+</ol></li>
+<li>智慧校园网络搭建
+<ol type="1">
+<li>IP地址划分</li>
+<li>IP地址分配</li>
+<li>WLAN的规划设计</li>
+<li>无线网络设置</li>
+<li>WLAN安全和维护</li>
+</ol></li>
+<li>大型企业网络搭建
+<ol type="1">
+<li>静态路由设置</li>
+<li>动态路由设置</li>
+<li>外网通信配置</li>
+<li>跨地域通信配置</li>
+</ol></li>
+<li>网络安全与网络管理
+<ol type="1">
+<li>数据传输安全</li>
+<li>ACL配置</li>
+<li>防火墙配置</li>
+<li>网络系统管理</li>
+</ol></li>
+</ol>
+<h4 id="schedule">Schedule</h4>
+<p>Multiple time; multiple locations.</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 15%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Week</th>
+<th>Date</th>
+<th>Lecture</th>
+<th>Handouts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2025/2/17</td>
+<td>项目1：办公室网络搭建</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2025/2/24</td>
+<td>VLAN通信配置：单臂路由，使用三层交换机实现VLAN间通讯</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2025/3/3</td>
+<td>解决交换网络环路问题：STP配置，MSTP单实例、多实例</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="methodology">Methodology</h4>
+<p>Problem-solving-oriented, with a primary emphasis on practical
+skills.</p>
+<p>以解决实际问题为导向，主要强调实践技能。</p>
+<h4 id="evaluation">Evaluation</h4>
+<ul>
+<li>Attendance &amp; participation: 10%</li>
+<li>Practical exercises: 40%</li>
+<li>Final project: 50%</li>
+</ul>
+<h4 id="textbook">Textbook</h4>
+<p>Not mandatory but recommended:</p>
+<ul>
+<li>J.F. Kurose, K.W. Ross, <em>Computer Networking: a Top Down
+Approach</em>.</li>
+</ul>
+<h4 id="resource">Resource</h4>
+<ul>
+<li>Computer Networking: a Top Down Approach (8th edition)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>eNSP simulator installation software<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ul>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://gaia.cs.umass.edu/kurose_ross/index.php">https://gaia.cs.umass.edu/kurose_ross/index.php</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://forum.huawei.com/enterprise/en/download-ensp-simulator-installation-software-here/thread/667238396713648128-667213852955258880">https://forum.huawei.com/enterprise/en/download-ensp-simulator-installation-software-here/thread/667238396713648128-667213852955258880</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+</body>
+
+</html>
