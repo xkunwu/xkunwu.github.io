@@ -16,6 +16,22 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="MachineLearning23/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2023] Machine Learning (I)</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="MachineLearning23/ML2025H.html">2025 Autumn</a>]
+      [<a href="MachineLearning23/ML2024H.html">2024 Autumn</a>]
+      [<a href="MachineLearning23/ML2024F.html">2024 Spring</a>]
+      [<a href="MachineLearning23/ML2023F.html">2023 Spring</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="ArtificialIntelligence22H/teaser.png">
   </div>
   <div class="pub_txt">
@@ -67,21 +83,6 @@ read_time: false
     <!-- note: do not forget updating index.html -->
     <links>
       [<a href="DataStructure23H/Tutorial/CPrj2025F.html">2025 Spring</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="MachineLearning23/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2023] Machine Learning (I)</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="MachineLearning23/ML2024H.html">2024 Autumn</a>]
-      [<a href="MachineLearning23/ML2024F.html">2024 Spring</a>]
-      [<a href="MachineLearning23/ML2023F.html">2023 Spring</a>]
     </links>
   </div>
 </div>
