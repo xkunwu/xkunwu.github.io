@@ -5,3 +5,5 @@ Gemfile.lock
 .tags*
 /notes/notes-*
 .DS_Store
+.vscode
+*.bak
