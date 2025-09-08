@@ -47,6 +47,45 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="Algorithm21H/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2021] Algorithm (II) - Design, Analysis</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="Algorithm21H/A2024H.html">2024 Autumn</a>]
+      [<a href="Algorithm21H/A2024F.html">2024 Spring</a>]
+      [<a href="Algorithm21H/A2023H.html">2023 Autumn</a>]
+      [<a href="Algorithm21H/A2022H.html">2022 Autumn</a>]
+      [<a href="Algorithm21H/A2021H.html">2021 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+<hr>
+<br>
+
+**Archive**
+
+"Usual" courses are occasionally offered and are listed below as archives.
+
+<div class="pub_row">
+  <div class="pub_img">
+    <!-- <img src="EmbeddedSystem24/BalancePCB_v1_t.png"> -->
+    <!-- <img src="EmbeddedSystem24/resist_fall.gif"> -->
+    <video src="EmbeddedSystem24/resist_fall.mp4" autoplay loop muted controls></video>
+  </div>
+  <div class="pub_txt">
+    <title>[2024] Embedded System Development (T) - STM32</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="EmbeddedSystem24/STM2024H.html">2024 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="DigitalCircuit25/teaser.png">
   </div>
   <div class="pub_txt">
@@ -71,88 +110,6 @@ read_time: false
     </links>
   </div>
 </div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="DataStructure23H/teaser.png">
-    <!-- <img src="DataStructure23H/Tutorial/teaser.png"> -->
-  </div>
-  <div class="pub_txt">
-    <title>[2025] Algorithm Tutorial (T) - C Projects</title>
-    <!-- <title>[2025] Data Structure Tutorial (T) - C Projects</title> -->
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="DataStructure23H/Tutorial/CPrj2025F.html">2025 Spring</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="Algorithm21H/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2021] Algorithm (II) - Design, Analysis</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="Algorithm21H/A2024H.html">2024 Autumn</a>]
-      [<a href="Algorithm21H/A2024F.html">2024 Spring</a>]
-      [<a href="Algorithm21H/A2023H.html">2023 Autumn</a>]
-      [<a href="Algorithm21H/A2022H.html">2022 Autumn</a>]
-      [<a href="Algorithm21H/A2021H.html">2021 Autumn</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <!-- <img src="EmbeddedSystem24/BalancePCB_v1_t.png"> -->
-    <!-- <img src="EmbeddedSystem24/resist_fall.gif"> -->
-    <video src="EmbeddedSystem24/resist_fall.mp4" autoplay loop muted controls></video>
-  </div>
-  <div class="pub_txt">
-    <title>[2024] Embedded System Development (T) - STM32</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="EmbeddedSystem24/STM2024H.html">2024 Autumn</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="DeepLearning22F/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2022] Deep Learning (I)</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="DeepLearning22F/DL2023F.html">2023 Spring</a>]
-      [<a href="DeepLearning22F/DL2022F.html">2022 Spring</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="SpeechLanguage22F/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2022] Natural Language Processing (I)</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="SpeechLanguage22F/NLP2023F.html">2023 Spring</a>]
-      [<a href="SpeechLanguage22F/NLP2022F.html">2022 Spring</a>]
-    </links>
-  </div>
-</div>
-
-<hr>
-<br>
-
-**Archive**
-
-"Usual" courses are only offered once and are listed below as archives.
 
 <div class="pub_row">
   <div class="pub_img">
@@ -185,12 +142,55 @@ read_time: false
 <div class="pub_row">
   <div class="pub_img">
     <img src="DataStructure23H/teaser.png">
+    <!-- <img src="DataStructure23H/Tutorial/teaser.png"> -->
+  </div>
+  <div class="pub_txt">
+    <title>[2025] Algorithm Tutorial (T) - C Projects</title>
+    <!-- <title>[2025] Data Structure Tutorial (T) - C Projects</title> -->
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="DataStructure23H/Tutorial/CPrj2025F.html">2025 Spring</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="DataStructure23H/teaser.png">
   </div>
   <div class="pub_txt">
     <title>[2023] Algorithm (I) - Data Structure</title>
     <!-- note: do not forget updating index.html -->
     <links>
       [<a href="DataStructure23H/DS2023H.html">2023 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="DeepLearning22F/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2022] Deep Learning (I)</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="DeepLearning22F/DL2023F.html">2023 Spring</a>]
+      [<a href="DeepLearning22F/DL2022F.html">2022 Spring</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="SpeechLanguage22F/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2022] Natural Language Processing (I)</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="SpeechLanguage22F/NLP2023F.html">2023 Spring</a>]
+      [<a href="SpeechLanguage22F/NLP2022F.html">2022 Spring</a>]
     </links>
   </div>
 </div>
