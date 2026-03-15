@@ -16,6 +16,35 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="ArtificialIntelligence22H/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2022] Artificial Intelligence (I)</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="ArtificialIntelligence22H/AI2026F.html">2026 Spring</a>]
+      [<a href="ArtificialIntelligence22H/AI2025F.html">2025 Spring</a>]
+      [<a href="ArtificialIntelligence22H/AI2023H.html">2023 Autumn</a>]
+      [<a href="ArtificialIntelligence22H/AI2022H.html">2022 Autumn</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="ComputerSystem26F/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2022] Computer System (II) - Programming</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="ComputerSystem26F/CS2026F.html">2026 Spring</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="MachineLearning23/teaser.png">
   </div>
   <div class="pub_txt">
@@ -26,21 +55,6 @@ read_time: false
       [<a href="MachineLearning23/ML2024H.html">2024 Autumn</a>]
       [<a href="MachineLearning23/ML2024F.html">2024 Spring</a>]
       [<a href="MachineLearning23/ML2023F.html">2023 Spring</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="ArtificialIntelligence22H/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2022] Artificial Intelligence (I)</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="ArtificialIntelligence22H/AI2025F.html">2025 Spring</a>]
-      [<a href="ArtificialIntelligence22H/AI2023H.html">2023 Autumn</a>]
-      [<a href="ArtificialIntelligence22H/AI2022H.html">2022 Autumn</a>]
     </links>
   </div>
 </div>
