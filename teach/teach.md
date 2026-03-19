@@ -32,10 +32,10 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="ComputerSystem26F/teaser.png">
+    <img src="ComputerSystem26F/teaser4.jpg">
   </div>
   <div class="pub_txt">
-    <title>[2022] Computer System (II) - Programming</title>
+    <title>[2026] Computer System (II) - Programming</title>
     <!-- note: do not forget updating index.html -->
     <links>
       [<a href="ComputerSystem26F/CS2026F.html">2026 Spring</a>]
@@ -141,7 +141,7 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
-    <img src="OperatingSystem22H/teaser.png">
+    <img src="OperatingSystem22H/teaser.jpg">
   </div>
   <div class="pub_txt">
     <title>[2022] Operating System (I)</title>
