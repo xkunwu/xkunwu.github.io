@@ -22,10 +22,30 @@ read_time: false
     <title>[2023] Machine Learning (I)</title>
     <!-- note: do not forget updating index.html -->
     <links>
+      [<a href="MachineLearning23/ML2026H.html">2026 Autumn</a>]
       [<a href="MachineLearning23/ML2025H.html">2025 Autumn</a>]
       [<a href="MachineLearning23/ML2024H.html">2024 Autumn</a>]
       [<a href="MachineLearning23/ML2024F.html">2024 Spring</a>]
       [<a href="MachineLearning23/ML2023F.html">2023 Spring</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
+    <img src="Algorithm21H/teaser.png">
+  </div>
+  <div class="pub_txt">
+    <title>[2021] Algorithm (II) - Design, Analysis</title>
+    <!-- note: do not forget updating index.html -->
+    <links>
+      [<a href="Algorithm21H/A2026H.html">2026 Autumn</a>]
+      [<a href="Algorithm21H/A2025H.html">2025 Autumn</a>]
+      [<a href="Algorithm21H/A2024H.html">2024 Autumn</a>]
+      [<a href="Algorithm21H/A2024F.html">2024 Spring</a>]
+      [<a href="Algorithm21H/A2023H.html">2023 Autumn</a>]
+      [<a href="Algorithm21H/A2022H.html">2022 Autumn</a>]
+      [<a href="Algorithm21H/A2021H.html">2021 Autumn</a>]
     </links>
   </div>
 </div>
@@ -41,24 +61,6 @@ read_time: false
       [<a href="ArtificialIntelligence22H/AI2025F.html">2025 Spring</a>]
       [<a href="ArtificialIntelligence22H/AI2023H.html">2023 Autumn</a>]
       [<a href="ArtificialIntelligence22H/AI2022H.html">2022 Autumn</a>]
-    </links>
-  </div>
-</div>
-
-<div class="pub_row">
-  <div class="pub_img">
-    <img src="Algorithm21H/teaser.png">
-  </div>
-  <div class="pub_txt">
-    <title>[2021] Algorithm (II) - Design, Analysis</title>
-    <!-- note: do not forget updating index.html -->
-    <links>
-      [<a href="Algorithm21H/A2025H.html">2025 Autumn</a>]
-      [<a href="Algorithm21H/A2024H.html">2024 Autumn</a>]
-      [<a href="Algorithm21H/A2024F.html">2024 Spring</a>]
-      [<a href="Algorithm21H/A2023H.html">2023 Autumn</a>]
-      [<a href="Algorithm21H/A2022H.html">2022 Autumn</a>]
-      [<a href="Algorithm21H/A2021H.html">2021 Autumn</a>]
     </links>
   </div>
 </div>
