@@ -8,6 +8,18 @@ read_time: false
 
 <div class="pub_row">
   <div class="pub_img">
+    <img src="/projects/exam-trainer/ui-montage.png">
+  </div>
+  <div class="pub_txt">
+    <title>Exam Trainer – A Personal Exam-Preparation App</title>
+    <links>
+      [<a href="exam-trainer/README">Webpage</a>]
+    </links>
+  </div>
+</div>
+
+<div class="pub_row">
+  <div class="pub_img">
     <img src="/projects/liftcam/ebike.gif">
   </div>
   <div class="pub_txt">
