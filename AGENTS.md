@@ -8,11 +8,12 @@ Use `_config.yml` for site settings, `_data/navigation.yml` for navigation, and 
 
 ## Build and Local Preview
 
-Run these commands from the repository root with Ruby and Bundler available.
+Use the Ruby version in `.ruby-version` (3.4.12) and the Bundler version in `Gemfile.lock`. Run these commands from the repository root in a UTF-8 locale. If needed, run `export LC_ALL=en_US.UTF-8` on macOS or `export LC_ALL=C.UTF-8` on Linux.
 
-- `bundle install` installs the gems in `Gemfile`.
+- `bundle install` installs the versions in `Gemfile.lock`.
 - `make serve` starts Jekyll’s incremental preview at `http://localhost:4000`.
 - `make build` runs a verbose Jekyll build and writes the generated site to `_site/`.
+- `make check` runs the full build and checks the generated pages, assets, and course redirects in `_site/`.
 
 ## Editing Conventions
 
@@ -22,7 +23,7 @@ Follow the course’s filename pattern for new terms. For example, `A2026H.html`
 
 ## Verification
 
-The repository has no automated test suite or coverage target. Run `make build`, then preview changed pages and follow their navigation, media, and download links. For teaching updates, verify that the course index opens the intended term and that linked slides load.
+Run `make check`, then preview changed pages and follow their navigation, media, and download links. For teaching updates, verify that the course index opens the intended term and that linked slides load.
 
 ## Commits and Pull Requests
 

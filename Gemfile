@@ -20,8 +20,9 @@ source 'https://rubygems.org'
 # gem "minimal-mistakes-jekyll"
 
 ### Remote theme method
-gem "github-pages", group: :jekyll_plugins
+gem "github-pages", "233", group: :jekyll_plugins
 gem "jekyll-include-cache", group: :jekyll_plugins
+gem "webrick"
 
 ### Local copy
 # gem "github-pages", group: :jekyll_plugins

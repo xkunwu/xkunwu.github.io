@@ -1,6 +1,5 @@
 /_site/
 *-cache
-Gemfile.lock
 .jekyll-metadata
 .tags*
 /notes/notes-*
