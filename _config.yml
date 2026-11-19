@@ -178,6 +178,8 @@ exclude:
     - assets/js/vendor
     - Gemfile
     - Makefile
+    - /AGENTS.md
+    - /CONTEXT.md
     - /README.md
     - notes/notes-cs/.git
     - .tags

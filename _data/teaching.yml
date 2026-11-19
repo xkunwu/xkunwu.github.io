@@ -1,0 +1,132 @@
+# List each course's default term first. Paths are relative to teach/.
+current:
+  - directory: MachineLearning23
+    title: "[2023] Machine Learning (I)"
+    img: MachineLearning23/teaser.png
+    terms:
+      - file: ML2026H.html
+        label: 2026 Autumn
+      - file: ML2025H.html
+        label: 2025 Autumn
+      - file: ML2024H.html
+        label: 2024 Autumn
+      - file: ML2024F.html
+        label: 2024 Spring
+      - file: ML2023F.html
+        label: 2023 Spring
+  - directory: Algorithm21H
+    title: "[2021] Algorithm (II) - Design, Analysis"
+    img: Algorithm21H/teaser.png
+    terms:
+      - file: A2026H.html
+        label: 2026 Autumn
+      - file: A2025H.html
+        label: 2025 Autumn
+      - file: A2024H.html
+        label: 2024 Autumn
+      - file: A2024F.html
+        label: 2024 Spring
+      - file: A2023H.html
+        label: 2023 Autumn
+      - file: A2022H.html
+        label: 2022 Autumn
+      - file: A2021H.html
+        label: 2021 Autumn
+  - directory: ArtificialIntelligence22H
+    title: "[2022] Artificial Intelligence (I)"
+    img: ArtificialIntelligence22H/teaser.png
+    terms:
+      - file: AI2026F.html
+        label: 2026 Spring
+      - file: AI2025F.html
+        label: 2025 Spring
+      - file: AI2023H.html
+        label: 2023 Autumn
+      - file: AI2022H.html
+        label: 2022 Autumn
+  - directory: ComputerSystem26F
+    title: "[2026] Computer System (II) - Programming"
+    img: ComputerSystem26F/teaser4.jpg
+    terms:
+      - file: CS2026F.html
+        label: 2026 Spring
+
+archive:
+  - directory: EmbeddedSystem24
+    title: "[2024] Embedded System Development (T) - STM32"
+    video: EmbeddedSystem24/resist_fall.mp4
+    terms:
+      - file: STM2024H.html
+        label: 2024 Autumn
+  - directory: DigitalCircuit25
+    title: "[2025] Digital Circuit and Logic Design (I)"
+    img: DigitalCircuit25/teaser.png
+    terms:
+      - file: DC2025F.html
+        label: 2025 Spring
+  - directory: ComputerNetworking24/Tutorial
+    title: "[2025] Computer Networking Tutorial (T) - eNSP"
+    img: ComputerNetworking24/Tutorial/2core.png
+    terms:
+      - file: eNSP2025F.html
+        label: 2025 Spring
+      - file: eNSP2024H.html
+        label: 2024 Autumn
+  - directory: ComputerNetworking24
+    title: "[2024] Computer Networking (I)"
+    img: ComputerNetworking24/teaser.png
+    terms:
+      - file: CN2024H.html
+        label: 2024 Autumn
+  - directory: OperatingSystem22H
+    title: "[2022] Operating System (I)"
+    img: OperatingSystem22H/teaser.jpg
+    terms:
+      - file: OS2024F.html
+        label: 2024 Spring
+      - file: OS2023H.html
+        label: 2023 Autumn
+      - file: OS2022H.html
+        label: 2022 Autumn
+  - directory: DataStructure23H/Tutorial
+    title: "[2025] Algorithm Tutorial (T) - C Projects"
+    img: DataStructure23H/teaser.png
+    terms:
+      - file: CPrj2025F.html
+        label: 2025 Spring
+  - directory: DataStructure23H
+    title: "[2023] Algorithm (I) - Data Structure"
+    img: DataStructure23H/teaser.png
+    terms:
+      - file: DS2023H.html
+        label: 2023 Autumn
+  - directory: DeepLearning22F
+    title: "[2022] Deep Learning (I)"
+    img: DeepLearning22F/teaser.png
+    terms:
+      - file: DL2023F.html
+        label: 2023 Spring
+      - file: DL2022F.html
+        label: 2022 Spring
+  - directory: SpeechLanguage22F
+    title: "[2022] Natural Language Processing (I)"
+    img: SpeechLanguage22F/teaser.png
+    terms:
+      - file: NLP2023F.html
+        label: 2023 Spring
+      - file: NLP2022F.html
+        label: 2022 Spring
+  - directory: Graphics21H
+    title: "[2021] Computer Graphics (I)"
+    img: Graphics21H/teaser.png
+    terms:
+      - file: CG2022H.html
+        label: 2022 Autumn
+      - file: CG2021H.html
+        label: 2021 Autumn
+  - directory: DeepLearning21F
+    title: "[2021] Deep Learning (I)"
+    img: DeepLearning21F/teaser.png
+    terms:
+      - file: DL2021F.html
+        label: 2021 Spring

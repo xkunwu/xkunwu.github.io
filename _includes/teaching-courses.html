@@ -1,0 +1,19 @@
+{% for course in include.courses -%}
+<div class="pub_row">
+  <div class="pub_img">
+    {%- if course.video %}
+    <video src="{{ course.video | escape }}" autoplay loop muted controls></video>
+    {%- else %}
+    <img src="{{ course.img | escape }}">
+    {%- endif %}
+  </div>
+  <div class="pub_txt">
+    <title>{{ course.title | escape }}</title>
+    <links>
+      {%- for term in course.terms %}
+      [<a href="{{ course.directory | escape }}/{{ term.file | escape }}">{{ term.label | escape }}</a>]
+      {%- endfor %}
+    </links>
+  </div>
+</div>
+{% endfor %}

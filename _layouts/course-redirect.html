@@ -1,0 +1,25 @@
+---
+---
+{%- assign courses = site.data.teaching.current | concat: site.data.teaching.archive -%}
+{%- assign course = courses | where: "directory", page.course | first -%}
+{%- assign default_term = course.terms | first -%}
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ course.title | default: "Course redirect" | escape }}</title>
+    {% if default_term %}
+    <meta http-equiv="refresh" content="0; url={{ default_term.file | escape }}">
+    <script>
+      window.location.href = {{ default_term.file | jsonify }};
+    </script>
+    {% endif %}
+  </head>
+  <body>
+    {% if default_term %}
+    If you are not redirected automatically, open <a href="{{ default_term.file | escape }}">{{ default_term.label | escape }}</a>.
+    {% else %}
+    No default term is listed for this course.
+    {% endif %}
+  </body>
+</html>
