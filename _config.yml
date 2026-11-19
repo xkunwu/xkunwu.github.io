@@ -287,5 +287,5 @@ titles_from_headings:
     collections: true
 
 # theme: "minimal-mistakes-jekyll"
-remote_theme: "mmistakes/minimal-mistakes"
+remote_theme: "mmistakes/minimal-mistakes@81f00a619fafea2f2d457da8be4788edf06a90be"
 minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"

@@ -7,7 +7,7 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-.pub_img {
+.pub_row > .pub_img {
     float: left;
     width: 300px;
     height: 220px;
