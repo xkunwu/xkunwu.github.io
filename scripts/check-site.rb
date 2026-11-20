@@ -1,3 +1,4 @@
+require "addressable/uri"
 require "json"
 require "nokogiri"
 require "yaml"
@@ -10,6 +11,28 @@ def site_file(path)
   file = File.join("_site", path)
   check(File.file?(file) && !File.zero?(file), "missing or empty #{file}")
   File.read(file, encoding: "UTF-8")
+end
+
+def missing_term_links(page_path, site_url)
+  page_url = site_url.join("/#{page_path}")
+  hrefs = Nokogiri::HTML(site_file(page_path)).css("a[href]").map { |link| link["href"].strip }
+  hrefs.uniq.filter_map do |href|
+    reference = Addressable::URI.parse(href)
+    next if reference.path.empty? && reference.host.nil?
+
+    target = page_url.join(reference)
+    next unless %w[http https].include?(target.scheme&.downcase) && target.host&.casecmp?(page_url.host)
+
+    path = Addressable::URI.unencode(target.path)
+    relative_path = File.expand_path(path, "/").sub(%r{\A/+}, "")
+    published_path = File.join("_site", relative_path)
+    if path.end_with?("/") || File.directory?(published_path)
+      published_path = File.join(published_path, "index.html")
+    end
+    "#{page_path} references missing or empty #{href.inspect}" unless File.file?(published_path) && !File.zero?(published_path)
+  rescue Addressable::URI::InvalidURIError, ArgumentError
+    "#{page_path} references invalid URL #{href.inspect}"
+  end
 end
 
 page_titles = {
@@ -46,7 +69,8 @@ detail = pages.fetch("projects/hand-track/hand-track.html")
 end
 
 catalog = YAML.safe_load_file("_data/teaching.yml")
-courses = catalog.fetch("current") + catalog.fetch("archive")
+current_courses = catalog.fetch("current")
+courses = current_courses + catalog.fetch("archive")
 rows = pages.fetch("teach/index.html").css(".pub_row .pub_txt")
 check(rows.size == courses.size, "teaching catalog should show #{courses.size} course rows")
 
@@ -72,8 +96,16 @@ courses.zip(rows).each do |course, row|
         "#{entry_path} should link to #{default_file} as a fallback")
 end
 
+site_url = Addressable::URI.parse(YAML.safe_load_file("_config.yml").fetch("url"))
+missing_links = current_courses.flat_map do |course|
+  default_file = course.fetch("terms").first.fetch("file")
+  missing_term_links("teach/#{course.fetch('directory')}/#{default_file}", site_url)
+end
+check(missing_links.empty?, "broken teaching links:\n  #{missing_links.join("\n  ")}")
+
 %w[Gemfile.lock scripts/check-site.rb vendor/bundle].each do |path|
   check(!File.exist?(File.join("_site", path)), "#{path} should be excluded from the site")
 end
 
 puts "Verified #{pages.size} pages, theme CSS, Hand Track contents, copyright, and #{courses.size} course entries and their terms."
+puts "Verified local links in #{current_courses.size} current default terms."
