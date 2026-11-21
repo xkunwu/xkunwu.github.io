@@ -172,22 +172,20 @@ class SiteCheck
 
   def check_teaching
     catalog = YAML.safe_load_file(TEACHING)
-    current = catalog.fetch("current")
-    courses = current + catalog.fetch("archive")
+    courses = catalog.fetch("current") + catalog.fetch("archive")
     page = page_document("teach/index.html", "teach/teach.md")
     rows = page&.css(".pub_row .pub_txt")
     check(rows.size == courses.size, TEACHING, "teaching catalog should show #{courses.size} course rows") if rows
 
-    current_defaults = courses.each_with_index.filter_map do |course, index|
-      default_path = inspect_source(TEACHING) do
+    term_paths = courses.each_with_index.flat_map do |course, index|
+      inspect_source(TEACHING) do
         check_course(course, rows&.[](index), check_row: !!rows)
-      end
-      default_path if index < current.size
+      end || []
     end
     return unless @site_url
 
-    current_defaults.each do |path|
-      inspect_source(path) { check_references(path, path, "a[href]", "href") }
+    term_paths.uniq.each do |path|
+      inspect_source(path) { check_references(path, path, "body a[href]", "href") }
     end
   end
 
@@ -203,9 +201,12 @@ class SiteCheck
       check(row&.at_css("title")&.text == course.fetch("title") && links == expected_links,
             TEACHING, "teaching catalog should show #{directory} with its terms in order")
     end
-    expected_links.each { |path, _| require_output("teach/#{path}", TEACHING) }
+    term_paths = expected_links.filter_map do |path, _|
+      term_path = "teach/#{path}"
+      term_path if require_output(term_path, TEACHING)
+    end
     check_course_redirect(directory, terms.first)
-    "teach/#{expected_links.first.first}"
+    term_paths
   end
 
   def check_course_redirect(directory, default_term)
