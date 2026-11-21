@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="机器学习课程团队">
+  <title>机器学习综合训练-任务书及评分标准</title>
+
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="data:text/css;base64,LyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogKiBHTE9CQUwgU1RZTEVTCiAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovCiA6cm9vdCB7CiAgICAtLXItYmFja2dyb3VuZC1jb2xvcjogI2ZmZjsKICAgIC0tci1tYWluLWZvbnQ6ICJOb3RvIFNlcmlmIiwgIlRpbWVzIE5ldyBSb21hbiIsIHNlcmlmOwogICAgLS1yLW1haW4tZm9udC1zaXplOiAxNnB4OwogICAgLS1yLW1haW4tY29sb3I6ICMyMjI7CiAgICAtLXItcGFnZS1tYXgtd2lkdGg6IDgwMHB4OwogICAgLS1yLWJsb2NrLW1hcmdpbjogMjBweDsKICAgIC0tci1ibG9jay1wYWRkaW5nOiAxMHB4OwogICAgLS1yLXNpZGVyLW1hcmdpbjogMTAwcHg7CiAgICAtLXItaGVhZGluZy1mb250OiAiTm90byBTZXJpZiIsICJUaW1lcyBOZXcgUm9tYW4iLCBzZXJpZjsKICAgIC0tci1oZWFkaW5nLWNvbG9yOiAjMjIyOwogICAgLS1yLWhlYWRpbmctbGluZS1oZWlnaHQ6IDEuMnJlbTsKICAgIC0tci1oZWFkaW5nLWxldHRlci1zcGFjaW5nOiBub3JtYWw7CiAgICAtLXItaGVhZGluZy10ZXh0LXNoYWRvdzogbm9uZTsKICAgIC0tci1oZWFkaW5nLWZvbnQtd2VpZ2h0OiA2MDA7CiAgICAtLXItaGVhZGluZzEtdGV4dC1zaGFkb3c6IG5vbmU7CiAgICAtLXItaGVhZGluZzEtc2l6ZTogMi4ycmVtOwogICAgLS1yLWhlYWRpbmcyLXNpemU6IDEuOHJlbTsKICAgIC0tci1oZWFkaW5nMy1zaXplOiAxLjZyZW07CiAgICAtLXItaGVhZGluZzQtc2l6ZTogMS4zcmVtOwogICAgLS1yLWhlYWRpbmc1LXNpemU6IDFyZW07CiAgICAtLXItY29kZS1mb250OiAiTm90byBTYW5zIE1vbm8iLCAiTm90byBNb25vIiwgbW9ub3NwYWNlOwogICAgLS1yLWxpbmstY29sb3I6ICMyYTc2ZGQ7CiAgICAtLXItbGluay1jb2xvci1kYXJrOiAjMWE1M2ExOwogICAgLS1yLWxpbmstY29sb3ItaG92ZXI6ICM2Y2EwZTg7CiAgICAtLXItc2VsZWN0aW9uLWJhY2tncm91bmQtY29sb3I6ICM5OGJkZWY7CiAgICAtLXItc2VsZWN0aW9uLWNvbG9yOiAjZmZmOwp9CgovKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqCiAqIEJvZHkKICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKi8KCmJvZHkgeyAKICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1yLW1haW4tZm9udCk7CiAgICBmb250LXNpemU6IHZhcigtLXItbWFpbi1mb250LXNpemUpOwogICAgZm9udC13ZWlnaHQ6IG5vcm1hbDsKICAgIGNvbG9yOiB2YXIoLS1yLW1haW4tY29sb3IpOwogICAgYmFja2dyb3VuZDogI2ZmZjsKICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXItYmFja2dyb3VuZC1jb2xvcik7CgkvKiBtYXgtd2lkdGg6IHZhcigtLXItcGFnZS1tYXgtd2lkdGgpOwoJbWFyZ2luOiAwIGF1dG8gIWltcG9ydGFudDsKCWZsb2F0OiBub25lICFpbXBvcnRhbnQ7ICovCiAgICBkaXNwbGF5OiBncmlkOwogICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIDgwMHB4IGF1dG87CiAgICBncmlkLXRlbXBsYXRlLWFyZWFzOiAKICAgICAgICAiLiBoZWFkZXIgLiIKICAgICAgICAiLiBsZW5vdGVzIG1ldGEtcmlnaHQiCiAgICAgICAgIi4gZm9vdG5vdGVzIC4iCiAgICAgICAgOwp9CmJvZHkgLmxlbm90ZXMgewogICAgZ3JpZC1hcmVhOiBsZW5vdGVzOwp9CmJvZHkgLm1ldGEtcmlnaHQgewogICAgZ3JpZC1hcmVhOiBtZXRhLXJpZ2h0Owp9CmJvZHkgLmZvb3Rub3RlcyB7CiAgICBncmlkLWFyZWE6IGZvb3Rub3RlczsKfQoKLyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogKiBIZWFkZXIKICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKi8KIGJvZHkgaGVhZGVyIHsKICAgIC8qIG1heC13aWR0aDogdmFyKC0tci1wYWdlLW1heC13aWR0aCk7CiAgICBtYXJnaW46IDAgYXV0byAhaW1wb3J0YW50OwogICAgZmxvYXQ6IG5vbmUgIWltcG9ydGFudDsgKi8KICAgIC8qIGJhY2tncm91bmQtY29sb3I6ICNjY2M7ICovCiAgICBncmlkLWFyZWE6IGhlYWRlcjsKfQoKaDEsCmgyLApoMywKaDQsCmg1LApoNiB7CiAgZm9udC1mYW1pbHk6IHZhcigtLXItaGVhZGluZy1mb250KTsKICBjb2xvcjogdmFyKC0tci1oZWFkaW5nLWNvbG9yKTsKICBmb250LXdlaWdodDogdmFyKC0tci1oZWFkaW5nLWZvbnQtd2VpZ2h0KTsKICBsaW5lLWhlaWdodDogdmFyKC0tci1oZWFkaW5nLWxpbmUtaGVpZ2h0KTsKICBsZXR0ZXItc3BhY2luZzogdmFyKC0tci1oZWFkaW5nLWxldHRlci1zcGFjaW5nKTsKICB0ZXh0LXRyYW5zZm9ybTogdmFyKC0tci1oZWFkaW5nLXRleHQtdHJhbnNmb3JtKTsKICB0ZXh0LXNoYWRvdzogdmFyKC0tci1oZWFkaW5nLXRleHQtc2hhZG93KTsKICB3b3JkLXdyYXA6IGJyZWFrLXdvcmQ7Cn0KCmgxIHsKICBmb250LXNpemU6IHZhcigtLXItaGVhZGluZzEtc2l6ZSk7Cn0KCmgyIHsKICBmb250LXNpemU6IHZhcigtLXItaGVhZGluZzItc2l6ZSk7CiAgdGV4dC1hbGlnbjogbGVmdDsKICAvKiBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjOyAqLwp9CgpoMyB7CiAgZm9udC1zaXplOiB2YXIoLS1yLWhlYWRpbmczLXNpemUpOwogIHRleHQtYWxpZ246IGxlZnQ7Cn0KCmg0IHsKICBmb250LXNpemU6IHZhcigtLXItaGVhZGluZzQtc2l6ZSk7CiAgdGV4dC1hbGlnbjogbGVmdDsKfQoKaDUgewogICAgZm9udC1zaXplOiB2YXIoLS1yLWhlYWRpbmc1LXNpemUpOwogICAgdGV4dC1hbGlnbjogbGVmdDsKICB9CiAgCmgxIHsKICB0ZXh0LXNoYWRvdzogdmFyKC0tci1oZWFkaW5nMS10ZXh0LXNoYWRvdyk7Cn0KCi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioKICogQmFubmVyCiAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovCi5iYW5uZXItaGVhZGVyIHsKICAgIGRpc3BsYXk6IGZsZXg7CiAgICBhbGlnbi1pdGVtczogYmFzZWxpbmU7Cn0KLmJhbm5lci1oZWFkZXIgPiAuY291cnNlIHsKICAgIGZvbnQtc2l6ZTogMi41ZW07CiAgICBmb250LXdlaWdodDogYm9sZDsKICAgIG1hcmdpbi10b3A6IDA7CiAgICBtYXJnaW4tYm90dG9tOiAwOwp9Ci5iYW5uZXItaGVhZGVyID4gLnRlcm0gewogICAgZm9udC1zaXplOiAxLjZlbTsKICAgIG1hcmdpbi1sZWZ0OiBhdXRvOwogICAgbWFyZ2luLXRvcDogMDsKICAgIG1hcmdpbi1ib3R0b206IDA7Cn0KLmJhbm5lci1oZWFkZXIgPiAuYXV0aG9yIHsKICAgIG1hcmdpbi10b3A6IDFlbTsKICAgIG1hcmdpbi1ib3R0b206IDA7Cn0KLmJhbm5lci1oZWFkZXIgPiAuZW1haWwgewogICAgZm9udC1zaXplOiAwLjhlbTsKICAgIG1hcmdpbi1sZWZ0OiAyZW07CiAgICBtYXJnaW4tdG9wOiAxZW07CiAgICBtYXJnaW4tYm90dG9tOiAwOwp9Ci5iYW5uZXItaGVhZGVyID4gLmRhdGUgewogICAgZm9udC1zaXplOiAxZW07CiAgICBtYXJnaW4tbGVmdDogYXV0bzsKICAgIG1hcmdpbi10b3A6IDFlbTsKICAgIG1hcmdpbi1ib3R0b206IDA7Cn0KCi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioKICogT1RIRVIKICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKi8KLyogLmxlbm90ZXMgcCB7CiAgICBtYXJnaW46IDA7CiAgICBwYWRkaW5nOiAwOwogICAgbGluZS1oZWlnaHQ6IDEuMjsKICAgIHRleHQtYWxpZ246IGxlZnQ7Cn0gKi8KCi8qIEVuc3VyZSBjZXJ0YWluIGVsZW1lbnRzIGFyZSBuZXZlciBsYXJnZXIgdGhhbiB0aGUgc2xpZGUgaXRzZWxmICovCi5yZXZlYWwgaW1nLAoucmV2ZWFsIHZpZGVvLAoucmV2ZWFsIGlmcmFtZSB7CiAgICBtYXgtd2lkdGg6IDk1JTsKICAgIG1heC1oZWlnaHQ6IDk1JTsKfQoKc3Ryb25nLApiIHsKICAgIGZvbnQtd2VpZ2h0OiBib2xkOwp9CgplbSB7CiAgICBmb250LXN0eWxlOiBpdGFsaWM7Cn0KCi8qIGxpc3QsIGVudW1lcmF0ZSAqLwpvbCwKZGwsCnVsIHsKICBkaXNwbGF5OiBibG9jazsKICB0ZXh0LWFsaWduOiBsZWZ0OwogIG1hcmdpbjogMCAxZW07CiAgcGFkZGluZzogMCAxZW07CiAgLyogYmFja2dyb3VuZC1jb2xvcjogI2NjYzsgKi8KfQoKb2wgewpsaXN0LXN0eWxlLXR5cGU6IGRlY2ltYWw7Cn0KCnVsIHsKbGlzdC1zdHlsZS10eXBlOiBkaXNjOwp9Cgp1bCB1bCB7Cmxpc3Qtc3R5bGUtdHlwZTogc3F1YXJlOwp9Cgp1bCB1bCB1bCB7Cmxpc3Qtc3R5bGUtdHlwZTogY2lyY2xlOwp9Cgp1bCB1bCwKdWwgb2wsCm9sIG9sLApvbCB1bCB7CmRpc3BsYXk6IGJsb2NrOwptYXJnaW46IDA7CnBhZGRpbmc6IDAgMWVtOwp9CgpkdCB7CmZvbnQtd2VpZ2h0OiBib2xkOwp9CgpkZCB7CiAgICBwYWRkaW5nOiAwIDFlbTsKfQoKLyogYmxvY2tzICovCmJsb2NrcXVvdGUgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICB3aWR0aDogNzAlOwogICAgLyogbWFyZ2luOiB2YXIoLS1yLWJsb2NrLW1hcmdpbikgMWVtOyAqLwogICAgcGFkZGluZzogdmFyKC0tci1ibG9jay1wYWRkaW5nKTsKICAgIGZvbnQtc3R5bGU6IGl0YWxpYzsKICAgIGJveC1zaGFkb3c6IDBweCAwcHggMnB4IHJnYmEoMCwgMCwgMCwgMC4yKTsKICAgIHRleHQtYWxpZ246IGxlZnQ7Cn0KCmJsb2NrcXVvdGUgcDpmaXJzdC1jaGlsZCwKYmxvY2txdW90ZSBwOmxhc3QtY2hpbGQgewpkaXNwbGF5OiBpbmxpbmUtYmxvY2s7Cn0KCnEgewpmb250LXN0eWxlOiBpdGFsaWM7Cn0KCi8qIHBhcmVudCBvZiBwcmUgYmxvY2tzICovCmRpdi5zb3VyY2VDb2RlIHsKICAgIG1hcmdpbjogMCAxZW07Ci8qIGJhY2tncm91bmQtY29sb3I6ICNkZGQ7ICovCi1tb3otYm94LXNoYWRvdzogMHB4IDVweCAxNXB4IHJnYmEoMCwgMCwgMCwgMC4xNSk7Ci13ZWJraXQtYm94LXNoYWRvdzogMHB4IDVweCAxNXB4IHJnYmEoMCwgMCwgMCwgMC4xNSk7CmJveC1zaGFkb3c6IDBweCA1cHggMTVweCByZ2JhKDAsIDAsIDAsIDAuMTUpOwp9CgpwcmUgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAvKiB3aWR0aDogOTAlOyAqLwogICAgbWFyZ2luOiB2YXIoLS1yLWJsb2NrLW1hcmdpbikgMWVtOwogICAgcGFkZGluZzogdmFyKC0tci1ibG9jay1wYWRkaW5nKTsKICAgIHRleHQtYWxpZ246IGxlZnQ7CiAgICBmb250LXNpemU6IDAuOWVtOwogICAgZm9udC1mYW1pbHk6IHZhcigtLXItY29kZS1mb250KTsKICAgIGxpbmUtaGVpZ2h0OiAxLjJlbTsKICAgIG92ZXJmbG93OiBhdXRvOwogICAgbWF4LXdpZHRoOiA4MDBweDsKICAgIG1heC1oZWlnaHQ6IDQwMHB4OwogICAgd29yZC13cmFwOiBicmVhay13b3JkOwogICAgYm94LXNoYWRvdzogMHB4IDVweCAxNXB4IHJnYmEoMCwgMCwgMCwgMC4xNSk7Cn0KCnByZSBjb2RlIHsKICAgIGRpc3BsYXk6IGJsb2NrOwogICAgd29yZC13cmFwOiBub3JtYWw7Cn0KCi8qIGlubGluZSBjb2RlICovCmNvZGUgewogICAgZGlzcGxheTogaW5saW5lLWJsb2NrOwogICAgZm9udC1mYW1pbHk6IHZhcigtLXItY29kZS1mb250KTsKICAgIHRleHQtdHJhbnNmb3JtOiBub25lOwogICAgdGFiLXNpemU6IDI7Cn0KCi5jb2RlLXdyYXBwZXIgewp3aGl0ZS1zcGFjZTogbm9ybWFsOwp9CgouY29kZS13cmFwcGVyIGNvZGUgewp3aGl0ZS1zcGFjZTogcHJlOwp9CgovKiB0YWJsZSAqLwp0YWJsZSB7Cm1hcmdpbjogdmFyKC0tci1ibG9jay1tYXJnaW4pIGF1dG87CmJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7CmJvcmRlci1zcGFjaW5nOiAwOwp9Cgp0YWJsZSB0aCB7CmZvbnQtd2VpZ2h0OiBib2xkOwp0ZXh0LWFsaWduOiBjZW50ZXI7CnBhZGRpbmc6IDAuMWVtIDAuNWVtOwpib3JkZXItYm90dG9tOiAycHggc29saWQgIzIyMjsKfQoKdGFibGUgdGQgewp0ZXh0LWFsaWduOiBsZWZ0OwpwYWRkaW5nOiAwLjFlbSAwLjVlbTsKYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMyMjI7Cn0KCnRhYmxlIHRoW2FsaWduPWNlbnRlcl0sCnRhYmxlIHRkW2FsaWduPWNlbnRlcl0gewp0ZXh0LWFsaWduOiBjZW50ZXI7Cn0KCnRhYmxlIHRoW2FsaWduPXJpZ2h0XSwKdGFibGUgdGRbYWxpZ249cmlnaHRdIHsKdGV4dC1hbGlnbjogcmlnaHQ7Cn0KCnRhYmxlIHRoZWFkIHRyOmZpcnN0LWNoaWxkIHRoIHsKICBib3JkZXItdG9wOiAzcHggc29saWQgIzIyMjsKfQp0YWJsZSB0Ym9keSB0cjpmaXJzdC1jaGlsZCB0ZCB7CiAgYm9yZGVyLXRvcDogM3B4IHNvbGlkICMyMjI7Cn0KdGFibGUgdGJvZHkgdHI6bGFzdC1jaGlsZCB0ZCB7CiAgYm9yZGVyLWJvdHRvbTogM3B4IHNvbGlkICMyMjI7Cn0KCnN1cCB7CnZlcnRpY2FsLWFsaWduOiBzdXBlcjsKZm9udC1zaXplOiBzbWFsbGVyOwp9CgpzdWIgewp2ZXJ0aWNhbC1hbGlnbjogc3ViOwpmb250LXNpemU6IHNtYWxsZXI7Cn0KCnNtYWxsIHsKZGlzcGxheTogaW5saW5lLWJsb2NrOwpmb250LXNpemU6IDAuNmVtOwpsaW5lLWhlaWdodDogMS4yZW07CnZlcnRpY2FsLWFsaWduOiB0b3A7Cn0KCnNtYWxsICogewp2ZXJ0aWNhbC1hbGlnbjogdG9wOwp9CgoucmV2ZWFsIGltZywKLnJldmVhbCB2aWRlbywKLnJldmVhbCBpZnJhbWUgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBtYXJnaW46IHZhcigtLXItYmxvY2stbWFyZ2luKSBhdXRvOwp9CgovKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqCiogTElOS1MKKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqLwphIHsKY29sb3I6IHZhcigtLXItbGluay1jb2xvcik7CnRleHQtZGVjb3JhdGlvbjogbm9uZTsKdHJhbnNpdGlvbjogY29sb3IgMC4xNXMgZWFzZTsKfQoKYTpob3ZlciB7CmNvbG9yOiB2YXIoLS1yLWxpbmstY29sb3ItaG92ZXIpOwp0ZXh0LXNoYWRvdzogbm9uZTsKYm9yZGVyOiBub25lOwp9Cgoucm9sbCBzcGFuOmFmdGVyIHsKY29sb3I6ICNmZmY7CmJhY2tncm91bmQ6IHZhcigtLXItbGluay1jb2xvci1kYXJrKTsKfQo=">
+</head>
+
+<body>
+
+
+<header id="banner-header">
+  <hr style="height:9px;border:none;color:#222;background-color:#222;">
+<div class="banner-header">
+<p class="course">机器学习综合训练</p>
+<p class="term">2026H</p>
+</div>
+<div class="banner-header">
+<p class="author">机器学习课程团队</p>
+<p class="email"></p>
+<p class="date">Created: 2026/11/01</p>
+</div>
+  <hr style="height:3px;border:none;color:#222;background-color:#222;">
+</header>
+
+
+<div class="lenotes">
+<h1 id="机器学习综合训练任务书">机器学习综合训练任务书</h1>
+<h2 id="从哪里开始">从哪里开始</h2>
+<p>本项目分为个人基础任务与小组自选项目，用四周完成一次可解释、可重复的机器学习实验。基础任务每人独立提交；自选项目每组选一个题目和一条主路线；普通CPU即可完成必做部分。第一次可以下载数据或模型，无需购买API或GPU。请围绕自己的兴趣或实际问题自主选题。文中的七题用于说明不同任务的实施方法，可按需参考；单车和房价涉及表格处理，迁移学习和检索涉及模型下载。</p>
+<p>你需要回答：输入是什么、预测什么、怎样判断效果、结果能用于什么条件。示例：用一套房屋的面积等已知属性预测售价；售价不能同时出现在输入中。分类预测类别，回归预测数值，检索返回相关条目的排序。</p>
+<h2 id="基础任务个人完成">基础任务：个人完成</h2>
+<p>解压后，找到包含README.md的ml_application文件夹。打开终端（Windows可用Anaconda
+Prompt），用cd命令进入该文件夹；这里称为工作目录，后续相对路径都从这里查找。若已经进入，不必再次执行cd
+ml_application。只需Python 3.8或以上及标准库，无需安装任何包。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ml_application</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> basic/student_template.py <span class="at">--check</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> basic/run_checks.py <span class="at">--submission</span> basic/student_template.py</span></code></pre></div>
+<p>命令中的python启动Python解释器，后面的.py文件是要运行的程序；–check是传给程序的选项。代码中TODO表示需要补全的位置，NotImplementedError表示该部分尚未实现。–check只验证解释器和入口，TODO尚未完成时算法检查失败属正常。依次补全squared_distance、predict_one、count_correct。点用两个整数构成的列表表示，如[3,4]；a[i]表示第i项，索引从0开始。平方距离为两坐标差的平方之和：[0,0]与[3,4]得到9+16=25，无需开平方。遍历训练点，保留最小距离及对应标签；相等时保留先出现者。最后逐位置比较预测与真实标签，累计相等次数。</p>
+<p>JSON是一种用字段名表示数据的文本格式，例如{“op”:“distance”}中op是字段名、distance是字段值；列表用方括号表示。标准输入是程序接收输入的通道，标准输出是程序返回结果的通道，本地通常对应终端。程序每次从标准输入读取一行JSON，输出一行紧凑JSON；不要向标准输出增加提示。op=distance时输入a、b，输出整数距离；op=predict时输入x（训练点列表）、y（对应类别）、query，输出类别；op=count输入predictions、labels，输出正确数；op=classify输入x、y、queries、labels，输出predictions与correct两个字段。输入输出示例见basic/examples中的成对.in与.out文件。可运行以下命令，应输出25。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> basic/student_template.py <span class="op">&lt;</span> basic/examples/01.in</span></code></pre></div>
+<p>有效输入约定：坐标为-100至100整数，标签为0至99整数；训练点1至20个，查询1至20个，所有对应列表等长，点均为二维。count允许空列表，结果0。平台每例输入输出均不超过2000字符。每例独立启动，无文件读写、网络或第三方依赖。</p>
+<p>平台评分规则见《机器学习综合训练-任务书及评分标准》“评分标准”章。提交补全后的单文件，不提交本地运行器。教师完整实现不向学生分发。</p>
+<h3 id="基础题分阶段操作">基础题分阶段操作</h3>
+<p>三个函数写在同一份basic/student_template.py中，不拆成多个提交文件。先不运行完整流程，逐步检查：</p>
+<ol type="1">
+<li><strong>距离阶段（distance）</strong>：补全squared_distance，按坐标累计平方差。[0,0]到[3,4]应为25。</li>
+<li><strong>预测阶段（predict）</strong>：补全predict_one，保留最近训练点的类别；单训练点查询应返回该点标签。</li>
+<li><strong>统计阶段（count）</strong>：补全count_correct；三项全对返回3，空列表返回0。</li>
+<li><strong>联调阶段（classify）</strong>：不新增函数，用已提供的入口连接预测与统计；公开例两条预测[0,1]，正确2条。</li>
+</ol>
+<p>例如先运行：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> basic/run_checks.py <span class="at">--stage</span> distance <span class="at">--submission</span> basic/student_template.py</span></code></pre></div>
+<p>依次将distance换为predict、count、classify。最后去掉–stage运行全部公开例。阶段检查只执行声明范围；初期其余TODO尚未实现不会影响当前函数检查。</p>
+<p>手工核验预测：训练点[-1,0]类别7、[1,0]类别3，查询[0,0]与两点平方距离都是1，应选择先出现的类别7。不要以类别数字大小作为平局规则。预测标签应取train_y[最近位置]，不能误返回位置本身。位置从0起，位置不等于类别。</p>
+<p>输入输出示例（各一行）：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;op&quot;</span><span class="fu">:</span> <span class="st">&quot;classify&quot;</span><span class="fu">,</span> <span class="dt">&quot;x&quot;</span><span class="fu">:</span> <span class="ot">[[</span><span class="dv">0</span><span class="ot">,</span><span class="dv">0</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">3</span><span class="ot">,</span><span class="dv">3</span><span class="ot">]]</span><span class="fu">,</span> <span class="dt">&quot;y&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="ot">,</span><span class="dv">1</span><span class="ot">]</span><span class="fu">,</span> <span class="dt">&quot;queries&quot;</span><span class="fu">:</span> <span class="ot">[[</span><span class="dv">0</span><span class="ot">,</span><span class="dv">1</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">3</span><span class="ot">,</span><span class="dv">2</span><span class="ot">]]</span><span class="fu">,</span> <span class="dt">&quot;labels&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="ot">,</span><span class="dv">1</span><span class="ot">]</span><span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;predictions&quot;</span><span class="fu">:</span><span class="ot">[</span><span class="dv">0</span><span class="ot">,</span><span class="dv">1</span><span class="ot">]</span><span class="fu">,</span><span class="dt">&quot;correct&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">}</span></span></code></pre></div>
+<p>自动评阅精确比较紧凑JSON，保留已提供的序列化代码及字段顺序；仅补全三个函数。输入非法时提供代码会报错，但正式用例均符合约定。count最多20项。外部平台不提供输入文件，通过标准输入给出JSON；本地的重定向符号“&lt;”只是模拟同一过程。</p>
+<p>材料清单注明已提交的基础题文件，平台提供提交标识时可记录。无需为基础题另写长报告，也无需导出平台不存在的文件。理解题：距离最小为何无需开平方？自查：非负数开平方保持大小顺序，平方距离选出的最近点相同。</p>
+<h2 id="自选项目环境">自选项目环境</h2>
+<p>基础任务通过仅证明标准库运行正常。自选项目需另装对应依赖，从发布包根目录运行：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> intro.py</span></code></pre></div>
+<p>PyTorch路线另装requirements-torch.txt，预训练检索路线另装requirements-retrieval.txt。intro.py用于理解第三方库的训练与预测流程，不作为基础任务提交。详见本任务书“项目共同知识与排错”一节。建议自选项目使用Python
+3.11独立环境，基础题仍只需标准库。</p>
+<h2 id="四周操作安排">四周操作安排</h2>
+<ul>
+<li><strong>第一周</strong>：个人基础题、选题、读数据和划分。检查运行入口、数据形状及样本标识不重叠。</li>
+<li><strong>第二周</strong>：简单规则参照与第一个学习模型。仅拟合训练数据，在验证集记录指标。</li>
+<li><strong>第三周</strong>：两个有目的的改动。先写假设，再记录参数、验证结果与解释。</li>
+<li><strong>第四周</strong>：固定方案、最终测试与报告。保存真实输出，从提交目录重新运行。</li>
+</ul>
+<p>训练集用于学习；验证集用于选择参数和方法；测试集用于最终估计泛化效果。不要反复查看测试分数后改模型。预处理也只能在训练集拟合，参见<a href="https://scikit-learn.org/stable/common_pitfalls.html">官方说明</a>。时间数据按先后划分；重复样本不能横跨划分。</p>
+<p>多数类预测和训练目标均值是简单参照，不是完成机器学习项目的替代。超参数是训练前选择的配置，如正则强度或隐藏层宽度。每次改动先写原因，只改变少量条件；效果下降也需要如实记录。</p>
+<p>回归MAE为绝对误差的平均值，RMSE为平方误差均值的平方根，均越小越好。分类精确率表示预测为正的样本中有多少确实为正，召回率表示真正为正的样本找回多少；F1是二者的调和平均，分母为零时明确记0。类别不均衡时不能只看准确率。Recall@3是前三项中命中相关项的查询比例（本任务每条查询一个相关FAQ）；MRR是首个相关项排名倒数的平均值，未找到记0。</p>
+<h2 id="自主确定项目">自主确定项目</h2>
+<p>优先选择自己希望解决的问题。第一周在报告第一部分写出：谁在什么情境下需要结果；输入是什么；输出是什么；数据从哪里取得；准备采用什么机器学习方法；用什么指标判断是否有效；现有设备与时间能否支持。教师据此提供反馈，无需另交申请表。</p>
+<p>例如“预测价格”还不够明确，可以写成“根据公开房屋记录中的面积、房龄等信息预测售价，用保留样本上的平均绝对误差评价”。这是问题表述示例，不要求选择房价题。</p>
+<p>自拟项目可使用自己的代码目录和运行入口，无需符合参考模板的函数或文件结构。报告中的命令统一从ml_application根目录开始。方法和工具按问题选择，不要求同时使用传统模型和神经网络。完成简单参照、初始方案与至少两个有依据的改动或对照，再用事先保留的数据做最终评价。评价结果未提高时，保留真实结果并解释原因。</p>
+<h2 id="参考选题与操作说明">参考选题与操作说明</h2>
+<p>以下七题仅供参考，不限定自主选题范围。所有项目均按完成质量评分，不因平台、竞赛是否结束或模型规模限制成绩。表格、数字和短信题已提供读取、划分与保存框架，学生在candidates中完成模型与比较；通过–stage依次执行data、baseline、compare、final。现代AI题使用专用阶段入口，以选题说明为准。数据阶段无需先补全算法；阶段检查只证明其声明的检查范围通过。</p>
+<h3 id="红葡萄酒质量预测">红葡萄酒质量预测</h3>
+<p>回归；MAE与RMSE；分号分隔CSV；标准化。建议方法：Ridge；PyTorch或预训练路线：MLP回归。</p>
+<p>只用红葡萄酒文件，read_csv(…,
+sep=“;”)；删除目标列后生成X。相同特征记录放在同一划分，避免重复样本跨集合。</p>
+<p>详细步骤与模板见<a href="#ref-wine">附录：wine参考项目操作</a>。</p>
+<h3 id="手写数字识别">手写数字识别</h3>
+<p>分类；8×8像素；0—16灰度；每行64个特征。建议方法：LogisticRegression；PyTorch或预训练路线：64至32至10。</p>
+<p>使用load_digits(return_X_y=True)，不需要下载；每行64个像素，不能当作MNIST的28×28图像。</p>
+<p>详细步骤与模板见<a href="#ref-digits">附录：digits参考项目操作</a>。</p>
+<h3 id="英文垃圾短信分类">英文垃圾短信分类</h3>
+<p>分类；TF-IDF词频权重；spam为正类；精确率、召回率和F1。建议方法：MultinomialNB；PyTorch或预训练路线：受限TF-IDF至线性分类器。</p>
+<p>文件无表头，每行标签与短信以制表符分隔；先按完整文本去重，再分层划分。TF-IDF只在训练文本fit。PyTorch词表上限2000，避免无界稠密矩阵。</p>
+<p>详细步骤与模板见<a href="#ref-spam">附录：spam参考项目操作</a>。</p>
+<h3 id="共享单车日需求估计">共享单车日需求估计</h3>
+<p>回归；时间顺序；天气条件下的需求估计。建议方法：Ridge；PyTorch或预训练路线：MLP回归。</p>
+<p>按dteday排序，前60%训练、中间20%验证、最后20%测试。删除instant、dteday、casual和registered；cnt=casual+registered，保留后两列会直接泄漏答案。实际天气只能支持条件估计。</p>
+<p>详细步骤与模板见<a href="#ref-bike">附录：bike参考项目操作</a>。</p>
+<h3 id="kaggle房价预测">Kaggle房价预测</h3>
+<p>回归；缺失值；类别编码；自然对数目标。建议方法：Ridge；PyTorch或预训练路线：MLP回归。</p>
+<p>登录Kaggle并接受规则后下载train.csv、test.csv和sample_submission.csv。只从有标签train.csv划本地训练/验证/测试；Id不是特征。学习log(SalePrice)，预测后exp还原；按sample_submission的Id顺序输出Id,SalePrice，不写CSV索引。线上分数不能替代本地评估。</p>
+<p>详细步骤与模板见<a href="#ref-house">附录：house参考项目操作</a>。</p>
+<h3 id="图像迁移学习">图像迁移学习</h3>
+<p>图像张量；归一化；预训练权重；冻结参数。建议方法：冻结ResNet18特征加逻辑回归；PyTorch或预训练路线：冻结ResNet18加分类头。</p>
+<p>从官方教程下载hymenoptera_data。原train再分训练与验证，原val保留作测试。加载ResNet18默认权重及对应transforms；冻结骨干，model.eval()且no_grad()提取512维特征，训练2类分类头。冻结参数不会自动冻结BatchNorm状态。</p>
+<p>详细步骤与模板见<a href="#ref-transfer">附录：transfer参考项目操作</a>。</p>
+<h3 id="中文faq相似问题检索">中文FAQ相似问题检索</h3>
+<p>向量；余弦相似度；相关性标注；排序。建议方法：字符TF-IDF；PyTorch或预训练路线：预训练文本向量。</p>
+<p>包内提供30条人工教学FAQ及每题两个改写查询；正式项目需增补独立编写的查询，按FAQ标识分为开发与测试查询，保留统一候选库。标注每条查询相关FAQ标识。比较字符TF-IDF与sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2，编码问题而非长答案，使用归一化向量点积排序。不得用测试查询调整方案。</p>
+<p>详细步骤与模板见<a href="#ref-retrieval">附录：retrieval参考项目操作</a>。</p>
+<h2 id="自选大模型项目">自选大模型项目</h2>
+<p>允许自行训练、微调大模型或自费调用API。先向教师说明任务、数据、评价集、设备、预计时间与费用。四周项目优先选择小模型微调、冻结特征或检索增强，不将从零训练大型模型作为默认目标。API调用成本按输入输出token量乘当时官方单价估算，先少量试运行并设置调用上限；价格和配额以所选服务官方文档为准。不在代码或提交中保存密钥，不上传个人敏感信息。</p>
+<p>需要比较无检索与有检索、或基础模型与改进模型，固定同一评价集，保存模型标识、参数、时间及实际输出。问答检查正确性、证据支持和无答案情形，不能只凭语言流畅或截图评价。付费、模型更大、界面更复杂本身不加分。无法取得资源时改用CPU基础题，不影响可获得的成绩。</p>
+<h2 id="提交与分工">提交与分工</h2>
+<p>基础任务每人独立提交Python单文件；自选项目可最多4人协作，设组长一人，但每人必须分别提交本人的报告、代码及支撑材料；写明每位成员的具体工作、成果和证据，不按代码行数或自报比例计分。综合训练与课程项目不得同题，否则只记一门成绩。</p>
+<p>截止日期为本年12月31日。报告交纸版与电子PDF；代码可为py或保留输出的ipynb。文件主名为ml学年_专业班级_提交者姓名，例如ml26_计科1班_张三.pdf。专业班级为计科或软件1—4班。附代码目录、依赖、运行命令、原始日志、预测及指标；数据过大时说明来源和取得步骤，不重复打包模型缓存。Notebook重启内核后按顺序运行并保存；中文PDF可从HTML打印，检查乱码。</p>
+<p>报告按机器学习综合训练-报告模板.docx填写并导出PDF。每项证据保存一次并在正文引用，代码通过检查不等于实验与报告完成。</p>
+<h2 id="评价与诚信">评价与诚信</h2>
+<p>评分规则和计算方法见《机器学习综合训练-任务书及评分标准》“评分标准”章。分组、本人贡献及80分制自评填写在本人报告的“成员贡献”小节。引用教程、开源代码与AI辅助时说明复用范围及独立工作，严禁抄袭、造假。</p>
+<h1 id="grading">评分标准</h1>
+<h2 id="成绩组成">成绩组成</h2>
+<p>个人总分＝个人基础平台分×0.2＋小组共同项得分（0—75）＋个人贡献得分（0—5）。小组最多4人，含组长1人。</p>
+<p>例如平台85分、共同项68分、贡献4分，个人总分为89分。该示例仅说明教师的计算方法，不要求学生取得基础平台分。</p>
+<h2 id="基础任务20分">基础任务：20分</h2>
+<p>外部平台10例，每例10分，满分100分，乘0.2折算。距离2例、最近邻预测3例、正确数统计2例、完整流程3例。每例全部正确得分，无部分分；超时、异常退出或额外输出均失败。本地公开检查不代替正式成绩。</p>
+<h2 id="小组共同项75分">小组共同项：75分</h2>
+<ul>
+<li>问题、数据与评价设计10分：输入输出明确，数据来源与条件可核对，指标与问题对应。</li>
+<li>实现正确性与完整流程25分：预处理、方法使用、预测和结果保存正确，无测试信息泄漏。</li>
+<li>验证比较与改进依据15分：初始方案与两个改动有明确假设，在相同条件下比较，选择有依据。</li>
+<li>最终评估、错误分析与边界15分：固定方案后评价，真实结果与证据对应，能解释失败条件及局限。</li>
+<li>报告、复现与来源10分：正文完整、命令可执行，材料与引用清楚，说明复用及AI辅助范围。</li>
+</ul>
+<p>合理实验取得负结果不因此扣分，不以模型大小、付费、界面或竞赛状态加分。必须采用机器学习方法，并能说明实际使用过程。严禁抄袭或造假，按课程诚信规定处理。</p>
+<h2 id="个人贡献5分">个人贡献：5分</h2>
+<p>教师根据每人的具体工作、成果、可核验证据及必要核验评价，不以代码行数或自报百分比计分。</p>
+<h2 id="规则使用与自评位置">规则使用与自评位置</h2>
+<p>本章用于说明评分规则和计算方法，不作为填写材料。学生在本人报告的“成员贡献”小节记录分组情况、本人实际贡献，并仅对共同项75分与本人贡献5分逐项自评，说明理由与证据，合计满分80分，不计算百分制总分。无需修改或提交本评分标准。</p>
+<p>每人单独提交不改变共同项计分方式：75分按小组成果评价，基础任务20分和个人贡献5分分别评价。教师结合实际成果及必要核验给出最终成绩，自评分不等于最终成绩。</p>
+<h1 id="附录">附录</h1>
+<h2 id="项目共同知识与排错">项目共同知识与排错</h2>
+<p>所有命令在ml_application根目录执行。基础题无需安装下述依赖；自选项目建议独立Python
+3.11环境。先运行python –version，再执行python -m pip install -r
+requirements.txt；PyTorch另装requirements-torch.txt，预训练文本检索另装requirements-retrieval.txt。安装CPU版本即可，具体系统安装方法参考<a href="https://pytorch.org/get-started/locally/">PyTorch官网</a>。不要为了基础题安装这些库。</p>
+<h3 id="从一条样本理解数据">从一条样本理解数据</h3>
+<p>样本是一条记录。特征X是预测时已经知道的信息，标签y是希望预测的答案。表格X形状(n,d)表示n条记录、每条d个特征；标签通常是(n,)。例如面积和房龄可以作特征，售价是标签；不能把答案再放进特征。分类预测有限类别，回归预测数字，检索返回候选条目排序。</p>
+<p>训练集用于学习参数；验证集用于选择方法、超参数；测试集只在方案固定后最终评估。标准化、填补、词表也会学习统计量，因此只能在训练集fit，再对其余数据transform。Pipeline串联这些步骤。重复记录跨集合会夸大效果；按重复组划分或先去重。时间题按日期先后，不能随机打乱。</p>
+<p>标准化对每列减训练均值，再除训练标准差。数值缺失可用训练中位数填补。独热编码将类别变为0/1位置，陌生类别要能处理。对单个未见类别崩溃不是有效的预测流程。</p>
+<h3 id="评价与改动">评价与改动</h3>
+<p>多数类预测或训练目标均值是简单参照。先让一个学习器运行，再每次只改少量条件，写出“为什么可能有帮助”。不能为了好看的分数换测试集。准确率=正确数/总数；混淆矩阵行是真实类别、列是预测。精确率看预测正类是否可靠，召回率看真实正类是否找全，F1是二者调和平均，零分母记0。MAE是绝对误差平均，RMSE是平方误差平均后开根。比较必须使用相同数据和同一种指标。</p>
+<p>PyTorch：张量是可计算的多维数组。批次是一次参与更新的一小组样本。网络输出与标签计算损失；zero_grad清除旧梯度，backward计算当前梯度，step更新参数。分类CrossEntropyLoss接收logits，不要先做softmax；验证时eval并no_grad，防止推理行为错误或意外累积梯度。CPU小模型够用，不要求CUDA。</p>
+<h3 id="记录与解释">记录与解释</h3>
+<p>将命令输出保存一次，如
+以下命令。错误分析不是只贴数字：回看输入与正确答案，说明哪些条件使方法失败，有何证据，结论可推广到哪里。没有错误时如实写明，不编造样例。记录python版本与python
+-m pip freeze，给出从发布包根目录开始的命令。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> intro.py <span class="op">&gt;</span> runs_intro.txt</span></code></pre></div>
+<p>–stage
+data只做读取与划分，未补全模型也可运行；baseline只运行第一个候选；compare只看验证；final才评估测试。现代AI题有各自阶段名，按该题说明。代码检查通过不等于实验分析与报告已完成。</p>
+<h3 id="排错">排错</h3>
+<p>ModuleNotFoundError：检查运行python和python -m
+pip属于同一环境。FileNotFoundError：检查工作目录与原始文件名，下载压缩包需先解压。形状错误：打印X、y和预测的shape，不要随意reshape掩盖对应关系。下载失败：保留错误信息，先做无需外部下载的digits；不关闭证书检查、不在代码中放账号密钥。</p>
+<h3 id="自主选题如何开始">自主选题如何开始</h3>
+<p>先用一段话写清实际使用者、输入、期望输出、数据来源和评价方法，填写到报告第一部分。参考题用于学习实施方法，不是题库限制。自己的目录、模型和运行方式均可，只需说明如何从发布根目录运行。</p>
+<p>“可复现”指另一位读者按你的依赖版本、数据取得步骤和命令，能重新完成实验并取得可比较的结果。“错误分析”应包含一条输入、正确结果、模型输出、可能原因和证据；例如短信被误判时，查看具体措辞与相似训练文本，而不是只写“模型不准确”。</p>
+<h3 id="如何保存结果证据">如何保存结果证据</h3>
+<p>日志是程序运行时打印的信息，可用 以下命令
+保存。命令应写在终端，不写入Python文件；输出文件会在当前工作目录生成。&gt;会覆盖同名文件，需保留对照时使用不同文件名。自拟项目替换成自己的运行命令。报告引用文件名及其中的关键数值，不必反复截图。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> intro.py <span class="op">&gt;</span> runs_intro.txt <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span></code></pre></div>
+<p>baseline表示初始模型阶段，只需返回一个候选；compare表示比较阶段，final表示最终评价阶段，这两阶段需要初始模型与两个改动。参数如–output后面填写保存目录。参考工具的结构检查不评价自拟项目是否符合统一接口，自拟项目自行说明检查方法。</p>
+<h2 id="ref-wine">wine参考项目操作</h2>
+<p>全部命令在发布包 <strong>ml_application/</strong>
+根目录执行，不进入本题子目录。先读本任务书“项目共同知识与排错”一节。</p>
+<h3 id="数据与问题">数据与问题</h3>
+<p><a href="https://archive.ics.uci.edu/dataset/186/wine+quality">官方数据来源</a>。所需文件：winequality-red.csv。外部数据放在projects/wine/data/，保留来源、许可与原文件。下载失败先完成digits题，不使用未核实镜像。</p>
+<p>quality是目标，11个理化特征是输入。CSV以分号分列。框架按特征去重后划分。数字越接近表示预测越接近主观评分，不能当作客观品质证明。</p>
+<h3 id="第一阶段读取和划分">第一阶段：读取和划分</h3>
+<p>运行以下命令，此阶段无需修改算法：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/wine/project.py <span class="at">--stage</span> data</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> data <span class="at">--path</span> runs/wine</span></code></pre></div>
+<p>判定：前五条记录能解释，X与y样本数相同，三组样本均非空、标识互不重叠。除时间题外默认种子42、60/20/20划分；分类按标签比例分层。框架已提供读取、划分、预处理和保存，不要求重复编写这些功能，但报告必须解释如何避免泄漏。</p>
+<h3 id="第二阶段完成一个学习器">第二阶段：完成一个学习器</h3>
+<p>只修改projects/wine/project.py中的candidates(route)。学习器是尚未fit的模型对象，框架负责调用fit与predict。选择sklearn路线时先导入：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span></code></pre></div>
+<p>初始学习器可用
+<code>Ridge(alpha=1)</code>。baseline阶段可先返回一组(名称,模型)，让初始模型独立运行。compare和final阶段再返回三组
+<code>(名称字符串, 未拟合的学习器)</code>，第一组是初始模型，后两组对应改动。不要在函数中读取测试集。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/wine/project.py <span class="at">--stage</span> baseline <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>先观察简单规则与第一个学习器的验证指标，确认程序确实学习，而不是只输出常数。MAE和RMSE，均越小越好。日志中的simple_rule只作参照，不是完成学习模型的替代。</p>
+<h3 id="第三阶段两个有目的的改动">第三阶段：两个有目的的改动</h3>
+<p>Ridge的alpha为正则强度，较大时限制系数幅度；比较0.1、1、10。在报告中先写预期，再运行比较；保持划分和指标不变。不同结果都应保留。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/wine/project.py <span class="at">--stage</span> compare <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>PyTorch路线改用
+<code>--route torch</code>：阅读torch_estimator.py，说明输入维度、隐藏层、输出维度、损失与更新。候选对象使用SmallNetwork(classification=False)的接口；先以16、32、64个隐藏单元比较。学习过程中应在本题文件内定义并解释自己的网络或训练改动，不能只改名称。训练输入为float32，分类标签是整数；回归目标由训练集均值和标准差缩放，预测后还原。</p>
+<h3 id="第四阶段最终测试与报告">第四阶段：最终测试与报告</h3>
+<p>先根据验证比较决定方案，再运行一次最终测试；默认框架按正文主指标选择验证最优者，平局保留先出现者。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/wine/project.py <span class="at">--stage</span> final <span class="at">--route</span> sklearn</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> results <span class="at">--path</span> runs/wine</span></code></pre></div>
+<p>若选PyTorch，两条运行命令统一换成torch。runs/wine/metrics.json记录比较与最终测试；predictions.npz保存真实值、预测和样本标识，examples.csv给出待人工分析样例。程序不会自动判断错误原因：自行回查原输入，至少解释三个错误，不足则解释全部并补充正确例。房价题另生成submission.csv；提交后保留实际竞赛得分及提交标识，不伪造线上结果。</p>
+<p>本题仅供参考；可以借鉴流程后自行提出其他问题。</p>
+<p>在报告填写输入输出、原始数据量与处理后数量、运行环境、候选配置、真实指标、失败条件和个人贡献。分阶段运行会重新训练同一固定种子的模型，并覆盖该题同名结果；把需要对照的版本保存到不同–output目录。禁止从测试结果反向调参。</p>
+<h2 id="ref-digits">digits参考项目操作</h2>
+<p>全部命令在发布包 <strong>ml_application/</strong>
+根目录执行，不进入本题子目录。先读本任务书“项目共同知识与排错”一节。</p>
+<h3 id="数据与问题-1">数据与问题</h3>
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">官方数据来源</a>。所需文件：无需外部文件。外部数据放在projects/digits/data/，保留来源、许可与原文件。下载失败先完成digits题，不使用未核实镜像。</p>
+<p>load_digits内置1797张8×8灰度图，每行64个像素值，标签0至9。先画一张图再看其64维展开向量；这不是MNIST。</p>
+<h3 id="第一阶段读取和划分-1">第一阶段：读取和划分</h3>
+<p>运行以下命令，此阶段无需修改算法：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/digits/project.py <span class="at">--stage</span> data</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> data <span class="at">--path</span> runs/digits</span></code></pre></div>
+<p>判定：前五条记录能解释，X与y样本数相同，三组样本均非空、标识互不重叠。除时间题外默认种子42、60/20/20划分；分类按标签比例分层。框架已提供读取、划分、预处理和保存，不要求重复编写这些功能，但报告必须解释如何避免泄漏。</p>
+<h3 id="第二阶段完成一个学习器-1">第二阶段：完成一个学习器</h3>
+<p>只修改projects/digits/project.py中的candidates(route)。学习器是尚未fit的模型对象，框架负责调用fit与predict。选择sklearn路线时先导入：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span></code></pre></div>
+<p>初始学习器可用
+<code>LogisticRegression(C=1, max_iter=1000)</code>。baseline阶段可先返回一组(名称,模型)，让初始模型独立运行。compare和final阶段再返回三组
+<code>(名称字符串, 未拟合的学习器)</code>，第一组是初始模型，后两组对应改动。不要在函数中读取测试集。</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/digits/project.py <span class="at">--stage</span> baseline <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>先观察简单规则与第一个学习器的验证指标，确认程序确实学习，而不是只输出常数。准确率和混淆矩阵；矩阵行是真实类别，列是预测类别。日志中的simple_rule只作参照，不是完成学习模型的替代。</p>
+<h3 id="第三阶段两个有目的的改动-1">第三阶段：两个有目的的改动</h3>
+<p>C越小正则约束越强；比较0.1、1、10。使用同一划分，不能只提交intro.py。在报告中先写预期，再运行比较；保持划分和指标不变。不同结果都应保留。</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/digits/project.py <span class="at">--stage</span> compare <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>PyTorch路线改用
+<code>--route torch</code>：阅读torch_estimator.py，说明输入维度、隐藏层、输出维度、损失与更新。候选对象使用SmallNetwork(classification=True)的接口；先以16、32、64个隐藏单元比较。学习过程中应在本题文件内定义并解释自己的网络或训练改动，不能只改名称。训练输入为float32，分类标签是整数；回归目标由训练集均值和标准差缩放，预测后还原。</p>
+<h3 id="第四阶段最终测试与报告-1">第四阶段：最终测试与报告</h3>
+<p>先根据验证比较决定方案，再运行一次最终测试；默认框架按正文主指标选择验证最优者，平局保留先出现者。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/digits/project.py <span class="at">--stage</span> final <span class="at">--route</span> sklearn</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> results <span class="at">--path</span> runs/digits</span></code></pre></div>
+<p>若选PyTorch，两条运行命令统一换成torch。runs/digits/metrics.json记录比较与最终测试；predictions.npz保存真实值、预测和样本标识，examples.csv给出待人工分析样例。程序不会自动判断错误原因：自行回查原输入，至少解释三个错误，不足则解释全部并补充正确例。房价题另生成submission.csv；提交后保留实际竞赛得分及提交标识，不伪造线上结果。</p>
+<p>本题仅供参考；可以借鉴流程后自行提出其他问题。</p>
+<p>在报告填写输入输出、原始数据量与处理后数量、运行环境、候选配置、真实指标、失败条件和个人贡献。分阶段运行会重新训练同一固定种子的模型，并覆盖该题同名结果；把需要对照的版本保存到不同–output目录。禁止从测试结果反向调参。</p>
+<h2 id="ref-spam">spam参考项目操作</h2>
+<p>全部命令在发布包 <strong>ml_application/</strong>
+根目录执行，不进入本题子目录。先读本任务书“项目共同知识与排错”一节。</p>
+<h3 id="数据与问题-2">数据与问题</h3>
+<p><a href="https://archive.ics.uci.edu/dataset/228/sms+spam+collection">官方数据来源</a>。所需文件：SMSSpamCollection。外部数据放在projects/spam/data/，保留来源、许可与原文件。下载失败先完成digits题，不使用未核实镜像。</p>
+<p>解压下载包，原文件无表头，每行标签和文本以制表符分隔。spam转1，ham转0；框架按文本去重，再分层划分。TF-IDF把文本表示成词权重向量：频繁出现在当前文本、较少出现在其他文本的词通常权重较大。词表仅在训练集建立，上限2000。</p>
+<h3 id="第一阶段读取和划分-2">第一阶段：读取和划分</h3>
+<p>运行以下命令，此阶段无需修改算法：</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/spam/project.py <span class="at">--stage</span> data</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> data <span class="at">--path</span> runs/spam</span></code></pre></div>
+<p>判定：前五条记录能解释，X与y样本数相同，三组样本均非空、标识互不重叠。除时间题外默认种子42、60/20/20划分；分类按标签比例分层。框架已提供读取、划分、预处理和保存，不要求重复编写这些功能，但报告必须解释如何避免泄漏。</p>
+<h3 id="第二阶段完成一个学习器-2">第二阶段：完成一个学习器</h3>
+<p>只修改projects/spam/project.py中的candidates(route)。学习器是尚未fit的模型对象，框架负责调用fit与predict。选择sklearn路线时先导入：</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> MultinomialNB</span></code></pre></div>
+<p>初始学习器可用
+<code>MultinomialNB(alpha=1)</code>。baseline阶段可先返回一组(名称,模型)，让初始模型独立运行。compare和final阶段再返回三组
+<code>(名称字符串, 未拟合的学习器)</code>，第一组是初始模型，后两组对应改动。不要在函数中读取测试集。</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/spam/project.py <span class="at">--stage</span> baseline <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>先观察简单规则与第一个学习器的验证指标，确认程序确实学习，而不是只输出常数。以spam为正类的F1，辅以准确率、混淆矩阵。日志中的simple_rule只作参照，不是完成学习模型的替代。</p>
+<h3 id="第三阶段两个有目的的改动-2">第三阶段：两个有目的的改动</h3>
+<p>alpha是平滑强度，防止未出现词导致零概率；比较0.1、1、10。不要用准确率掩盖漏检spam。在报告中先写预期，再运行比较；保持划分和指标不变。不同结果都应保留。</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/spam/project.py <span class="at">--stage</span> compare <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>PyTorch路线改用
+<code>--route torch</code>：阅读torch_estimator.py，说明输入维度、隐藏层、输出维度、损失与更新。候选对象使用SmallNetwork(classification=True)的接口；先以16、32、64个隐藏单元比较。学习过程中应在本题文件内定义并解释自己的网络或训练改动，不能只改名称。训练输入为float32，分类标签是整数；回归目标由训练集均值和标准差缩放，预测后还原。短信稀疏矩阵转稠密前限制词表，不能对任意大词表直接展开。</p>
+<h3 id="第四阶段最终测试与报告-2">第四阶段：最终测试与报告</h3>
+<p>先根据验证比较决定方案，再运行一次最终测试；默认框架按正文主指标选择验证最优者，平局保留先出现者。</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/spam/project.py <span class="at">--stage</span> final <span class="at">--route</span> sklearn</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> results <span class="at">--path</span> runs/spam</span></code></pre></div>
+<p>若选PyTorch，两条运行命令统一换成torch。runs/spam/metrics.json记录比较与最终测试；predictions.npz保存真实值、预测和样本标识，examples.csv给出待人工分析样例。程序不会自动判断错误原因：自行回查原输入，至少解释三个错误，不足则解释全部并补充正确例。房价题另生成submission.csv；提交后保留实际竞赛得分及提交标识，不伪造线上结果。</p>
+<p>本题仅供参考；可以借鉴流程后自行提出其他问题。</p>
+<p>在报告填写输入输出、原始数据量与处理后数量、运行环境、候选配置、真实指标、失败条件和个人贡献。分阶段运行会重新训练同一固定种子的模型，并覆盖该题同名结果；把需要对照的版本保存到不同–output目录。禁止从测试结果反向调参。</p>
+<h2 id="ref-bike">bike参考项目操作</h2>
+<p>全部命令在发布包 <strong>ml_application/</strong>
+根目录执行，不进入本题子目录。先读本任务书“项目共同知识与排错”一节。</p>
+<h3 id="数据与问题-3">数据与问题</h3>
+<p><a href="https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset">官方数据来源</a>。所需文件：day.csv。外部数据放在projects/bike/data/，保留来源、许可与原文件。下载失败先完成digits题，不使用未核实镜像。</p>
+<p>使用日数据day.csv；cnt是目标。按日期升序，前60%训练、中间20%验证、后20%测试；删除instant、dteday、casual、registered，后两项相加就是cnt，不能用作特征。天气及日期类别分别编码。这里使用当天实际天气，是条件需求估计而不是事先天气未知的预测。</p>
+<h3 id="第一阶段读取和划分-3">第一阶段：读取和划分</h3>
+<p>运行以下命令，此阶段无需修改算法：</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/bike/project.py <span class="at">--stage</span> data</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> data <span class="at">--path</span> runs/bike</span></code></pre></div>
+<p>判定：前五条记录能解释，X与y样本数相同，三组样本均非空、标识互不重叠。除时间题外默认种子42、60/20/20划分；分类按标签比例分层。框架已提供读取、划分、预处理和保存，不要求重复编写这些功能，但报告必须解释如何避免泄漏。</p>
+<h3 id="第二阶段完成一个学习器-3">第二阶段：完成一个学习器</h3>
+<p>只修改projects/bike/project.py中的candidates(route)。学习器是尚未fit的模型对象，框架负责调用fit与predict。选择sklearn路线时先导入：</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span></code></pre></div>
+<p>初始学习器可用
+<code>Ridge(alpha=1)</code>。baseline阶段可先返回一组(名称,模型)，让初始模型独立运行。compare和final阶段再返回三组
+<code>(名称字符串, 未拟合的学习器)</code>，第一组是初始模型，后两组对应改动。不要在函数中读取测试集。</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/bike/project.py <span class="at">--stage</span> baseline <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>先观察简单规则与第一个学习器的验证指标，确认程序确实学习，而不是只输出常数。MAE和RMSE；误差单位为每日租车次数。日志中的simple_rule只作参照，不是完成学习模型的替代。</p>
+<h3 id="第三阶段两个有目的的改动-3">第三阶段：两个有目的的改动</h3>
+<p>比较alpha为0.1、1、10。可另比较去掉天气特征的影响，需先写出假设。在报告中先写预期，再运行比较；保持划分和指标不变。不同结果都应保留。</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/bike/project.py <span class="at">--stage</span> compare <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>PyTorch路线改用
+<code>--route torch</code>：阅读torch_estimator.py，说明输入维度、隐藏层、输出维度、损失与更新。候选对象使用SmallNetwork(classification=False)的接口；先以16、32、64个隐藏单元比较。学习过程中应在本题文件内定义并解释自己的网络或训练改动，不能只改名称。训练输入为float32，分类标签是整数；回归目标由训练集均值和标准差缩放，预测后还原。</p>
+<h3 id="第四阶段最终测试与报告-3">第四阶段：最终测试与报告</h3>
+<p>先根据验证比较决定方案，再运行一次最终测试；默认框架按正文主指标选择验证最优者，平局保留先出现者。</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/bike/project.py <span class="at">--stage</span> final <span class="at">--route</span> sklearn</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> results <span class="at">--path</span> runs/bike</span></code></pre></div>
+<p>若选PyTorch，两条运行命令统一换成torch。runs/bike/metrics.json记录比较与最终测试；predictions.npz保存真实值、预测和样本标识，examples.csv给出待人工分析样例。程序不会自动判断错误原因：自行回查原输入，至少解释三个错误，不足则解释全部并补充正确例。房价题另生成submission.csv；提交后保留实际竞赛得分及提交标识，不伪造线上结果。</p>
+<p>本题仅供参考；可以借鉴流程后自行提出其他问题。</p>
+<p>在报告填写输入输出、原始数据量与处理后数量、运行环境、候选配置、真实指标、失败条件和个人贡献。分阶段运行会重新训练同一固定种子的模型，并覆盖该题同名结果；把需要对照的版本保存到不同–output目录。禁止从测试结果反向调参。</p>
+<h2 id="ref-house">house参考项目操作</h2>
+<p>全部命令在发布包 <strong>ml_application/</strong>
+根目录执行，不进入本题子目录。先读本任务书“项目共同知识与排错”一节。</p>
+<h3 id="数据与问题-4">数据与问题</h3>
+<p><a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques">官方数据来源</a>。所需文件：train.csv、test.csv、sample_submission.csv。外部数据放在projects/house/data/，保留来源、许可与原文件。下载失败先完成digits题，不使用未核实镜像。</p>
+<p>注册并接受竞赛规则后，从Data下载三份CSV。只从有标签train.csv划分本地训练、验证、测试；Id不是特征。框架将SalePrice取自然对数，比较时使用对数尺度，输出线上预测前用exp还原。数值列按训练中位数填补，类别列用missing填补并独热编码；独热编码为每类建立一个0/1位置，未知类别忽略。</p>
+<h3 id="第一阶段读取和划分-4">第一阶段：读取和划分</h3>
+<p>运行以下命令，此阶段无需修改算法：</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/house/project.py <span class="at">--stage</span> data</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> data <span class="at">--path</span> runs/house</span></code></pre></div>
+<p>判定：前五条记录能解释，X与y样本数相同，三组样本均非空、标识互不重叠。除时间题外默认种子42、60/20/20划分；分类按标签比例分层。框架已提供读取、划分、预处理和保存，不要求重复编写这些功能，但报告必须解释如何避免泄漏。</p>
+<h3 id="第二阶段完成一个学习器-4">第二阶段：完成一个学习器</h3>
+<p>只修改projects/house/project.py中的candidates(route)。学习器是尚未fit的模型对象，框架负责调用fit与predict。选择sklearn路线时先导入：</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span></code></pre></div>
+<p>初始学习器可用
+<code>Ridge(alpha=1)</code>。baseline阶段可先返回一组(名称,模型)，让初始模型独立运行。compare和final阶段再返回三组
+<code>(名称字符串, 未拟合的学习器)</code>，第一组是初始模型，后两组对应改动。不要在函数中读取测试集。</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/house/project.py <span class="at">--stage</span> baseline <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>先观察简单规则与第一个学习器的验证指标，确认程序确实学习，而不是只输出常数。对数RMSE：log预测与log真实值的均方根误差；不与原价格MAE混淆。日志中的simple_rule只作参照，不是完成学习模型的替代。</p>
+<h3 id="第三阶段两个有目的的改动-4">第三阶段：两个有目的的改动</h3>
+<p>比较alpha为0.1、1、10；线上榜单不能用于反复替代验证集调参。在报告中先写预期，再运行比较；保持划分和指标不变。不同结果都应保留。</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/house/project.py <span class="at">--stage</span> compare <span class="at">--route</span> sklearn</span></code></pre></div>
+<p>PyTorch路线改用
+<code>--route torch</code>：阅读torch_estimator.py，说明输入维度、隐藏层、输出维度、损失与更新。候选对象使用SmallNetwork(classification=False)的接口；先以16、32、64个隐藏单元比较。学习过程中应在本题文件内定义并解释自己的网络或训练改动，不能只改名称。训练输入为float32，分类标签是整数；回归目标由训练集均值和标准差缩放，预测后还原。</p>
+<h3 id="第四阶段最终测试与报告-4">第四阶段：最终测试与报告</h3>
+<p>先根据验证比较决定方案，再运行一次最终测试；默认框架按正文主指标选择验证最优者，平局保留先出现者。</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/house/project.py <span class="at">--stage</span> final <span class="at">--route</span> sklearn</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> results <span class="at">--path</span> runs/house</span></code></pre></div>
+<p>若选PyTorch，两条运行命令统一换成torch。runs/house/metrics.json记录比较与最终测试；predictions.npz保存真实值、预测和样本标识，examples.csv给出待人工分析样例。程序不会自动判断错误原因：自行回查原输入，至少解释三个错误，不足则解释全部并补充正确例。房价题另生成submission.csv；提交后保留实际竞赛得分及提交标识，不伪造线上结果。</p>
+<p>本题仅供参考；可以借鉴流程后自行提出其他问题。</p>
+<p>在报告填写输入输出、原始数据量与处理后数量、运行环境、候选配置、真实指标、失败条件和个人贡献。分阶段运行会重新训练同一固定种子的模型，并覆盖该题同名结果；把需要对照的版本保存到不同–output目录。禁止从测试结果反向调参。</p>
+<h2 id="ref-transfer">transfer参考项目操作</h2>
+<p>从ml_application根目录执行，先读本任务书“项目共同知识与排错”一节。安装依赖：</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements-torch.txt</span></code></pre></div>
+<p>从<a href="https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">PyTorch官方教程</a>取得hymenoptera_data，解压至projects/transfer/data/hymenoptera_data，保留train/ants、train/bees、val/ants、val/bees。源图许可与来源须保留；未确认再分发授权时只分发获取说明，不把图片打包。首次运行还会下载ResNet18权重，需能访问官方模型源。</p>
+<p>预训练模型已在其他图像上学习表示。本题冻结骨干，替换最后分类层为恒等映射，得到每图512维特征；再训练两类分类头。输入先使用该权重配套transforms。冻结参数不等于eval：BatchNorm等层在训练模式仍会改变状态。提供的特征提取使用eval与no_grad。原train按类别比例留25%验证，原val只作最终测试。</p>
+<ol type="1">
+<li><p>运行以下命令，核对两类名称与512维特征；再运行以下命令。本步不要求新增实现。</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/transfer/project.py <span class="at">--stage</span> data</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_stage.py <span class="at">--stage</span> data <span class="at">--path</span> runs/transfer</span></code></pre></div></li>
+<li><p>在本题project.py补全candidates(route)，返回三个(名称,未拟合分类器)。torch路线使用torch_estimator.SmallNetwork接口，以8、16、32隐藏单元作为起步；sklearn路线用LogisticRegression并比较C。阅读并解释训练循环，至少完成一个自己的模型或训练改动。</p></li>
+<li><p>运行以下命令。记录多数类参照和三个分类头的验证准确率。不要微调骨干，否则需要重新设计训练与验证隔离。</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/transfer/project.py <span class="at">--stage</span> compare <span class="at">--route</span> torch</span></code></pre></div></li>
+<li><p>固定候选后运行以下命令，再运行结果检查。程序按验证准确率选头，测试输出保存runs/transfer/metrics.json与predictions.npz。若使用sklearn，两步统一换路线参数。</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/transfer/project.py <span class="at">--stage</span> final <span class="at">--route</span> torch</span></code></pre></div></li>
+</ol>
+<p>分析至少三个误判：从原val按ImageFolder字典序找到对应图像，说明背景、姿态或尺寸等条件；没有足够错误就分析全部并补充正确例。记录实际权重名称、环境版本、时间及下载问题。进阶可比较冻结特征与少量微调，但不能用测试集选择策略。</p>
+<h2 id="ref-retrieval">retrieval参考项目操作</h2>
+<p>从ml_application根目录执行，先读本任务书“项目共同知识与排错”一节。安装依赖：</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements-retrieval.txt</span></code></pre></div>
+<p>projects/retrieval/data提供30条人工教学FAQ与60条改写查询。faq.json每条含id、question、answer；queries.json含question、relevant_id、split。dev用于改进，test用于最终评价；按FAQ标识分离查询，但统一候选库有意保留全部FAQ。它是教学语料，不是真实质量基准。正式项目需额外编写独立查询并说明标注依据。</p>
+<ol type="1">
+<li><p>运行以下命令，应显示30条FAQ、60条查询；框架检查标识与划分，无需编写模型。</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/retrieval/project.py <span class="at">--stage</span> data</span></code></pre></div></li>
+<li><p>补全rank_questions(corpus, queries,
+method)，返回每条查询对应的全部FAQ标识列表，按相似度降序。函数收到查询文本，不收到正确标注。tfidf分支使用TfidfVectorizer(analyzer=‘char’,
+ngram_range=(1,2))；仅在候选FAQ问题fit，查询transform，再点积得到相似度。不要用答案字段或relevant_id直接排序。</p></li>
+<li><p>embedding分支加载sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2，device=‘cpu’，encode(…,
+normalize_embeddings=True)后点积。归一化使向量长度为1，点积等于余弦相似度。模型卡见<a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2">官方页面</a>。首次下载所需网络、磁盘及时间应实际记录。</p></li>
+<li><p>hybrid分支组合两种相似度，如各占一半；先在开发查询验证其假设。排序平局按FAQ原顺序。运行以下命令，在runs/retrieval/dev.json记录三个方案的指标和排序。</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/retrieval/project.py <span class="at">--stage</span> compare</span></code></pre></div></li>
+<li><p>固定方案后运行以下命令，结果保存test.json。Recall@3为前三项命中查询比例；MRR为首个相关项排名倒数的平均。排名从1开始，没有相关项记0。报告以开发选定的方法作为最终方案，其余测试结果仅作预先声明的对照，不能再据此选择。</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> projects/retrieval/project.py <span class="at">--stage</span> final</span></code></pre></div></li>
+</ol>
+<p>至少分析三条失败查询，不足则全部：区分同义词、措辞歧义和标注问题。冻结文本编码器也是机器学习方法，但不能写成自己训练了大模型。CPU可完成，禁止为了本题强制购买API。</p>
+</div>
+
+
+</body>
+
+</html>
