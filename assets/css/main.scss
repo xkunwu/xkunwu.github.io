@@ -7,6 +7,12 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+@media screen {
+    .page__content .pub_group:not(:first-child) > h2 {
+        margin-top: 2em;
+    }
+}
+
 .pub_row > .pub_img {
     float: left;
     width: 300px;
@@ -25,17 +31,23 @@
     font-weight: bold;
     display: block;
 }
+.page__content .pub_txt .pub_title {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-weight: bold;
+    color: inherit;
+}
 .pub_txt author {
     display: block;
 }
-.pub_txt publisher {
+.pub_txt .pub_venue {
     font-style: italic;
-    display: block;
 }
-.pub_txt award {
+.pub_txt .pub_award {
     font-weight: bold;
     font-size: 90%;
-    display: block;
 }
 .pub_txt links {
     display: block;

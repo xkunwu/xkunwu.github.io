@@ -1,0 +1,42 @@
+{% for group in include.groups -%}
+  {%- if group.title %}
+<section class="pub_group">
+  <h2{% if group.id %} id="{{ group.id | escape }}"{% endif %}>{{ group.title | escape }}</h2>
+    {%- assign entry_heading = "h3" %}
+  {%- else %}
+    {%- assign entry_heading = "h2" %}
+  {%- endif %}
+  {%- for entry in group.entries %}
+<article class="pub_row">
+  <div class="pub_img">
+    <img src="{{ entry.image | escape }}" alt="">
+  </div>
+  <div class="pub_txt">
+    <{{ entry_heading }} class="pub_title">{{ entry.title | escape }}</{{ entry_heading }}>
+    {%- if entry.byline %}
+    <div>{{ entry.byline | escape }}</div>
+    {%- endif %}
+    {%- if entry.venue %}
+    <div class="pub_venue">
+      {%- if entry.venue.url -%}
+      <a href="{{ entry.venue.url | escape }}">{{ entry.venue.label | escape }}</a>
+      {%- else -%}
+      {{ entry.venue.label | escape }}
+      {%- endif -%}
+    </div>
+    {%- endif %}
+    {%- if entry.award %}
+    <div class="pub_award">{{ entry.award | escape }}</div>
+    {%- endif %}
+    <div>
+      {%- for link in entry.links %}
+      [<a href="{{ link.url | escape }}">{{ link.label | escape }}</a>]
+      {%- endfor %}
+    </div>
+  </div>
+</article>
+  {%- endfor %}
+  {%- if group.title %}
+</section>
+  {%- endif %}
+{% endfor %}

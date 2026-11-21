@@ -1,0 +1,127 @@
+groups:
+  - entries:
+      - title: 'E-StopMotion: digitizing stop motion for enhanced animation and games'
+        image: /research/18StopMotion/blob_fish.png
+        byline: Anamaria Ciucanu, Naval Bhandari, Xiaokun Wu, Shridhar Ravikumar, Yong-Liang Yang, Darren Cosker
+        venue:
+          label: Motion in Games 2018
+          url: http://cyprusconferences.org/mig2018/
+        links:
+          - label: 'Click this if you are boring right now :smile:'
+            url: /research/18StopMotion/blob_fish.gif
+          - label: Paper
+            url: https://dl.acm.org/citation.cfm?id=3274505
+          - label: BibTex
+            url: /research/18StopMotion/18StopMotion.txt
+      - title: 'HandMap: Robust hand pose estimation via intermediate dense guidance map supervision'
+        image: /research/18HandPose/eccv2018pipeline.png
+        byline: Xiaokun Wu, Daniel Finnegan, Eamonn O'Neill, Yong-Liang Yang
+        venue:
+          label: ECCV 2018
+          url: https://eccv2018.org/
+        links:
+          - label: Webpage
+            url: /research/18HandPose/18HandPose
+          - label: Code
+            url: https://github.com/xkunwu/depth-hand
+          - label: Resources
+            url: https://github.com/xkunwu/depth-hand/blob/master/code/README.md#resources
+          - label: Sibling Project
+            url: /projects/hand-track/hand-track
+          - label: Paper
+            url: http://openaccess.thecvf.com/content_ECCV_2018/papers/Xiaokun_Wu_HandMap_Robust_Hand_ECCV_2018_paper.pdf
+          - label: Poster
+            url: /research/18HandPose/eccv2018poster1813.pdf
+          - label: BibTex
+            url: /research/18HandPose/Wu18HandPose.txt
+      - title: 'Structure-aware content creation: detection, retargeting and deformation'
+        image: /research/17Thesis/regular_structure.jpg
+        byline: Saarbrücken, 20 January 2017.
+        links:
+          - label: Defended
+            url: /pages/about/phd-defended
+          - label: Doctoral Thesis
+            url: https://publikationen.sulb.uni-saarland.de/handle/20.500.11880/26753
+      - title: Approximate 3D Partial Symmetry Detection Using Co-occurrence Analysis
+        image: /research/15CoOccurrence/dragonTiles.jpg
+        byline: Chuan Li, Michael Wand, Xiaokun Wu, Hans-Peter Seidel
+        venue:
+          label: 3DV 2015
+          url: http://3dv2015.inria.fr/index.html
+        links:
+          - label: Code
+            url: https://github.com/xkunwu/zum-GeoXL35
+          - label: Paper
+            url: https://ieeexplore.ieee.org/document/7335511
+          - label: Slides
+            url: /research/15CoOccurrence/15CoOccurrence.slides.pdf
+          - label: BibTex
+            url: /research/15CoOccurrence/Li15CoOccurrence.txt
+      - title: 3D Model Retargeting Using Offset Statistics
+        image: /research/14Retarget/compare.png
+        byline: Xiaokun Wu, Chuan Li, Michael Wand, Klaus Hildebrandt, Silke Jansen, Hans-Peter Seidel
+        venue:
+          label: 3DV 2014
+          url: http://www.3dimpvt.org/
+        links:
+          - label: Code
+            url: https://github.com/xkunwu/zum-GeoXL35
+          - label: Paper
+            url: /research/14Retarget/14Retarget.prepress.pdf
+          - label: Video
+            url: /research/14Retarget/14Retarget.24.mp4
+          - label: BibTex
+            url: /research/14Retarget/Wu14Retarget.txt
+      - title: Real-Time Symmetry-Preserving Deformation
+        image: /research/14SymmEdit/CenterPiece.gif
+        byline: Xiaokun Wu, Michael Wand, Klaus Hildebrandt, Pushmeet Kohli, Hans-Peter Seidel
+        venue:
+          label: PG 2014
+          url: http://graphics.ewha.ac.kr/PG14/
+        award: Best Paper Award Honorable Mention
+        links:
+          - label: Webpage
+            url: /research/14SymmEdit/14SymmEdit
+          - label: Code
+            url: https://github.com/xkunwu/zum-GeoXL35
+          - label: Data
+            url: https://pan.baidu.com/s/1KTEuM9KofSSXp4-KKXaQzg
+          - label: Paper
+            url: /research/14SymmEdit/14SymmEdit.prepress.pdf
+          - label: Slides
+            url: /research/14SymmEdit/14SymmEdit.slides.pdf
+          - label: Video
+            url: /research/14SymmEdit/media/14SymmEdit.24.mp4
+          - label: BibTex
+            url: /research/14SymmEdit/Wu14SymmEdit.txt
+      - title: Symmetry-Aware Template Deformation and Fitting
+        image: /research/14SymmDeform/camera.png
+        byline: Christian Kurz, Xiaokun Wu, Michael Wand, Thorsten Thormählen, Pushmeet Kohli, Hans Peter Seidel
+        venue:
+          label: CGF 2014
+        links:
+          - label: Code
+            url: https://github.com/xkunwu/zum-GeoXL35
+          - label: Paper
+            url: https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.12344
+          - label: Video
+            url: /research/14SymmDeform/14SymmDeform.24.mp4
+          - label: BibTex
+            url: /research/14SymmDeform/Kurz14SymmDeform.txt
+      - title: 'GlobFit: Consistently Fitting Primitives by Discovering Global Relations'
+        image: /research/11GlobFit/pipe_surface.jpg
+        byline: Yangyan Li, Xiaokun Wu, Yiorgos Chrysanthou, Andrei Sharf, Daniel Cohen-Or, Niloy J. Mitra
+        venue:
+          label: SIGGRAPH 2011
+          url: http://s2011.siggraph.org/
+        links:
+          - label: Webpage
+            url: http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/globFit_sigg11.html
+          - label: Paper
+            url: http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/paper_docs/globFit_sigg11.pdf
+          - label: DOI
+            url: https://dl.acm.org/doi/10.1145/2010324.1964947
+          - label: Slides
+            url: http://vecg.cs.ucl.ac.uk/Projects/SmartGeometry/globFit/paper_docs/globFit_slides_sigg11.pptx
+          - label: BibTex
+            url: /research/11GlobFit/Li11GlobFit.txt

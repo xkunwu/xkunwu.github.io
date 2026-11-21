@@ -58,9 +58,23 @@ css = site_file("assets/css/main.css")
 end
 site_file("COPYRIGHT.txt")
 
+research = pages.fetch("research/index.html").at_css(".page__content")
+check(research, "Research should show its page content")
+research_entries = research.css("article")
+check(research_entries.any? && research_entries.all? { |entry| entry.parent == research && entry.at_css("h2") },
+      "Research should show its entries directly under the page content with h2 titles")
+
 projects = pages.fetch("projects/index.html")
-check(projects.at_css('.pub_row a[href="hand-track/hand-track"]'), "projects should link to Hand Track")
-check(pages.fetch("research/index.html").at_css(".pub_row .pub_txt"), "research should show its publications")
+project_entries = projects.css(".page__content > article")
+check(project_entries.any? && project_entries.all? { |entry| entry.at_css("h2") },
+      "Projects should show entries from the untitled group directly under the page content with h2 titles")
+bath_heading = projects.at_css(".page__content > section > h2#at-camera-group-of-bath")
+check(bath_heading&.text == "At CAMERA group of Bath", "Projects should show the Bath group heading and anchor")
+bath_entries = bath_heading.parent.xpath("./article")
+check(bath_entries.any? && bath_entries.all? { |entry| entry.at_css("h3") },
+      "The Bath group should show its entries with h3 titles")
+check(bath_heading.parent.at_css('article a[href="hand-track/hand-track"]')&.text == "Webpage",
+      "The Bath group should link to Hand Track")
 
 detail = pages.fetch("projects/hand-track/hand-track.html")
 %w[assumptions faq].each do |heading|
@@ -107,5 +121,5 @@ check(missing_links.empty?, "broken teaching links:\n  #{missing_links.join("\n 
   check(!File.exist?(File.join("_site", path)), "#{path} should be excluded from the site")
 end
 
-puts "Verified #{pages.size} pages, theme CSS, Hand Track contents, copyright, and #{courses.size} course entries and their terms."
+puts "Verified #{pages.size} pages, theme CSS, Research and Projects lists, Hand Track contents, copyright, and #{courses.size} course entries and their terms."
 puts "Verified local links in #{current_courses.size} current default terms."
