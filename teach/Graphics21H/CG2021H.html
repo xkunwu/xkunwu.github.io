@@ -1,45 +1,52 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="WU Xiaokun [吴晓堃]" />
-  <title>Lecture 0: Course Information</title>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="WU Xiaokun 吴晓堃">
+  <title>Course Information</title>
 
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
-  <link rel="stylesheet" href="data:text/css,%0A%3Aroot%20%7B%0A%2D%2Dr%2Dbackground%2Dcolor%3A%20%23fff%3B%0A%2D%2Dr%2Dmain%2Dfont%3A%20%22Noto%20Serif%22%2C%20%22Times%20New%20Roman%22%2C%20serif%3B%0A%2D%2Dr%2Dmain%2Dfont%2Dsize%3A%2016px%3B%0A%2D%2Dr%2Dmain%2Dcolor%3A%20%23222%3B%0A%2D%2Dr%2Dpage%2Dmax%2Dwidth%3A%20800px%3B%0A%2D%2Dr%2Dblock%2Dmargin%3A%2020px%3B%0A%2D%2Dr%2Dblock%2Dpadding%3A%2010px%3B%0A%2D%2Dr%2Dsider%2Dmargin%3A%20100px%3B%0A%2D%2Dr%2Dheading%2Dfont%3A%20%22Noto%20Serif%22%2C%20%22Times%20New%20Roman%22%2C%20serif%3B%0A%2D%2Dr%2Dheading%2Dcolor%3A%20%23222%3B%0A%2D%2Dr%2Dheading%2Dline%2Dheight%3A%201%2E2%3B%0A%2D%2Dr%2Dheading%2Dletter%2Dspacing%3A%20normal%3B%0A%2D%2Dr%2Dheading%2Dtext%2Dshadow%3A%20none%3B%0A%2D%2Dr%2Dheading%2Dfont%2Dweight%3A%20600%3B%0A%2D%2Dr%2Dheading1%2Dtext%2Dshadow%3A%20none%3B%0A%2D%2Dr%2Dheading1%2Dsize%3A%202%2E5rem%3B%0A%2D%2Dr%2Dheading2%2Dsize%3A%202rem%3B%0A%2D%2Dr%2Dheading3%2Dsize%3A%201%2E6rem%3B%0A%2D%2Dr%2Dheading4%2Dsize%3A%201%2E3rem%3B%0A%2D%2Dr%2Dheading5%2Dsize%3A%201rem%3B%0A%2D%2Dr%2Dcode%2Dfont%3A%20monospace%3B%0A%2D%2Dr%2Dlink%2Dcolor%3A%20%232a76dd%3B%0A%2D%2Dr%2Dlink%2Dcolor%2Ddark%3A%20%231a53a1%3B%0A%2D%2Dr%2Dlink%2Dcolor%2Dhover%3A%20%236ca0e8%3B%0A%2D%2Dr%2Dselection%2Dbackground%2Dcolor%3A%20%2398bdef%3B%0A%2D%2Dr%2Dselection%2Dcolor%3A%20%23fff%3B%0A%7D%0A%0Abody%20%7B%20font%2Dfamily%3A%20var%28%2D%2Dr%2Dmain%2Dfont%29%3B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dmain%2Dfont%2Dsize%29%3B%0Afont%2Dweight%3A%20normal%3B%0Acolor%3A%20var%28%2D%2Dr%2Dmain%2Dcolor%29%3B%0Abackground%3A%20%23fff%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dr%2Dbackground%2Dcolor%29%3B%0A%0Adisplay%3A%20grid%3B%0Agrid%2Dtemplate%2Dcolumns%3A%20auto%20800px%20auto%3B%0Agrid%2Dtemplate%2Dareas%3A%20%22%2E%20header%20%2E%22%0A%22%2E%20lenotes%20meta%2Dright%22%0A%22%2E%20footnotes%20%2E%22%0A%3B%0A%7D%0Abody%20%2Elenotes%20%7B%0Agrid%2Darea%3A%20lenotes%3B%0A%7D%0Abody%20%2Emeta%2Dright%20%7B%0Agrid%2Darea%3A%20meta%2Dright%3B%0A%7D%0Abody%20%2Efootnotes%20%7B%0Agrid%2Darea%3A%20footnotes%3B%0A%7D%0A%0Abody%20header%20%7B%0A%0A%0Agrid%2Darea%3A%20header%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dheading%2Dfont%29%3B%0Acolor%3A%20var%28%2D%2Dr%2Dheading%2Dcolor%29%3B%0Afont%2Dweight%3A%20var%28%2D%2Dr%2Dheading%2Dfont%2Dweight%29%3B%0Aline%2Dheight%3A%20var%28%2D%2Dr%2Dheading%2Dline%2Dheight%29%3B%0Aletter%2Dspacing%3A%20var%28%2D%2Dr%2Dheading%2Dletter%2Dspacing%29%3B%0Atext%2Dtransform%3A%20var%28%2D%2Dr%2Dheading%2Dtext%2Dtransform%29%3B%0Atext%2Dshadow%3A%20var%28%2D%2Dr%2Dheading%2Dtext%2Dshadow%29%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading1%2Dsize%29%3B%0A%7D%0Ah2%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading2%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading3%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading4%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%20var%28%2D%2Dr%2Dheading5%2Dsize%29%3B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Ah1%20%7B%0Atext%2Dshadow%3A%20var%28%2D%2Dr%2Dheading1%2Dtext%2Dshadow%29%3B%0A%7D%0A%0A%2Ebanner%2Dheader%20%7B%0Adisplay%3A%20flex%3B%0Aalign%2Ditems%3A%20baseline%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Ecourse%20%7B%0Afont%2Dsize%3A%202%2E5em%3B%0Afont%2Dweight%3A%20bold%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eterm%20%7B%0Afont%2Dsize%3A%201%2E6em%3B%0Amargin%2Dleft%3A%20auto%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eauthor%20%7B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Ebanner%2Dheader%20%3E%20%2Eemail%20%7B%0Afont%2Dsize%3A%200%2E8em%3B%0Amargin%2Dleft%3A%202em%3B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%0A%0A%0Aimg%2C%0Avideo%2C%0Aiframe%20%7B%0Amax%2Dwidth%3A%2095%25%3B%0Amax%2Dheight%3A%2095%25%3B%0A%7D%0Astrong%2C%0Ab%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aem%20%7B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Aol%20%7B%0Alist%2Dstyle%2Dtype%3A%20decimal%3B%0A%7D%0Aul%20%7B%0Alist%2Dstyle%2Dtype%3A%20disc%3B%0A%7D%0Aul%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20square%3B%0A%7D%0Aul%20ul%20ul%20%7B%0Alist%2Dstyle%2Dtype%3A%20circle%3B%0A%7D%0Aul%20ul%2C%0Aul%20ol%2C%0Aol%20ol%2C%0Aol%20ul%20%7B%0Adisplay%3A%20block%3B%0Amargin%2Dleft%3A%201em%3B%0A%7D%0Adt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Add%20%7B%0Amargin%2Dleft%3A%201em%3B%0A%7D%0A%0Ablockquote%20%7B%0Adisplay%3A%20block%3B%0Aposition%3A%20relative%3B%0Awidth%3A%2070%25%3B%0A%0Apadding%3A%20var%28%2D%2Dr%2Dblock%2Dpadding%29%3B%0Afont%2Dstyle%3A%20italic%3B%0Abox%2Dshadow%3A%200px%200px%202px%20rgba%280%2C%200%2C%200%2C%200%2E2%29%3B%0A%7D%0Ablockquote%20p%3Afirst%2Dchild%2C%0Ablockquote%20p%3Alast%2Dchild%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0Aq%20%7B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Adiv%2EsourceCode%20%7B%0Amargin%3A%200%201em%3B%0A%0A%2Dmoz%2Dbox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%2Dwebkit%2Dbox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0Abox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%7D%0Apre%20%7B%0Adisplay%3A%20block%3B%0Aposition%3A%20relative%3B%0A%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%201em%3B%0Apadding%3A%20var%28%2D%2Dr%2Dblock%2Dpadding%29%3B%0Atext%2Dalign%3A%20left%3B%0Afont%2Dsize%3A%200%2E8em%3B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dcode%2Dfont%29%3B%0Aline%2Dheight%3A%201%2E2em%3B%0Aoverflow%3A%20auto%3B%0Amax%2Dwidth%3A%20800px%3B%0Amax%2Dheight%3A%20400px%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0Abox%2Dshadow%3A%200px%205px%2015px%20rgba%280%2C%200%2C%200%2C%200%2E15%29%3B%0A%7D%0Apre%20code%20%7B%0Adisplay%3A%20block%3B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0A%0Acode%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Afont%2Dfamily%3A%20var%28%2D%2Dr%2Dcode%2Dfont%29%3B%0Atext%2Dtransform%3A%20none%3B%0Atab%2Dsize%3A%202%3B%0A%7D%0A%2Ecode%2Dwrapper%20%7B%0Awhite%2Dspace%3A%20normal%3B%0A%7D%0A%2Ecode%2Dwrapper%20code%20%7B%0Awhite%2Dspace%3A%20pre%3B%0A%7D%0A%0Atable%20%7B%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%20auto%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0Aborder%2Dspacing%3A%200%3B%0A%7D%0Atable%20th%20%7B%0Afont%2Dweight%3A%20bold%3B%0Atext%2Dalign%3A%20center%3B%0Apadding%3A%200%2E2em%201em%3B%0Aborder%2Dbottom%3A%202px%20solid%20%23222%3B%0A%7D%0Atable%20td%20%7B%0Atext%2Dalign%3A%20left%3B%0Apadding%3A%200%2E2em%200%2E5em%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23222%3B%0A%7D%0Atable%20th%5Balign%3Dcenter%5D%2C%0Atable%20td%5Balign%3Dcenter%5D%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Atable%20th%5Balign%3Dright%5D%2C%0Atable%20td%5Balign%3Dright%5D%20%7B%0Atext%2Dalign%3A%20right%3B%0A%7D%0Atable%20tbody%20tr%3Alast%2Dchild%20th%2C%0Atable%20tbody%20tr%3Alast%2Dchild%20td%20%7B%0A%0Aborder%2Dbottom%3A%203px%20solid%20%23222%3B%0A%7D%0Atable%20thead%20tr%3Afirst%2Dchild%20th%2C%0Atable%20thead%20tr%3Afirst%2Dchild%20td%20%7B%0Aborder%2Dtop%3A%203px%20solid%20%23222%3B%0A%7D%0Asup%20%7B%0Avertical%2Dalign%3A%20super%3B%0Afont%2Dsize%3A%20smaller%3B%0A%7D%0Asub%20%7B%0Avertical%2Dalign%3A%20sub%3B%0Afont%2Dsize%3A%20smaller%3B%0A%7D%0Asmall%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Afont%2Dsize%3A%200%2E6em%3B%0Aline%2Dheight%3A%201%2E2em%3B%0Avertical%2Dalign%3A%20top%3B%0A%7D%0Asmall%20%2A%20%7B%0Avertical%2Dalign%3A%20top%3B%0A%7D%0Aimg%20%7B%0Adisplay%3A%20block%3B%0Amargin%3A%20var%28%2D%2Dr%2Dblock%2Dmargin%29%20auto%3B%0A%7D%0A%0Aa%20%7B%0Acolor%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%29%3B%0Atext%2Ddecoration%3A%20none%3B%0Atransition%3A%20color%200%2E15s%20ease%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%2Dhover%29%3B%0Atext%2Dshadow%3A%20none%3B%0Aborder%3A%20none%3B%0A%7D%0A%2Eroll%20span%3Aafter%20%7B%0Acolor%3A%20%23fff%3B%0Abackground%3A%20var%28%2D%2Dr%2Dlink%2Dcolor%2Ddark%29%3B%0A%7D%0A" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="data:text/css;base64,LyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogKiBHTE9CQUwgU1RZTEVTCiAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovCiA6cm9vdCB7CiAgICAtLXItYmFja2dyb3VuZC1jb2xvcjogI2ZmZjsKICAgIC0tci1tYWluLWZvbnQ6ICJOb3RvIFNlcmlmIiwgIlRpbWVzIE5ldyBSb21hbiIsIHNlcmlmOwogICAgLS1yLW1haW4tZm9udC1zaXplOiAxNnB4OwogICAgLS1yLW1haW4tY29sb3I6ICMyMjI7CiAgICAtLXItcGFnZS1tYXgtd2lkdGg6IDgwMHB4OwogICAgLS1yLWJsb2NrLW1hcmdpbjogMjBweDsKICAgIC0tci1ibG9jay1wYWRkaW5nOiAxMHB4OwogICAgLS1yLXNpZGVyLW1hcmdpbjogMTAwcHg7CiAgICAtLXItaGVhZGluZy1mb250OiAiTm90byBTZXJpZiIsICJUaW1lcyBOZXcgUm9tYW4iLCBzZXJpZjsKICAgIC0tci1oZWFkaW5nLWNvbG9yOiAjMjIyOwogICAgLS1yLWhlYWRpbmctbGluZS1oZWlnaHQ6IDEuMnJlbTsKICAgIC0tci1oZWFkaW5nLWxldHRlci1zcGFjaW5nOiBub3JtYWw7CiAgICAtLXItaGVhZGluZy10ZXh0LXNoYWRvdzogbm9uZTsKICAgIC0tci1oZWFkaW5nLWZvbnQtd2VpZ2h0OiA2MDA7CiAgICAtLXItaGVhZGluZzEtdGV4dC1zaGFkb3c6IG5vbmU7CiAgICAtLXItaGVhZGluZzEtc2l6ZTogMi4ycmVtOwogICAgLS1yLWhlYWRpbmcyLXNpemU6IDEuOHJlbTsKICAgIC0tci1oZWFkaW5nMy1zaXplOiAxLjZyZW07CiAgICAtLXItaGVhZGluZzQtc2l6ZTogMS4zcmVtOwogICAgLS1yLWhlYWRpbmc1LXNpemU6IDFyZW07CiAgICAtLXItY29kZS1mb250OiAiTm90byBTYW5zIE1vbm8iLCAiTm90byBNb25vIiwgbW9ub3NwYWNlOwogICAgLS1yLWxpbmstY29sb3I6ICMyYTc2ZGQ7CiAgICAtLXItbGluay1jb2xvci1kYXJrOiAjMWE1M2ExOwogICAgLS1yLWxpbmstY29sb3ItaG92ZXI6ICM2Y2EwZTg7CiAgICAtLXItc2VsZWN0aW9uLWJhY2tncm91bmQtY29sb3I6ICM5OGJkZWY7CiAgICAtLXItc2VsZWN0aW9uLWNvbG9yOiAjZmZmOwp9CgovKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqCiAqIEJvZHkKICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKi8KCmJvZHkgeyAKICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1yLW1haW4tZm9udCk7CiAgICBmb250LXNpemU6IHZhcigtLXItbWFpbi1mb250LXNpemUpOwogICAgZm9udC13ZWlnaHQ6IG5vcm1hbDsKICAgIGNvbG9yOiB2YXIoLS1yLW1haW4tY29sb3IpOwogICAgYmFja2dyb3VuZDogI2ZmZjsKICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXItYmFja2dyb3VuZC1jb2xvcik7CgkvKiBtYXgtd2lkdGg6IHZhcigtLXItcGFnZS1tYXgtd2lkdGgpOwoJbWFyZ2luOiAwIGF1dG8gIWltcG9ydGFudDsKCWZsb2F0OiBub25lICFpbXBvcnRhbnQ7ICovCiAgICBkaXNwbGF5OiBncmlkOwogICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIDgwMHB4IGF1dG87CiAgICBncmlkLXRlbXBsYXRlLWFyZWFzOiAKICAgICAgICAiLiBoZWFkZXIgLiIKICAgICAgICAiLiBsZW5vdGVzIG1ldGEtcmlnaHQiCiAgICAgICAgIi4gZm9vdG5vdGVzIC4iCiAgICAgICAgOwp9CmJvZHkgLmxlbm90ZXMgewogICAgZ3JpZC1hcmVhOiBsZW5vdGVzOwp9CmJvZHkgLm1ldGEtcmlnaHQgewogICAgZ3JpZC1hcmVhOiBtZXRhLXJpZ2h0Owp9CmJvZHkgLmZvb3Rub3RlcyB7CiAgICBncmlkLWFyZWE6IGZvb3Rub3RlczsKfQoKLyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogKiBIZWFkZXIKICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKi8KIGJvZHkgaGVhZGVyIHsKICAgIC8qIG1heC13aWR0aDogdmFyKC0tci1wYWdlLW1heC13aWR0aCk7CiAgICBtYXJnaW46IDAgYXV0byAhaW1wb3J0YW50OwogICAgZmxvYXQ6IG5vbmUgIWltcG9ydGFudDsgKi8KICAgIC8qIGJhY2tncm91bmQtY29sb3I6ICNjY2M7ICovCiAgICBncmlkLWFyZWE6IGhlYWRlcjsKfQoKaDEsCmgyLApoMywKaDQsCmg1LApoNiB7CiAgZm9udC1mYW1pbHk6IHZhcigtLXItaGVhZGluZy1mb250KTsKICBjb2xvcjogdmFyKC0tci1oZWFkaW5nLWNvbG9yKTsKICBmb250LXdlaWdodDogdmFyKC0tci1oZWFkaW5nLWZvbnQtd2VpZ2h0KTsKICBsaW5lLWhlaWdodDogdmFyKC0tci1oZWFkaW5nLWxpbmUtaGVpZ2h0KTsKICBsZXR0ZXItc3BhY2luZzogdmFyKC0tci1oZWFkaW5nLWxldHRlci1zcGFjaW5nKTsKICB0ZXh0LXRyYW5zZm9ybTogdmFyKC0tci1oZWFkaW5nLXRleHQtdHJhbnNmb3JtKTsKICB0ZXh0LXNoYWRvdzogdmFyKC0tci1oZWFkaW5nLXRleHQtc2hhZG93KTsKICB3b3JkLXdyYXA6IGJyZWFrLXdvcmQ7Cn0KCmgxIHsKICBmb250LXNpemU6IHZhcigtLXItaGVhZGluZzEtc2l6ZSk7Cn0KCmgyIHsKICBmb250LXNpemU6IHZhcigtLXItaGVhZGluZzItc2l6ZSk7CiAgdGV4dC1hbGlnbjogbGVmdDsKICAvKiBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjOyAqLwp9CgpoMyB7CiAgZm9udC1zaXplOiB2YXIoLS1yLWhlYWRpbmczLXNpemUpOwogIHRleHQtYWxpZ246IGxlZnQ7Cn0KCmg0IHsKICBmb250LXNpemU6IHZhcigtLXItaGVhZGluZzQtc2l6ZSk7CiAgdGV4dC1hbGlnbjogbGVmdDsKfQoKaDUgewogICAgZm9udC1zaXplOiB2YXIoLS1yLWhlYWRpbmc1LXNpemUpOwogICAgdGV4dC1hbGlnbjogbGVmdDsKICB9CiAgCmgxIHsKICB0ZXh0LXNoYWRvdzogdmFyKC0tci1oZWFkaW5nMS10ZXh0LXNoYWRvdyk7Cn0KCi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioKICogQmFubmVyCiAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovCi5iYW5uZXItaGVhZGVyIHsKICAgIGRpc3BsYXk6IGZsZXg7CiAgICBhbGlnbi1pdGVtczogYmFzZWxpbmU7Cn0KLmJhbm5lci1oZWFkZXIgPiAuY291cnNlIHsKICAgIGZvbnQtc2l6ZTogMi41ZW07CiAgICBmb250LXdlaWdodDogYm9sZDsKICAgIG1hcmdpbi10b3A6IDA7CiAgICBtYXJnaW4tYm90dG9tOiAwOwp9Ci5iYW5uZXItaGVhZGVyID4gLnRlcm0gewogICAgZm9udC1zaXplOiAxLjZlbTsKICAgIG1hcmdpbi1sZWZ0OiBhdXRvOwogICAgbWFyZ2luLXRvcDogMDsKICAgIG1hcmdpbi1ib3R0b206IDA7Cn0KLmJhbm5lci1oZWFkZXIgPiAuYXV0aG9yIHsKICAgIG1hcmdpbi10b3A6IDFlbTsKICAgIG1hcmdpbi1ib3R0b206IDA7Cn0KLmJhbm5lci1oZWFkZXIgPiAuZW1haWwgewogICAgZm9udC1zaXplOiAwLjhlbTsKICAgIG1hcmdpbi1sZWZ0OiAyZW07CiAgICBtYXJnaW4tdG9wOiAxZW07CiAgICBtYXJnaW4tYm90dG9tOiAwOwp9Ci5iYW5uZXItaGVhZGVyID4gLmRhdGUgewogICAgZm9udC1zaXplOiAxZW07CiAgICBtYXJnaW4tbGVmdDogYXV0bzsKICAgIG1hcmdpbi10b3A6IDFlbTsKICAgIG1hcmdpbi1ib3R0b206IDA7Cn0KCi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioKICogT1RIRVIKICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKi8KLyogLmxlbm90ZXMgcCB7CiAgICBtYXJnaW46IDA7CiAgICBwYWRkaW5nOiAwOwogICAgbGluZS1oZWlnaHQ6IDEuMjsKICAgIHRleHQtYWxpZ246IGxlZnQ7Cn0gKi8KCi8qIEVuc3VyZSBjZXJ0YWluIGVsZW1lbnRzIGFyZSBuZXZlciBsYXJnZXIgdGhhbiB0aGUgc2xpZGUgaXRzZWxmICovCi5yZXZlYWwgaW1nLAoucmV2ZWFsIHZpZGVvLAoucmV2ZWFsIGlmcmFtZSB7CiAgICBtYXgtd2lkdGg6IDk1JTsKICAgIG1heC1oZWlnaHQ6IDk1JTsKfQoKc3Ryb25nLApiIHsKICAgIGZvbnQtd2VpZ2h0OiBib2xkOwp9CgplbSB7CiAgICBmb250LXN0eWxlOiBpdGFsaWM7Cn0KCi8qIGxpc3QsIGVudW1lcmF0ZSAqLwpvbCwKZGwsCnVsIHsKICBkaXNwbGF5OiBibG9jazsKICB0ZXh0LWFsaWduOiBsZWZ0OwogIG1hcmdpbjogMCAxZW07CiAgcGFkZGluZzogMCAxZW07CiAgLyogYmFja2dyb3VuZC1jb2xvcjogI2NjYzsgKi8KfQoKb2wgewpsaXN0LXN0eWxlLXR5cGU6IGRlY2ltYWw7Cn0KCnVsIHsKbGlzdC1zdHlsZS10eXBlOiBkaXNjOwp9Cgp1bCB1bCB7Cmxpc3Qtc3R5bGUtdHlwZTogc3F1YXJlOwp9Cgp1bCB1bCB1bCB7Cmxpc3Qtc3R5bGUtdHlwZTogY2lyY2xlOwp9Cgp1bCB1bCwKdWwgb2wsCm9sIG9sLApvbCB1bCB7CmRpc3BsYXk6IGJsb2NrOwptYXJnaW46IDA7CnBhZGRpbmc6IDAgMWVtOwp9CgpkdCB7CmZvbnQtd2VpZ2h0OiBib2xkOwp9CgpkZCB7CiAgICBwYWRkaW5nOiAwIDFlbTsKfQoKLyogYmxvY2tzICovCmJsb2NrcXVvdGUgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICB3aWR0aDogNzAlOwogICAgLyogbWFyZ2luOiB2YXIoLS1yLWJsb2NrLW1hcmdpbikgMWVtOyAqLwogICAgcGFkZGluZzogdmFyKC0tci1ibG9jay1wYWRkaW5nKTsKICAgIGZvbnQtc3R5bGU6IGl0YWxpYzsKICAgIGJveC1zaGFkb3c6IDBweCAwcHggMnB4IHJnYmEoMCwgMCwgMCwgMC4yKTsKICAgIHRleHQtYWxpZ246IGxlZnQ7Cn0KCmJsb2NrcXVvdGUgcDpmaXJzdC1jaGlsZCwKYmxvY2txdW90ZSBwOmxhc3QtY2hpbGQgewpkaXNwbGF5OiBpbmxpbmUtYmxvY2s7Cn0KCnEgewpmb250LXN0eWxlOiBpdGFsaWM7Cn0KCi8qIHBhcmVudCBvZiBwcmUgYmxvY2tzICovCmRpdi5zb3VyY2VDb2RlIHsKICAgIG1hcmdpbjogMCAxZW07Ci8qIGJhY2tncm91bmQtY29sb3I6ICNkZGQ7ICovCi1tb3otYm94LXNoYWRvdzogMHB4IDVweCAxNXB4IHJnYmEoMCwgMCwgMCwgMC4xNSk7Ci13ZWJraXQtYm94LXNoYWRvdzogMHB4IDVweCAxNXB4IHJnYmEoMCwgMCwgMCwgMC4xNSk7CmJveC1zaGFkb3c6IDBweCA1cHggMTVweCByZ2JhKDAsIDAsIDAsIDAuMTUpOwp9CgpwcmUgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAvKiB3aWR0aDogOTAlOyAqLwogICAgbWFyZ2luOiB2YXIoLS1yLWJsb2NrLW1hcmdpbikgMWVtOwogICAgcGFkZGluZzogdmFyKC0tci1ibG9jay1wYWRkaW5nKTsKICAgIHRleHQtYWxpZ246IGxlZnQ7CiAgICBmb250LXNpemU6IDAuOWVtOwogICAgZm9udC1mYW1pbHk6IHZhcigtLXItY29kZS1mb250KTsKICAgIGxpbmUtaGVpZ2h0OiAxLjJlbTsKICAgIG92ZXJmbG93OiBhdXRvOwogICAgbWF4LXdpZHRoOiA4MDBweDsKICAgIG1heC1oZWlnaHQ6IDQwMHB4OwogICAgd29yZC13cmFwOiBicmVhay13b3JkOwogICAgYm94LXNoYWRvdzogMHB4IDVweCAxNXB4IHJnYmEoMCwgMCwgMCwgMC4xNSk7Cn0KCnByZSBjb2RlIHsKICAgIGRpc3BsYXk6IGJsb2NrOwogICAgd29yZC13cmFwOiBub3JtYWw7Cn0KCi8qIGlubGluZSBjb2RlICovCmNvZGUgewogICAgZGlzcGxheTogaW5saW5lLWJsb2NrOwogICAgZm9udC1mYW1pbHk6IHZhcigtLXItY29kZS1mb250KTsKICAgIHRleHQtdHJhbnNmb3JtOiBub25lOwogICAgdGFiLXNpemU6IDI7Cn0KCi5jb2RlLXdyYXBwZXIgewp3aGl0ZS1zcGFjZTogbm9ybWFsOwp9CgouY29kZS13cmFwcGVyIGNvZGUgewp3aGl0ZS1zcGFjZTogcHJlOwp9CgovKiB0YWJsZSAqLwp0YWJsZSB7Cm1hcmdpbjogdmFyKC0tci1ibG9jay1tYXJnaW4pIGF1dG87CmJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7CmJvcmRlci1zcGFjaW5nOiAwOwp9Cgp0YWJsZSB0aCB7CmZvbnQtd2VpZ2h0OiBib2xkOwp0ZXh0LWFsaWduOiBjZW50ZXI7CnBhZGRpbmc6IDAuMWVtIDAuNWVtOwpib3JkZXItYm90dG9tOiAycHggc29saWQgIzIyMjsKfQoKdGFibGUgdGQgewp0ZXh0LWFsaWduOiBsZWZ0OwpwYWRkaW5nOiAwLjFlbSAwLjVlbTsKYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMyMjI7Cn0KCnRhYmxlIHRoW2FsaWduPWNlbnRlcl0sCnRhYmxlIHRkW2FsaWduPWNlbnRlcl0gewp0ZXh0LWFsaWduOiBjZW50ZXI7Cn0KCnRhYmxlIHRoW2FsaWduPXJpZ2h0XSwKdGFibGUgdGRbYWxpZ249cmlnaHRdIHsKdGV4dC1hbGlnbjogcmlnaHQ7Cn0KCnRhYmxlIHRoZWFkIHRyOmZpcnN0LWNoaWxkIHRoIHsKICBib3JkZXItdG9wOiAzcHggc29saWQgIzIyMjsKfQp0YWJsZSB0Ym9keSB0cjpmaXJzdC1jaGlsZCB0ZCB7CiAgYm9yZGVyLXRvcDogM3B4IHNvbGlkICMyMjI7Cn0KdGFibGUgdGJvZHkgdHI6bGFzdC1jaGlsZCB0ZCB7CiAgYm9yZGVyLWJvdHRvbTogM3B4IHNvbGlkICMyMjI7Cn0KCnN1cCB7CnZlcnRpY2FsLWFsaWduOiBzdXBlcjsKZm9udC1zaXplOiBzbWFsbGVyOwp9CgpzdWIgewp2ZXJ0aWNhbC1hbGlnbjogc3ViOwpmb250LXNpemU6IHNtYWxsZXI7Cn0KCnNtYWxsIHsKZGlzcGxheTogaW5saW5lLWJsb2NrOwpmb250LXNpemU6IDAuNmVtOwpsaW5lLWhlaWdodDogMS4yZW07CnZlcnRpY2FsLWFsaWduOiB0b3A7Cn0KCnNtYWxsICogewp2ZXJ0aWNhbC1hbGlnbjogdG9wOwp9CgoucmV2ZWFsIGltZywKLnJldmVhbCB2aWRlbywKLnJldmVhbCBpZnJhbWUgewogICAgZGlzcGxheTogYmxvY2s7CiAgICBtYXJnaW46IHZhcigtLXItYmxvY2stbWFyZ2luKSBhdXRvOwp9CgovKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqCiogTElOS1MKKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqLwphIHsKY29sb3I6IHZhcigtLXItbGluay1jb2xvcik7CnRleHQtZGVjb3JhdGlvbjogbm9uZTsKdHJhbnNpdGlvbjogY29sb3IgMC4xNXMgZWFzZTsKfQoKYTpob3ZlciB7CmNvbG9yOiB2YXIoLS1yLWxpbmstY29sb3ItaG92ZXIpOwp0ZXh0LXNoYWRvdzogbm9uZTsKYm9yZGVyOiBub25lOwp9Cgoucm9sbCBzcGFuOmFmdGVyIHsKY29sb3I6ICNmZmY7CmJhY2tncm91bmQ6IHZhcigtLXItbGluay1jb2xvci1kYXJrKTsKfQo=">
 </head>
 
 <body>
 
 
 <header id="banner-header">
-  <hr style="height:9px;border:none;color:#222;background-color:#222;" />
+  <hr style="height:9px;border:none;color:#222;background-color:#222;">
 <div class="banner-header">
 <p class="course">Computer Graphics I</p>
 <p class="term">2021H</p>
 </div>
 <div class="banner-header">
-<p class="author">WU Xiaokun [吴晓堃]</p>
+<p class="author">WU Xiaokun 吴晓堃</p>
 <p class="email">xkun.wu [at] gmail</p>
+<p class="date">Created: 2021/09/03</p>
 </div>
-  <hr style="height:3px;border:none;color:#222;background-color:#222;" />
+  <hr style="height:3px;border:none;color:#222;background-color:#222;">
 </header>
 
 
 <div class="meta-right">
+<div class="html">
 <table>
 <thead>
 <tr>
@@ -86,7 +93,7 @@ Credits
 Staff
 </td>
 <td>
-WU Xiaokun [吴晓堃]
+WU Xiaokun 吴晓堃
 </td>
 </tr>
 <tr class="even">
@@ -94,62 +101,160 @@ WU Xiaokun [吴晓堃]
 Lecture
 </td>
 <td>
-32 hours (16 weeks)
+48 hours (12 weeks)
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-
 </div>
-<section id="lecture-0-course-information" class="lenotes">
-<h1>Lecture 0: Course Information</h1>
+<section id="course-information" class="lenotes">
+<h1>Course Information</h1>
 <h4 id="short-intro">Short Intro</h4>
-<p>The objective of this course is to provide a complete introduction to computer graphics.</p>
+<p>The objective of this course is to provide a complete introduction to
+computer graphics and from several perspectives<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<ul>
+<li>its applications, the various fields that are involved in the study
+of graphics,</li>
+<li>some of the tools that make the images produced by graphics so
+effective,</li>
+<li>some numbers to help you understand the scales at which computer
+graphics works,</li>
+<li>elementary ideas required to write your graphics programs.</li>
+</ul>
 <h4 id="description">Description</h4>
-<p>The course aims at providing foundamental knowledge and existing techniques of computer graphics related topics.</p>
+<p>The course aims at providing foundamental knowledge and existing
+techniques of computer graphics related topics.</p>
 <p>The course will touch on the following topics:</p>
+<ul>
+<li>What is color? And how human perceive color?</li>
+<li>How to store color information in an image?</li>
+<li>How is 3D geometry rendered into 2D image?</li>
+<li>How to model 3D world with computer?</li>
+<li>How to make artificial image looks real?</li>
+<li>How to animate figures?</li>
+</ul>
 <p><strong>Keywords</strong>: computer graphics</p>
 <h4 id="prerequisites">Prerequisites</h4>
 <p><strong>Required</strong>：</p>
 <ul>
-<li>Linear algebra (vector, matrix computation, Euclidean spaces).</li>
-<li>Differential calculus (Jacobian, Hessian, chain rule).</li>
+<li>Algebra: vector, matrix computation, Euclidean spaces.</li>
+<li>Calculus: Jacobian, Hessian, chain rule.</li>
+<li>Geometry: curve, surface, curvature.</li>
+<li>Physics: light, color.</li>
+<li>Data structure: sequential &amp; random access.</li>
+<li>Programming (object-oriented): C++/C#/Java/Python (at least one
+proficient).</li>
+<li>Computer architecture: parallel architecture.</li>
 </ul>
 <p><strong>Recommended</strong>：</p>
 <ul>
-<li>Numerical optimization (notion of minima, gradient descent).</li>
-<li>Algorithm analysis (computational costs).</li>
-<li>Visual computing (image processing).</li>
+<li>Statistics: probability density, sampling.</li>
+<li>Numerical optimization: notion of minima, gradient descent.</li>
+<li>Algorithm analysis: computational costs.</li>
+<li>Visual computing: image processing.</li>
+<li>Signal processing: Fourier transform.</li>
+<li>Physics: mechanics, optics.</li>
+<li>Aesthetics: color, light &amp; shadow.</li>
 </ul>
-<h4 id="textbook">Textbook</h4>
-<p>Not mandatory but recommended:</p>
+<h4 id="teaching-plan">Teaching plan</h4>
+<p>The course is organized into several major parts and each contains
+different topics.</p>
+<h5 id="perception-hardware">Perception &amp; Hardware</h5>
 <ul>
-<li>Fundamentals of Computer Graphics</li>
+<li>Intro to Color Science</li>
+<li>Image Sensors</li>
+<li>Cameras &amp; Lenses</li>
+<li>VR, AR, Holography</li>
 </ul>
+<h5 id="rendering-pipeline">Rendering pipeline</h5>
+<ul>
+<li>Drawing Triangles</li>
+<li>Sampling, Antialiasing</li>
+<li>Transforms</li>
+<li>Material &amp; Texture</li>
+<li>Ray Tracing</li>
+</ul>
+<h5 id="modeling">Modeling</h5>
+<ul>
+<li>Intro to Geometry, Splines, and Bezier Curves</li>
+<li>Geometry Processing</li>
+</ul>
+<h5 id="animation-simulation">Animation &amp; Simulation</h5>
+<ul>
+<li>Intro to Animation</li>
+<li>Character Animation</li>
+<li>Motion Tracking</li>
+<li>Physical Simulation</li>
+</ul>
+<ol type="1">
+<li>Introduction</li>
+<li>Raster Drawing</li>
+<li>Transformations and Viewing</li>
+<li>Light, Color and Perception</li>
+<li>Material &amp; Composition</li>
+<li>Texture &amp; Parameterization</li>
+<li>Sampling, Antialiasing</li>
+<li>Graphics Pipeline</li>
+<li>Data Structure for Graphics</li>
+<li>Curve &amp; Surface</li>
+<li>Ray Tracing</li>
+<li>Radiometry &amp; Photometry</li>
+<li>Intro to Animation</li>
+<li>Character Animation</li>
+<li>Physical Simulation</li>
+<li>Digital photography</li>
+</ol>
 <h4 id="schedule">Schedule</h4>
 <p>Friday S8-9, YG03-208.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
+<th>Week</th>
 <th>Date</th>
 <th>Lecture</th>
-<th>Notes</th>
+<th>Handouts</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
+<td>1</td>
 <td>2021/09/03</td>
 <td>Introduction</td>
-<td><a href="S01.introduction.html">slides</a></td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
 <h4 id="teaching-methods">Teaching methods</h4>
-<p>Problem-solving oriented, equal emphasis on lecture and practice. 以解决实际问题为导向，教学与实践并重。</p>
+<p>Problem-solving oriented, equal emphasis on lecture and practice.
+以解决实际问题为导向，教学与实践并重。</p>
 <h4 id="evaluation">Evaluation</h4>
-<p>Final project: 60%, assignments: 30%, attendance &amp; participation: 10%.</p>
+<p>Final project: 60%, assignments: 40%.</p>
+<h4 id="textbook">Textbook</h4>
+<p>Not mandatory but recommended:</p>
+<ul>
+<li>Marschner and Shirley, <em>Fundamentals of Computer
+Graphics</em>.</li>
+<li>Hughes et al., <em>Computer Graphics: Principles and
+Practice</em>.</li>
+<li>Angel and Shreiner, <em>Interactive Computer Graphics</em>.</li>
+</ul>
 <h4 id="resources">Resources</h4>
+<ul>
+<li>计算机图形学与混合现实在线平台<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>Computer Graphics: Principles and Practice, 3rd Edition, 2013<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li>Interactive Computer Graphics, 8th Edition, 2020<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+</ul>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>cited from <em>Computer Graphics: Principles and
+Practice</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://games-cn.org/">https://games-cn.org/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="http://cgpp.net/about.xml">http://cgpp.net/about.xml</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="http://interactivecomputergraphics.com/">http://interactivecomputergraphics.com/</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 
