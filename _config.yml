@@ -179,7 +179,7 @@ exclude:
     - Gemfile
     - Gemfile.lock
     - Makefile
-    - /scripts/check-site.rb
+    - /scripts
     - /AGENTS.md
     - /CONTEXT.md
     - /README.md

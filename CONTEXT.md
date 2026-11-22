@@ -27,3 +27,11 @@ A research result displayed on the Research page.
 **Project entry**
 
 A project displayed on the Projects page.
+
+# Site Checks
+
+## Language
+
+**Site reference**
+
+A link or resource URL that resolves to an address on the site.

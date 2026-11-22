@@ -2,6 +2,7 @@ require "addressable/uri"
 require "json"
 require "nokogiri"
 require "yaml"
+require_relative "site-references"
 
 class SiteCheck
   PAGES = {
@@ -12,7 +13,6 @@ class SiteCheck
     "projects/hand-track/hand-track.html" => ["projects/hand-track/hand-track.md", "Hand detection and tracking"]
   }.freeze
   TEACHING = "_data/teaching.yml"
-  ENTRY_LINKS = ".page__content .pub_row a[href]"
   ENTRY_THUMBNAILS = ".page__content .pub_img img, .page__content .pub_img video"
 
   def initialize
@@ -31,21 +31,15 @@ class SiteCheck
     inspect_source("projects/projects.md") { check_projects }
     inspect_source(PAGES.fetch("projects/hand-track/hand-track.html").first) { check_hand_track }
     inspect_source("_config.yml") { check_exclusions }
-    inspect_source("_config.yml") { @site_url = read_site_url }
     inspect_source(TEACHING) { check_teaching }
 
-    if @site_url
-      inspect_source(TEACHING) do
-        check_references("teach/index.html", TEACHING, ENTRY_THUMBNAILS, "src")
-      end
-      %w[research projects].each do |section|
-        source = "_data/#{section}.yml"
-        inspect_source(source) do
-          check_references("#{section}/index.html", source, ENTRY_LINKS, "href")
-          check_references("#{section}/index.html", source, ENTRY_THUMBNAILS, "src")
-        end
-      end
+    %w[teach research projects].each do |section|
+      source = section == "teach" ? TEACHING : "_data/#{section}.yml"
+      inspect_source(source) { check_thumbnail_urls("#{section}/index.html", source) }
     end
+
+    site_url = inspect_source("_config.yml") { read_site_url }
+    inspect_source("scripts/site-references.rb") { check_site_references(site_url) } if site_url
   rescue StandardError => error
     record_incomplete("scripts/check-site.rb", error)
   ensure
@@ -165,7 +159,7 @@ class SiteCheck
   end
 
   def check_exclusions
-    %w[Gemfile.lock scripts/check-site.rb vendor/bundle].each do |path|
+    %w[Gemfile.lock scripts vendor/bundle].each do |path|
       check(!File.exist?(File.join("_site", path)), "_config.yml", "#{path} should be excluded from the site")
     end
   end
@@ -177,15 +171,10 @@ class SiteCheck
     rows = page&.css(".pub_row .pub_txt")
     check(rows.size == courses.size, TEACHING, "teaching catalog should show #{courses.size} course rows") if rows
 
-    term_paths = courses.each_with_index.flat_map do |course, index|
+    courses.each_with_index do |course, index|
       inspect_source(TEACHING) do
         check_course(course, rows&.[](index), check_row: !!rows)
-      end || []
-    end
-    return unless @site_url
-
-    term_paths.uniq.each do |path|
-      inspect_source(path) { check_references(path, path, "body a[href]", "href") }
+      end
     end
   end
 
@@ -201,12 +190,10 @@ class SiteCheck
       check(row&.at_css("title")&.text == course.fetch("title") && links == expected_links,
             TEACHING, "teaching catalog should show #{directory} with its terms in order")
     end
-    term_paths = expected_links.filter_map do |path, _|
-      term_path = "teach/#{path}"
-      term_path if require_output(term_path, TEACHING)
+    expected_links.each do |path, _|
+      require_output("teach/#{path}", TEACHING)
     end
     check_course_redirect(directory, terms.first)
-    term_paths
   end
 
   def check_course_redirect(directory, default_term)
@@ -240,68 +227,20 @@ class SiteCheck
     url if valid
   end
 
-  def check_references(page_path, source, selector, attribute)
+  def check_thumbnail_urls(page_path, source)
     page = page_document(page_path, source)
     return unless page
 
-    public_path = File.basename(page_path) == "index.html" ? page_path.delete_suffix("index.html") : page_path
-    page_url = @site_url.join("/#{public_path}")
-    references = page.css(selector).map { |node| node[attribute].to_s.strip }.uniq
-    references.each do |reference|
-      issue = if attribute == "src" && reference.empty?
-        "missing thumbnail URL"
-      else
-        reference_issue(page_url, reference)
-      end
-      check(false, source, "#{page_path} references #{reference.inspect} (#{issue})") if issue
+    missing = page.css(ENTRY_THUMBNAILS).any? { |node| node["src"].to_s.strip.empty? }
+    check(!missing, source, "#{page_path} has a missing thumbnail URL")
+  end
+
+  def check_site_references(site_url)
+    result = SiteReferences.new("_site", site_url).scan
+    result.diagnostics.each do |issue|
+      check(false, issue.page, "#{issue.page} references #{issue.reference.inspect} (#{issue.reason})")
     end
-  end
-
-  def reference_issue(page_url, reference)
-    return if reference.empty?
-
-    target = page_url.join(Addressable::URI.parse(reference))
-    return unless %w[http https].include?(target.scheme&.downcase) && target.host&.casecmp?(page_url.host)
-
-    path = decode_url_part(target.path)
-    file = published_file(path.empty? ? "/" : path)
-    return if @missing_outputs[file]
-
-    return "missing or empty target file" unless output_file?(file)
-
-    fragment = target.fragment
-    return if fragment.nil? || fragment.empty? || !%w[.html .htm].include?(File.extname(file).downcase)
-
-    anchor = decode_url_part(fragment.partition(":~:").first)
-    return if anchor.empty? || anchor.casecmp?("top")
-
-    ids = document(file).css("[id], a[name]")
-    return if ids.any? { |node| node["id"] == anchor || (node.name == "a" && node["name"] == anchor) }
-
-    "missing HTML anchor #{anchor.inspect}"
-  rescue Addressable::URI::InvalidURIError, ArgumentError
-    "invalid URL"
-  end
-
-  def decode_url_part(part)
-    raise ArgumentError if part.match?(/%(?![0-9a-f]{2})/i)
-
-    decoded = Addressable::URI.unencode(part)
-    raise ArgumentError if decoded.include?("\0")
-
-    decoded
-  end
-
-  def published_file(path)
-    relative_path = File.expand_path(path, "/").delete_prefix("/")
-    file = File.join("_site", relative_path)
-    index = File.join(file, "index.html")
-    return index if path.end_with?("/")
-    return file if File.file?(file)
-    return index if File.directory?(file)
-    return "#{file}.html" if File.extname(file).empty?
-
-    file
+    result.failures.each { |failure| record_incomplete(failure.page, failure.error) }
   end
 
   def report
