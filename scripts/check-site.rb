@@ -32,6 +32,9 @@ class SiteCheck
     inspect_source(PAGES.fetch("projects/hand-track/hand-track.html").first) { check_hand_track }
     inspect_source("_config.yml") { check_exclusions }
     inspect_source(TEACHING) { check_teaching }
+    Dir.glob("teach/*/raster/*/index.html").each do |source|
+      inspect_source(source) { check_raster_slides(source) }
+    end
 
     %w[teach research projects].each do |section|
       source = section == "teach" ? TEACHING : "_data/#{section}.yml"
@@ -225,6 +228,19 @@ class SiteCheck
     valid = %w[http https].include?(url.scheme&.downcase) && url.host
     check(valid, "_config.yml", "site URL should be an absolute HTTP(S) URL")
     url if valid
+  end
+
+  def check_raster_slides(source)
+    page = page_document(source, source)
+    return unless page
+
+    expected = Dir.children(File.dirname(source)).select do |name|
+      name.match?(/\A[0-9]{3}\.jpg\z/) && File.file?(File.join(File.dirname(source), name))
+    end.sort
+    slides = page.css("#slides img").map { |image| image["src"] }
+    thumbnails = page.css("#thumbnails img").map { |image| image["src"] }
+    check(slides == expected, source, "slide images should match the directory's numbered JPEGs in order")
+    check(thumbnails == expected, source, "thumbnails should match the directory's numbered JPEGs in order")
   end
 
   def check_thumbnail_urls(page_path, source)

@@ -2,7 +2,7 @@
 
 ## 当前架构
 
-站点由 Jekyll 生成，使用锁定版本的 Ruby 和 Bundler 依赖，以及固定到提交的 Minimal Mistakes 主题。GitHub Pages 托管静态站点。以下流程对应[需求文档](requirements.md)的 REQ-01 至 REQ-07。
+站点由 Jekyll 生成，使用锁定版本的 Ruby 和 Bundler 依赖，以及固定到提交的 Minimal Mistakes 主题。GitHub Pages 托管静态站点。以下流程对应[需求文档](requirements.md)的 REQ-01 至 REQ-08。
 
 ```mermaid
 flowchart LR
@@ -23,9 +23,18 @@ flowchart LR
 | 页面与导航 | 页面前置元数据确定布局和 permalink。主导航来自 `_data/navigation.yml`。站点样式来自主题和 `assets/css/main.scss`。 | REQ-01、REQ-05 |
 | 研究与项目列表 | `_data/research.yml` 和 `_data/projects.yml` 分别定义内容，由 `_includes/entry-groups.html` 生成分组、标题、缩略图及链接。 | REQ-02、REQ-05 |
 | 教学目录与课程入口 | `_data/teaching.yml` 定义当前课程、归档课程及有序学期列表。教学目录模板依序呈现学期。每门课程或教程的入口页以目录标识匹配同一条记录，由共享布局用首个学期生成自动跳转及备用链接。课表和课件保存在各课程目录中。 | REQ-03、REQ-04、REQ-05 |
-| 构建与检查 | `make check` 先构建，再由 `scripts/check-site.rb` 检查页面结构、课程入口、课表和列表缩略图 URL，并汇总全站引用告警。Ruby 检查器进程返回非零状态时，Make 提供兜底提示。Jekyll 将维护脚本和文档排除在发布产物之外。 | REQ-06、REQ-07 |
+| 图片版课件 | 各课件入口选择 `raster-slides` 布局。布局从 `site.static_files` 生成同一份图片序列，供正文和缩略图使用。 | REQ-03、REQ-08 |
+| 构建与检查 | `make check` 先构建，再由 `scripts/check-site.rb` 检查页面结构、课程入口、课表、列表缩略图 URL 和图片版课件序列，并汇总全站引用告警。Ruby 检查器进程返回非零状态时，Make 提供兜底提示。Jekyll 将维护脚本和文档排除在发布产物之外。 | REQ-06、REQ-07、REQ-08 |
 
 教学与列表术语见 [CONTEXT.md](../CONTEXT.md)。新增学期以登记顺序决定默认学期，历年课表保留原地址。课程目录迁移导致地址变更时，维护者更新教学目录并通知学生使用新地址。构建检查验证现行入口和站内引用。
+
+## 图片版课件播放器
+
+课件入口的 `index.html` 保留标题，并声明 `layout: raster-slides` 和 `regenerate: true`。Jekyll 每次增量构建都会重新渲染这些入口。布局只收录与入口同目录且文件名形如 `000.jpg` 的文件，按三位编号升序排列。`000.jpg`、`001.jpg` 和 `003.jpg` 可以连续播放。正文和缩略图由同一序列生成。
+
+共享脚本用同一选中逻辑处理上一张、下一张和缩略图点击。正文和缩略图同时更新，翻页在首尾循环。单张课件翻页后仍显示该张。空目录显示提示，页面省略导航按钮和缩略图。
+
+`bundle exec ruby scripts/raster-slides-test.rb` 用小型 Jekyll 站点检验排序、跳号、文件筛选、正文与缩略图的一致性，以及空目录和单张图片。CI 在构建前运行该测试。`make check` 将真实站点生成的正文和缩略图序列分别与课件目录核对。
 
 ## 站内引用检查
 

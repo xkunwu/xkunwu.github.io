@@ -23,4 +23,5 @@ jobs:
         with:
           bundler-cache: true
       - run: bundle exec ruby scripts/site-references-test.rb
+      - run: bundle exec ruby scripts/raster-slides-test.rb
       - run: make check

@@ -16,6 +16,10 @@ The address that opens the default term for a course or tutorial.
 
 The first term displayed for a course or tutorial in the teaching catalog.
 
+**Image-based slide deck (图片版课件)**
+
+A deck played from the three-digit `.jpg` files directly in its directory. The main slide and thumbnail strip use the same numbered sequence.
+
 # Research and Projects
 
 ## Language

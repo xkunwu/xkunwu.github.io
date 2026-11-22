@@ -1,0 +1,52 @@
+---
+---
+{%- assign slide_images = "" | split: "," -%}
+{%- assign jpg_files = site.static_files | where: "extname", ".jpg" -%}
+{%- for file in jpg_files -%}
+  {%- assign direct_path = page.dir | append: file.name -%}
+  {%- if file.path == direct_path and file.basename.size == 3 -%}
+    {%- assign non_digits = file.basename | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" -%}
+    {%- if non_digits == empty -%}
+      {%- assign slide_images = slide_images | push: file.name -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign slide_images = slide_images | sort -%}
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | escape }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/raster-slides.css' | relative_url }}">
+    {% if slide_images.size > 0 %}
+    <script src="{{ '/assets/js/raster-slides.js' | relative_url }}" defer></script>
+    {% endif %}
+  </head>
+  <body>
+    <main class="player" aria-label="{{ page.title | escape }}">
+      {% if slide_images.size > 0 %}
+      <div class="slide-view">
+        <button type="button" id="slide_left" class="slide-arrow" aria-label="Previous slide">&#10094;</button>
+        <div id="slides">
+          {% for image in slide_images %}
+          <img src="{{ image }}" alt="Slide {{ forloop.index }}"{% unless forloop.first %} hidden{% endunless %}>
+          {% endfor %}
+        </div>
+        <button type="button" id="slide_right" class="slide-arrow" aria-label="Next slide">&#10095;</button>
+      </div>
+      <ol id="thumbnails" aria-label="Slide thumbnails">
+        {% for image in slide_images %}
+        <li>
+          <button type="button" aria-label="Show slide {{ forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %}>
+            <img src="{{ image }}" alt="" loading="lazy">
+          </button>
+        </li>
+        {% endfor %}
+      </ol>
+      {% else %}
+      <p id="empty-deck">No slides are available.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
