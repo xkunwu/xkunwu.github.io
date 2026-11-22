@@ -1,6 +1,7 @@
 require "addressable/uri"
 require "nokogiri"
 require "yaml"
+require_relative "entry-list-check"
 require_relative "site-references"
 require_relative "teaching-catalog-check"
 
@@ -27,8 +28,6 @@ class SiteCheck
     end
     inspect_source("assets/css/main.scss") { check_styles }
     inspect_source("COPYRIGHT.txt") { require_output("COPYRIGHT.txt", "COPYRIGHT.txt") }
-    inspect_source("research/research.md") { check_research }
-    inspect_source("projects/projects.md") { check_projects }
     inspect_source(PAGES.fetch("projects/hand-track/hand-track.html").first) { check_hand_track }
     inspect_source("_config.yml") { check_exclusions }
     inspect_source(TEACHING) { check_teaching }
@@ -36,12 +35,10 @@ class SiteCheck
       inspect_source(source) { check_raster_slides(source) }
     end
 
-    %w[teach research projects].each do |section|
-      source = section == "teach" ? TEACHING : "_data/#{section}.yml"
-      inspect_source(source) { check_thumbnail_urls("#{section}/index.html", source) }
-    end
+    inspect_source(TEACHING) { check_thumbnail_urls(TeachingCatalogCheck::CATALOG_PATH, TEACHING) }
 
     site_url = inspect_source("_config.yml") { read_site_url }
+    %w[research projects].each { |section| check_entry_list(section, site_url) }
     inspect_source("scripts/site-references.rb") { check_site_references(site_url) } if site_url
   rescue StandardError => error
     record_incomplete("scripts/check-site.rb", error)
@@ -114,39 +111,19 @@ class SiteCheck
     end
   end
 
-  def check_research
-    path = "research/index.html"
+  def check_entry_list(section, site_url)
+    path = "#{section}/index.html"
     source = PAGES.fetch(path).first
-    page = page_document(path, source)
-    return unless page
-
-    content = page.at_css(".page__content")
-    check(content, source, "Research should show its page content")
-    return unless content
-
-    entries = content.css("article")
-    check(entries.any? && entries.all? { |entry| entry.parent == content && entry.at_css("h2") },
-          "_data/research.yml", "Research should show its entries directly under the page content with h2 titles")
-  end
-
-  def check_projects
-    path = "projects/index.html"
-    page = page_document(path, PAGES.fetch(path).first)
-    return unless page
-
-    source = "_data/projects.yml"
-    entries = page.css(".page__content > article")
-    check(entries.any? && entries.all? { |entry| entry.at_css("h2") },
-          source, "Projects should show entries from the untitled group directly under the page content with h2 titles")
-    bath_heading = page.at_css(".page__content > section > h2#at-camera-group-of-bath")
-    check(bath_heading&.text == "At CAMERA group of Bath", source, "Projects should show the Bath group heading and anchor")
-    return unless bath_heading
-
-    bath_entries = bath_heading.parent.xpath("./article")
-    check(bath_entries.any? && bath_entries.all? { |entry| entry.at_css("h3") },
-          source, "The Bath group should show its entries with h3 titles")
-    check(bath_heading.parent.at_css('article a[href="hand-track/hand-track"]')&.text == "Webpage",
-          source, "The Bath group should link to Hand Track")
+    page = inspect_source(source) { page_document(path, source) }
+    data_source = "_data/#{section}.yml"
+    inspect_source(data_source) do
+      groups = YAML.safe_load_file(data_source).fetch("groups")
+      if page
+        EntryListCheck.new(groups, page, site_url).scan.each do |message|
+          check(false, data_source, "#{path}: #{message}")
+        end
+      end
+    end
   end
 
   def check_hand_track

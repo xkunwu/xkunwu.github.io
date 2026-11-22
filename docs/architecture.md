@@ -21,12 +21,20 @@ flowchart LR
 | 模块 | 数据与生成方式 | 对应需求 |
 | --- | --- | --- |
 | 页面与导航 | 页面前置元数据确定布局和 permalink。主导航来自 `_data/navigation.yml`。站点样式来自主题和 `assets/css/main.scss`。 | REQ-01、REQ-05 |
-| 研究与项目列表 | `_data/research.yml` 和 `_data/projects.yml` 分别定义内容，由 `_includes/entry-groups.html` 生成分组、标题、缩略图及链接。 | REQ-02、REQ-05 |
+| 研究与项目列表 | `_data/research.yml` 和 `_data/projects.yml` 分别定义内容，由 `_includes/entry-groups.html` 生成分组、标题、缩略图及链接。构建后按 YAML 核对生成列表。 | REQ-02、REQ-05、REQ-06 |
 | 教学目录与课程入口 | `_data/teaching.yml` 定义当前课程、归档课程及有序学期列表。教学目录模板依序呈现学期。每门课程或教程的入口页以目录标识匹配同一条记录，由共享布局用首个学期生成自动跳转及备用链接。课表和课件保存在各课程目录中。 | REQ-03、REQ-04、REQ-05 |
 | 图片版课件 | 各课件入口选择 `raster-slides` 布局。布局从 `site.static_files` 生成同一份图片序列，供正文和缩略图使用。 | REQ-03、REQ-08 |
-| 构建与检查 | `make check` 先构建，再由 `scripts/check-site.rb` 检查页面结构、课程入口、课表、列表缩略图 URL 和图片版课件序列，并汇总全站引用告警。Ruby 检查器进程返回非零状态时，Make 提供兜底提示。Jekyll 将维护脚本和文档排除在发布产物之外。 | REQ-06、REQ-07、REQ-08 |
+| 构建与检查 | `make check` 先构建，再由 `scripts/check-site.rb` 检查页面结构、研究与项目列表、课程入口、课表、教学目录缩略图 URL 和图片版课件序列，并汇总全站引用告警。Ruby 检查器进程返回非零状态时，Make 提供兜底提示。Jekyll 将维护脚本和文档排除在发布产物之外。 | REQ-06、REQ-07、REQ-08 |
 
 教学与列表术语见 [CONTEXT.md](../CONTEXT.md)。新增学期以登记顺序决定默认学期，历年课表保留原地址。课程目录迁移导致地址变更时，维护者更新教学目录并通知学生使用新地址。构建检查验证现行入口和站内引用。
+
+## 研究与项目列表验证
+
+`scripts/entry-list-check.rb` 接收已解析的 YAML 分组、生成页面和站点 URL，要求每页至少渲染一条条目，并按 YAML 顺序核对分组、条目和链接。无标题组的条目直接位于正文下，条目标题使用 `h2`。有标题组包含 `h2` 组标题和已配置的锚点，组内条目标题使用 `h3`。检查器将解析后的 HTML 标题、缩略图 `src`、链接标签和 `href` 与 YAML 原值比较，涵盖带链接的 venue。
+
+列表内的站内链接和缩略图使用以 `/` 开头的路径。同页锚点（如 `#details`）和外部 URL 也可使用。页面相对路径和使用本站域名的完整 URL 会触发告警。告警定位到分组、条目或字段。`SiteCheck` 分别检查两页，单页数据读取或解析失败时记录检查未完成，并继续其余检查。结果汇入终端和 Actions 摘要。
+
+CI 在全站构建前运行 `bundle exec ruby scripts/entry-list-check-test.rb`。测试用仓库的两页及共享模板构建小型站点，再修改生成的 HTML 验证告警。运行 `make check` 可核对真实列表，随后可在本地预览打开列表中的详情链接。
 
 ## 教学目录与课程入口验证
 

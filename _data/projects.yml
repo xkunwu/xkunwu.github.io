@@ -4,12 +4,12 @@ groups:
         image: /projects/exam-trainer/ui-montage.png
         links:
           - label: Webpage
-            url: exam-trainer/README
+            url: /projects/exam-trainer/README
       - title: Abnormal detection – monitoring via lift video cameras
         image: /projects/liftcam/ebike.gif
         links:
           - label: Webpage
-            url: liftcam/liftcam
+            url: /projects/liftcam/liftcam
   - title: At CAMERA group of Bath
     id: at-camera-group-of-bath
     entries:
@@ -17,11 +17,11 @@ groups:
         image: /projects/hand-track/grasp.gif
         links:
           - label: Webpage
-            url: hand-track/hand-track
+            url: /projects/hand-track/hand-track
           - label: Code
             url: https://github.com/xkunwu/depth-hand
       - title: Human Body Reconstruction - via DSLR camera array
         image: /projects/cambooth50/camera_config.jpg
         links:
           - label: Webpage
-            url: cambooth50/cambooth50
+            url: /projects/cambooth50/cambooth50
