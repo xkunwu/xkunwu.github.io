@@ -1,18 +1,18 @@
 require "addressable/uri"
-require "json"
 require "nokogiri"
 require "yaml"
 require_relative "site-references"
+require_relative "teaching-catalog-check"
 
 class SiteCheck
   PAGES = {
     "index.html" => ["pages/home.md", "Welcome to WU Xiaokun’s homepage!"],
-    "teach/index.html" => ["teach/teach.md", "Teach"],
+    TeachingCatalogCheck::CATALOG_PATH => [TeachingCatalogCheck::CATALOG_SOURCE, "Teach"],
     "research/index.html" => ["research/research.md", "Research"],
     "projects/index.html" => ["projects/projects.md", "Projects"],
     "projects/hand-track/hand-track.html" => ["projects/hand-track/hand-track.md", "Hand detection and tracking"]
   }.freeze
-  TEACHING = "_data/teaching.yml"
+  TEACHING = TeachingCatalogCheck::DATA_SOURCE
   ENTRY_THUMBNAILS = ".page__content .pub_img img, .page__content .pub_img video"
 
   def initialize
@@ -169,58 +169,10 @@ class SiteCheck
 
   def check_teaching
     catalog = YAML.safe_load_file(TEACHING)
-    courses = catalog.fetch("current") + catalog.fetch("archive")
-    page = page_document("teach/index.html", "teach/teach.md")
-    rows = page&.css(".pub_row .pub_txt")
-    check(rows.size == courses.size, TEACHING, "teaching catalog should show #{courses.size} course rows") if rows
-
-    courses.each_with_index do |course, index|
-      inspect_source(TEACHING) do
-        check_course(course, rows&.[](index), check_row: !!rows)
-      end
-    end
-  end
-
-  def check_course(course, row, check_row:)
-    directory = course.fetch("directory")
-    terms = course.fetch("terms")
-    check(terms.any?, TEACHING, "#{directory} should have a default term")
-    return if terms.empty?
-
-    expected_links = terms.map { |term| ["#{directory}/#{term.fetch('file')}", term.fetch("label")] }
-    if check_row
-      links = row&.css("links a")&.map { |link| [link["href"], link.text.strip] }
-      check(row&.at_css("title")&.text == course.fetch("title") && links == expected_links,
-            TEACHING, "teaching catalog should show #{directory} with its terms in order")
-    end
-    expected_links.each do |path, _|
-      require_output("teach/#{path}", TEACHING)
-    end
-    check_course_redirect(directory, terms.first)
-  end
-
-  def check_course_redirect(directory, default_term)
-    path = "teach/#{directory}/index.html"
-    source = "_layouts/course-redirect.html"
-    page = page_document(path, path)
-    return unless page
-
-    target = default_term.fetch("file")
-    refresh = page.at_css('meta[http-equiv="refresh"]')&.[]("content")
-    check(refresh == "0; url=#{target}", source, "#{path} should refresh to #{target}")
-
-    script = page.css("script").map(&:text).join("\n")
-    quoted_target = script[/window\.location\.href\s*=\s*("(?:[^"\\]|\\.)*")\s*;/, 1]
-    script_target = begin
-      JSON.parse(quoted_target) if quoted_target
-    rescue JSON::ParserError
-      nil
-    end
-    check(script_target == target, source, "#{path} should navigate to #{target}")
-
-    fallback = page.at_css("body a")
-    check(fallback && fallback["href"] == target && fallback.text.strip == default_term.fetch("label"),
-          source, "#{path} should link to #{target} as a fallback")
+    result = TeachingCatalogCheck.new("_site", catalog).scan
+    # The report deduplicates the missing catalog warning from the page and teaching checks.
+    result.diagnostics.each { |issue| check(false, issue.source, issue.message) }
+    result.failures.each { |failure| record_incomplete(failure.source, failure.error) }
   end
 
   def read_site_url
