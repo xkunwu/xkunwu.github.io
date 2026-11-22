@@ -26,4 +26,5 @@ jobs:
       - run: bundle exec ruby scripts/raster-slides-test.rb
       - run: bundle exec ruby scripts/teaching-catalog-check-test.rb
       - run: bundle exec ruby scripts/entry-list-check-test.rb
+      - run: bundle exec ruby scripts/check-site-test.rb
       - run: make check

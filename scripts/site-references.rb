@@ -28,23 +28,29 @@ class SiteReferences
     diagnostics = []
     @read_failures = {}
     @anchors = {}
-    Dir.glob("**/*", File::FNM_DOTMATCH, base: @directory).each do |page|
-      next unless html?(page)
-
-      file = File.join(@directory, page)
-
-      begin
-        next unless generated_file?(file)
-
-        diagnostics.concat(scan_page(page, file))
-      rescue *READ_ERRORS => error
-        record_read_failure(file, error)
-      end
-    end
+    scan_directory(@directory, diagnostics)
     Result.new(diagnostics, @read_failures.values)
   end
 
   private
+
+  def scan_directory(directory, diagnostics)
+    Dir.children(directory).sort.each do |name|
+      scan_path(File.join(directory, name), diagnostics)
+    end
+  rescue *READ_ERRORS => error
+    record_read_failure(directory, error)
+  end
+
+  def scan_path(path, diagnostics)
+    if File.lstat(path).directory?
+      scan_directory(path, diagnostics)
+    elsif html?(path) && generated_file?(path)
+      diagnostics.concat(scan_page(relative_path(path), path))
+    end
+  rescue *READ_ERRORS => error
+    record_read_failure(path, error)
+  end
 
   def scan_page(page, file)
     document = read_html(file)
@@ -167,9 +173,12 @@ class SiteReferences
     nil
   end
 
-  def record_read_failure(file, error)
-    page = file.delete_prefix("#{@directory}/")
-    @read_failures[file] ||= Failure.new(page, error)
+  def relative_path(path)
+    path == @directory ? "." : path.delete_prefix("#{@directory}/")
+  end
+
+  def record_read_failure(path, error)
+    @read_failures[path] ||= Failure.new(relative_path(path), error)
   end
 
   def html?(file)

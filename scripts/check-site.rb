@@ -2,6 +2,7 @@ require "addressable/uri"
 require "nokogiri"
 require "yaml"
 require_relative "entry-list-check"
+require_relative "site-check-report"
 require_relative "site-references"
 require_relative "teaching-catalog-check"
 
@@ -15,55 +16,54 @@ class SiteCheck
   }.freeze
   TEACHING = TeachingCatalogCheck::DATA_SOURCE
   ENTRY_THUMBNAILS = ".page__content .pub_img img, .page__content .pub_img video"
+  SITE_URL_CHECKS = "Site references and host checks for Research and Projects"
 
   def initialize
-    @findings = {}
-    @missing_outputs = {}
+    @report = SiteCheckReport.new
     @documents = {}
   end
 
   def run
     PAGES.each do |path, (source, title)|
-      inspect_source(source) { check_page(path, source, title) }
+      inspect_source(source, "Page structure") { check_page(path, source, title) }
     end
-    inspect_source("assets/css/main.scss") { check_styles }
-    inspect_source("COPYRIGHT.txt") { require_output("COPYRIGHT.txt", "COPYRIGHT.txt") }
-    inspect_source(PAGES.fetch("projects/hand-track/hand-track.html").first) { check_hand_track }
-    inspect_source("_config.yml") { check_exclusions }
-    inspect_source(TEACHING) { check_teaching }
+    inspect_source("assets/css/main.scss", "Theme CSS") { check_styles }
+    inspect_source("COPYRIGHT.txt", "Copyright file") { require_output("COPYRIGHT.txt", "COPYRIGHT.txt") }
+    inspect_source(PAGES.fetch("projects/hand-track/hand-track.html").first, "Hand Track table of contents") { check_hand_track }
+    inspect_source("_config.yml", "Site exclusions") { check_exclusions }
+    inspect_source(TEACHING, "Teaching catalog") { check_teaching }
     Dir.glob("teach/*/raster/*/index.html").each do |source|
-      inspect_source(source) { check_raster_slides(source) }
+      inspect_source(source, "Image-based slides") { check_raster_slides(source) }
     end
 
-    inspect_source(TEACHING) { check_thumbnail_urls(TeachingCatalogCheck::CATALOG_PATH, TEACHING) }
+    inspect_source(TEACHING, "Teaching catalog thumbnails") do
+      check_thumbnail_urls(TeachingCatalogCheck::CATALOG_PATH, TEACHING)
+    end
 
-    site_url = inspect_source("_config.yml") { read_site_url }
+    site_url = inspect_source("_config.yml", SITE_URL_CHECKS) { read_site_url }
     %w[research projects].each { |section| check_entry_list(section, site_url) }
-    inspect_source("scripts/site-references.rb") { check_site_references(site_url) } if site_url
+    inspect_source("scripts/site-references.rb", "Site references") { check_site_references(site_url) } if site_url
   rescue StandardError => error
-    record_incomplete("scripts/check-site.rb", error)
+    record_incomplete("scripts/check-site.rb", "Site checks", error)
   ensure
-    report
+    @report.write
   end
 
   private
 
   def check(condition, source, message)
-    return if condition
-
-    (@findings[source] ||= []) << message
+    @report.warning(source, message) unless condition
   end
 
-  def inspect_source(source)
+  def inspect_source(source, check_name)
     yield
   rescue StandardError => error
-    record_incomplete(source, error)
+    record_incomplete(source, check_name, error)
+    nil
   end
 
-  def record_incomplete(source, error)
-    @incomplete = true
-    check(false, source, "Check incomplete (#{error.class}): #{error.message.inspect}")
-    nil
+  def record_incomplete(source, check_name, error)
+    @report.incomplete(source, "#{check_name} (#{error.class}): #{error.message.inspect}")
   end
 
   def output_file?(path)
@@ -74,10 +74,7 @@ class SiteCheck
     file = File.join("_site", path)
     return file if output_file?(file)
 
-    unless @missing_outputs[file]
-      check(false, source, "missing or empty #{file}")
-      @missing_outputs[file] = true
-    end
+    @report.missing_output(source, file)
     nil
   end
 
@@ -114,13 +111,13 @@ class SiteCheck
   def check_entry_list(section, site_url)
     path = "#{section}/index.html"
     source = PAGES.fetch(path).first
-    page = inspect_source(source) { page_document(path, source) }
+    page = inspect_source(source, "#{section.capitalize} list") { page_document(path, source) }
     data_source = "_data/#{section}.yml"
-    inspect_source(data_source) do
+    inspect_source(data_source, "#{section.capitalize} list") do
       groups = YAML.safe_load_file(data_source).fetch("groups")
       if page
         EntryListCheck.new(groups, page, site_url).scan.each do |message|
-          check(false, data_source, "#{path}: #{message}")
+          @report.warning(data_source, "#{path}: #{message}")
         end
       end
     end
@@ -147,16 +144,24 @@ class SiteCheck
   def check_teaching
     catalog = YAML.safe_load_file(TEACHING)
     result = TeachingCatalogCheck.new("_site", catalog).scan
-    # The report deduplicates the missing catalog warning from the page and teaching checks.
-    result.diagnostics.each { |issue| check(false, issue.source, issue.message) }
-    result.failures.each { |failure| record_incomplete(failure.source, failure.error) }
+    result.diagnostics.each do |issue|
+      if issue.output_path
+        @report.missing_output(issue.source, issue.output_path)
+      else
+        @report.warning(issue.source, issue.message)
+      end
+    end
+    result.failures.each { |failure| record_incomplete(failure.source, "Teaching catalog", failure.error) }
   end
 
   def read_site_url
-    url = Addressable::URI.parse(YAML.safe_load_file("_config.yml").fetch("url"))
-    valid = %w[http https].include?(url.scheme&.downcase) && url.host
-    check(valid, "_config.yml", "site URL should be an absolute HTTP(S) URL")
-    url if valid
+    value = YAML.safe_load_file("_config.yml").fetch("url")
+    url = Addressable::URI.parse(value)
+    if url && %w[http https].include?(url.scheme&.downcase) && !url.host.to_s.empty?
+      return url
+    end
+
+    raise Addressable::URI::InvalidURIError, "site URL should be an absolute HTTP(S) URL"
   end
 
   def check_raster_slides(source)
@@ -183,32 +188,9 @@ class SiteCheck
   def check_site_references(site_url)
     result = SiteReferences.new("_site", site_url).scan
     result.diagnostics.each do |issue|
-      check(false, issue.page, "#{issue.page} references #{issue.reference.inspect} (#{issue.reason})")
+      @report.warning(issue.page, "#{issue.page} references #{issue.reference.inspect} (#{issue.reason})")
     end
-    result.failures.each { |failure| record_incomplete(failure.page, failure.error) }
-  end
-
-  def report
-    count = @findings.values.sum { |messages| messages.uniq.size }
-    outcome = @incomplete ? "incomplete" : "completed"
-    warnings = count.zero? ? "no warnings" : "#{count} warning(s)"
-    headline = "Site check #{outcome} with #{warnings}."
-    lines = @findings.sort.flat_map do |source, messages|
-      [source, *messages.uniq.map { |message| "  - #{message}" }]
-    end
-    puts headline, *lines
-
-    summary = ENV["GITHUB_STEP_SUMMARY"]
-    return if summary.nil? || summary.empty?
-
-    File.open(summary, "a") do |file|
-      file.puts "## Site check", "", headline
-      unless lines.empty?
-        file.puts ""
-        lines.each { |line| line.each_line { |part| file.puts "    #{part}" } }
-      end
-      file.puts ""
-    end
+    result.failures.each { |failure| record_incomplete(failure.page, "Site references", failure.error) }
   end
 end
 

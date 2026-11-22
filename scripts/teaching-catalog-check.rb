@@ -2,7 +2,7 @@ require "json"
 require "nokogiri"
 
 class TeachingCatalogCheck
-  Diagnostic = Data.define(:source, :message)
+  Diagnostic = Data.define(:source, :message, :output_path)
   Failure = Data.define(:source, :error)
   Result = Data.define(:diagnostics, :failures)
 
@@ -38,7 +38,7 @@ class TeachingCatalogCheck
   private
 
   def check(condition, source, message)
-    @diagnostics << Diagnostic.new(source, message) unless condition
+    @diagnostics << Diagnostic.new(source, message, nil) unless condition
   end
 
   def inspect_source(source)
@@ -52,7 +52,7 @@ class TeachingCatalogCheck
     file = File.join(@directory, path)
     return file if File.file?(file) && !File.zero?(file)
 
-    check(false, source, "missing or empty #{file}")
+    @diagnostics << Diagnostic.new(source, "missing or empty #{file}", file)
     nil
   end
 
