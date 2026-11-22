@@ -11,8 +11,8 @@ Note: maintained in corresponding repos, may not update regularly into this git-
 {: .notice--info}
 
 ## [Notes-CS](https://github.com/xkunwu/notes-cs)
-### [Daily](notes-cs/daily)
-### [Develop](notes-cs/develop)
-### [Remote](notes-cs/remote)
-### [Scripts](notes-cs/scripts)
-### [Sysinit](notes-cs/sysinit)
+<!-- ### [Daily](notes-cs/daily) -->
+<!-- ### [Develop](notes-cs/develop) -->
+<!-- ### [Remote](notes-cs/remote) -->
+<!-- ### [Scripts](notes-cs/scripts) -->
+<!-- ### [Sysinit](notes-cs/sysinit) -->
