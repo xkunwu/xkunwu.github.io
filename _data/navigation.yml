@@ -12,16 +12,16 @@ main:
   - title: "About"
     url: /about/
 
-notes:
-  - title: "Notes-CS"
-    children:
-      - title: "Daily"
-        url: /notes/notes-cs/daily/
-      - title: "Develop"
-        url: /notes/notes-cs/develop/
-      - title: "Remote"
-        url: /notes/notes-cs/remote/
-      - title: "Scripts"
-        url: /notes/notes-cs/scripts/
-      - title: "Sysinit"
-        url: /notes/notes-cs/sysinit/
+# notes:
+#   - title: "Notes-CS"
+#     children:
+#       - title: "Daily"
+#         url: /notes/notes-cs/daily/
+#       - title: "Develop"
+#         url: /notes/notes-cs/develop/
+#       - title: "Remote"
+#         url: /notes/notes-cs/remote/
+#       - title: "Scripts"
+#         url: /notes/notes-cs/scripts/
+#       - title: "Sysinit"
+#         url: /notes/notes-cs/sysinit/

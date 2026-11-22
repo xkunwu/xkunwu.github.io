@@ -31,7 +31,7 @@ The algorithm uses the same fixed side length as training part (default: 240mm, 
 So the problem is reduced to find the center of that detection AABC.
 
 The difficulties come from the noise and outlier issue inherent to the depth camera - it's very often to see a sudden jump between streaming frames, which leads to false detection.
-That's why I have provided a [long list of assumptions in the previous section](#Assumptions), which can make life much easier.
+That's why I have provided a [long list of assumptions in the previous section](#assumptions), which can make life much easier.
 
 #### Data denoise
 
@@ -64,7 +64,7 @@ As I have much higher priority project right now, I would like to leave it as a 
 
 ##### Q: Detection looks very inaccurate?
 
-A: Please take a look at the [Assumptions](#Assumptions). Especially: make clear of the 100mm-480mm operating range in front of the camera, and the hand should be the closest to the camera.
+A: Please take a look at the [Assumptions](#assumptions). Especially: make clear of the 100mm-480mm operating range in front of the camera, and the hand should be the closest to the camera.
 
 ##### Q: Why the detection looks flipped?
 
@@ -72,7 +72,7 @@ A: If the detection looks flipped, then use the left hand. This is due to the da
 
 ##### Q: The detection looks slower than hand/finger movements?
 
-A: This is by design due to the [Momentum stabilizer](#Momentum-stabilizer): if the motion is mildly fast, the algorithm will gradually converge to the target location.
+A: This is by design due to the [Momentum stabilizer](#momentum-stabilizer): if the motion is mildly fast, the algorithm will gradually converge to the target location.
 For example, in the test sequence on the top, it's very evident to see that effect near the end of the sequence, when I was moving my hand quickly from top-right to bottom-left.
 It helps for most of the cases and makes the algorithm more robust to outliers and noise.
 
