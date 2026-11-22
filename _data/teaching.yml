@@ -1,8 +1,8 @@
 # List each course's default term first. Paths are relative to teach/.
 current:
-  - directory: MachineLearning23
+  - directory: MachineLearning23F
     title: "[2023] Machine Learning (I)"
-    img: MachineLearning23/teaser.png
+    img: MachineLearning23F/teaser.png
     terms:
       - file: ML2026H.html
         label: 2026 Autumn
