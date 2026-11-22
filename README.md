@@ -6,6 +6,11 @@
 Markdown is much easier to write - people can concatenate on the content, rather than the messy format tags.
 Besides, GitHub is great for code sharing and project management.
 
+## Maintenance docs
+
+- [站点需求文档](docs/requirements.md)
+- [站点架构设计文档](docs/architecture.md)
+
 ## Check the site
 
 Run `make check` to build the site and review its warnings. It checks the generated page structure, teaching term order and redirects, links in every schedule listed under `current` or `archive` in `_data/teaching.yml`, links in Research and Projects entries, and thumbnails in all three lists. Local HTML links are also checked for matching anchors.
