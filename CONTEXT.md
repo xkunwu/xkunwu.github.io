@@ -10,7 +10,7 @@ A course listed before the Archive in the teaching catalog.
 
 **Course entry**
 
-The stable address for a course or tutorial that opens its default term.
+The address that opens the default term for a course or tutorial.
 
 **Default term**
 
